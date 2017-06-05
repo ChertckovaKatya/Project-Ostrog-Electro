@@ -6,11 +6,11 @@
 	<link href="bootstrap.css" rel="stylesheet" type="text/css">
 </head>
 <?php
-//include_once "..\Model\statususer.php";
-// if(status_user()) {
-// header ('Location: power.php');
-//exit();
-// }
+include_once "..\Model\statususer.php";
+if(status_user()) {
+ header ('Location: power.php');
+exit();
+ }
 
 include_once "..\Model\auth.php";
 
