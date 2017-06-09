@@ -6,13 +6,18 @@
 	<link href="bootstrap.css" rel="stylesheet" type="text/css">
 </head>
 <?php
+
 include_once "..\Model\statususer.php";
+include_once "..\Model\auth.php";
+
+
+
 if(status_user()) {
  header ('Location: power.php');
 exit();
- }	
+ }
 
-include_once "..\Model\auth.php";
+
 
 if(!empty($_POST['login']) AND !empty($_POST['password']))
 {
