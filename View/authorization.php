@@ -10,7 +10,7 @@ include_once "..\Model\statususer.php";
 if(status_user()) {
  header ('Location: power.php');
 exit();
- }
+ }	
 
 include_once "..\Model\auth.php";
 
