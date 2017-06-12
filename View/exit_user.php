@@ -1,4 +1,4 @@
 <?php
-include_once "model/exit.php"
-echo exit_user;
+include_once "../model/exit.php";
+exit_user();
  ?>

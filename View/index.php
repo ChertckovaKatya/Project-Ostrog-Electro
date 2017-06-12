@@ -13,7 +13,7 @@ include_once "..\Model\identification.php";
 
 
 if(status_user()==1) {
- header ('Location: power.php');
+ header ('Location:../view/power.php');
 exit();
  }
 

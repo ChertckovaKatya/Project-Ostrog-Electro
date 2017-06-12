@@ -9,12 +9,14 @@ function status_user(){
 		$row = mysqli_fetch_array(mysqli_query($connect,"SELECT * FROM User WHERE Name ='$name';"), MYSQLI_NUM);
 		if (count($row)!=0)
 		{
-			$user=1;
+		 $user=1;
 		}
 	}
 	else
 	{
 		$user = 0;
 	}
+
+	return $user;
 }
 ?>

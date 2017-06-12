@@ -12,7 +12,6 @@ include_once "..\Model\statususer.php";
 include_once "..\Model\auth.php";
 
 
-
 if(status_user()==1) {
  header ('Location: power.php');
 exit();
