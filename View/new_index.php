@@ -1,7 +1,5 @@
-
 <head>
 	<meta charset="utf-8">
-	<title>/Login</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link href="../css/bootstrap.css" rel="stylesheet" type="text/css">
 </head>
@@ -10,6 +8,7 @@
 
 include_once "..\Model\statususer.php";
 include_once "..\Model\auth.php";
+include_once "..\Model\identification.php";
 
 
 
@@ -36,6 +35,22 @@ if(!empty($_POST['login']) AND !empty($_POST['password']))
         break;
 }
 }
+
+if (!empty($_POST['user']) AND !empty($_POST['pass']))
+{
+	 $result = 	ident_user(($_POST['user']), ($_POST['pass']));
+	switch ($result) {
+	 case "ERR_3":
+			 echo "'Выбранный логин уже зарегистрирован!";
+			 break;
+	 case "Zar":
+			 echo "Вы успешно зарегистрированы!'";
+			 break;
+
+}
+}
+
+
 ?>
 <!DOCTYPE html>
 <html lang="ru">
@@ -48,8 +63,7 @@ if(!empty($_POST['login']) AND !empty($_POST['password']))
 
     <!-- Bootstrap -->
     <link href="../css/bootstrap.css" rel="stylesheet">
-    <link href="../css/style.css" rel="stylesheet">
-    <link href="../css/style_form.css" rel="stylesheet">
+    <link href="../css/new_style.css" rel="stylesheet">
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -58,41 +72,46 @@ if(!empty($_POST['login']) AND !empty($_POST['password']))
     <![endif]-->
   </head>
   <body>
-<div class="container">
-<!-- <form action="authorization.php" method="POST"> -->
-      <form class="form-container" action="authorization.php" method="POST">
-      <div class="form-title"><h2>Войти</h2></div>
-      <div class="form-title">Логин</div>
-      <input class="form-field" type="text" name="login" placeholder="логин" /><br />
-      <div class="form-title">Пароль</div>
-      <input class="form-field" type="password" name="password"placeholder="пароль" /><br />
-      <div class="button-container">
-      <input autofocus class="btn btn-success" type="submit" value="Готово" />
-      </div>
-			<p>
-				<a href="http://localhost/pro/index.php"> Вернуться</a>
-			</p>
-		</form>
-      </form>
-</div>
+<div class="login-wrap">
+<div class="login-html">
+  <input id="tab-1" type="radio" name="tab" class="sign-in" checked><label for="tab-1" class="tab">Вход</label>
+  <input id="tab-2" type="radio" name="tab" class="sign-up"><label for="tab-2" class="tab">Регистрация</label>
+      <div class="login-form">
+    			<div class="sign-in-htm">
+            <form  method="POST">
+    				<div class="group">
+    					<label for="user" class="label">Логин</label>
+    					<input  id="login" type="text" class="input" name="login">
+    				</div>
+    				<div class="group">
+    					<label for="pass" class="label">Пароль</label>
+    					<input  id="password" type="password" class="input" name="password" data-type="password">
+    				</div>
+    				<div class="group">
+    					<input type="submit" class="button" value="Войти">
+    				</div>
+    			</div>
+        <form  method="POST">
+    			<div class="sign-up-htm">
+    				<div class="group">
+    					<label for="user" class="label">Логин</label>
+    					<input id="user" type="text" class="input" name="user">
+    				</div>
+    				<div class="group">
+    					<label for="pass" class="label">Пароль</label>
+    					<input id="pass" type="password" class="input" name="pass">
+    				</div>
+    				<div class="group">
+    					<input type="submit" class="button" value="Зарегистрироваться">
+        </div>
+    		</div>
+    	</div>
+    </div>
+  </div>
+
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="../js/bootstrap.js"></script>
   </body>
 </html>
-
-
-<!-- <div class="container">
-	<form action="authorization.php" method="POST">
-		<h3>Вход</h3>
-		Логин:<br />
-		<input name="login" type="text"/><br />
-		Пароль:<br />
-		<input name="password" type="password" /><br><br>
-		<input autofocus class="btn btn-success" type="submit" value="Авторизоваться" /> <br><br>
-		<p>
-			<a href="http://localhost/pro/index.php"> Вернуться</a>
-		</p>
-	</form>
-</div>; -->

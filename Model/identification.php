@@ -2,7 +2,7 @@
  function ident_user($user_value,$password_value)
 		{
 			include_once "..\Controller\connection.php";
-//include_once 'statususer.php';
+$connect = get_connect();
 if (!empty($user_value) AND !empty($password_value))
 {
 	$login = mysqli_real_escape_string($connect,htmlspecialchars($user_value));

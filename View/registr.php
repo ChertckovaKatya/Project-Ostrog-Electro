@@ -4,7 +4,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link href="bootstrap.css" rel="stylesheet" type="text/css">
 </head>
-<?php  
+<?php
 include_once "..\Model\identification.php";
 
 if (!empty($_POST['login']) AND !empty($_POST['password']))
@@ -15,7 +15,7 @@ if (!empty($_POST['login']) AND !empty($_POST['password']))
 			 echo "'Выбранный логин уже зарегистрирован!";
 			 break;
 	 case "Zar":
-			 echo "Вы успешно зарегистрированы!'";
+			 echo "Вы успешно зарегистрированы!";
 			 break;
 
 }
@@ -23,9 +23,9 @@ if (!empty($_POST['login']) AND !empty($_POST['password']))
 
 ?>
 
-<div class="container">
-	<h3> Регистрация </h3>
-	<form class="form-horizontal" role="form" action="registr.php" method="POST">
+<!-- <div class="container">
+	<h3> Регистрация </h3> -->
+	<!-- <form class="form-horizontal" role="form" action="registr.php" method="POST">
 		Логин:
 		<div>
 	       	<input id="login" name="login" type="text" required>
@@ -40,4 +40,4 @@ if (!empty($_POST['login']) AND !empty($_POST['password']))
 		<p ><a href="http://127.0.1.1/myproject/"> Вернуться</a></p>
 
 	</form>
-</div>;
+</div>; -->
