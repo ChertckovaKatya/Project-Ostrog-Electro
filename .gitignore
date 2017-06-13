@@ -1,4 +1,4 @@
-Setting/*
-/Setting/*
-\Setting\*
-Setting\*
+\Setting\connection.php
+Setting\connection.php
+/Setting/connection.php
+Setting/connection.php
