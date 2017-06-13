@@ -6,7 +6,7 @@ function get_connect(){
   $user = 'root';
 
 
-  $password = '';
+  $password = ' ';
 
   global $connect;
   $connect = mysqli_connect($host, $user, $password, $database)
