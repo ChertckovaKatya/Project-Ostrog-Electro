@@ -1,7 +1,7 @@
 <?php
  function ident_user($user_value,$password_value)
 		{
-			include_once "..\Controller\connection.php";
+			include_once "..\Setting\connection.php";
 $connect = get_connect();
 if (!empty($user_value) AND !empty($password_value))
 {
