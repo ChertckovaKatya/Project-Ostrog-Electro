@@ -1,5 +1,5 @@
 <?php
-
+//path file: Controller/connection.php
 function get_connect(){
   $host = 'localhost';
   $database = 'home';
