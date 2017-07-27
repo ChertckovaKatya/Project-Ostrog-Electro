@@ -28,10 +28,11 @@ if(!empty($_POST['login']) AND !empty($_POST['password']))
         echo "Пользователь не найден";
         break;
     case "ERR_2":
-        echo "Не верный логин или пароль";
+        echo "Неверный логин или пароль";
         break;
     case "Ok":
-        echo "Вы успешно авторизировались на сайте!";
+        // echo "Вы успешно авторизировались на сайте!";
+				header ('Location:../view/power.php');
         break;
 }
 }

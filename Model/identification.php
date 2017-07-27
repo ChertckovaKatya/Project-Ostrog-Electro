@@ -1,4 +1,4 @@
-<?php
+  <?php
  function ident_user($user_value,$password_value)
 		{
 			include_once "..\Controller\connection.php";
