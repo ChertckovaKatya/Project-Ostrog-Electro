@@ -80,18 +80,3 @@ if(!empty($_POST['login']) AND !empty($_POST['password']))
     <script src="../js/bootstrap.js"></script>
   </body>
 </html>
-
-
-<!-- <div class="container">
-	<form action="authorization.php" method="POST">
-		<h3>Вход</h3>
-		Логин:<br />
-		<input name="login" type="text"/><br />
-		Пароль:<br />
-		<input name="password" type="password" /><br><br>
-		<input autofocus class="btn btn-success" type="submit" value="Авторизоваться" /> <br><br>
-		<p>
-			<a href="http://localhost/pro/index.php"> Вернуться</a>
-		</p>
-	</form>
-</div>; -->

@@ -19,7 +19,7 @@ if (!empty($user_value) AND !empty($password_value))
 		mysqli_query($connect,"INSERT INTO User (Name, Password) VALUES ('$login','$pass');");
 
 		  return 'Zar';//'Вы успешно зарегистрированы!';
-		//echo "<a href=\"./index.php\">На главную</a><br>";
+	
 		exit();
 	}
 }

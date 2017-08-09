@@ -21,7 +21,7 @@ USE `mydb` ;
 -- Table `mydb`.`Consumer`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `mydb`.`Consumer` (
-  `id_consumer` INT NOT NULL,
+  `id_consumer` INT NOT NULL AUTO_INCREMENT,
   `Name_consumer` VARCHAR(45) NULL,
   `Phone_consumer` VARCHAR(45) NULL,
   PRIMARY KEY (`id_consumer`))
@@ -32,7 +32,7 @@ ENGINE = InnoDB;
 -- Table `mydb`.`Object`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `mydb`.`Object` (
-  ` id_object` INT NOT NULL,
+  ` id_object` INT NOT NULL AUTO_INCREMENT,
   ` Owner_FIO` VARCHAR(45) NULL,
   `Renter_FIO` VARCHAR(45) NULL,
   `Name_object` VARCHAR(45) NULL,
@@ -56,7 +56,7 @@ ENGINE = InnoDB;
 -- Table `mydb`.`Transfor_vol`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `mydb`.`Transfor_vol` (
-  `id_tr_vol` INT NOT NULL,
+  `id_tr_vol` INT NOT NULL AUTO_INCREMENT,
   `Type_tr_vol` VARCHAR(45) NULL,
   `Mark_tr_vol` VARCHAR(45) NULL,
   `Denomin_tr_vol` VARCHAR(45) NULL,
@@ -71,7 +71,7 @@ ENGINE = InnoDB;
 -- Table `mydb`.`Counter`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `mydb`.`Counter` (
-  `id_count` INT NOT NULL,
+  `id_count` INT NOT NULL AUTO_INCREMENT,
   `Type_count` VARCHAR(45) NULL,
   `Mark_count` VARCHAR(45) NULL,
   `Year_release_count` VARCHAR(45) NULL,
@@ -100,7 +100,7 @@ ENGINE = InnoDB;
 -- Table `mydb`.`Transfor_cur`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `mydb`.`Transfor_cur` (
-  `id_tr_cur` INT NOT NULL,
+  `id_tr_cur` INT NOT NULL AUTO_INCREMENT,
   `Type_tr_cur` VARCHAR(45) NULL,
   `Mark_tr_cur` VARCHAR(45) NULL,
   `Denomin_tr_cur` VARCHAR(45) NULL,
@@ -127,7 +127,7 @@ ENGINE = InnoDB;
 -- Table `mydb`.`Plombs`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `mydb`.`Plombs` (
-  `id_plomb` INT NOT NULL,
+  `id_plomb` INT NOT NULL AUTO_INCREMENT,
   `L1` VARCHAR(45) NULL,
   `L2` VARCHAR(45) NULL,
   `I1` VARCHAR(45) NULL,
@@ -148,7 +148,7 @@ ENGINE = InnoDB;
 -- Table `mydb`.`Dimension`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `mydb`.`Dimension` (
-  `id_dimen` INT NOT NULL,
+  `id_dimen` INT NOT NULL AUTO_INCREMENT,
   `Date_dimen` VARCHAR(45) NULL,
   `Alter_phase` VARCHAR(45) NULL,
   `Load_fa` VARCHAR(45) NULL,
@@ -173,7 +173,7 @@ ENGINE = InnoDB;
 -- Table `mydb`.`Accounting_check`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `mydb`.`Accounting_check` (
-  `id_check` INT NOT NULL,
+  `id_check` INT NOT NULL AUTO_INCREMENT,
   `Date_check` VARCHAR(45) NULL,
   `Type_verif` VARCHAR(45) NULL,
   `Conclusion_ac` VARCHAR(45) NULL,
@@ -186,7 +186,7 @@ ENGINE = InnoDB;
 -- Table `mydb`.`Change_count`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `mydb`.`Change_count` (
-  ` id_change` INT NOT NULL,
+  ` id_change` INT NOT NULL AUTO_INCREMENT,
   ` Date_change` VARCHAR(45) NULL,
   `Cause_change` VARCHAR(45) NULL,
   `FIO_change` VARCHAR(45) NULL,
