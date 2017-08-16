@@ -1,0 +1,9 @@
+.table-bordered {
+	width: 90%;
+	height: 50px;
+	position: absolute;
+	left: 15px; 
+    right: 15px;
+	 border-collapse: collapse;
+	 text-align: left;
+}

@@ -1,5 +1,11 @@
-<?php
 
+<html>
+<head>
+<link href="../css/consumer.css" rel="stylesheet">
+</head>
+</html>
+
+<?php
 include '.\biblioticdib.php';
 include '..\Model\cons.php';
 echo $head;
@@ -12,8 +18,9 @@ echo $head;
  //echo 'test'.$row[0]['id_consumer'];
  
 ?>
-<table border="1">
-<tr><td>Id пользователя</td><td>Имя Фамилия Отчество</td><td>Телефон</td></tr>
+<div class="table-responsive">
+	<table class="table">
+	<tr><td>Id пользователя</td><td>Имя Фамилия Отчество</td><td>Телефон</td></tr>
 
 <?php
 for ($tr=0; $tr<=COUNT($row)-1; $tr++)
@@ -26,9 +33,8 @@ for ($tr=0; $tr<=COUNT($row)-1; $tr++)
     //echo var_dump($row[$tr]);
 }
 
-echo '</table>';
+ echo '</table>';
 ?>
 
-
-</table>
+</div>
 
