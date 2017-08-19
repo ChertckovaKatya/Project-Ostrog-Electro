@@ -23,18 +23,20 @@ if(!empty($_POST['login']) AND !empty($_POST['password']))
 {
 	 $result = 	auth_user(($_POST['login']), ($_POST['password']));
 
-	 switch ($result) {
-    case "ERR_1":
-        echo "Пользователь не найден";
-        break;
-    case "ERR_2":
-        echo "Не верный логин или пароль";
-        break;
-    case "Ok":
-        echo "Вы успешно авторизировались на сайте!";
-        break;
+	 switch ($result) 
+   {
+      case "ERR_1":
+          echo "Пользователь не найден";
+          break;
+      case "ERR_2":
+          echo "Не верный логин или пароль";
+          break;
+      case "Ok":
+          echo "Вы успешно авторизировались на сайте!";
+          break;
+    }
 }
-}
+
 ?>
 <!DOCTYPE html>
 <html lang="ru">
@@ -49,34 +51,28 @@ if(!empty($_POST['login']) AND !empty($_POST['password']))
     <link href="../css/bootstrap.css" rel="stylesheet">
     <link href="../css/style.css" rel="stylesheet">
     <link href="../css/style_form.css" rel="stylesheet">
-    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
+    
   </head>
   <body>
-<div class="container">
-<!-- <form action="authorization.php" method="POST"> -->
+    <div class="container">
       <form class="form-container" action="authorization.php" method="POST">
-      <div class="form-title"><h2>Войти</h2></div>
-      <div class="form-title">Логин</div>
-      <input class="form-field" type="text" name="login" placeholder="логин" /><br />
-      <div class="form-title">Пароль</div>
-      <input class="form-field" type="password" name="password"placeholder="пароль" /><br />
-      <div class="button-container">
-      <input autofocus class="btn btn-success" type="submit" value="Готово" />
-      </div>
-			<p>
-				<a href="http://localhost/pro/index.php"> Вернуться</a>
-			</p>
-		</form>
-      </form>
-</div>
-    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script src="../js/bootstrap.js"></script>
+        <div class="form-title"><h2>Войти</h2></div>
+          <div class="form-title">Логин</div>
+           <input class="form-field" type="text" name="login" placeholder="логин" /><br />
+            <div class="form-title">Пароль</div>
+             <input class="form-field" type="password" name="password" placeholder="пароль" /><br />
+              <div class="button-container">
+                <input autofocus class="btn btn-success" type="submit" value="Готово" />
+              </div>
+              <p>
+				        <a href="http://localhost/pro/index.php"> Вернуться</a>
+              </p>
+		  </form>
+      
+    </div>
+      <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+      <!-- Include all compiled plugins (below), or include individual files as needed -->
+      <script src="../js/bootstrap.js"></script>
   </body>
 </html>

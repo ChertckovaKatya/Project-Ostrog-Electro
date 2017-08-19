@@ -1,20 +1,50 @@
 <?php
 include '.\biblioticdib.php';
+include '..\Model\add-cons.php';
 echo $head;
 ?>
 <body>
+<div class="container">
+<form class="form-container" action="add-consumer.php" method="POST">
 <form class="form-inline">
   <div class="form-group">
     <label  for="name">Наименование потребителя </label>
-    <input type="Name_consumer" class="form-control" id="Name_consumer">
+    <input type="text" name="name" class="form-control">
   </div>
 
   <div class="form-group">
     <label  for="Phone_consumer">Контактные телефоны</label>
-    <input type="phone" class="form-control" id="Phone_consumer">
+    <input type="text" name="Phone_consumer" class="form-control" >
   </div>
 
-  <div class="form-group">
+<div class="button-container">
+      <input autofocus class="btn btn-success" type="submit" value="Добавить" />
+      </div>
+</form>
+</form>
+</div>
+</body>
+<?php
+
+    if(!empty($_POST['name']) AND !empty($_POST['Phone_consumer']))
+    {
+        $result =  add_cons(($_POST['name']), ($_POST['Phone_consumer']));
+
+        switch ($result)
+         {
+            case "Add_cons":
+             echo "Пользователь успешно добавлен";
+              break;
+            case "Err-cons":
+              echo "Пользователь не добавлен";
+              break;
+            // case "Ok":
+            //   echo "Вы успешно авторизировались на сайте!";
+            //    break;
+          }
+    }
+?>
+  <!-- <div class="form-group">
     <label  for="name">Собственник</label>
     <input type="owner" class="form-control" id="Owner">
   </div>
@@ -66,9 +96,7 @@ echo $head;
       <label for="name">Номинал</label>
       <input type="Denomin_tr_vol" class="form-control" id="Denomin_tr_vol">
     </div>
-
+ -->
     
 
 
-</form>
-</body>

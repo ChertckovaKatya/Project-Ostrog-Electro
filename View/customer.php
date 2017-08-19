@@ -2,30 +2,27 @@
 
 include '.\biblioticdib.php';
 include '..\Model\cons.php';
+include '..\Model\delete.php';
 
 echo $head;
-  $rows = 20;
-  $cols = 20;
+ 
  $user_id = $_GET["user_id"];
 
-
-// echo "Id пользолвателя:".$_GET["user_id"];
 $row=cust_table($user_id);
+
+if(!empty($_GET["user_id"]))
+{
+	del_cons($_GET["user_id"]);
+}
+
+
 ?>
-
-<div class="table-responsive">
-	<table class="table">
-	<tr><td>ФИО</td><tr>
-	<tr><td>Телефон</td><tr>
-
-<?php
-
-    
-      echo '<tr><td>'.$row[0]['Name_consumer'].'</td></tr><tr><td>'.$row[0]['Phone_consumer'].'</td></tr>';
- 
-    // echo '</tr>';
-    
- echo '</table>';
-?>
-
+<div class="container"> 
+	ФИО: <?php echo $row[0]['Name_consumer']; ?>
+	<br>Телефон:<?php echo $row[0]['Phone_consumer']; ?> </br>
 </div>
+	<form>
+	<div class="button-container">
+     	 <input class="btn btn-success" type="submit" value="Удалить пользователя" />
+    </div>
+    </form>

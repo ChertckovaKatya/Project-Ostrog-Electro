@@ -10,11 +10,12 @@ $head='  <head>
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 
       <link href="../css/bootstrap.css" rel="stylesheet">
-      <link href="../css/consumer.css" rel="stylesheet">
+  
 
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<link href="bootstrap.css" rel="stylesheet" type="text/css">
+		<link href="../css/bootstrap.css" rel="stylesheet" type="text/css">
+		<link href="../css/consumer.css" rel="stylesheet">
 </head>
 			<body>
 				<div class="container">

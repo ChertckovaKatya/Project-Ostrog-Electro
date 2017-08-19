@@ -1,6 +1,6 @@
-.table-bordered {
+.container {
 	width: 90%;
-	height: 50px;
+	height: 100px;
 	position: absolute;
 	left: 15px; 
     right: 15px;

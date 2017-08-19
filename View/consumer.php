@@ -18,23 +18,24 @@ echo $head;
  //echo 'test'.$row[0]['id_consumer'];
  
 ?>
-<div class="table-responsive">
-	<table class="table">
-	<tr><td>Id пользователя</td><td>Имя Фамилия Отчество</td><td>Телефон</td></tr>
+<div class="container">
+		<table class="table">
+			<tr><td>Номер</td><td>ФИО</td><td>Телефон</td></tr>
 
-<?php
-for ($tr=0; $tr<=COUNT($row)-1; $tr++)
-{
-    echo '<tr>';
-      echo '<td><a name=\'Потребитель '.$row[$tr]['id_consumer']. ' \' href=\'customer.php?user_id='.$row[$tr]['id_consumer'].'\' >'.$row[$tr]['id_consumer'].'</a>
-      <td>'.$row[$tr]['Name_consumer'].'</td><td>'.$row[$tr]['Phone_consumer'].'</td>';
+	<?php
+		for ($tr=0; $tr<=COUNT($row)-1; $tr++)
+		{
+   			echo '<tr>';
+     		echo '<td><a name=\'Потребитель '.$row[$tr]['id_consumer']. ' \' href=\'customer.php?user_id='.$row[$tr]['id_consumer'].'\' >'.$row[$tr]['id_consumer'].'</a>
+      		<td>'.$row[$tr]['Name_consumer'].'</td><td>'.$row[$tr]['Phone_consumer'].'</td>';
 
-    echo '</tr>';
-    //echo var_dump($row[$tr]);
-}
+			echo '</tr>';
+    		//echo var_dump($row[$tr]);
+		}
 
- echo '</table>';
+ 	echo '</table>';
 ?>
 
+	
 </div>
 
