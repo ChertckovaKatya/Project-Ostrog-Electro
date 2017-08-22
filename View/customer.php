@@ -2,39 +2,25 @@
 
 include '.\biblioticdib.php';
 include '..\Model\cons.php';
-include '..\Model\delete.php';
+
 
 echo $head;	
+
  
-$user_id = $_GET["user_id"];
+ $user_id = $_GET["user_id"];
 
-$row=cust_table($user_id);
-
-if(!empty($_GET["user_id"]))
-{
-	del_cons($_GET["user_id"]);
-
-	$result= del_cons($_GET["user_id"]);
-
-	switch ($result)
-         {
-            case "Del_cons":
-             echo "Пользователь успешно удален";
-              break;
-            case "Err_del-cons":
-              echo "Пользователь не удален";
-              break;
-          }
-}
-
-
+$row=cust_table($_GET["user_id"]);
 ?>
-<form>
+
 	<div class="container"> 
 		ФИО: <?php echo $row[0]['Name_consumer']; ?>
 		<br>Телефон:<?php echo $row[0]['Phone_consumer']; ?> </br>
 	</div>
-	<div class="button-container">
-     	 <input class="btn btn-success" type="submit" value="Удалить пользователя" >
-    </div>
-</form>
+
+	<!-- <form> --> <!-- action="..\View\del_consumer.php?user_id=<?php echo (int)$user_id; ?>" --><!-- > -->
+	<!-- <div class="button-container"> -->
+     	<!--  <a href="..\View\del_consumer.php?user_id=<?php echo (int)$user_id; ?>"><input class="btn btn-success" type="submit" value="Удалить пользователя"></a> -->
+     	<a href="..\View\del_consumer.php?user_id=<?php echo (int)$user_id; ?>"> Удалить пользователя</a>
+     	<a href="..\View\edit.php?user_id=<?php echo (int)$user_id; ?>"> Редактировать</a>
+    <!-- </div> -->
+<!-- </form> -->

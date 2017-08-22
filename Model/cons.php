@@ -17,16 +17,17 @@ function cons_table()
 	}
 	//var_dump($array);
 	return $array;
+	exit();
 }
 
 function cust_table($user_id)
 {
 	include_once "..\Setting\connection.php";
 	$connect = get_connect();
-	$custumer=(mysqli_query($connect,"select Name_consumer,Phone_consumer from consumer WHERE id_consumer =".$user_id.";"));
+	$customer=(mysqli_query($connect,"select Name_consumer,Phone_consumer from consumer WHERE id_consumer =".$user_id.";"));
 	$array_cust= array();
 	$i = 0;
-	while ($row = mysqli_fetch_assoc($custumer)) 
+	while ($row = mysqli_fetch_assoc($customer)) 
 	{
 
 		$array_cust[$i] = $row;
@@ -34,6 +35,7 @@ function cust_table($user_id)
 	}
 
 	return $array_cust;
+	exit();
 }
 
 ?>

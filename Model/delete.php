@@ -18,4 +18,23 @@
 			}
 	}
 
+		function edit_cons($id_cons)
+		{
+			include_once "..\Setting\connection.php";
+			$connect = get_connect();
+			if (!empty($id_cons))
+			{
+				$login = mysqli_real_escape_string($connect,htmlspecialchars($id_cons));
+				$name=mysqli_query($connect,"select Name_consumer from consumer  WHERE id_consumer ='".$login."';");
+				$phone=mysqli_query($connect,"select Phone_consumer from consumer  WHERE id_consumer='".$id_cons."';");
+				return $name;
+				return $phone;
+				exit();
+			}
+
+		}
+
+
+
 ?>
+
