@@ -5,7 +5,7 @@ echo $head;
 ?>
 <body>
 <div class="container">
-<form class="form-container" action="add-consumer.php" method="POST">
+<form class="form-container" action="add_consumer.php" method="POST">
 <form class="form-inline">
   <div class="form-group">
     <label  for="name">Наименование потребителя </label>
@@ -14,11 +14,11 @@ echo $head;
 
   <div class="form-group">
     <label  for="Phone_consumer">Контактные телефоны</label>
-    <input type="text" name="Phone_consumer" class="form-control" >
+    <input type="tel" name="Phone_consumer" class="form-control" >
   </div>
 
 <div class="button-container">
-      <input autofocus class="btn btn-success" type="submit" value="Добавить" />
+      <input autofocus class="btn btn-success" type="submit" value="Добавить">
       </div>
 </form>
 </form>

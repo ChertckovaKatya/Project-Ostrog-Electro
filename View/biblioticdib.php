@@ -35,7 +35,7 @@ $head='
 									<div class="collapse navbar-collapse" id="responsive-menu">
 										<ul class="nav navbar-nav">
 											<li><a href="consumer.php"> Перечень потребителей </a></li>
-											<li><a href="add-consumer.php"> Добавить потребителя </a></li>
+											<li><a href="add_consumer.php"> Добавить потребителя </a></li>
 											<li><a href="#"> Пункт 3 </a></li>
                      					</ul>
                       					<ul class="nav navbar-nav navbar-right">
