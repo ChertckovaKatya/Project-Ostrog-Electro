@@ -18,6 +18,25 @@
 			}
 	}
 
+	function del_object ($id_cons)
+	{
+		include_once "..\Setting\connection.php";
+		$connect = get_connect();
+		if (!empty($id_cons))
+		{
+			mysqli_query($connect,"delete from Object where Obj_Cons_id=".$id_cons.";");
+
+			return 'Del_obj';
+	
+			exit();
+		}
+		else 
+			{
+				return 'Err_del-obj';
+				exit();
+			}
+	}
+
 		function edit_cons($id_cons)
 		{
 			include_once "..\Setting\connection.php";

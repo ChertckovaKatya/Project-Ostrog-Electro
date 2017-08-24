@@ -11,8 +11,8 @@ ENGINE = InnoDB;
 -- Table `Object`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `Object` (
-  ` id_object` INT NOT NULL AUTO_INCREMENT,
-  ` Owner_FIO` VARCHAR(45) NULL,
+  `id_object` INT NOT NULL AUTO_INCREMENT,
+  `Owner_FIO` VARCHAR(45) NULL,
   `Renter_FIO` VARCHAR(45) NULL,
   `Name_object` VARCHAR(45) NULL,
   `Mailing_address` VARCHAR(45) NULL,

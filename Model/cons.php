@@ -20,6 +20,25 @@
 		return $array;
 		exit();
 	}
+	function object_table($user_id)
+	{
+		include_once "..\Setting\connection.php";
+		$connect = get_connect();
+		$object=(mysqli_query($connect,"select Owner_FIO,Renter_FIO,Name_object,Mailing_address,Phone_object,Source_of_power,Voltage_class,Date_instrumental_check
+			FROM Object WHERE Obj_Cons_id=".$user_id.";"));
+		$array_object= array();
+		$i = 0;
+		while ($row1 = mysqli_fetch_assoc($object)) 
+		{
+
+			$array_object[$i] = $row1;
+			$i++;
+		}
+
+		return $array_object;
+		exit();
+	}
+	
 
 	function cust_table($user_id)
 	{
