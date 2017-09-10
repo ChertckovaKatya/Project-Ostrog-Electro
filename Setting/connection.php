@@ -2,11 +2,11 @@
 //path file: Controller/connection.php
 function get_connect(){
   $host = 'localhost';
-  $database = 'home';
+  $database = 'ost';
   $user = 'root';
 
 
-  $password = '95b72ka';
+  $password = '365412';
 
   global $connect;
   $connect = mysqli_connect($host, $user, $password, $database)

@@ -21,7 +21,7 @@ CREATE TABLE IF NOT EXISTS `Object` (
   `Voltage_class` VARCHAR(45) NULL,
   `Date_instrumental_check` VARCHAR(45) NULL,
   `Obj_Cons_id` INT NOT NULL,
-  PRIMARY KEY (` id_object`, `Obj_Cons_id`),
+  PRIMARY KEY (`id_object`, `Obj_Cons_id`),
   INDEX `fk_Объект_Потребитель_idx` (`Obj_Cons_id` ASC),
   CONSTRAINT `fk_Объект_Потребитель`
     FOREIGN KEY (`Obj_Cons_id`)
@@ -69,7 +69,7 @@ CREATE TABLE IF NOT EXISTS `Counter` (
   INDEX `fk_Счетчик_Объект1_idx` (`Obj_id_count` ASC, `Obj_Cons_id_count` ASC),
   CONSTRAINT `fk_Счетчик_Объект1`
     FOREIGN KEY (`Obj_id_count` , `Obj_Cons_id_count`)
-    REFERENCES `Object` (` id_object` , `Obj_Cons_id`)
+    REFERENCES `Object` (`id_object` , `Obj_Cons_id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
@@ -96,7 +96,7 @@ CREATE TABLE IF NOT EXISTS `Transfor_cur` (
   INDEX `fk_Трансформатор тока_Объект1_idx` (`Obj_id_tr_cur` ASC, `Obj_Cons_id_tr_cur` ASC),
   CONSTRAINT `fk_Трансформатор тока_Объект1`
     FOREIGN KEY (`Obj_id_tr_cur` , `Obj_Cons_id_tr_cur`)
-    REFERENCES `Object` (` id_object` , `Obj_Cons_id`)
+    REFERENCES `Object` (`id_object` , `Obj_Cons_id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
@@ -142,7 +142,7 @@ CREATE TABLE IF NOT EXISTS `Dimension` (
   INDEX `fk_Данные об измерениях_Объект1_idx` (`Obj_id_dimen` ASC, `Obj_Cons_id_dimen` ASC),
   CONSTRAINT `fk_Данные об измерениях_Объект1`
     FOREIGN KEY (`Obj_id_dimen` , `Obj_Cons_id_dimen`)
-    REFERENCES `Object` (` id_object` , `Obj_Cons_id`)
+    REFERENCES `Object` (`id_object` , `Obj_Cons_id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
@@ -165,14 +165,9 @@ ENGINE = InnoDB;
 -- Table `Change_count`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `Change_count` (
-  ` id_change` INT NOT NULL AUTO_INCREMENT,
-  ` Date_change` VARCHAR(45) NULL,
+  `id_change` INT NOT NULL AUTO_INCREMENT,
+  `Date_change` VARCHAR(45) NULL,
   `Cause_change` VARCHAR(45) NULL,
   `FIO_change` VARCHAR(45) NULL,
-  PRIMARY KEY (` id_change`))
+  PRIMARY KEY (`id_change`))
 ENGINE = InnoDB;
-
-
-SET SQL_MODE=@OLD_SQL_MODE;
-SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
-SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
