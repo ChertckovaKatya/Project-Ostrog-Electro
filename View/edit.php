@@ -1,7 +1,7 @@
 <?php
 
 include '.\biblioticdib.php';
-include '..\Model\delete.php';
+include '..\Model\edit.php';
 
 echo $head;
 edit_cons ($_GET["user_id"]);

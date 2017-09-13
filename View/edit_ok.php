@@ -2,7 +2,7 @@
 
 
 include '.\biblioticdib.php';
-include '..\Model\delete.php';
+include '..\Model\edit.php';
 
 echo $head;	
 global $s;
