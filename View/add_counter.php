@@ -1,97 +1,118 @@
 <?php
 include '.\biblioticdib.php';
 include '..\Model\add-cons.php';
-include '..\Model\cons.php';
+// include '..\Model\counter_add.php';
 
-echo $head;
+echo $head;  
+echo var_dump($_GET);
 $user_id = $_GET["user_id"];
-$id_obj = $_GET["user_id"];
+$id_obj = $_GET["id_obj"];
+echo $id_obj;
+echo $user_id;
 
 ?>
+<!DOCTYPE html>
 <div class="container">
 	<form class="form-container" action="add_counter.php" method="POST">
  		<div class="form-group">
      	 	<label for="name">Тип</label>
-      		<input type="Type_count" class="form-control">
+      		<input name="Type_count" class="form-control">
     	</div>
 
     	<div class="form-group">
       		<label for="name">Марка</label>
-      		<input type="Mark_count" class="form-control">
+      		<input name="Mark_count" class="form-control">
     	</div>
 
     	<div class="form-group">
       		<label for="name">Год выпуска</label>
-      		<input type="Year_release_count" class="form-control">
+      		<input name="Year_release_count" class="form-control">
     	</div>
 
     	<div class="form-group">
       		<label for="name">Класс точности</label>
-      		<input type="Class_accur_count" class="form-control">
+      		<input name="Class_accur_count" class="form-control">
     	</div>
 
      	<div class="form-group">
       		<label for="name">Дата проверки</label>
-      		<input type="Date_gospr_count" class="form-control">
+      		<input name="Date_gospr_count" class="form-control">
     	</div>
 
     	<div class="form-group">
       		<label for="name">Дата следующей проверки</label>
-      		<input type="Date_next_pr_count" class="form-control">
+      		<input name="Date_next_pr_count" class="form-control">
     	</div>
 
     		<div class="form-group">
       		<label for="name">Количество пломб госпроверки</label>
-      		<input type="Kol_plomb_gospr" class="form-control">
+      		<input name="Kol_plomb_gospr" class="form-control">
     	</div>
 
     		<div class="form-group">
       		<label for="name">Количество голографичесих наклеек</label>
-      		<input type="Kol_holog_stick" class="form-control">
+      		<input name="Kol_holog_stick" class="form-control">
     	</div>
 
     		<div class="form-group">
       		<label for="name">Пломбы сетевой организации</label>
-      		<input type="Plomb_netw_org" class="form-control">
+      		<input name="Plomb_netw_org" class="form-control">
     	</div>
 
     		<div class="form-group">
       		<label for="name">Антимагнитные пломбы</label>
-      		<input type="Antimag_plomb" class="form-control">
+      		<input name="Antimag_plomb" class="form-control">
     	</div>
 
     		<div class="form-group">
       		<label for="name">Пломба на ШУ</label>
-      		<input type="Plomb_shu" class="form-control">
+      		<input name="Plomb_shu" class="form-control">
     	</div>
 
     		<div class="form-group">
       		<label for="name">Другие места</label>
-      		<input type="Other_places_count" class="form-control">
+      		<input name="Other_places_count" class="form-control">
     	</div>
     	<div class="button-container">
       		<input autofocus class="btn btn-success" type="submit" value="Добавить">
       	</div>
-    	<input type="hidden" name="user_id" value = <?php echo $user_id;?> >
-    	<input type="hidden" name="id_obj" value = <?php echo $id_obj;?> >
+      <div>
+          <input type="hidden" name="user_id" value = <?php echo (int) $user_id;?> >
+      </div>
+      <div>
+          <input type="hidden" name="id_obj" value = <?php echo (int) $id_obj;?> >
+      </div>
 	  </form>
 </div>
 
 <?php
-
-    if(!empty($_POST['Type_count']) AND !empty($_POST['Mark_count']) AND !empty($_POST['Year_release_count']) AND !empty($_POST['Class_accur_count'] ) AND !empty($_POST['Date_gospr_count']) AND !empty($_POST['Date_next_pr_count']) AND !empty($POST["$Kol_plomb_gospr"])AND !empty($_POST['Kol_holog_stick'])AND !empty($_POST['Plomb_netw_org'])AND !empty($_POST['Antimag_plomb']) AND !empty($_POST['Plomb_shu']) AND !empty($_POST['Other_places_count']) AND !empty($_POST['user_id']) AND !empty($_POST['id_obj']))
+    
+    if(!empty($_POST['Type_count']) AND !empty($_POST['Mark_count']) AND !empty($_POST['Year_release_count']) AND !empty($_POST['Class_accur_count'] ) AND !empty($_POST['Date_gospr_count']) AND !empty($_POST['Date_next_pr_count']) AND !empty($_POST['Kol_plomb_gospr'])AND !empty($_POST['Kol_holog_stick'])AND !empty($_POST['Plomb_netw_org'])AND !empty($_POST['Antimag_plomb']) AND !empty($_POST['Plomb_shu']) AND !empty($_POST['Other_places_count']) AND !empty($_POST['id_obj']) AND !empty($_POST['user_id']))
     {
-        $result =  add_counter(($_POST['Type_count']),($_POST['Mark_count']),($_POST['Year_release_count']),($_POST['Class_accur_count']),($_POST['Date_gospr_count']),($_POST['Date_next_pr_count']),($_POST['Kol_plomb_gospr']),($_POST['Kol_holog_stick']),($_POST['Plomb_netw_org']),($_POST['Antimag_plomb']),($_POST['Plomb_shu']),($_POST['Other_places_count']),($_POST['$user_id']),($_POST['id_obj']));
+        $result =  add_counter(($_POST['Type_count']),($_POST['Mark_count']),($_POST['Year_release_count']),($_POST['Class_accur_count']),($_POST['Date_gospr_count']),($_POST['Date_next_pr_count']),($_POST['Kol_plomb_gospr']),($_POST['Kol_holog_stick']),($_POST['Plomb_netw_org']),($_POST['Antimag_plomb']),($_POST['Plomb_shu']),($_POST['Other_places_count']),($_POST['id_obj']),($_POST['user_id']));
 
+        echo "вызывается";
         switch ($result)
          {
             case "Add_counter":
-             echo "Трансформатор напряжения успешно добавлен";
+             echo "Счетчик успешно добавлен";
               break;
             case "Err-counter":
-              echo "Трансформатор напряжения не добавлен";
+              echo "Счетчик не добавлен";
               break;
 
          }
+    }
+    else
+    {
+      // echo "   что-то пустое!!!";
+
+      if (!empty($_POST['user_id']))
+      {
+        echo "Status:" . (!empty($_POST['Type_count']) AND !empty($_POST['Mark_count']) AND !empty($_POST['Year_release_count']) AND !empty($_POST['Class_accur_count'] ) AND !empty($_POST['Date_gospr_count']) AND !empty($_POST['Date_next_pr_count']) AND !empty($_POST['Kol_plomb_gospr'])AND !empty($_POST['Kol_holog_stick'])AND !empty($_POST['Plomb_netw_org'])AND !empty($_POST['Antimag_plomb']) AND !empty($_POST['Plomb_shu']) AND !empty($_POST['Other_places_count']) AND !empty($_POST['id_obj']) AND !empty($_POST['user_id'])) ."<br>";
+        echo var_dump($_POST);
+      }
+      else
+        {echo "пустая";};
     }
 ?>

@@ -1,7 +1,7 @@
 <?php
 
 function auth_user($user_value,$password_value){
-  include_once "..\Setting\connection.php";
+  include_once "..\Controller\connection.php";
 	$connect = get_connect();
   if(!empty($user_value) AND !empty($password_value))
   {

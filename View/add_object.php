@@ -5,11 +5,12 @@ include '..\Model\add-cons.php';
 
 echo $head;	
 
-echo var_dump($_GET);
+// echo var_dump($_GET);
 
 $user_id = $_GET["user_id"];
 
 ?>
+<!DOCTYPE html>
 <div class="container">
 	<form class="form-container" action="add_object.php" method="POST">
  		<div class="form-group">
@@ -59,10 +60,9 @@ $user_id = $_GET["user_id"];
 </div>
 
 <?php
-
     if(!empty($_POST['Owner_FIO']) AND !empty($_POST['Renter_FIO']) AND !empty($_POST['Name_object']) AND !empty($_POST['Mailing_address'] ) AND !empty($_POST['Phone_object']) AND !empty($_POST['Source_of_power']) AND !empty($_POST['Voltage_class'])  AND !empty($_POST['Date_instrumental_check'])  AND !empty($_POST["user_id"]))
     {
-        $result =  add_object(($_POST['Owner_FIO']),($_POST['Renter_FIO']),($_POST['Name_object']),($_POST['Mailing_address']),($_POST['Phone_object']),($_POST['Source_of_power']),($_POST['Voltage_class']),($_POST['Date_instrumental_check']),($_POST["user_id"]) );
+        $result =  add_object(($_POST['Owner_FIO']),($_POST['Renter_FIO']),($_POST['Name_object']),($_POST['Mailing_address']),($_POST['Phone_object']),($_POST['Source_of_power']),($_POST['Voltage_class']),($_POST['Date_instrumental_check']),($_POST['user_id']));
         // echo result;
         switch ($result)
          {
@@ -73,6 +73,6 @@ $user_id = $_GET["user_id"];
               echo "Объект не добавлен";
               break;
             
-         }
+         }     
     }
 ?>

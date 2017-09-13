@@ -3,6 +3,7 @@ include '.\biblioticdib.php';
 include '..\Model\add-cons.php';
 echo $head;
 ?>
+<!DOCTYPE html>
 <body>
 <div class="container">
 <form class="form-container" action="add_consumer.php" method="POST">
@@ -14,7 +15,7 @@ echo $head;
 
   <div class="form-group">
     <label  for="Phone_consumer">Контактные телефоны</label>
-    <input type="tel" name="Phone_consumer" class="form-control" >
+    <input type="text" name="Phone_consumer" class="form-control" >
   </div>
 
 <div class="button-container">

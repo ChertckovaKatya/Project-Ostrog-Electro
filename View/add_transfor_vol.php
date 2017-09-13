@@ -11,6 +11,7 @@ $tr_id= trans_vol();
 $user_id = $_GET["user_id"];
 
 ?>
+<!DOCTYPE html>
 <div class="container">
 	<form class="form-container" action="add_object.php" method="POST">
  		<div class="form-group">
