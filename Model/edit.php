@@ -183,4 +183,160 @@ function edit_cons($id_cons)
 				exit();
 			}
 		}
+
+		function edit_dimension($user_id,$id_obj)
+		{
+			include_once "..\Controller\connection.php";
+	  		$connect = get_connect();
+
+	  		if (!empty($user_id) AND !empty($id_obj))
+	  		{
+	  			global $date;
+	  			global $alter;
+	  			global $fa;
+	  			global $fb;
+	  			global $fc;
+	  			global $cos;
+	  			global $kol_turn;
+	  			global $power;
+	  			
+	  			$date_dim=mysqli_fetch_array(mysqli_query($connect,"select Date_dimen from Dimension WHERE  Obj_id_dimen ='".$id_obj."' AND Obj_Cons_id_dimen='".$user_id."';"));
+	  			$alter_dim=mysqli_fetch_array(mysqli_query($connect,"select Alter_phase from Dimension WHERE  Obj_id_dimen ='".$id_obj."' AND Obj_Cons_id_dimen='".$user_id."';"));
+	  			$fa_dim=mysqli_fetch_array(mysqli_query($connect,"select Load_fa from Dimension WHERE  Obj_id_dimen ='".$id_obj."' AND Obj_Cons_id_dimen='".$user_id."';"));
+	  			$fb_dim=mysqli_fetch_array(mysqli_query($connect,"select Load_fb from Dimension WHERE  Obj_id_dimen ='".$id_obj."' AND Obj_Cons_id_dimen='".$user_id."';"));
+	  			$fc_dim=mysqli_fetch_array(mysqli_query($connect,"select Load_fc from Dimension WHERE  Obj_id_dimen ='".$id_obj."' AND Obj_Cons_id_dimen='".$user_id."';"));
+	  			$cos_dim=mysqli_fetch_array(mysqli_query($connect,"select Cos_fi from Dimension WHERE  Obj_id_dimen ='".$id_obj."' AND Obj_Cons_id_dimen='".$user_id."';"));
+	  			$kol_turn_dim=mysqli_fetch_array(mysqli_query($connect,"select Kol_turn_disk from Dimension WHERE  Obj_id_dimen ='".$id_obj."' AND Obj_Cons_id_dimen='".$user_id."';"));
+	  			$power_dim=mysqli_fetch_array(mysqli_query($connect,"select Power_consum from Dimension WHERE  Obj_id_dimen ='".$id_obj."' AND Obj_Cons_id_dimen='".$user_id."';"));
+
+	  			$date=$date_dim["Date_dimen"];
+	  			$alter=$alter_dim["Alter_phase"];
+	  			$fa=$fa_dim["Load_fa"];
+	  			$fb=$fb_dim["Load_fb"];
+	  			$fc=$fc_dim["Load_fc"];
+	  			$cos=$cos_dim["Cos_fi"];
+	  			$kol_turn=$kol_turn_dim["Kol_turn_disk"];
+	  			$power=$power_dim["Power_consum"];
+
+	  		}
+
+		}
+
+		function edit_dimension_update($date_dimen,$alter_phase,$load_fa,$load_fb,$load_fc,$cos_fi,$kol_turn_disk,$power_consum,$id_obj,$user_id)
+		{
+			include_once "..\Controller\connection.php";
+	  		$connect = get_connect();
+	  		if (!empty($date_dimen) AND !empty($alter_phase) AND !empty($load_fa) AND !empty($load_fb) AND !empty($load_fc) AND !empty($cos_fi) AND !empty($kol_turn_disk) AND !empty($power_consum) AND !empty($id_obj) AND !empty($user_id))
+	  		{
+	  			mysqli_query($connect,"UPDATE Dimension SET Date_dimen='".$date_dimen."' WHERE Obj_id_dimen ='".$id_obj."' AND Obj_Cons_id_dimen='".$user_id."';");
+	  			mysqli_query($connect,"UPDATE Dimension SET Alter_phase='".$alter_phase."' WHERE Obj_id_dimen ='".$id_obj."' AND Obj_Cons_id_dimen='".$user_id."';");
+	  			mysqli_query($connect,"UPDATE Dimension SET Load_fa='".$load_fa."' WHERE Obj_id_dimen ='".$id_obj."' AND Obj_Cons_id_dimen='".$user_id."';");
+	  			mysqli_query($connect,"UPDATE Dimension SET Load_fb='".$load_fb."' WHERE Obj_id_dimen ='".$id_obj."' AND Obj_Cons_id_dimen='".$user_id."';");
+	  			mysqli_query($connect,"UPDATE Dimension SET Load_fc='".$load_fc."' WHERE Obj_id_dimen ='".$id_obj."' AND Obj_Cons_id_dimen='".$user_id."';");
+	  			mysqli_query($connect,"UPDATE Dimension SET Cos_fi='".$cos_fi."' WHERE Obj_id_dimen ='".$id_obj."' AND Obj_Cons_id_dimen='".$user_id."';");
+	  			mysqli_query($connect,"UPDATE Dimension SET Kol_turn_disk='".$kol_turn_disk."' WHERE Obj_id_dimen ='".$id_obj."' AND Obj_Cons_id_dimen='".$user_id."';");
+	  			mysqli_query($connect,"UPDATE Dimension SET Power_consum='".$power_consum."' WHERE Obj_id_dimen ='".$id_obj."' AND Obj_Cons_id_dimen='".$user_id."';");
+
+	  			return 'Edit_dim';
+	
+				exit();
+	  		}
+	  		
+	  		else 
+			{
+				return 'Err-edit-dim';
+				exit();
+	  		}
+
+		}
+
+		function edit_transfor_cur($user_id,$id_obj)
+		{
+			include_once "..\Controller\connection.php";
+	  		$connect = get_connect();
+
+	  		if (!empty($user_id) AND !empty($id_obj))
+	  		{
+	  			global $type;
+	  			global $mark;
+	  			global $denomin;
+	  			global $year_rel;
+	  			global $date_gospr;
+	  			global $date_next;
+	  			global $fa_cur;
+	  			global $fb_cur;
+	  			global $fc_cur;
+	  			global $phase;
+
+	  			$type_tr=mysqli_fetch_array(mysqli_query($connect,"select Type_tr_cur from Transfor_cur WHERE  Obj_id_tr_cur ='".$id_obj."' AND Obj_Cons_id_tr_cur='".$user_id."';"));
+
+	  			$mark_tr_cur=mysqli_fetch_array(mysqli_query($connect,"select Mark_tr_cur from Transfor_cur WHERE  Obj_id_tr_cur ='".$id_obj."' AND Obj_Cons_id_tr_cur='".$user_id."';"));
+
+	  			$denomin_tr_cur=mysqli_fetch_array(mysqli_query($connect,"select Denomin_tr_cur from Transfor_cur WHERE  Obj_id_tr_cur ='".$id_obj."' AND Obj_Cons_id_tr_cur='".$user_id."';"));
+
+	  			$year_release_tr_cur=mysqli_fetch_array(mysqli_query($connect,"select Year_release_tr_cur from Transfor_cur WHERE  Obj_id_tr_cur ='".$id_obj."' AND Obj_Cons_id_tr_cur='".$user_id."';"));
+
+	  			$date_gospr_tr_cur=mysqli_fetch_array(mysqli_query($connect,"select Date_gospr_tr_cur from Transfor_cur WHERE  Obj_id_tr_cur ='".$id_obj."' AND Obj_Cons_id_tr_cur='".$user_id."';"));
+
+	  			$date_next_tr_cur=mysqli_fetch_array(mysqli_query($connect,"select Date_next_tr_cur from Transfor_cur WHERE  Obj_id_tr_cur ='".$id_obj."' AND Obj_Cons_id_tr_cur='".$user_id."';"));
+
+	  			$num_tr_cur_fa=mysqli_fetch_array(mysqli_query($connect,"select Num_tr_cur_fa from Transfor_cur WHERE  Obj_id_tr_cur ='".$id_obj."' AND Obj_Cons_id_tr_cur='".$user_id."';"));
+
+	  			echo "select Num_tr_cur_fa from Transfor_cur WHERE  Obj_id_tr_cur ='".$id_obj."' AND Obj_Cons_id_tr_cur='".$user_id."';";
+
+	  			$num_tr_cur_fb=mysqli_fetch_array(mysqli_query($connect,"select Num_tr_cur_fb from Transfor_cur WHERE  Obj_id_tr_cur ='".$id_obj."' AND Obj_Cons_id_tr_cur='".$user_id."';"));
+
+	  			echo "select Num_tr_cur_fb from Transfor_cur WHERE  Obj_id_tr_cur ='".$id_obj."' AND Obj_Cons_id_tr_cur='".$user_id."';";
+
+	  			$num_tr_cur_fc=mysqli_fetch_array(mysqli_query($connect,"select Num_tr_cur_fc from Transfor_cur WHERE  Obj_id_tr_cur ='".$id_obj."' AND Obj_Cons_id_tr_cur='".$user_id."';"));
+	  			
+	  			echo "select Num_tr_cur_fc from Transfor_cur WHERE  Obj_id_tr_cur ='".$id_obj."' AND Obj_Cons_id_tr_cur='".$user_id."';";
+
+	  			$phase_tr_cur=mysqli_fetch_array(mysqli_query($connect,"select Phase_tr_cur from Transfor_cur WHERE  Obj_id_tr_cur ='".$id_obj."' AND Obj_Cons_id_tr_cur='".$user_id."';"));
+
+	  			$type=$type_tr["Type_tr_cur"];
+	  			$mark=$mark_tr_cur["Mark_tr_cur"];
+	  			$denomin=$denomin_tr_cur["Denomin_tr_cur"];
+	  			$year_rel=$year_release_tr_cur["Year_release_tr_cur"];
+	  			$date_gospr=$date_gospr_tr_cur["Date_gospr_tr_cur"];
+	  			$date_next=$date_next_tr_cur["Date_next_tr_cur"];
+	  			$fa_cur=$num_tr_cur_fa["Num_tr_cur_fa"];
+	  			$fb_cur=$num_tr_cur_fb["Num_tr_cur_fb"];
+	  			$fc_cur=$num_tr_cur_fc["Num_tr_cur_fc"];
+	  			$phase=$phase_tr_cur["Phase_tr_cur"];
+	  		}
+
+		}
+
+		function edit_transfor_cur_update ($Type_tr_cur,$Mark_tr_cur,$Denomin_tr_cur,$Year_release_tr_cur,$Date_gospr_tr_cur,$Date_next_tr_cur,$Num_tr_cur_fa,$Num_tr_cur_fb,$Num_tr_cur_fc,$Phase_tr_cur,$id_obj,$user_id)
+		{
+			include_once "..\Controller\connection.php";
+	  		$connect = get_connect();
+	  		if (!empty($Type_tr_cur) AND !empty($Mark_tr_cur) AND !empty($Denomin_tr_cur) AND !empty($Year_release_tr_cur) AND !empty($Date_gospr_tr_cur) AND !empty($Date_next_tr_cur) AND !empty($Num_tr_cur_fa) AND !empty($Num_tr_cur_fb) AND !empty($Num_tr_cur_fc)  AND !empty($Phase_tr_cur)  AND !empty($id_obj) AND !empty($user_id))
+	  		{
+	  			mysqli_query($connect,"UPDATE Transfor_cur SET Type_tr_cur='".$Type_tr_cur."' WHERE Obj_id_tr_cur ='".$id_obj."' AND Obj_Cons_id_tr_cur='".$user_id."';");
+	  			mysqli_query($connect,"UPDATE Transfor_cur SET Mark_tr_cur='".$Mark_tr_cur."' WHERE Obj_id_tr_cur ='".$id_obj."' AND Obj_Cons_id_tr_cur='".$user_id."';");
+	  			mysqli_query($connect,"UPDATE Transfor_cur SET Denomin_tr_cur='".$Denomin_tr_cur."' WHERE Obj_id_tr_cur ='".$id_obj."' AND Obj_Cons_id_tr_cur='".$user_id."';");
+	  			mysqli_query($connect,"UPDATE Transfor_cur SET Year_release_tr_cur='".$Year_release_tr_cur."' WHERE Obj_id_tr_cur ='".$id_obj."' AND Obj_Cons_id_tr_cur='".$user_id."';");
+	  			mysqli_query($connect,"UPDATE Transfor_cur SET Date_gospr_tr_cur='".$Date_gospr_tr_cur."' WHERE Obj_id_tr_cur ='".$id_obj."' AND Obj_Cons_id_tr_cur='".$user_id."';");
+	  			mysqli_query($connect,"UPDATE Transfor_cur SET Date_next_tr_cur='".$Date_next_tr_cur."' WHERE Obj_id_tr_cur ='".$id_obj."' AND Obj_Cons_id_tr_cur='".$user_id."';");
+	  			mysqli_query($connect,"UPDATE Transfor_cur SET Num_tr_cur_fa='".$Num_tr_cur_fa."' WHERE Obj_id_tr_cur ='".$id_obj."' AND Obj_Cons_id_tr_cur='".$user_id."';");
+	  			mysqli_query($connect,"UPDATE Transfor_cur SET Num_tr_cur_fb='".$Num_tr_cur_fb."' WHERE Obj_id_tr_cur ='".$id_obj."' AND Obj_Cons_id_tr_cur='".$user_id."';");
+	  			mysqli_query($connect,"UPDATE Transfor_cur SET Num_tr_cur_fc='".$Num_tr_cur_fc."' WHERE Obj_id_tr_cur ='".$id_obj."' AND Obj_Cons_id_tr_cur='".$user_id."';");
+				mysqli_query($connect,"UPDATE Transfor_cur SET Phase_tr_cur='".$Phase_tr_cur."' WHERE Obj_id_tr_cur ='".$id_obj."' AND Obj_Cons_id_tr_cur='".$user_id."';");
+
+				return 'Edit_tr_cur';
+	
+				exit();
+	  		}
+	  		
+	  		else 
+			{
+				return 'Err-edit_tr_cur';
+				exit();
+	  		}
+
+		}
+
+
 ?>

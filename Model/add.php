@@ -99,4 +99,46 @@
 			}  
 		}
         
+        function add_dimension ($Date_dimen,$Alter_phase,$Load_fa,$Load_fb,$Load_fc,$Cos_fi,$Kol_turn_disk,$Power_consum,$id_obj,$user_id)
+        {
+        	include_once "..\Controller\connection.php";
+			$connect = get_connect();
+
+			if (!empty($Date_dimen) AND !empty($Alter_phase) AND !empty($Load_fa) AND !empty($Load_fb) AND !empty($Load_fc)  AND !empty($Cos_fi) AND !empty($Kol_turn_disk)  AND !empty($Power_consum)  AND !empty($id_obj)  AND !empty($user_id))
+			{
+
+			mysqli_query($connect,"INSERT INTO Dimension (Date_dimen,Alter_phase,Load_fa,Load_fb,Load_fc,Cos_fi,Kol_turn_disk,Power_consum,Obj_id_dimen,Obj_Cons_id_dimen) VALUES ('$Date_dimen','$Alter_phase','$Load_fa','$Load_fb','$Load_fc','$Cos_fi','$Kol_turn_disk','$Power_consum','$id_obj','$user_id');");
+
+					return 'Add_dim';
+	
+				exit();
+			}
+
+				else 
+			{
+				return 'Err-dim';
+				exit();
+			} 
+        }
+
+        function add_transfor_cur($Type_tr_cur,$Mark_tr_cur,$Denomin_tr_cur,$Year_release_tr_cur,$Date_gospr_tr_cur,$Date_next_tr_cur,$Num_tr_cur_fa,$Num_tr_cur_fb,$Num_tr_cur_fc,$Phase_tr_cur,$id_obj,$user_id)
+        {
+        	include_once "..\Controller\connection.php";
+			$connect = get_connect();
+
+			if (!empty($Type_tr_cur) AND !empty($Mark_tr_cur) AND !empty($Denomin_tr_cur) AND !empty($Year_release_tr_cur) AND !empty($Denomin_tr_cur) AND !empty($Date_gospr_tr_cur) AND !empty($Date_next_tr_cur)  AND !empty($Num_tr_cur_fa) AND !empty($Num_tr_cur_fb)  AND !empty($Num_tr_cur_fc) AND !empty($Phase_tr_cur)  AND !empty($id_obj)  AND !empty($user_id))
+			{
+				mysqli_query($connect,"INSERT INTO Transfor_cur (Type_tr_cur,Mark_tr_cur,Denomin_tr_cur,Year_release_tr_cur,Date_gospr_tr_cur,Date_next_tr_cur,Num_tr_cur_fa,Num_tr_cur_fb,Num_tr_cur_fc,Phase_tr_cur,Obj_id_tr_cur,Obj_Cons_id_tr_cur) VALUES ('$Type_tr_cur','$Mark_tr_cur','$Denomin_tr_cur','$Year_release_tr_cur','$Date_gospr_tr_cur','$Date_next_tr_cur','$Num_tr_cur_fa','$Num_tr_cur_fb','$Num_tr_cur_fc','$Phase_tr_cur','$id_obj','$user_id');");
+
+					return 'Add_tr_cur';
+	
+				exit();
+			}
+
+				else 
+			{
+				return 'Err-tr_cur';
+				exit();
+			} 
+        }
 ?>

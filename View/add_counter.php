@@ -1,6 +1,6 @@
 <?php
 include '.\biblioticdib.php';
-include '..\Model\add-cons.php';
+include '..\Model\add.php';
 // include '..\Model\counter_add.php';
 
 echo $head;  
@@ -103,16 +103,16 @@ echo $user_id;
 
          }
     }
-    else
-    {
+    // else
+    // {
       // echo "   что-то пустое!!!";
 
-      if (!empty($_POST['user_id']))
-      {
-        echo "Status:" . (!empty($_POST['Type_count']) AND !empty($_POST['Mark_count']) AND !empty($_POST['Year_release_count']) AND !empty($_POST['Class_accur_count'] ) AND !empty($_POST['Date_gospr_count']) AND !empty($_POST['Date_next_pr_count']) AND !empty($_POST['Kol_plomb_gospr'])AND !empty($_POST['Kol_holog_stick'])AND !empty($_POST['Plomb_netw_org'])AND !empty($_POST['Antimag_plomb']) AND !empty($_POST['Plomb_shu']) AND !empty($_POST['Other_places_count']) AND !empty($_POST['id_obj']) AND !empty($_POST['user_id'])) ."<br>";
-        echo var_dump($_POST);
-      }
-      else
-        {echo "пустая";};
-    }
+    //   if (!empty($_POST['user_id']))
+    //   {
+    //     echo "Status:" . (!empty($_POST['Type_count']) AND !empty($_POST['Mark_count']) AND !empty($_POST['Year_release_count']) AND !empty($_POST['Class_accur_count'] ) AND !empty($_POST['Date_gospr_count']) AND !empty($_POST['Date_next_pr_count']) AND !empty($_POST['Kol_plomb_gospr'])AND !empty($_POST['Kol_holog_stick'])AND !empty($_POST['Plomb_netw_org'])AND !empty($_POST['Antimag_plomb']) AND !empty($_POST['Plomb_shu']) AND !empty($_POST['Other_places_count']) AND !empty($_POST['id_obj']) AND !empty($_POST['user_id'])) ."<br>";
+    //     echo var_dump($_POST);
+    //   }
+    //   else
+    //     {echo "пустая";};
+    // }
 ?>

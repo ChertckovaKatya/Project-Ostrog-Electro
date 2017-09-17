@@ -1,6 +1,6 @@
 <?php
 include '.\biblioticdib.php';
-include '..\Model\add-cons.php';
+include '..\Model\add.php';
 echo $head;
 ?>
 <!DOCTYPE html>

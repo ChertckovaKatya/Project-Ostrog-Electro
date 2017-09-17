@@ -102,6 +102,48 @@
 		exit();
 	}
 
+	function dimension_conclusion($id_obj,$user_id)
+	{
+
+		include_once "..\Controller\connection.php";
+		$connect = get_connect();
+		$dim=(mysqli_query($connect,"Select Date_dimen, Alter_phase,Load_fa,Load_fb,Load_fc,Cos_fi,Kol_turn_disk,Power_consum from home.Dimension WHERE Obj_id_dimen=".$id_obj." AND Obj_Cons_id_dimen=".$user_id.";"));
+
+		$array_dim= array();
+		$i = 0;
+		while ($row = mysqli_fetch_assoc($dim)) 
+		{
+
+			$array_dim[$i] = $row;
+			$i++;
+		}
+
+		return $array_dim;
+		exit();
+
+	}
+
+	function transfor_cur_conclusion($id_obj,$user_id)
+	{
+		include_once "..\Controller\connection.php";
+		$connect = get_connect();
+		$tr_cur=(mysqli_query($connect,"Select Type_tr_cur,Mark_tr_cur,Denomin_tr_cur,Year_release_tr_cur,Date_gospr_tr_cur,Date_next_tr_cur,Num_tr_cur_fa,Num_tr_cur_fb,Num_tr_cur_fc,Phase_tr_cur from home.Transfor_cur WHERE Obj_id_tr_cur=".$id_obj." AND Obj_Cons_id_tr_cur=".$user_id.";"));
+
+		$array_tr_cur= array();
+		$i = 0;
+		while ($row = mysqli_fetch_assoc($tr_cur)) 
+		{
+
+			$array_tr_cur[$i] = $row;
+			$i++;
+		}
+
+		return $array_tr_cur;
+		exit();
+
+
+	} 
+
 	function  prov_counter($id_obj,$user_id)
 	{
 		include_once "..\Controller\connection.php";
@@ -122,5 +164,51 @@
 
 	return $user;
 	}
+
+	function prov_dimension($id_obj,$user_id)
+	{
+		include_once "..\Controller\connection.php";
+		$connect = get_connect();
+		$user=0;
+
+		if(!empty($id_obj) AND !empty($user_id))
+	{
+		$row = mysqli_fetch_array(mysqli_query($connect,"SELECT * FROM  Dimension WHERE  Obj_id_dimen=".$id_obj." AND Obj_Cons_id_dimen=".$user_id.";"), MYSQLI_NUM);
+		if (count($row)!=0)
+		{
+		 $user=1;
+		}
+	}
+	else
+	{
+		$user = 0;
+	}
+
+	return $user;
+	}
+
+	function prov_transfor_cur($id_obj,$user_id)
+	{
+		include_once "..\Controller\connection.php";
+		$connect = get_connect();
+		$user=0;
+
+		if(!empty($id_obj) AND !empty($user_id))
+	{
+		$row = mysqli_fetch_array(mysqli_query($connect,"SELECT * FROM  Transfor_cur WHERE  Obj_id_tr_cur=".$id_obj." AND Obj_Cons_id_tr_cur=".$user_id.";"), MYSQLI_NUM);
+		if (count($row)!=0)
+		{
+		 $user=1;
+		}
+	}
+	else
+	{
+		$user = 0;
+	}
+
+	return $user;
+	}
+
+
 
 ?>

@@ -56,5 +56,44 @@
 			}
 	}
 
+	function del_dimension ($id_dim,$id_obj)
+	{
+		include_once "..\Controller\connection.php";
+		$connect = get_connect();
+		if (!empty($id_dim) AND !empty($id_obj))
+		{
+			mysqli_query($connect,"delete from Dimension where Obj_Cons_id_dimen=".$id_dim." AND Obj_id_dimen=".$id_obj.";");
+
+			return 'Del_dim';
+	
+			exit();
+		}
+		else 
+			{
+				return 'Err_del-dim';
+				exit();
+			}
+	}
+
+	function del_transfor_cur($id_tr_cur,$id_obj)
+	{
+		include_once "..\Controller\connection.php";
+		$connect = get_connect();
+		if (!empty($id_tr_cur) AND !empty($id_obj))
+		{
+			mysqli_query($connect,"delete from Transfor_cur where Obj_Cons_id_tr_cur=".$id_tr_cur." AND Obj_id_tr_cur=".$id_obj.";");
+
+			return 'Del_tr_cur';
+	
+			exit();
+		}
+		else 
+			{
+				return 'Err_tr_cur';
+				exit();
+			}
+
+	}
+
 ?>
 
