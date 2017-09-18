@@ -141,4 +141,25 @@
 				exit();
 			} 
         }
+
+        function add_plombs($L1,$L2,$I1,$I2,$Other_places_plomb,$id_tr_cur)
+        {
+        	include_once "..\Controller\connection.php";
+			$connect = get_connect();
+
+			if (!empty($L1) AND !empty($L2) AND !empty($I1) AND !empty($I2) AND !empty($Other_places_plomb) AND !empty($id_tr_cur))
+			{
+				mysqli_query($connect,"INSERT INTO Plombs (L1,L2,I1,I2,Other_places_plomb,Tr_cur_id_plomb) VALUES ('$L1','$L2','$I1','$I2','$Other_places_plomb','$id_tr_cur');");
+
+				return 'Add';
+	
+				exit();
+			}
+				else 
+			{
+				return 'Err';
+				exit();
+			} 
+
+        }
 ?>

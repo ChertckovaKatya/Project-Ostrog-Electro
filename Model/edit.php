@@ -338,5 +338,59 @@ function edit_cons($id_cons)
 
 		}
 
+		function edit_plombs($id_tr_cur,$id_plomb)
+		{
+			include_once "..\Controller\connection.php";
+	  		$connect = get_connect();
+
+	  		if (!empty($id_tr_cur) AND !empty($id_plomb))
+	  		{
+	  			global $L1_pl;
+	  			global $L2_pl;
+	  			global $I1_pl;
+	  			global $I2_pl;
+	  			global $other_pl;
+
+	  			$l1=mysqli_fetch_array(mysqli_query($connect,"select L1 from Plombs WHERE  id_plomb ='".$id_plomb."' AND Tr_cur_id_plomb='".$id_tr_cur."';"));
+	  			$l2=mysqli_fetch_array(mysqli_query($connect,"select L2 from Plombs WHERE  id_plomb ='".$id_plomb."' AND Tr_cur_id_plomb='".$id_tr_cur."';"));
+	  			$i1=mysqli_fetch_array(mysqli_query($connect,"select I1 from Plombs WHERE  id_plomb ='".$id_plomb."' AND Tr_cur_id_plomb='".$id_tr_cur."';"));
+	  			$i2=mysqli_fetch_array(mysqli_query($connect,"select I2 from Plombs WHERE  id_plomb ='".$id_plomb."' AND Tr_cur_id_plomb='".$id_tr_cur."';"));
+	  			$other=mysqli_fetch_array(mysqli_query($connect,"select Other_places_plomb from Plombs WHERE  id_plomb ='".$id_plomb."' AND Tr_cur_id_plomb='".$id_tr_cur."';"));
+
+	  			$L1_pl=$l1["L1"];
+	  			$L2_pl=$l2["L2"];
+	  			$I1_pl=$i1["I1"];
+	  			$I2_pl=$i2["I2"];
+	  			$other_pl=$other["Other_places_plomb"];
+
+	  		}
+
+		}
+
+		function edit_plombs_update($l1,$l2,$i1,$i2,$other,$id_tr_cur,$id_plomb) 
+		{
+			include_once "..\Controller\connection.php";
+	  		$connect = get_connect();
+
+	  		if (!empty($l1) AND !empty($l2) AND !empty($i1) AND !empty($i2) AND !empty($other) AND !empty($id_tr_cur) AND !empty($id_plomb))
+	  		{
+	  			mysqli_query($connect,"UPDATE Plombs SET L1='".$l1."' WHERE id_plomb ='".$id_plomb."' AND Tr_cur_id_plomb='".$id_tr_cur."';");
+	  			echo "UPDATE Plombs SET L1='".$l1."' WHERE id_plomb ='".$id_plomb."' AND Tr_cur_id_plomb='".$id_tr_cur."';";
+	  			mysqli_query($connect,"UPDATE Plombs SET L2='".$l2."' WHERE id_plomb ='".$id_plomb."' AND Tr_cur_id_plomb='".$id_tr_cur."';");
+	  			mysqli_query($connect,"UPDATE Plombs SET I1='".$i1."' WHERE id_plomb ='".$id_plomb."' AND Tr_cur_id_plomb='".$id_tr_cur."';");
+	  			mysqli_query($connect,"UPDATE Plombs SET I2='".$i2."' WHERE id_plomb ='".$id_plomb."' AND Tr_cur_id_plomb='".$id_tr_cur."';");
+	  			mysqli_query($connect,"UPDATE Plombs SET Other_places_plomb='".$other."' WHERE id_plomb ='".$id_plomb."' AND Tr_cur_id_plomb='".$id_tr_cur."';");
+
+	  			return 'Edit';
+	
+				exit();
+	  		}
+	  		else 
+			{
+				return 'Err';
+				exit();
+	  		}
+
+		}
 
 ?>

@@ -95,5 +95,25 @@
 
 	}
 
+	function del_plombs($id_tr_cur,$id_plomb)
+	{
+		include_once "..\Controller\connection.php";
+		$connect = get_connect();
+		if (!empty($id_tr_cur) AND !empty($id_plomb))
+		{
+			mysqli_query($connect,"delete from Plombs where id_plomb=".$id_plomb." AND Tr_cur_id_plomb=".$id_tr_cur.";");
+			echo "delete from Plombs where id_plomb=".$id_plomb." AND Tr_cur_id_plomb=".$id_tr_cur.";";
+
+			return 'Del';
+	
+			exit();
+		}
+		else 
+			{
+				return 'Err';
+				exit();
+			}
+	}
+
 ?>
 

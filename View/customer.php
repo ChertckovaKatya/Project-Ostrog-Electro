@@ -12,6 +12,11 @@ $id_obj=$row1[0]['id_object'];
 $row3=counter_conclusion($id_obj,$user_id);
 $dimen=dimension_conclusion($id_obj,$user_id);
 $tr_cur=transfor_cur_conclusion($id_obj,$user_id);
+$id_tr_cur=$tr_cur[0]['id_tr_cur'];
+$plombs=plombs_conclusion($id_tr_cur);
+$id_plomb=$plombs[0]['id_plomb'];
+echo $id_plomb;
+
 ?>
 <!DOCTYPE html>
 	<div class="container">
@@ -115,11 +120,23 @@ $tr_cur=transfor_cur_conclusion($id_obj,$user_id);
      	<br>
      		<a href="..\View\edit_transfor_cur.php?user_id='.$user_id.'&id_obj='.$id_obj.';"> Редактировать трансформатор тока</a>
     	 <br>
-    	 <a href="..\View\add_plombs.php?user_id='.$user_id.'&id_obj='.$id_obj.';"> Добавить пломбы</a>';
+    	 <a href="..\View\add_plombs.php?id_tr_cur='.$id_tr_cur.';"> Добавить пломбы</a>';
 
 	}
 
-
+	if (prov_plombs($id_tr_cur)==1)
+		{ echo
+			'<div class="container">
+		l1: '.$plombs[0]['L1'].';
+		<br>l2: '.$plombs[0]['L2'].';  </br>
+		I1: '.$plombs[0]['I1'].';
+		<br>I2: '.$plombs[0]['I2'].';  </br>
+		Другие места: '.$plombs[0]['Other_places_plomb'].';	
+		</div>
+		<a href="..\View\del_plombs.php?id_tr_cur='.$id_tr_cur.'&id_plomb='.$id_plomb.' "> Удалить пломбы</a>
+     	<br>
+     		<a href="..\View\edit_plombs.php?id_tr_cur='.$id_tr_cur.'&id_plomb='.$id_plomb.';"> Редактировать данные о пломбах </a>';
+		}
 ?>
 
 <!-- <a href="../View/add_transfor_vol.php?user_id='.$user_id.'; ?>"> Добавить трансформатор напряжения</a> -->

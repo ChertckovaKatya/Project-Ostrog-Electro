@@ -127,7 +127,7 @@
 	{
 		include_once "..\Controller\connection.php";
 		$connect = get_connect();
-		$tr_cur=(mysqli_query($connect,"Select Type_tr_cur,Mark_tr_cur,Denomin_tr_cur,Year_release_tr_cur,Date_gospr_tr_cur,Date_next_tr_cur,Num_tr_cur_fa,Num_tr_cur_fb,Num_tr_cur_fc,Phase_tr_cur from home.Transfor_cur WHERE Obj_id_tr_cur=".$id_obj." AND Obj_Cons_id_tr_cur=".$user_id.";"));
+		$tr_cur=(mysqli_query($connect,"Select id_tr_cur,Type_tr_cur,Mark_tr_cur,Denomin_tr_cur,Year_release_tr_cur,Date_gospr_tr_cur,Date_next_tr_cur,Num_tr_cur_fa,Num_tr_cur_fb,Num_tr_cur_fc,Phase_tr_cur from home.Transfor_cur WHERE Obj_id_tr_cur=".$id_obj." AND Obj_Cons_id_tr_cur=".$user_id.";"));
 
 		$array_tr_cur= array();
 		$i = 0;
@@ -143,6 +143,28 @@
 
 
 	} 
+
+	function plombs_conclusion($id_tr_cur)
+	{
+		include_once "..\Controller\connection.php";
+		$connect = get_connect();
+
+		$plombs=(mysqli_query($connect,"Select id_plomb,L1,L2,I1,I2,Other_places_plomb from home.Plombs WHERE Tr_cur_id_plomb=".$id_tr_cur.";"));
+
+		$array_pl= array();
+		$i = 0;
+		while ($row = mysqli_fetch_assoc($plombs)) 
+		{
+
+			$array_pl[$i] = $row;
+			$i++;
+		}
+
+		return $array_pl;
+		exit();
+
+
+	}
 
 	function  prov_counter($id_obj,$user_id)
 	{
@@ -207,6 +229,28 @@
 	}
 
 	return $user;
+	}
+
+	function prov_plombs($id_tr_cur)
+	{
+		include_once "..\Controller\connection.php";
+		$connect = get_connect();
+		$user=0;
+		if(!empty($id_tr_cur))
+		{
+			$row = mysqli_fetch_array(mysqli_query($connect,"SELECT * FROM  Plombs WHERE  Tr_cur_id_plomb=".$id_tr_cur.";"), MYSQLI_NUM);
+			if (count($row)!=0)
+			{
+				 $user=1;
+			}
+		}
+
+		else
+		{
+		$user = 0;
+		}
+		return $user;
+
 	}
 
 
