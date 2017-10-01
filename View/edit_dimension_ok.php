@@ -3,7 +3,7 @@
 include '.\biblioticdib.php';
 include '..\Model\edit.php';
 
-echo $head;	
+
 global $m;
 $m=0;
 	if(!empty($_POST['Date_dimen']) AND !empty($_POST['Alter_phase']) AND !empty($_POST['Load_fa']) AND !empty($_POST['Load_fb']) AND !empty($_POST['Load_fc']) AND !empty($_POST['Cos_fi']) AND !empty($_POST['Kol_turn_disk']) AND !empty($_POST['Power_consum']) AND !empty($_GET['id_obj']) AND !empty($_GET['user_id']))

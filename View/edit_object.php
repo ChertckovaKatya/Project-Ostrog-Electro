@@ -1,7 +1,7 @@
 <?php
 include '.\biblioticdib.php';
 include '..\Model\edit.php';
-echo $head;
+
 $id_obj = $_GET["id_obj"];
 edit_object($_GET["id_obj"]);
 ?>
@@ -46,7 +46,7 @@ edit_object($_GET["id_obj"]);
 
  		<div class="form-group">
  			<label for="name">Дата инструментальной проверки</label>
-			<input type="datetime" name="Date_instrumental_check" class="form-control" value="<?php echo $date_instr_check; ?>">
+			<input type="date" name="Date_instrumental_check" class="form-control" value="<?php echo $date_instr_check; ?>">
   		</div>
   		<div class="button-container">
       		<input autofocus class="btn btn-success" type="submit" value="Готово">

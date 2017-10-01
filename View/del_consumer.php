@@ -3,8 +3,6 @@
 include '.\biblioticdib.php';
 include '..\Model\delete.php';
 
-echo $head;
-
 
 if(!empty($_GET["user_id"]))
 {

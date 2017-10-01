@@ -3,7 +3,7 @@
 include '.\biblioticdib.php';
 include '..\Model\delete.php';
 
-echo $head;
+
 
 
 if(!empty($_GET["id_tr_cur"]) AND !empty($_GET["id_plomb"]))

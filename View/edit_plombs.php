@@ -1,7 +1,7 @@
 <?php
 include '.\biblioticdib.php';
 include '..\Model\edit.php';
-echo $head;
+
 $id_tr_cur = $_GET["id_tr_cur"];
 $id_plomb = $_GET["id_plomb"];
 edit_plombs($_GET["id_tr_cur"],$_GET["id_plomb"]);

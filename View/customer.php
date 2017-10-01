@@ -4,7 +4,7 @@ include '.\biblioticdib.php';
 include '..\Model\cons.php';
 
 
-echo $head;
+
 $user_id = $_GET["user_id"];
 $row=cust_conclusion($_GET["user_id"]);
 $row1=object_conclusion($_GET["user_id"]);
@@ -15,21 +15,28 @@ $tr_cur=transfor_cur_conclusion($id_obj,$user_id);
 $id_tr_cur=$tr_cur[0]['id_tr_cur'];
 $plombs=plombs_conclusion($id_tr_cur);
 $id_plomb=$plombs[0]['id_plomb'];
-echo $id_plomb;
+// echo $id_plomb;
 
 ?>
 <!DOCTYPE html>
 	<div class="container">
+		<div class="row">
+		<div class="col-sm-4">	
 		ФИО: <?php echo $row[0]['Name_consumer']; ?>
-		<br>Телефон:<?php echo $row[0]['Phone_consumer']; ?> </br>
-	</div>
+		</div>
+		<div class="col-sm-4">	
+		Телефон:<?php echo $row[0]['Phone_consumer']; ?>
+		</div> 
+	<div class="col-sm-4">
      <a href="..\View\del_consumer.php?user_id=<?php echo (int)$user_id; ?>"> Удалить пользователя</a>
-     <br>
+   
      	<a href="..\View\edit.php?user_id=<?php echo (int)$user_id; ?>"> Редактировать</a>
-     <br>
+    <br>
  		 <a href="../View/add_object.php?user_id=<?php echo (int)$user_id; ?>"> Добавить объект</a>
-
- <?php
+ 	</div>
+		<div class="row">
+			<div class="col-sm-6">
+	<?php
 	if (prov_obj($user_id)==1)
 		{	echo
  			'<div class="container">
@@ -55,9 +62,10 @@ echo $id_plomb;
      		</br>
    			</form>';
 		}
-
-
-
+		?>
+</div>
+<div class="col-sm-6">
+<?php
 	if (prov_counter($id_obj,$user_id)==1)
 		{	echo
  			'<div class="container">
@@ -82,6 +90,11 @@ echo $id_plomb;
     		<a href="..\View\add_dimension.php?user_id='.$user_id.'&id_obj='.$id_obj.';"> Добавить данные об измерениях</a>';
 
 		}
+	?>
+</div>
+</div>
+
+		<?php
 	if (prov_dimension($id_obj,$user_id)==1)
 		{
 			echo
@@ -102,6 +115,9 @@ echo $id_plomb;
     		<a href="..\View\add_transfor_cur.php?user_id='.$user_id.'&id_obj='.$id_obj.';"> Добавить трансформатор тока</a>';
 
 		}
+		?>
+		<div class="col-sm-6">
+<?php
 	if (prov_transfor_cur($id_obj,$user_id)==1)
 	{	echo
 		'<div class="container">
@@ -123,7 +139,9 @@ echo $id_plomb;
     	 <a href="..\View\add_plombs.php?id_tr_cur='.$id_tr_cur.';"> Добавить пломбы</a>';
 
 	}
-
+	?>
+</div>
+<?php
 	if (prov_plombs($id_tr_cur)==1)
 		{ echo
 			'<div class="container">

@@ -3,7 +3,7 @@
 include '.\biblioticdib.php';
 include '..\Model\add.php';
 
-echo $head;	
+
 
 // echo var_dump($_GET);
 $tr_id= trans_vol();
@@ -16,32 +16,32 @@ $user_id = $_GET["user_id"];
 	<form class="form-container" action="add_object.php" method="POST">
  		<div class="form-group">
      	 	<label for="name">Тип</label>
-      		<input type="Type_tr_vol" class="form-control">
+      		<input name="Type_tr_vol" class="form-control">
     	</div>
 
     	<div class="form-group">
       		<label for="name">Марка</label>
-      		<input type="Mark_tr_vol" class="form-control">
+      		<input name="Mark_tr_vol" class="form-control">
     	</div>
 
     	<div class="form-group">
       		<label for="name">Номинал</label>
-      		<input type="Denomin_tr_vol" class="form-control">
+      		<input name="Denomin_tr_vol" class="form-control">
     	</div>
 
     	<div class="form-group">
       		<label for="name">Пломбы</label>
-      		<input type="Plomb_tr_vol" class="form-control">
+      		<input name="Plomb_tr_vol" class="form-control">
     	</div>
 
      	<div class="form-group">
       		<label for="name">Дата госпроверки</label>
-      		<input type="Date_gospr_tr_vol" class="form-control">
+      		<input type="date" name="Date_gospr_tr_vol" class="form-control">
     	</div>
 
     	<div class="form-group">
       		<label for="name">Дата следующей проверки</label>
-      		<input type="Date_next_tr_vol" class="form-control">
+      		<input name="Date_next_tr_vol" class="form-control">
     	</div>
     	<input type="hidden" name="user_id" value = <?php echo $user_id;?> >
     </form>

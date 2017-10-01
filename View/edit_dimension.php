@@ -1,7 +1,7 @@
 <?php
 include '.\biblioticdib.php';
 include '..\Model\edit.php';
-echo $head;
+
 $user_id = $_GET["user_id"];
 $id_obj = $_GET["id_obj"];
 edit_dimension($_GET["user_id"],$_GET["id_obj"]);
@@ -12,7 +12,7 @@ edit_dimension($_GET["user_id"],$_GET["id_obj"]);
 	<form class="form-container" action="edit_dimension_ok.php?user_id=<?php echo (int)$user_id; ?>&id_obj=<?php echo (int)$id_obj; ?>" method="POST">
     	<div class="form-group">
         <label for="name">Дата</label>
-          <input name="Date_dimen" class="form-control" value="<?php echo $date; ?>">
+          <input type="date" name="Date_dimen" class="form-control" value="<?php echo $date; ?>">
     	</div>
     	<div class="form-group">
      	 	<label for="name">Чередование фаз:</label>

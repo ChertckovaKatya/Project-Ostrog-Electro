@@ -3,7 +3,7 @@ include '.\biblioticdib.php';
 include '..\Model\add.php';
 // include '..\Model\counter_add.php';
 
-echo $head;  
+
 echo var_dump($_GET);
 $user_id = $_GET["user_id"];
 $id_obj = $_GET["id_obj"];
@@ -26,7 +26,7 @@ echo $user_id;
 
     	<div class="form-group">
       		<label for="name">Год выпуска</label>
-      		<input name="Year_release_count" class="form-control">
+      		<input type="date" name="Year_release_count" class="form-control">
     	</div>
 
     	<div class="form-group">
@@ -36,12 +36,12 @@ echo $user_id;
 
      	<div class="form-group">
       		<label for="name">Дата проверки</label>
-      		<input name="Date_gospr_count" class="form-control">
+      		<input type="date" name="Date_gospr_count" class="form-control">
     	</div>
 
     	<div class="form-group">
       		<label for="name">Дата следующей проверки</label>
-      		<input name="Date_next_pr_count" class="form-control">
+      		<input type="date" name="Date_next_pr_count" class="form-control">
     	</div>
 
     		<div class="form-group">

@@ -3,7 +3,7 @@
 include '.\biblioticdib.php';
 include '..\Model\edit.php';
 
-echo $head;	
+
 global $o;
 $o=0;
 if(!empty($_POST['Owner_FIO']) AND !empty($_POST['Renter_FIO'])  AND !empty($_POST['Name_object'])  AND !empty($_POST['Mailing_address'])  AND !empty($_POST['Phone_object'])  AND !empty($_POST['Source_of_power'])  AND !empty($_POST['Voltage_class'])  AND !empty($_POST['Date_instrumental_check']) AND !empty($_GET["id_obj"]))

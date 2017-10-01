@@ -3,7 +3,7 @@
 include '.\biblioticdib.php';
 include '..\Model\add.php';
 
-echo $head;	
+
 
 // echo var_dump($_GET);
 
@@ -50,7 +50,7 @@ $user_id = $_GET["user_id"];
 
  		<div class="form-group">
  			<label for="name">Дата инструментальной проверки</label>
-			<input type="datetime" name="Date_instrumental_check" class="form-control">
+			<input type="date" name="Date_instrumental_check" class="form-control">
   		</div>
 		<div class="button-container">
       		<input autofocus class="btn btn-success" type="submit" value="Добавить">

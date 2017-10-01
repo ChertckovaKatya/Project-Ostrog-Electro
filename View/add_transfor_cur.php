@@ -1,7 +1,7 @@
 <?php
 include '.\biblioticdib.php';
 include '..\Model\add.php';
-echo $head;  
+
 
 $user_id = $_GET["user_id"];
 $id_obj = $_GET["id_obj"];
@@ -24,15 +24,15 @@ $id_obj = $_GET["id_obj"];
     	</div>
     	<div class="form-group">
      	 	<label for="name">Год выпуска:</label>
-      		<input name="Year_release_tr_cur" class="form-control">
+      		<input type="date" name="Year_release_tr_cur" class="form-control">
     	</div>
     	<div class="form-group">
      	 	<label for="name">Дата госпроверки:</label>
-      		<input name="Date_gospr_tr_cur" class="form-control">
+      		<input type="date" name="Date_gospr_tr_cur" class="form-control">
     	</div>
     	<div class="form-group">
      	 	<label for="name">Дата следующей проверки:</label>
-      		<input name="Date_next_tr_cur" class="form-control">
+      		<input type="date" name="Date_next_tr_cur" class="form-control">
     	</div>
     	<div class="form-group">
      	 	<label for="name">№ Трансформатора тока Фа:</label>

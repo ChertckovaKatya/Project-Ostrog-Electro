@@ -1,7 +1,7 @@
 <?php
 include '.\biblioticdib.php';
 include '..\Model\add.php';
-echo $head;  
+
 
 $id_tr_cur = $_GET["id_tr_cur"];
 ?>

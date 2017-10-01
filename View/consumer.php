@@ -8,7 +8,7 @@
 <?php
 include '.\biblioticdib.php';
 include '..\Model\cons.php';
-echo $head;
+
   $rows = 20;
 	$cols = 20;
 
@@ -20,14 +20,14 @@ echo $head;
 ?>
 <div class="container">
 		<table class="table">
-			<tr><td>Номер</td><td>ФИО</td><td>Телефон</td></tr>
+			<tr><td>Наименование потребителя</td><td>Телефон</td><td>Лицевой счет</td></tr>
 
 	<?php
 		for ($tr=0; $tr<=COUNT($row)-1; $tr++)
 		{
    			echo '<tr>';
-     		echo '<td><a name=\'Потребитель '.$row[$tr]['id_consumer']. ' \' href=\'customer.php?user_id='.$row[$tr]['id_consumer'].'\' >'.$row[$tr]['id_consumer'].'</a>
-      		<td>'.$row[$tr]['Name_consumer'].'</td><td>'.$row[$tr]['Phone_consumer'].'</td>';
+     		echo '<td><a name=\'Потребитель '.$row[$tr]['Name_consumer']. ' \' href=\'customer.php?user_id='.$row[$tr]['id_consumer'].'\' >'.$row[$tr]['Name_consumer'].'</a>
+      		<td>'.$row[$tr]['Phone_consumer'].'</td>';
 
 			echo '</tr>';
     		//echo var_dump($row[$tr]);

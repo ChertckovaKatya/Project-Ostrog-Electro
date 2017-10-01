@@ -1,7 +1,7 @@
 <?php
 include '.\biblioticdib.php';
 include '..\Model\edit.php';
-echo $head;
+
 $user_id = $_GET["user_id"];
 $id_obj = $_GET["id_obj"];
 edit_counter($_GET["user_id"],$_GET["id_obj"]);
@@ -22,7 +22,7 @@ edit_counter($_GET["user_id"],$_GET["id_obj"]);
 
       <div class="form-group">
           <label for="name">Год выпуска</label>
-          <input name="Year_release_count" class="form-control" value="<?php echo $year; ?>">
+          <input type="date" name="Year_release_count" class="form-control" value="<?php echo $year; ?>">
       </div>
 
       <div class="form-group">
@@ -32,12 +32,12 @@ edit_counter($_GET["user_id"],$_GET["id_obj"]);
 
       <div class="form-group">
           <label for="name">Дата проверки</label>
-          <input name="Date_gospr_count" class="form-control" value="<?php echo $date_gospr; ?>">
+          <input type="date" name="Date_gospr_count" class="form-control" value="<?php echo $date_gospr; ?>">
       </div>
 
       <div class="form-group">
           <label for="name">Дата следующей проверки</label>
-          <input name="Date_next_pr_count" class="form-control" value="<?php echo $date_next; ?>">
+          <input type="date" name="Date_next_pr_count" class="form-control" value="<?php echo $date_next; ?>">
       </div>
 
         <div class="form-group">

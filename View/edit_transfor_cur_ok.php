@@ -3,7 +3,7 @@
 include '.\biblioticdib.php';
 include '..\Model\edit.php';
 
-echo $head;	
+
 global $m;
 $m=0;
 	if(!empty($_POST['Type_tr_cur']) AND !empty($_POST['Mark_tr_cur']) AND !empty($_POST['Denomin_tr_cur']) AND !empty($_POST['Year_release_tr_cur']) AND !empty($_POST['Date_gospr_tr_cur']) AND !empty($_POST['Date_next_tr_cur']) AND !empty($_POST['Num_tr_cur_fa']) AND !empty($_POST['Num_tr_cur_fb']) AND !empty($_POST['Num_tr_cur_fc']) AND !empty($_POST['Phase_tr_cur']) AND !empty($_GET['id_obj']) AND !empty($_GET['user_id']))

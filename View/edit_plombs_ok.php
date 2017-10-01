@@ -3,7 +3,7 @@
 include '.\biblioticdib.php';
 include '..\Model\edit.php';
 
-echo $head;	
+
 global $m;
 $m=0;
 

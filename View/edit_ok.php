@@ -4,7 +4,7 @@
 include '.\biblioticdib.php';
 include '..\Model\edit.php';
 
-echo $head;	
+
 global $s;
 $s=0;
 if(!empty($_POST['Name']) AND !empty($_POST['Phone_consumer']) AND !empty($_GET["user_id"]))
