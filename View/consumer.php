@@ -19,7 +19,7 @@ include '..\Model\cons.php';
  
 ?>
 <div class="container">
-		<table class="table">
+		<table class="table table-striped">
 			<tr><td>Наименование потребителя</td><td>Телефон</td><td>Лицевой счет</td></tr>
 
 	<?php

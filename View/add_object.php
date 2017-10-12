@@ -67,8 +67,12 @@ $user_id = $_GET["user_id"];
         switch ($result)
          {
             case "Add_object":
+             //<script>
+             // alert ('Объект успешно добавлен');
+            //  window.location="consumer.php";
+            //</script>
              echo "Объект успешно добавлен";
-              break;
+            break;
             case "Err-object":
               echo "Объект не добавлен";
               break;

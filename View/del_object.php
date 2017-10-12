@@ -7,6 +7,7 @@ include '..\Model\delete.php';
 
 if(!empty($_GET["user_id"]))
 {
+  echo "работает";
 	$result=del_object($_GET["user_id"]);
 
 	switch ($result)
