@@ -4,16 +4,13 @@ include '.\biblioticdib.php';
 include '..\Model\add.php';
 
 
-
-// echo var_dump($_GET);
-$tr_id= trans_vol();
-
 $user_id = $_GET["user_id"];
+$id_obj = $_GET["id_obj"];
 
 ?>
 <!DOCTYPE html>
 <div class="container">
-	<form class="form-container" action="add_object.php" method="POST">
+	<form class="form-container" action="add_transfor_vol.php" method="POST">
  		<div class="form-group">
      	 	<label for="name">Тип</label>
       		<input name="Type_tr_vol" class="form-control">
@@ -33,31 +30,29 @@ $user_id = $_GET["user_id"];
       		<label for="name">Пломбы</label>
       		<input name="Plomb_tr_vol" class="form-control">
     	</div>
-
-     	<div class="form-group">
-      		<label for="name">Дата госпроверки</label>
-      		<input type="date" name="Date_gospr_tr_vol" class="form-control">
-    	</div>
-
-    	<div class="form-group">
-      		<label for="name">Дата следующей проверки</label>
-      		<input name="Date_next_tr_vol" class="form-control">
-    	</div>
-    	<input type="hidden" name="user_id" value = <?php echo $user_id;?> >
-    </form>
+    	  <div>
+          <input type="hidden" name="user_id" value = <?php echo (int) $user_id;?> >
+      </div>
+      <div>
+          <input type="hidden" name="id_obj" value = <?php echo (int) $id_obj;?> >
+      </div>
+      <div class="button-container">
+          <input autofocus class="btn btn-success" type="submit" value="Добавить">
+      </div>
+  </form>
 </div>
     <?php
 
-    if(!empty($_POST['Type_tr_vol']) AND !empty($_POST['Mark_tr_vol']) AND !empty($_POST['Denomin_tr_vol']) AND !empty($_POST['Plomb_tr_vol'] ) AND !empty($_POST['Date_gospr_tr_vol']) AND !empty($_POST['Date_next_tr_vol']) AND !empty($POST["$user_id"]))
+    if(!empty($_POST['Type_tr_vol']) AND !empty($_POST['Mark_tr_vol']) AND !empty($_POST['Denomin_tr_vol']) AND !empty($_POST['Plomb_tr_vol'] ) AND !empty($_POST['id_obj']) AND !empty($_POST['user_id']))
     {
-        $result =  add_tr_vol(($_POST['Type_tr_vol']),($_POST['Mark_tr_vol']),($_POST['Denomin_tr_vol']),($_POST['Plomb_tr_vol']),($_POST['Date_gospr_tr_vol']),($_POST['Date_next_tr_vol']),($_POST['$user_id']));
+        $result =  add_tr_vol(($_POST['Type_tr_vol']),($_POST['Mark_tr_vol']),($_POST['Denomin_tr_vol']),($_POST['Plomb_tr_vol']),($_POST['id_obj']),($_POST['user_id']));
         
         switch ($result)
          {
-            case "Add_object":
+            case "Add":
              echo "Трансформатор напряжения успешно добавлен";
               break;
-            case "Err-object":
+            case "Err":
               echo "Трансформатор напряжения не добавлен";
               break;
             

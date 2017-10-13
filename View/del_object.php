@@ -5,10 +5,10 @@ include '..\Model\delete.php';
 
 
 
-if(!empty($_GET["user_id"]))
+if(!empty($_GET["id_obj"]))
 {
-  echo "работает";
-	$result=del_object($_GET["user_id"]);
+  
+	$result=del_object($_GET["id_obj"]);
 
 	switch ($result)
          {

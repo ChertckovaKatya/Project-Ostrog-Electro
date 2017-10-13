@@ -24,7 +24,7 @@
 		$connect = get_connect();
 		if (!empty($id_cons))
 		{
-			mysqli_query($connect,"delete from Object where Obj_Cons_id=".$id_cons.";");
+			mysqli_query($connect,"delete from Object where id_object=".$id_cons.";");
 
 			return 'Del_obj';
 	
@@ -90,6 +90,26 @@
 		else 
 			{
 				return 'Err_tr_cur';
+				exit();
+			}
+
+	}
+
+	function del_transfor_vol($id_tr_vol,$id_obj)
+	{
+		include_once "..\Controller\connection.php";
+		$connect = get_connect();
+		if (!empty($id_tr_vol) AND !empty($id_obj))
+		{
+			mysqli_query($connect,"delete from Transfor_vol where Cons_id_obj_tr_vol=".$id_tr_vol." AND Object_id_tr_vol=".$id_obj.";");
+
+			return 'Del';
+	
+			exit();
+		}
+		else 
+			{
+				return 'Err';
 				exit();
 			}
 

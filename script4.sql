@@ -3,10 +3,7 @@
 -- Model: New Model    Version: 1.0
 -- MySQL Workbench Forward Engineering
 
-SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;
-SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
-SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='TRADITIONAL,ALLOW_INVALID_DATES';
-ALTER TABLE `home`.`accounting_check` CONVERT TO CHARACTER SET utf8 COLLATE utf8_general_ci;
+
 ALTER TABLE `home`.`change_count` CONVERT TO CHARACTER SET utf8 COLLATE utf8_general_ci;
 ALTER TABLE `home`.`consumer` CONVERT TO CHARACTER SET utf8 COLLATE utf8_general_ci;
 ALTER TABLE `home`.`counter` CONVERT TO CHARACTER SET utf8 COLLATE utf8_general_ci;
@@ -33,7 +30,7 @@ USE `home` ;
 -- Table `home`.`Consumer`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `home`.`Consumer` (
-  `id_consumer` INT NOT NULL,
+  `id_consumer` INT NOT NULL AUTO_INCREMENT,
   `Name_consumer` VARCHAR(45) NULL,
   `Phone_consumer` VARCHAR(45) NULL,
   `Personal_account` VARCHAR(45) NULL,
@@ -46,12 +43,12 @@ ENGINE = InnoDB;
 -- Table `home`.`Object`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `home`.`Object` (
-  `id_object` INT NOT NULL,
+  `id_object` INT NOT NULL AUTO_INCREMENT,
   `Owner_FIO` VARCHAR(45) NULL,
   `Renter_FIO` VARCHAR(45) NULL,
   `Name_object` VARCHAR(45) NULL,
   `Mailing_address` VARCHAR(45) NULL,
-  `Phone_object` VARCHAR(45) NULL,
+  `Phone_object` VARCHAR(45) NULL, 
   `Source_of_power` VARCHAR(45) NULL,
   `Voltage_class` VARCHAR(45) NULL,
   `Date_instrumental_check` VARCHAR(45) NULL,
@@ -70,28 +67,27 @@ ENGINE = InnoDB;
 -- Table `home`.`Transfor_vol`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `home`.`Transfor_vol` (
-  `id_tr_vol` INT NOT NULL,
+  `id_tr_vol` INT NOT NULL AUTO_INCREMENT,
   `Type_tr_vol` VARCHAR(45) NULL,
   `Mark_tr_vol` VARCHAR(45) NULL,
   `Denomin_tr_vol` VARCHAR(45) NULL,
-  `Plomb_tr_vol` VARCHAR(45) NULL,
-  `Object_ id_object` INT NOT NULL,
-  `Object_Obj_Cons_id` INT NOT NULL,
+  `Plomb_tr_vol` VARCHAR(100) NULL,
+  `Object_id_tr_vol` INT NOT NULL,
+  `Cons_id_obj_tr_vol` INT NOT NULL,
   PRIMARY KEY (`id_tr_vol`),
-  INDEX `fk_Transfor_vol_Object1_idx` (`Object_ id_object` ASC, `Object_Obj_Cons_id` ASC),
+  INDEX `fk_Transfor_vol_Object1_idx` (`Object_id_tr_vol` ASC, `Cons_id_obj_tr_vol` ASC),
   CONSTRAINT `fk_Transfor_vol_Object1`
-    FOREIGN KEY (`Object_ id_object` , `Object_Obj_Cons_id`)
+    FOREIGN KEY (`Object_id_tr_vol` , `Cons_id_obj_tr_vol`)
     REFERENCES `home`.`Object` (`id_object` , `Obj_Cons_id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
-
 -- -----------------------------------------------------
 -- Table `home`.`Counter`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `home`.`Counter` (
-  `id_count` INT NOT NULL,
+  `id_count` INT NOT NULL AUTO_INCREMENT,
   `Type_count` VARCHAR(45) NULL,
   `Mark_count` VARCHAR(45) NULL,
   `Number_count` VARCHAR(45) NULL,
@@ -119,7 +115,7 @@ ENGINE = InnoDB;
 -- Table `home`.`Transfor_cur`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `home`.`Transfor_cur` (
-  `id_tr_cur` INT NOT NULL,
+  `id_tr_cur` INT NOT NULL AUTO_INCREMENT,
   `Type_tr_cur` VARCHAR(45) NULL,
   `Mark_tr_cur` VARCHAR(45) NULL,
   `Denomin_tr_cur` VARCHAR(45) NULL,
@@ -128,7 +124,15 @@ CREATE TABLE IF NOT EXISTS `home`.`Transfor_cur` (
   `Num_tr_cur_fb` VARCHAR(45) NULL,
   `Num_tr_cur_fc` VARCHAR(45) NULL,
   `Phase_tr_cur` VARCHAR(45) NULL,
-  PRIMARY KEY (`id_tr_cur`))
+  `Obj_id_tr_cur` INT NOT NULL,
+  `Obj_Cons_id_tr_cur` INT NOT NULL,
+  PRIMARY KEY (`id_tr_cur`),
+  INDEX `fk_Transfor_cur_Object1_idx` (`Obj_id_tr_cur` ASC, `Obj_Cons_id_tr_cur` ASC),
+  CONSTRAINT `fk_Transfor_cur_Object1`
+    FOREIGN KEY (`Obj_id_tr_cur` , `Obj_Cons_id_tr_cur`)
+    REFERENCES `home`.`Object` (`id_object` , `Obj_Cons_id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
 
@@ -136,7 +140,7 @@ ENGINE = InnoDB;
 -- Table `home`.`Plombs`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `home`.`Plombs` (
-  `id_plomb` INT NOT NULL,
+  `id_plomb` INT NOT NULL AUTO_INCREMENT,
   `L1` VARCHAR(45) NULL,
   `L2` VARCHAR(45) NULL,
   `I1` VARCHAR(45) NULL,
@@ -157,7 +161,7 @@ ENGINE = InnoDB;
 -- Table `home`.`Dimension`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `home`.`Dimension` (
-  `id_dimen` INT NOT NULL,
+  `id_dimen` INT NOT NULL AUTO_INCREMENT,
   `Date_dimen` VARCHAR(45) NULL,
   `Alter_phase` VARCHAR(45) NULL,
   `Load_fa` VARCHAR(45) NULL,
@@ -177,25 +181,11 @@ CREATE TABLE IF NOT EXISTS `home`.`Dimension` (
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
-
--- -----------------------------------------------------
--- Table `home`.`Accounting_check`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `home`.`Accounting_check` (
-  `id_check` INT NOT NULL,
-  `Date_check` VARCHAR(45) NULL,
-  `Type_verif` VARCHAR(45) NULL,
-  `Conclusion_ac` VARCHAR(45) NULL,
-  `Notes_ac` VARCHAR(45) NULL,
-  PRIMARY KEY (`id_check`))
-ENGINE = InnoDB;
-
-
 -- -----------------------------------------------------
 -- Table `home`.`Change_count`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `home`.`Change_count` (
-  `id_change` INT NOT NULL,
+  `id_change` INT NOT NULL AUTO_INCREMENT,
   `Date_change` VARCHAR(45) NULL,
   `Cause_change` VARCHAR(45) NULL,
   `FIO_change` VARCHAR(45) NULL,
@@ -218,7 +208,7 @@ ENGINE = InnoDB;
 -- Table `home`.`Type_date`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `home`.`Type_date` (
-  `idType` INT NULL,
+  `idType` INT NULL AUTO_INCREMENT,
   `Type` VARCHAR(45) NOT NULL,
   PRIMARY KEY (`idType`))
 ENGINE = InnoDB;
@@ -228,13 +218,13 @@ ENGINE = InnoDB;
 -- Table `home`.`Date_list`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `home`.`Date_list` (
-  `idDate` INT NOT NULL,
+  `idDate` INT NOT NULL AUTO_INCREMENT,
   `Date` DATE NOT NULL,
-  `Type_date_idType` INT NOT NULL,
-  PRIMARY KEY (`idDate`, `Type_date_idType`),
-  INDEX `fk_Date_list_Type_date1_idx` (`Type_date_idType` ASC),
+  `Type_date_id` INT NOT NULL,
+  PRIMARY KEY (`idDate`, `Type_date_id`),
+  INDEX `fk_Date_list_Type_date1_idx` (`Type_date_id` ASC),
   CONSTRAINT `fk_Date_list_Type_date1`
-    FOREIGN KEY (`Type_date_idType`)
+    FOREIGN KEY (`Type_date_id`)
     REFERENCES `home`.`Type_date` (`idType`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
@@ -279,6 +269,4 @@ CREATE TABLE IF NOT EXISTS `home`.`All_dates` (
 ENGINE = InnoDB;
 
 
-SET SQL_MODE=@OLD_SQL_MODE;
-SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
-SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
+

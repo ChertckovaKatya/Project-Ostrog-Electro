@@ -7,11 +7,17 @@ function edit_cons($id_cons)
 			{
 				global $name;
 				global $phone;
+				global $per_acc;
+				global $face;
 				
 				$n=mysqli_fetch_array(mysqli_query($connect,"select Name_consumer from consumer  WHERE id_consumer ='".$id_cons."';"));
 				$ph=mysqli_fetch_array(mysqli_query($connect,"select Phone_consumer from consumer  WHERE id_consumer='".$id_cons."';"));
+				$per=mysqli_fetch_array(mysqli_query($connect,"select Personal_account from consumer  WHERE id_consumer='".$id_cons."';"));
+				$f=mysqli_fetch_array(mysqli_query($connect,"select Face from consumer  WHERE id_consumer='".$id_cons."';"));
 				$name=$n["Name_consumer"];
 				$phone=$ph["Phone_consumer"];
+				$per_acc=$per["Personal_account"];
+				$face=$f["Face"];
 			}
 
 		}
@@ -153,18 +159,16 @@ function edit_cons($id_cons)
 	  		}
 		}
 
-		function edit_counter_update($type_count,$mark_count,$year_release_count,$class_accur_count,$date_gospr_count,$date_next_pr_count,$kol_plomb_gospr,$kol_holog_stick,$plomb_netw_org,$antimag_plomb,$plomb_shu,$other_places_count,$id_obj,$user_id)
+		function edit_counter_update($type_count,$mark_count,$year_release_count,$class_accur_count,$kol_plomb_gospr,$kol_holog_stick,$plomb_netw_org,$antimag_plomb,$plomb_shu,$other_places_count,$id_obj,$user_id)
 		{
 			include_once "..\Controller\connection.php";
 	  		$connect = get_connect();
-	  		if (!empty($type_count) AND !empty($mark_count) AND !empty($year_release_count) AND !empty($class_accur_count) AND !empty($date_gospr_count) AND !empty($date_next_pr_count) AND !empty($kol_plomb_gospr) AND !empty($kol_holog_stick)  AND !empty($plomb_netw_org)  AND !empty($antimag_plomb)  AND !empty($plomb_shu)  AND !empty($other_places_count)  AND !empty($id_obj)AND !empty($user_id)) 
+	  		if (!empty($type_count) AND !empty($mark_count) AND !empty($year_release_count) AND !empty($class_accur_count)AND !empty($kol_plomb_gospr) AND !empty($kol_holog_stick)  AND !empty($plomb_netw_org)  AND !empty($antimag_plomb)  AND !empty($plomb_shu)  AND !empty($other_places_count)  AND !empty($id_obj)AND !empty($user_id)) 
 	  		{
 	  			mysqli_query($connect,"UPDATE Counter SET Type_count='".$type_count."' WHERE Obj_id_count ='".$id_obj."' AND Obj_Cons_id_count='".$user_id."';");
 	  			mysqli_query($connect,"UPDATE Counter SET Mark_count='".$mark_count."' WHERE Obj_id_count ='".$id_obj."' AND Obj_Cons_id_count='".$user_id."';");
 	  			mysqli_query($connect,"UPDATE Counter SET Year_release_count='".$year_release_count."' WHERE Obj_id_count ='".$id_obj."' AND Obj_Cons_id_count='".$user_id."';");
 	  			mysqli_query($connect,"UPDATE Counter SET Class_accur_count='".$class_accur_count."' WHERE Obj_id_count ='".$id_obj."' AND Obj_Cons_id_count='".$user_id."';");
-	  			mysqli_query($connect,"UPDATE Counter SET Date_gospr_count='".$date_gospr_count."' WHERE Obj_id_count ='".$id_obj."' AND Obj_Cons_id_count='".$user_id."';");
-	  			mysqli_query($connect,"UPDATE Counter SET Date_next_pr_count='".$date_next_pr_count."' WHERE Obj_id_count ='".$id_obj."' AND Obj_Cons_id_count='".$user_id."';");
 	  			mysqli_query($connect,"UPDATE Counter SET Kol_plomb_gospr='".$kol_plomb_gospr."' WHERE Obj_id_count ='".$id_obj."' AND Obj_Cons_id_count='".$user_id."';");
 	  			mysqli_query($connect,"UPDATE Counter SET Kol_holog_stick='".$kol_holog_stick."' WHERE Obj_id_count ='".$id_obj."' AND Obj_Cons_id_count='".$user_id."';");
 	  			mysqli_query($connect,"UPDATE Counter SET Plomb_netw_org='".$plomb_netw_org."' WHERE Obj_id_count ='".$id_obj."' AND Obj_Cons_id_count='".$user_id."';");
@@ -308,6 +312,34 @@ function edit_cons($id_cons)
 
 		}
 
+		function edit_transfor_vol($user_id,$id_obj)
+		{
+			include_once "..\Controller\connection.php";
+	  		$connect = get_connect();
+
+	  		if (!empty($user_id) AND !empty($id_obj))
+	  		{
+	  			global $type_tr;
+	  			global $mark_tr;
+	  			global $denomin_tr;
+	  			global $plomb_tr;
+
+	  			$type_vol=mysqli_fetch_array(mysqli_query($connect,"select Type_tr_vol from Transfor_vol WHERE  Object_id_tr_vol ='".$id_obj."' AND Cons_id_obj_tr_vol='".$user_id."';"));
+
+	  			$mark_vol=mysqli_fetch_array(mysqli_query($connect,"select Mark_tr_vol from Transfor_vol WHERE  Object_id_tr_vol ='".$id_obj."' AND Cons_id_obj_tr_vol='".$user_id."';"));
+
+	  			$den_vol=mysqli_fetch_array(mysqli_query($connect,"select Denomin_tr_vol from Transfor_vol WHERE  Object_id_tr_vol ='".$id_obj."' AND Cons_id_obj_tr_vol='".$user_id."';"));
+
+	  			$pl_vol=mysqli_fetch_array(mysqli_query($connect,"select Plomb_tr_vol from Transfor_vol WHERE  Object_id_tr_vol ='".$id_obj."' AND Cons_id_obj_tr_vol='".$user_id."';"));
+
+	  			$type_tr=$type_vol["Type_tr_vol"];
+	  			$mark_tr=$mark_vol["Mark_tr_vol"];
+	  			$denomin_tr=$den_vol["Denomin_tr_vol"];
+	  			$plomb_tr=$pl_vol["Plomb_tr_vol"];
+
+	  		}
+	  	}
+
 		function edit_transfor_cur_update ($Type_tr_cur,$Mark_tr_cur,$Denomin_tr_cur,$Year_release_tr_cur,$Date_gospr_tr_cur,$Date_next_tr_cur,$Num_tr_cur_fa,$Num_tr_cur_fb,$Num_tr_cur_fc,$Phase_tr_cur,$id_obj,$user_id)
 		{
 			include_once "..\Controller\connection.php";
@@ -336,6 +368,33 @@ function edit_cons($id_cons)
 				exit();
 	  		}
 
+		}
+
+		function edit_transfor_vol_update($Type_tr_vol,$Mark_tr_vol,$Denomin_tr_vol,$Plomb_tr_vol,$id_obj,$user_id)
+		{
+			include_once "..\Controller\connection.php";
+	  		$connect = get_connect();
+
+	  		if (!empty($Type_tr_vol) AND !empty($Mark_tr_vol) AND !empty($Denomin_tr_vol) AND !empty($Plomb_tr_vol) AND !empty($id_obj) AND !empty($user_id))
+	  		{
+	  			mysqli_query($connect,"UPDATE Transfor_vol SET Type_tr_vol='".$Type_tr_vol."' WHERE Object_id_tr_vol ='".$id_obj."' AND Cons_id_obj_tr_vol='".$user_id."';");
+
+	  			mysqli_query($connect,"UPDATE Transfor_vol SET Mark_tr_vol='".$Mark_tr_vol."' WHERE Object_id_tr_vol ='".$id_obj."' AND Cons_id_obj_tr_vol='".$user_id."';");
+
+	  			mysqli_query($connect,"UPDATE Transfor_vol SET Denomin_tr_vol='".$Denomin_tr_vol."' WHERE Object_id_tr_vol ='".$id_obj."' AND Cons_id_obj_tr_vol='".$user_id."';");
+
+	  			mysqli_query($connect,"UPDATE Transfor_vol SET Plomb_tr_vol='".$Plomb_tr_vol."' WHERE Object_id_tr_vol ='".$id_obj."' AND Cons_id_obj_tr_vol='".$user_id."';");
+
+	  		return 'Edit';
+	
+				exit();
+	  		}
+	  		
+	  		else 
+			{
+				return 'Err';
+				exit();
+	  		}
 		}
 
 		function edit_plombs($id_tr_cur,$id_plomb)

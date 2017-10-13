@@ -27,14 +27,6 @@ $id_obj = $_GET["id_obj"];
       		<input type="date" name="Year_release_tr_cur" class="form-control">
     	</div>
     	<div class="form-group">
-     	 	<label for="name">Дата госпроверки:</label>
-      		<input type="date" name="Date_gospr_tr_cur" class="form-control">
-    	</div>
-    	<div class="form-group">
-     	 	<label for="name">Дата следующей проверки:</label>
-      		<input type="date" name="Date_next_tr_cur" class="form-control">
-    	</div>
-    	<div class="form-group">
      	 	<label for="name">№ Трансформатора тока Фа:</label>
       		<input name="Num_tr_cur_fa" class="form-control">
     	</div>
@@ -64,10 +56,10 @@ $id_obj = $_GET["id_obj"];
 </div>
 
 <?php
-	if(!empty($_POST['Type_tr_cur']) AND !empty($_POST['Mark_tr_cur']) AND !empty($_POST['Denomin_tr_cur']) AND !empty($_POST['Year_release_tr_cur']) AND !empty($_POST['Date_gospr_tr_cur']) AND !empty($_POST['Date_next_tr_cur']) AND !empty($_POST['Num_tr_cur_fa']) AND !empty($_POST['Num_tr_cur_fb']) AND !empty($_POST['Num_tr_cur_fc']) AND !empty($_POST['Phase_tr_cur']) AND !empty($_POST['id_obj']) AND !empty($_POST['user_id']))
+	if(!empty($_POST['Type_tr_cur']) AND !empty($_POST['Mark_tr_cur']) AND !empty($_POST['Denomin_tr_cur']) AND !empty($_POST['Year_release_tr_cur']) AND !empty($_POST['Num_tr_cur_fa']) AND !empty($_POST['Num_tr_cur_fb']) AND !empty($_POST['Num_tr_cur_fc']) AND !empty($_POST['Phase_tr_cur']) AND !empty($_POST['id_obj']) AND !empty($_POST['user_id']))
 	{
 
-		 $result =  add_transfor_cur(($_POST['Type_tr_cur']),($_POST['Mark_tr_cur']),($_POST['Denomin_tr_cur']),($_POST['Year_release_tr_cur']),($_POST['Date_gospr_tr_cur']),($_POST['Date_next_tr_cur']),($_POST['Num_tr_cur_fa']),($_POST['Num_tr_cur_fb']),($_POST['Num_tr_cur_fc']), ($_POST['Phase_tr_cur']),($_POST['id_obj']),($_POST['user_id']));
+		 $result =  add_transfor_cur(($_POST['Type_tr_cur']),($_POST['Mark_tr_cur']),($_POST['Denomin_tr_cur']),($_POST['Year_release_tr_cur']),($_POST['Num_tr_cur_fa']),($_POST['Num_tr_cur_fb']),($_POST['Num_tr_cur_fc']), ($_POST['Phase_tr_cur']),($_POST['id_obj']),($_POST['user_id']));
 
 		 switch ($result)
          {

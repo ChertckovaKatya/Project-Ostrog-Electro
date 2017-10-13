@@ -8,28 +8,43 @@ include '..\Model\add.php';
 <div class="container">
 <form class="form-container" action="add_consumer.php" method="POST">
 <form class="form-inline">
-  <div class="form-group">
-    <label  for="name">Наименование потребителя </label>
-    <input type="text" name="name" class="form-control">
-  </div>
+  
+
+    <div class="form-group">
+        <select name="Face">
+          <option value="1">Юридическое лицо</option>
+          <option value="2">Физическое лицо</option>
+        </select>
+    </div>
+
+    <div class="form-group">
+      <label  for="Phone_consumer">Лицевой счет</label>
+      <input type="text" name="Personal_account" class="form-control" >
+    </div>
+    <div class="form-group">
+      <label  for="name">Наименование потребителя </label>
+      <input type="text" name="name" class="form-control">
+    </div>
 
   <div class="form-group">
     <label  for="Phone_consumer">Контактные телефоны</label>
     <input type="text" name="Phone_consumer" class="form-control" >
   </div>
 
-<div class="button-container">
+    <div class="button-container">
       <input autofocus class="btn btn-success" type="submit" value="Добавить">
       </div>
+
 </form>
 </form>
 </div>
 </body>
 <?php
 
-    if(!empty($_POST['name']) AND !empty($_POST['Phone_consumer']))
+
+    if(!empty($_POST['name']) AND !empty($_POST['Phone_consumer']) AND !empty($_POST['Personal_account']) AND !empty($_POST['Face']))
     {
-        $result =  add_cons(($_POST['name']), ($_POST['Phone_consumer']));
+        $result =  add_cons(($_POST['name']), ($_POST['Phone_consumer']),($_POST['Personal_account']),($_POST['Face']));
 
         switch ($result)
          {

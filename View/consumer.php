@@ -27,7 +27,7 @@ include '..\Model\cons.php';
 		{
    			echo '<tr>';
      		echo '<td><a name=\'Потребитель '.$row[$tr]['Name_consumer']. ' \' href=\'customer.php?user_id='.$row[$tr]['id_consumer'].'\' >'.$row[$tr]['Name_consumer'].'</a>
-      		<td>'.$row[$tr]['Phone_consumer'].'</td>';
+      		<td>'.$row[$tr]['Phone_consumer'].'</td><td>'.$row[$tr]['Personal_account'].'</td>';
 
 			echo '</tr>';
     		//echo var_dump($row[$tr]);
