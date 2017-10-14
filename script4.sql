@@ -192,13 +192,11 @@ CREATE TABLE IF NOT EXISTS `home`.`Change_count` (
   `Nomber_old` VARCHAR(45) NOT NULL,
   `Nomber_new` VARCHAR(45) NOT NULL,
   `Counter_id_count` INT NOT NULL,
-  `Counter_Obj_id_count` INT NOT NULL,
-  `Counter_Obj_Cons_id_count` INT NOT NULL,
   PRIMARY KEY (`id_change`),
-  INDEX `fk_Change_count_Counter1_idx` (`Counter_id_count` ASC, `Counter_Obj_id_count` ASC, `Counter_Obj_Cons_id_count` ASC),
+  INDEX `fk_Change_count_Counter1_idx` (`Counter_id_count` ASC),
   CONSTRAINT `fk_Change_count_Counter1`
-    FOREIGN KEY (`Counter_id_count` , `Counter_Obj_id_count` , `Counter_Obj_Cons_id_count`)
-    REFERENCES `home`.`Counter` (`id_count` , `Obj_id_count` , `Obj_Cons_id_count`)
+    FOREIGN KEY (`Counter_id_count`)
+    REFERENCES `home`.`Counter` (`id_count`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;

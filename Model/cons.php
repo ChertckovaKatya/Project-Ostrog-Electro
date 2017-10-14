@@ -84,7 +84,7 @@
 	{
 		include_once "..\Controller\connection.php";
 		$connect = get_connect();
-		$counter=(mysqli_query($connect,"Select Type_count, Mark_count,Year_release_count,Class_accur_count,Kol_plomb_gospr,Kol_holog_stick,Plomb_netw_org,Antimag_plomb,Plomb_shu,Other_places_count from home.Counter WHERE Obj_id_count=".$id_obj." AND Obj_Cons_id_count=".$user_id.";"));
+		$counter=(mysqli_query($connect,"Select id_count,Type_count, Mark_count,Year_release_count,Class_accur_count,Kol_plomb_gospr,Kol_holog_stick,Plomb_netw_org,Antimag_plomb,Plomb_shu,Other_places_count from home.Counter WHERE Obj_id_count=".$id_obj." AND Obj_Cons_id_count=".$user_id.";"));
 
 		// echo "Select Type_count, Mark_count,Year_release_count,Class_accur_count,Date_gospr_count,Date_next_pr_count,Kol_plomb_gospr,Kol_holog_stick,Plomb_netw_org,Antimag_plomb,Plomb_shu,Other_places_count from home.Counter WHERE Obj_id_count=".$id_obj." AND Obj_Cons_id_count=".$user_id.";";
 
@@ -182,6 +182,25 @@
 		exit();
 
 
+	}
+
+	function change_count_conclusion($id_count)
+	{
+		include_once "..\Controller\connection.php";
+		$connect = get_connect();
+
+		$change=(mysqli_query($connect,"Select Date_change,Cause_change,FIO_change,Nomber_old,Nomber_new FROM home.Change_count WHERE Counter_id_count=".$id_count.";"));
+		$array_change= array();
+		$i = 0;
+		while ($row = mysqli_fetch_assoc($change)) 
+		{
+
+			$array_change[$i] = $row;
+			$i++;
+		}
+
+		return $array_change;
+		exit();
 	}
 
 	function  prov_counter($id_obj,$user_id)
@@ -294,6 +313,28 @@
 		return $user;
 		
 
+	}
+
+	function prov_change_count($id_count)
+	{
+		include_once "..\Controller\connection.php";
+		$connect = get_connect();
+		$user=0;
+
+		if(!empty($id_count))
+		{
+			$row = mysqli_fetch_array(mysqli_query($connect,"SELECT * FROM  Change_count WHERE  Counter_id_count=".$id_count.";"), MYSQLI_NUM);
+			if (count($row)!=0)
+			{
+		 		$user=1;
+			}
+		}
+		else
+		{
+			$user = 0;
+		}
+		return $user;
+		
 	}
 
 
