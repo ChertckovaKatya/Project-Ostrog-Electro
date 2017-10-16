@@ -135,5 +135,26 @@
 			}
 	}
 
+
+	function del_change_count($id_change)
+		{
+			include_once "..\Controller\connection.php";
+			$connect = get_connect();
+			if(!empty($id_change))
+			{
+				mysqli_query($connect,"delete from Change_count where id_change=".$id_change.";");
+				return 'Del';
+
+				echo 'delete from Change_count where id_change=".$id_change.";';
+	
+				exit();
+			}
+			else 
+				{
+					return 'Err';
+					exit();
+				}
+
+		}
 ?>
 

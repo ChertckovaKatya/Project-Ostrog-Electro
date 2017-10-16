@@ -452,4 +452,57 @@ function edit_cons($id_cons)
 
 		}
 
+
+		function edit_change_cunter($id_change)
+		{
+			include_once "..\Controller\connection.php";
+	  		$connect = get_connect();
+	  		if (!empty($id_change))
+	  		{
+	  			global $date_change;
+	  			global $cause;
+	  			global $fio_change;
+	  			global $nom_old;
+	  			global $nom_new;
+
+	  			$Date_change_count=mysqli_fetch_array(mysqli_query($connect,"select Date_change from Change_count WHERE  id_change ='".$id_change."';"));
+	  			$Cause_change_count=mysqli_fetch_array(mysqli_query($connect,"select Cause_change from Change_count WHERE  id_change ='".$id_change."';"));
+	  			$FIO_change_count=mysqli_fetch_array(mysqli_query($connect,"select FIO_change from Change_count WHERE  id_change ='".$id_change."';"));
+	  			$Nomber_old_count=mysqli_fetch_array(mysqli_query($connect,"select Nomber_old from Change_count WHERE  id_change ='".$id_change."';"));
+	  			$Nomber_new_count=mysqli_fetch_array(mysqli_query($connect,"select Nomber_new from Change_count WHERE  id_change ='".$id_change."';"));
+
+	  			$date_change=$Date_change_count["Date_change"];
+	  			$cause=$Cause_change_count["Cause_change"];
+	  			$fio_change=$FIO_change_count["FIO_change"];
+	  			$nom_old=$Nomber_old_count["Nomber_old"];
+	  			$nom_new=$Nomber_new_count["Nomber_new"];
+
+
+	  		}
+
+		}
+
+		function edit_change_count_update($Date_change,$Cause_change,$FIO_change,$Nomber_old,$Nomber_new,$id_change)
+		{
+			include_once "..\Controller\connection.php";
+	  		$connect = get_connect();
+	  		if (!empty($Date_change) AND !empty($Cause_change) AND !empty($FIO_change) AND !empty($Nomber_old) AND !empty($Nomber_new) AND !empty($id_change))
+	  		{
+	  			mysqli_query($connect,"UPDATE Change_count SET Date_change='".$Date_change."' WHERE id_change ='".$id_change."';");
+	  			mysqli_query($connect,"UPDATE Change_count SET Cause_change='".$Cause_change."' WHERE id_change ='".$id_change."';");
+	  			mysqli_query($connect,"UPDATE Change_count SET FIO_change='".$FIO_change."' WHERE id_change ='".$id_change."';");
+	  			mysqli_query($connect,"UPDATE Change_count SET Nomber_old='".$Nomber_old."' WHERE id_change ='".$id_change."';");
+	  			mysqli_query($connect,"UPDATE Change_count SET Nomber_new='".$Nomber_new."' WHERE id_change ='".$id_change."';");
+				return 'Edit';
+	
+				exit();
+	  		}
+	  			else 
+			{
+				return 'Err';
+				exit();
+	  		}
+
+		}
+
 ?>

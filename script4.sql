@@ -206,9 +206,9 @@ ENGINE = InnoDB;
 -- Table `home`.`Type_date`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `home`.`Type_date` (
-  `idType` INT NULL AUTO_INCREMENT,
+  `id_Type` INT NULL ,
   `Type` VARCHAR(45) NOT NULL,
-  PRIMARY KEY (`idType`))
+  PRIMARY KEY (`id_Type`))
 ENGINE = InnoDB;
 
 
@@ -216,14 +216,14 @@ ENGINE = InnoDB;
 -- Table `home`.`Date_list`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `home`.`Date_list` (
-  `idDate` INT NOT NULL AUTO_INCREMENT,
-  `Date` DATE NOT NULL,
+  `id_Date` INT NOT NULL AUTO_INCREMENT,
+  `Date_l` DATE NOT NULL,
   `Type_date_id` INT NOT NULL,
-  PRIMARY KEY (`idDate`, `Type_date_id`),
+  PRIMARY KEY (`id_Date`, `Type_date_id`),
   INDEX `fk_Date_list_Type_date1_idx` (`Type_date_id` ASC),
   CONSTRAINT `fk_Date_list_Type_date1`
     FOREIGN KEY (`Type_date_id`)
-    REFERENCES `home`.`Type_date` (`idType`)
+    REFERENCES `home`.`Type_date` (`id_Type`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
@@ -233,20 +233,20 @@ ENGINE = InnoDB;
 -- Table `home`.`All_dates`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `home`.`All_dates` (
-  `Date_list_idDate` INT NOT NULL,
+  `Date_list_id` INT NOT NULL,
   `Counter_id_count` INT NOT NULL,
   `Transfor_vol_id` INT NOT NULL,
   `Transfor_cur_id` INT NOT NULL,
   `Conclusio` VARCHAR(45) NULL,
   `Notes` VARCHAR(45) NULL,
-  PRIMARY KEY (`Date_list_idDate`),
+  PRIMARY KEY (`Date_list_id`),
   INDEX `fk_Date_list_has_Counter_Counter1_idx` (`Counter_id_count` ASC),
-  INDEX `fk_Date_list_has_Counter_Date_list1_idx` (`Date_list_idDate` ASC),
+  INDEX `fk_Date_list_has_Counter_Date_list1_idx` (`Date_list_id` ASC),
   INDEX `fk_Date_list_has_Counter_Transfor_vol1_idx` (`Transfor_vol_id` ASC),
   INDEX `fk_Date_list_has_Counter_Transfor_cur1_idx` (`Transfor_cur_id` ASC),
   CONSTRAINT `fk_Date_list_has_Counter_Date_list1`
-    FOREIGN KEY (`Date_list_idDate`)
-    REFERENCES `home`.`Date_list` (`idDate`)
+    FOREIGN KEY (`Date_list_id`)
+    REFERENCES `home`.`Date_list` (`id_Date`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_Date_list_has_Counter_Counter1`
@@ -265,6 +265,26 @@ CREATE TABLE IF NOT EXISTS `home`.`All_dates` (
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
+
+
+INSERT INTO Type_date (id_Type,Type)
+VALUES ('1','следующая проверка счетчика');
+
+INSERT INTO Type_date (id_Type,Type)
+VALUES ('2','госпроверка счетчика');
+
+INSERT INTO Type_date (id_Type,Type)
+VALUES ('3','Следующая проверка трансформатора тока');
+
+INSERT INTO Type_date (id_Type,Type)
+VALUES ('4','Госпроверка трансформаторая тока');
+
+INSERT INTO Type_date (id_Type,Type)
+VALUES ('5','Следующая проверка трансформатора напряжения');
+
+INSERT INTO Type_date (id_Type,Type)
+VALUES ('6','Госпроверка трансформатора напряжения');
+
 
 
 

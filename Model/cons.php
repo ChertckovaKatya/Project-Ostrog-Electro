@@ -189,7 +189,7 @@
 		include_once "..\Controller\connection.php";
 		$connect = get_connect();
 
-		$change=(mysqli_query($connect,"Select Date_change,Cause_change,FIO_change,Nomber_old,Nomber_new FROM home.Change_count WHERE Counter_id_count=".$id_count.";"));
+		$change=(mysqli_query($connect,"Select id_change,Date_change,Cause_change,FIO_change,Nomber_old,Nomber_new FROM home.Change_count WHERE Counter_id_count=".$id_count.";"));
 		$array_change= array();
 		$i = 0;
 		while ($row = mysqli_fetch_assoc($change)) 

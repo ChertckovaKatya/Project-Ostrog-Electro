@@ -18,6 +18,7 @@ $plombs=plombs_conclusion($id_tr_cur);
 $id_plomb=$plombs[0]['id_plomb'];
 $tr_vol=transfor_vol_conclusion($id_obj,$user_id);
 $change_count=change_count_conclusion($id_count);
+$id_change=$change_count[0]["id_change"];
 // echo $id_plomb;
 
 ?>
@@ -93,7 +94,9 @@ $change_count=change_count_conclusion($id_count);
     			<br>
     			<a href="..\View\add_change_count.php?id_count='.$id_count.';"> Добавить данные о замене счетчика</a>
     			<br>
-    			<a href="..\View\add_dimension.php?user_id='.$user_id.'&id_obj='.$id_obj.';"> Добавить данные об измерениях</a>';
+    			<a href="..\View\add_dimension.php?user_id='.$user_id.'&id_obj='.$id_obj.';"> Добавить данные об измерениях</a>
+    			<h4><a href="..\View\add_all_dates.php?id_all='.$id_count.'&type_pr=1;"> Добавить дату о проверке счетчика</a></h4></br>
+    			';
 
 
 				}
@@ -131,6 +134,7 @@ $change_count=change_count_conclusion($id_count);
 			}
 		?>
 		</div>
+
 		<div class="col-sm-6">
 			<?php 
 				if (prov_change_count($id_count)==1)
@@ -143,9 +147,11 @@ $change_count=change_count_conclusion($id_count);
  					Кто менял (ФИО):'.$change_count[0]['FIO_change'].';
  					<br>Номер старого счетчика:'.$change_count[0]['Nomber_old'].';</br>
  					Номер нового счетчика:'.$change_count[0]['Nomber_new'].';
- 					<a href="..\View\del_change_count.php?user_id='.$user_id.'&id_obj='.$id_obj.'; "> Удалить данные о замене счетчика</a>
+ 					<br>
+ 					</div>
+ 					<a href="..\View\del_change_count.php?id_change='.$id_change.'; "> Удалить данные о замене счетчика</a>
      				<br>
-     				<a href="..\View\edit_change_count.php?user_id='.$user_id.'&id_obj='.$id_obj.';"> Редактировать данные о замене счетчика</a>
+     				<a href="..\View\edit_change_count.php?id_change='.$id_change.';"> Редактировать данные о замене счетчика</a>
 					';
 
 
@@ -220,5 +226,5 @@ $change_count=change_count_conclusion($id_count);
 		}
 	
 	?>
-
+</div>
 <!-- <a href="../View/add_transfor_vol.php?user_id='.$user_id.'; ?>"> Добавить трансформатор напряжения</a> -->

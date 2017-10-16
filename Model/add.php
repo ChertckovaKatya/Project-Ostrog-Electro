@@ -189,4 +189,18 @@
 			} 
 
         }
+
+        function add_all_dates($Type,$Date,$Conclusio,$Notes,$id_all)
+        {
+        	include_once "..\Controller\connection.php";
+			$connect = get_connect();
+
+			if(!empty($Type) AND !empty($Date) AND !empty($Conclusio) AND !empty($Notes) AND !empty($id_all))
+			{
+				mysqli_query($connect,"INSERT INTO Date_list (Date_l,Type_date_id) VALUES ('$Date','$Type');");
+				
+
+			}
+
+        }
 ?>
