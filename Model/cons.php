@@ -148,7 +148,7 @@
 	{
 		include_once "..\Controller\connection.php";
 		$connect = get_connect();
-		$tr_vol=(mysqli_query($connect,"Select Type_tr_vol,Mark_tr_vol,Denomin_tr_vol,Plomb_tr_vol from home.Transfor_vol WHERE Object_id_tr_vol=".$id_obj." AND Cons_id_obj_tr_vol=".$user_id.";"));
+		$tr_vol=(mysqli_query($connect," Select id_tr_vol,Type_tr_vol,Mark_tr_vol,Denomin_tr_vol,Plomb_tr_vol from home.Transfor_vol WHERE Object_id_tr_vol=".$id_obj." AND Cons_id_obj_tr_vol=".$user_id.";"));
 		$array_tr_vol= array();
 		$i = 0;
 		while ($row = mysqli_fetch_assoc($tr_vol)) 
@@ -201,6 +201,41 @@
 
 		return $array_change;
 		exit();
+	}
+
+	function all_dates_conclusion ($id_reg,$type)
+	{
+		include_once "..\Controller\connection.php";
+		$connect = get_connect();
+		if (!empty($id_reg) AND !empty($type))
+		{
+			if ($type==1)
+			{
+				$result=(mysqli_query($connect,"select t1.Conclusio,t1.Notes,t2.Date_l,t3.Type from All_dates AS t1 join Date_list AS t2 join Type_date AS t3 on  t1.Date_list_id=t2.id_Date AND t2.Type_date_id=t3.id_Type where Counter_id_count=".$id_reg.";"));
+
+			}
+			if ($type==2)
+			{
+				$result=(mysqli_query($connect,"select t1.Conclusio,t1.Notes,t2.Date_l,t3.Type from All_dates AS t1 join Date_list AS t2 join Type_date AS t3 on  t1.Date_list_id=t2.id_Date AND t2.Type_date_id=t3.id_Type where Transfor_cur_id=".$id_reg.";"));
+
+			}
+			if ($type==3)
+			{
+				$result=(mysqli_query($connect,"select t1.Conclusio,t1.Notes,t2.Date_l,t3.Type from All_dates AS t1 join Date_list AS t2 join Type_date AS t3 on  t1.Date_list_id=t2.id_Date AND t2.Type_date_id=t3.id_Type where Transfor_vol_id=".$id_reg.";"));
+
+			}
+			$array_reg= array();
+			$i = 0;
+			while ($row = mysqli_fetch_assoc($result)) 
+			{
+
+				$array_reg[$i] = $row;
+				$i++;
+			}
+
+			return $array_reg;
+			exit();
+		}
 	}
 
 	function  prov_counter($id_obj,$user_id)
@@ -335,6 +370,37 @@
 		}
 		return $user;
 		
+	}
+	function prov_date($id_list,$type_pr)
+	{
+		include_once "..\Controller\connection.php";
+		$connect = get_connect();
+		$user=0;
+		if(!empty($id_list) AND !empty($type_pr))
+		{
+			if($type_pr==1)
+			{
+				$row = mysqli_fetch_array(mysqli_query($connect,"SELECT * FROM  All_dates WHERE  Counter_id_count=".$id_list.";"), MYSQLI_NUM);
+			}
+			if($type_pr==2)
+			{
+				$row = mysqli_fetch_array(mysqli_query($connect,"SELECT * FROM  All_dates WHERE  Transfor_cur_id=".$id_list.";"), MYSQLI_NUM);
+			}
+			if($type_pr==3)
+			{
+				$row = mysqli_fetch_array(mysqli_query($connect,"SELECT * FROM  All_dates WHERE  Transfor_vol_id=".$id_list.";"), MYSQLI_NUM);	
+			}
+			if (count($row)!=0)
+			{
+		 		$user=1;
+			}
+		}
+		else
+		{
+			$user = 0;
+		}
+		return $user;
+
 	}
 
 

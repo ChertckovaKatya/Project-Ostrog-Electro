@@ -17,9 +17,13 @@ $id_tr_cur=$tr_cur[0]['id_tr_cur'];
 $plombs=plombs_conclusion($id_tr_cur);
 $id_plomb=$plombs[0]['id_plomb'];
 $tr_vol=transfor_vol_conclusion($id_obj,$user_id);
+$id_tr_vol=$tr_vol[0]['id_tr_vol'];
 $change_count=change_count_conclusion($id_count);
 $id_change=$change_count[0]["id_change"];
 // echo $id_plomb;
+$all_dat_count=all_dates_conclusion($id_count,1);
+$all_dat_tr_cur=all_dates_conclusion($id_count,2);
+$all_dat_tr_vol=all_dates_conclusion($id_count,3);
 
 ?>
 <!DOCTYPE html>
@@ -33,10 +37,15 @@ $id_change=$change_count[0]["id_change"];
 			</div> 
 			<div class="col-sm-4">
      			<a href="..\View\del_consumer.php?user_id=<?php echo (int)$user_id; ?>"> Удалить пользователя</a>
-   
+   				<br>
      			<a href="..\View\edit.php?user_id=<?php echo (int)$user_id; ?>"> Редактировать</a>
     			<br>
- 		 		<a href="../View/add_object.php?user_id=<?php echo (int)$user_id; ?>"> Добавить объект</a>
+    			<?php
+    			if (prov_obj($user_id)!=1)
+    			{	echo '
+ 		 			<a href="../View/add_object.php?user_id=<?php echo (int)$user_id; ?>"> Добавить объект</a>';
+ 		 		}
+ 		 		?>
  			</div>
  		</div>
 		<div class="row">
@@ -59,44 +68,62 @@ $id_change=$change_count[0]["id_change"];
 					<a href="..\View\del_object.php?id_obj='.$id_obj.'; "> Удалить объект</a>
      				<br>
      				<a href="..\View\edit_object.php?id_obj='.$id_obj.';"> Редактировать</a>
-    				 <br>
-
-     
-   					<form action="add_counter.php" method="post">
-      				<br>
-    				<a href="../View/add_counter.php?user_id='.$user_id.' &id_obj='.$id_obj.'"> Добавить счетчик</a>
-     				</br>
-   					</form>';
-					}
+    				 <br>';
+     				if(prov_counter($id_obj,$user_id)!=1)
+     					echo'
+    				<a href="../View/add_counter.php?user_id='.$user_id.' &id_obj='.$id_obj.'"> Добавить счетчик</a>';
+   					}
+					
 				?>
 			</div>
 			<div class="col-sm-6">
 			<?php
 				if (prov_counter($id_obj,$user_id)==1)
 				{	echo
- 				'<div class="container">
- 				<h4>Информация о счетчике</h4>
-				Тип: '.$row3[0]['Type_count'].';
-				<br>Марка: '.$row3[0]['Mark_count'].';  </br>
-				Год выпуска: '.$row3[0]['Year_release_count'].';
-				<br>Класс точности: '.$row3[0]['Class_accur_count'].';  </br>
-				Количество пломб госпроверки: '.$row3[0]['Kol_plomb_gospr'].';
-				<br>Количество голографичеких наклеек: '.$row3[0]['Kol_holog_stick'].';  </br>
-				Пломбы сетевой организации:'.$row3[0]['Plomb_netw_org'].';
-				<br>Антимагнитые пломбы:'.$row3[0]['Antimag_plomb'].';</br>
-				Пломба на ШУ:'.$row3[0]['Plomb_shu'].';
-				<br>Другие места:'.$row3[0]['Other_places_count'].';</br>
-				</div>
+ 					'<div class="container">
+ 						<h4>Информация о счетчике</h4>
+						Тип: '.$row3[0]['Type_count'].';
+						<br>Марка: '.$row3[0]['Mark_count'].';</br>
+						Год выпуска: '.$row3[0]['Year_release_count'].';
+						<br>Класс точности: '.$row3[0]['Class_accur_count'].';</br>
+						Количество пломб госпроверки: '.$row3[0]['Kol_plomb_gospr'].';
+						<br>Количество голографичеких наклеек: '.$row3[0]['Kol_holog_stick'].';</br>
+						Пломбы сетевой организации:'.$row3[0]['Plomb_netw_org'].';
+						<br>Антимагнитые пломбы:'.$row3[0]['Antimag_plomb'].';</br>
+						Пломба на ШУ:'.$row3[0]['Plomb_shu'].';
+						<br>Другие места:'.$row3[0]['Other_places_count'].';</br>
+					</div>
 
 				<a href="..\View\del_counter.php?user_id='.$user_id.'&id_obj='.$id_obj.'; "> Удалить счетчик</a>
      			<br>
      			<a href="..\View\edit_counter.php?user_id='.$user_id.'&id_obj='.$id_obj.';"> Редактировать счетчик</a>
-    			<br>
-    			<a href="..\View\add_change_count.php?id_count='.$id_count.';"> Добавить данные о замене счетчика</a>
-    			<br>
-    			<a href="..\View\add_dimension.php?user_id='.$user_id.'&id_obj='.$id_obj.';"> Добавить данные об измерениях</a>
-    			<h4><a href="..\View\add_all_dates.php?id_all='.$id_count.'&type_pr=1;"> Добавить дату о проверке счетчика</a></h4></br>
-    			';
+    			<br>';
+
+    			if (prov_change_count($id_count)!=1)
+    			{ echo'
+    				<a href="..\View\add_change_count.php?id_count='.$id_count.';"> Добавить данные о замене счетчика</a>
+    				<br>';
+    			}
+    			
+    			if (prov_dimension($id_obj,$user_id)!=1)
+    			{ echo '
+    				<a href="..\View\add_dimension.php?user_id='.$user_id.'&id_obj='.$id_obj.';"> Добавить данные об измерениях</a>';
+    			}
+
+    			echo'
+    			<h4><a href="..\View\add_all_dates.php?id_all='.$id_count.'&type_pr=1;"> Добавить дату о проверке счетчика</a></h4></br>';
+
+    			if (prov_date($id_count,1)==1)
+    			{
+    				for ($i = 0; $i<count($all_dat_count); $i++) 
+    				{
+    				echo '
+    				<br>Дата: '.$all_dat_count[$i]['Date_l'].' '.$all_dat_count[$i]['Type'].';</br>
+    				Заключение по учету: '.$all_dat_count[$i]['Conclusio'].';
+    				<br>Примечание: '.$all_dat_count[$i]['Notes'].';</br>
+    				';
+    				}
+    			}
 
 
 				}
@@ -125,10 +152,16 @@ $id_change=$change_count[0]["id_change"];
 			<a href="..\View\del_dimension.php?user_id='.$user_id.'&id_obj='.$id_obj.'; "> Удалить данные об измерениях</a>
      		<br>
      		<a href="..\View\edit_dimension.php?user_id='.$user_id.'&id_obj='.$id_obj.';"> Редактировать данные об измерениях</a>
-    		<br>
-    		<a href="..\View\add_transfor_cur.php?user_id='.$user_id.'&id_obj='.$id_obj.';"> Добавить трансформатор тока</a>
-    		<br>
-    		<a href="..\View\add_transfor_vol.php?user_id='.$user_id.'&id_obj='.$id_obj.';"> Добавить трансформатор напряжения</a></br>';
+    		<br>';
+    		if (prov_transfor_cur($id_obj,$user_id)!=1)
+    		{ echo '
+    		<a href="..\View\add_transfor_cur.php?user_id='.$user_id.'&id_obj='.$id_obj.';"> Добавить трансформатор тока</a>';
+    		}
+    		if (prov_tr_vol($id_obj,$user_id)!=1)
+    		{echo'
+    			<br>
+    			<a href="..\View\add_transfor_vol.php?user_id='.$user_id.'&id_obj='.$id_obj.';"> Добавить трансформатор напряжения</a></br>';
+    		}
 
 
 			}
@@ -181,8 +214,14 @@ $id_change=$change_count[0]["id_change"];
 				<a href="..\View\del_transfor_cur.php?user_id='.$user_id.'&id_obj='.$id_obj.'; "> Удалить трансформатор тока</a>
      			<br>
      			<a href="..\View\edit_transfor_cur.php?user_id='.$user_id.'&id_obj='.$id_obj.';"> Редактировать трансформатор тока</a>
-    	 		<br>
+    	 		<br>';
+    	 		if (prov_plombs($id_tr_cur)!=1)
+    	 		{
+    	 			echo'
     	 		<a href="..\View\add_plombs.php?id_tr_cur='.$id_tr_cur.';"> Добавить пломбы</a>';
+    	 		}
+    	 		echo'
+    	 		<h4><a href="..\View\add_all_dates.php?id_all='.$id_tr_cur.'&type_pr=2;"> Добавить дату о проверке трансформатора тока</a></h4></br>';
 
 				}
 			?>
@@ -202,7 +241,7 @@ $id_change=$change_count[0]["id_change"];
 				<a href="..\View\del_plombs.php?id_tr_cur='.$id_tr_cur.'&id_plomb='.$id_plomb.' "> Удалить пломбы</a>
      			<br>
      			<a href="..\View\edit_plombs.php?id_tr_cur='.$id_tr_cur.'&id_plomb='.$id_plomb.';"> Редактировать данные о пломбах </a>';
-			}
+				}
 
 			?>
 		</div>
@@ -221,10 +260,12 @@ $id_change=$change_count[0]["id_change"];
 			</div>
 			<a href="..\View\del_transfor_vol.php?user_id='.$user_id.'&id_obj='.$id_obj.'; "> Удалить трансформатор напряжения</a>
      			<br>
-     			<a href="..\View\edit_transfor_vol.php?user_id='.$user_id.'&id_obj='.$id_obj.';"> Редактировать трансформатор напряжения</a>';
+     			<a href="..\View\edit_transfor_vol.php?user_id='.$user_id.'&id_obj='.$id_obj.';"> Редактировать трансформатор напряжения</a>
+     			<br>
+     			<h4><a href="..\View\add_all_dates.php?id_all='.$id_tr_vol.'&type_pr=3;"> Добавить дату о проверке трансформатора напряжения</a></h4>';
 
 		}
 	
 	?>
 </div>
-<!-- <a href="../View/add_transfor_vol.php?user_id='.$user_id.'; ?>"> Добавить трансформатор напряжения</a> -->
+

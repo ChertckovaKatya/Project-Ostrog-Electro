@@ -234,9 +234,9 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `home`.`All_dates` (
   `Date_list_id` INT NOT NULL,
-  `Counter_id_count` INT NOT NULL,
-  `Transfor_vol_id` INT NOT NULL,
-  `Transfor_cur_id` INT NOT NULL,
+  `Counter_id_count` INT DEFAULT null,
+  `Transfor_vol_id` INT DEFAULT null,
+  `Transfor_cur_id` INT DEFAULT null ,
   `Conclusio` VARCHAR(45) NULL,
   `Notes` VARCHAR(45) NULL,
   PRIMARY KEY (`Date_list_id`),
@@ -268,22 +268,22 @@ ENGINE = InnoDB;
 
 
 INSERT INTO Type_date (id_Type,Type)
-VALUES ('1','следующая проверка счетчика');
+VALUES ('1','инструментальная проверка счетчика');
 
 INSERT INTO Type_date (id_Type,Type)
 VALUES ('2','госпроверка счетчика');
 
 INSERT INTO Type_date (id_Type,Type)
-VALUES ('3','Следующая проверка трансформатора тока');
+VALUES ('3','инструментальная проверка трансформатора тока');
 
 INSERT INTO Type_date (id_Type,Type)
-VALUES ('4','Госпроверка трансформаторая тока');
+VALUES ('4','госпроверка трансформаторая тока');
 
 INSERT INTO Type_date (id_Type,Type)
-VALUES ('5','Следующая проверка трансформатора напряжения');
+VALUES ('5','инструментальная проверка трансформатора напряжения');
 
 INSERT INTO Type_date (id_Type,Type)
-VALUES ('6','Госпроверка трансформатора напряжения');
+VALUES ('6','госпроверка трансформатора напряжения');
 
 
 

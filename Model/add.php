@@ -190,17 +190,55 @@
 
         }
 
-        function add_all_dates($Type,$Date,$Conclusio,$Notes,$id_all)
+        function add_all_dates($Type,$Date,$Conclusio,$Notes,$id_all,$type_pr)
         {
         	include_once "..\Controller\connection.php";
 			$connect = get_connect();
 
-			if(!empty($Type) AND !empty($Date) AND !empty($Conclusio) AND !empty($Notes) AND !empty($id_all))
+			if(!empty($Type) AND !empty($Date) AND !empty($Conclusio) AND !empty($Notes) AND !empty($id_all) AND !empty($type_pr))
 			{
-				mysqli_query($connect,"INSERT INTO Date_list (Date_l,Type_date_id) VALUES ('$Date','$Type');");
-				
 
-			}
+				mysqli_query($connect,"INSERT INTO Date_list (Date_l,Type_date_id) VALUES ('$Date','$Type');");
+
+				echo "INSERT INTO Date_list (Date_l,Type_date_id) VALUES ('$Date','$Type');";
+
+				$id=mysqli_fetch_array(mysqli_query($connect,"select id_Date from Date_list  WHERE Date_l ='".$Date."' AND Type_date_id ='".$Type."';"));
+
+				$id_D= $id['id_Date'];
+				echo "select id_Date from Date_list  WHERE Date_l ='".$Date."' AND Type_date_id ='".$Type."';";
+				echo "";
+				echo $id_D;
+				echo "";
+				echo $type_pr;
+				if ($type_pr==1)
+				{
+					mysqli_query($connect,"INSERT INTO All_dates (Date_list_id,Counter_id_count,Conclusio,Notes) VALUES ('$id_D','$id_all','$Conclusio','$Notes');");
+
+					echo "INSERT INTO All_dates (Date_list_id,Counter_id_count,Conclusio,Notes) VALUES ('$id_D','$id_all','$Conclusio','$Notes');";
+
+				}
+				if ($type_pr==2)
+				{
+					mysqli_query($connect,"INSERT INTO All_dates (Date_list_id,Transfor_cur_id,Conclusio,Notes) VALUES ('$id_D','$id_all','$Conclusio','$Notes');");
+
+				}
+				if ($type_pr==3)
+				{
+					mysqli_query($connect,"INSERT INTO All_dates (Date_list_id,Transfor_vol_id,Conclusio,Notes) VALUES ('$id_D','$id_all','$Conclusio','$Notes');");
+
+				}
+
+				return 'Add';
+	
+				exit();
+				}
+				else 
+				{
+				return 'Err';
+				exit();
+				} 
+
+			
 
         }
 ?>

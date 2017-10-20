@@ -7,8 +7,8 @@ include '..\Model\add.php';
 // echo var_dump($_GET);
 $user_id = $_GET["user_id"];
 $id_obj = $_GET["id_obj"];
-// echo $id_obj;
-// echo $user_id;
+echo $id_obj;
+echo $user_id;
 
 ?>
 <!DOCTYPE html>
