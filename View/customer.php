@@ -43,7 +43,7 @@ $all_dat_tr_vol=all_dates_conclusion($id_count,3);
     			<?php
     			if (prov_obj($user_id)!=1)
     			{	echo '
- 		 			<a href="../View/add_object.php?user_id=<?php echo (int)$user_id; ?>"> Добавить объект</a>';
+ 		 			<a href="../View/add_object.php?user_id='.$user_id.'"> Добавить объект</a>';
  		 		}
  		 		?>
  			</div>
@@ -84,14 +84,15 @@ $all_dat_tr_vol=all_dates_conclusion($id_count,3);
  						<h4>Информация о счетчике</h4>
 						Тип: '.$row3[0]['Type_count'].';
 						<br>Марка: '.$row3[0]['Mark_count'].';</br>
-						Год выпуска: '.$row3[0]['Year_release_count'].';
-						<br>Класс точности: '.$row3[0]['Class_accur_count'].';</br>
-						Количество пломб госпроверки: '.$row3[0]['Kol_plomb_gospr'].';
-						<br>Количество голографичеких наклеек: '.$row3[0]['Kol_holog_stick'].';</br>
-						Пломбы сетевой организации:'.$row3[0]['Plomb_netw_org'].';
-						<br>Антимагнитые пломбы:'.$row3[0]['Antimag_plomb'].';</br>
-						Пломба на ШУ:'.$row3[0]['Plomb_shu'].';
-						<br>Другие места:'.$row3[0]['Other_places_count'].';</br>
+						Номер: '.$row3[0]['Mark_count'].';
+						<br>Год выпуска: '.$row3[0]['Year_release_count'].';</br>
+						Класс точности: '.$row3[0]['Class_accur_count'].';
+						<br>Количество пломб госпроверки: '.$row3[0]['Kol_plomb_gospr'].';</br>
+						Количество голографичеких наклеек: '.$row3[0]['Kol_holog_stick'].';
+						<br>Пломбы сетевой организации:'.$row3[0]['Plomb_netw_org'].';</br>
+						Антимагнитые пломбы:'.$row3[0]['Antimag_plomb'].';
+						<br>Пломба на ШУ:'.$row3[0]['Plomb_shu'].';</br>
+						Другие места:'.$row3[0]['Other_places_count'].';
 					</div>
 
 				<a href="..\View\del_counter.php?user_id='.$user_id.'&id_obj='.$id_obj.'; "> Удалить счетчик</a>
@@ -124,7 +125,16 @@ $all_dat_tr_vol=all_dates_conclusion($id_count,3);
     				';
     				}
     			}
+    			if (prov_transfor_cur($id_obj,$user_id)!=1)
+    			{ echo '
+    			<a href="..\View\add_transfor_cur.php?user_id='.$user_id.'&id_obj='.$id_obj.';"> Добавить трансформатор тока</a>';
+    			}
 
+    			if (prov_tr_vol($id_tr_vol)!=1)
+    			{echo'
+    				<br>
+    				<a href="..\View\add_transfor_vol.php?user_id='.$user_id.'&id_obj='.$id_obj.';"> Добавить трансформатор напряжения</a></br>';
+    			}
 
 				}
 			?>
@@ -153,15 +163,15 @@ $all_dat_tr_vol=all_dates_conclusion($id_count,3);
      		<br>
      		<a href="..\View\edit_dimension.php?user_id='.$user_id.'&id_obj='.$id_obj.';"> Редактировать данные об измерениях</a>
     		<br>';
-    		if (prov_transfor_cur($id_obj,$user_id)!=1)
-    		{ echo '
-    		<a href="..\View\add_transfor_cur.php?user_id='.$user_id.'&id_obj='.$id_obj.';"> Добавить трансформатор тока</a>';
-    		}
-    		if (prov_tr_vol($id_obj,$user_id)!=1)
-    		{echo'
-    			<br>
-    			<a href="..\View\add_transfor_vol.php?user_id='.$user_id.'&id_obj='.$id_obj.';"> Добавить трансформатор напряжения</a></br>';
-    		}
+    		// if (prov_transfor_cur($id_obj,$user_id)!=1)
+    		// { echo '
+    		// <a href="..\View\add_transfor_cur.php?user_id='.$user_id.'&id_obj='.$id_obj.';"> Добавить трансформатор тока</a>';
+    		// }
+    		// if (prov_tr_vol($id_obj,$user_id)!=1)
+    		// {echo'
+    		// 	<br>
+    		// 	<a href="..\View\add_transfor_vol.php?user_id='.$user_id.'&id_obj='.$id_obj.';"> Добавить трансформатор напряжения</a></br>';
+    		// }
 
 
 			}
@@ -223,6 +233,17 @@ $all_dat_tr_vol=all_dates_conclusion($id_count,3);
     	 		echo'
     	 		<h4><a href="..\View\add_all_dates.php?id_all='.$id_tr_cur.'&type_pr=2;"> Добавить дату о проверке трансформатора тока</a></h4></br>';
 
+    	 		if (prov_date($id_tr_cur,2)==1)
+    			{
+    				for ($i = 0; $i<count($all_dat_count); $i++) 
+    				{
+    				echo '
+    				<br>Дата: '.$all_dat_count[$i]['Date_l'].' '.$all_dat_count[$i]['Type'].';</br>
+    				Заключение по учету: '.$all_dat_count[$i]['Conclusio'].';
+    				<br>Примечание: '.$all_dat_count[$i]['Notes'].';</br>
+    				';
+    				}
+    			}
 				}
 			?>
 		</div>
@@ -248,7 +269,7 @@ $all_dat_tr_vol=all_dates_conclusion($id_count,3);
 	</div>
 
 	<?php
-	if (prov_tr_vol($id_obj,$user_id)==1)
+	if (prov_tr_vol($id_tr_vol)==1)
 		{
 			echo 
 			'<div class="container">
@@ -258,11 +279,23 @@ $all_dat_tr_vol=all_dates_conclusion($id_count,3);
 				Номинал: '.$tr_vol[0]['Denomin_tr_vol'].';
 				<br>Пломбы: '.$tr_vol[0]['Plomb_tr_vol'].';</br>
 			</div>
-			<a href="..\View\del_transfor_vol.php?user_id='.$user_id.'&id_obj='.$id_obj.'; "> Удалить трансформатор напряжения</a>
+			<a href="..\View\del_transfor_vol.php?id_tr_vol='.$id_tr_vol.'; "> Удалить трансформатор напряжения</a>
      			<br>
-     			<a href="..\View\edit_transfor_vol.php?user_id='.$user_id.'&id_obj='.$id_obj.';"> Редактировать трансформатор напряжения</a>
+     			<a href="..\View\edit_transfor_vol.php?id_tr_vol='.$id_tr_vol.';"> Редактировать трансформатор напряжения</a>
      			<br>
      			<h4><a href="..\View\add_all_dates.php?id_all='.$id_tr_vol.'&type_pr=3;"> Добавить дату о проверке трансформатора напряжения</a></h4>';
+
+     			if (prov_date($id_tr_vol,3)==1)
+    			{
+    				for ($i = 0; $i<count($all_dat_count); $i++) 
+    				{
+    				echo '
+    				<br>Дата: '.$all_dat_count[$i]['Date_l'].' '.$all_dat_count[$i]['Type'].';</br>
+    				Заключение по учету: '.$all_dat_count[$i]['Conclusio'].';
+    				<br>Примечание: '.$all_dat_count[$i]['Notes'].';</br>
+    				';
+    				}
+    			}
 
 		}
 	

@@ -1,24 +1,28 @@
 <!DOCTYPE html>
-<html>
-<head>
 <link href="../css/consumer.css" rel="stylesheet">
-</head>
-</html>
 
 <?php
 include '.\biblioticdib.php';
 include '..\Model\cons.php';
-
-  $rows = 20;
-	$cols = 20;
-
- $row=cons_table();
+ $row=cons_table(0,0,0);
  
-// echo var_dump($row);
- //echo 'test'.$row[0]['id_consumer'];
  
 ?>
-<div class="container">
+<!-- <div class="container" action="consumer_search.php" method="POST">
+	<div class="form-inline">
+		<input type="text" name="Text_search" class="form-control">
+			<select name="Search">
+            	<option value="1">По названию</option>
+            	<option value="2">По номеру счетчика</option>
+        	</select>
+    	<div class="button-container">
+     		<input autofocus class="btn btn-success" type="submit" value="Поиск">
+   		</div>
+    </div>
+</div>
+<br></br>
+<br></br> -->
+	<div class="container">
 		<table class="table table-striped">
 			<tr><td>Наименование потребителя</td><td>Телефон</td><td>Лицевой счет</td></tr>
 
@@ -35,7 +39,9 @@ include '..\Model\cons.php';
 
  	echo '</table>';
 ?>
-
-	
 </div>
+	
+
+
+
 

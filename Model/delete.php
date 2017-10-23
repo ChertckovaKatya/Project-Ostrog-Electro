@@ -95,13 +95,13 @@
 
 	}
 
-	function del_transfor_vol($id_tr_vol,$id_obj)
+	function del_transfor_vol($id_tr_vol)
 	{
 		include_once "..\Controller\connection.php";
 		$connect = get_connect();
-		if (!empty($id_tr_vol) AND !empty($id_obj))
+		if (!empty($id_tr_vol))
 		{
-			mysqli_query($connect,"delete from Transfor_vol where Cons_id_obj_tr_vol=".$id_tr_vol." AND Object_id_tr_vol=".$id_obj.";");
+			mysqli_query($connect,"delete from Transfor_vol where id_tr_vol=".$id_tr_vol.";");
 
 			return 'Del';
 	

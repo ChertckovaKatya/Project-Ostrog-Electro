@@ -49,7 +49,12 @@ include '..\Model\add.php';
         switch ($result)
          {
             case "Add_cons":
-             echo "Пользователь успешно добавлен";
+            ?>
+             <script>
+             alert ('Пользователь успешно добавлен');
+             window.location="consumer.php";
+            </script>
+            <?php
               break;
             case "Err-cons":
               echo "Пользователь не добавлен";

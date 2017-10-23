@@ -1,14 +1,27 @@
 
 <?php
 
-	function cons_table()
+	function cons_table($id,$Text_search,$search)
 	{
 		include_once "..\Controller\connection.php";
 		$connect = get_connect();
 		// $row = mysqli_fetch_row(mysqli_query($connect,"select * from consumer;"));
-
-
+		if($id==0)
+		{
 		$question=(mysqli_query($connect,"select * from consumer;"));
+		}
+		else 
+		{
+			if ($search==1)
+			{
+			$question=(mysqli_query($connect,"select * from consumer where Name_consumer like '%.$Text_search.%' ;"));
+			}
+			if ($search==2)
+			{
+			$question=(mysqli_query($connect,"select * from Counter where Number_count like '%.$Text_search.%' ;"));
+			}
+
+		}
 		$array = array();
 		$i = 0;
 		while ($row = mysqli_fetch_assoc($question)) 
@@ -328,14 +341,16 @@
 
 	}
 
-	function prov_tr_vol($id_obj,$user_id)
+	function prov_tr_vol($id_tr_vol)
 	{
 		include_once "..\Controller\connection.php";
 		$connect = get_connect();
 		$user=0;
-		if(!empty($id_obj) AND !empty($user_id))
+		if(!empty($id_tr_vol))
 		{
-			$row = mysqli_fetch_array(mysqli_query($connect,"SELECT * FROM  Transfor_vol WHERE  Object_id_tr_vol=".$id_obj." AND Cons_id_obj_tr_vol=".$user_id.";"), MYSQLI_NUM);
+			$row = mysqli_fetch_array(mysqli_query($connect,"SELECT * FROM  Transfor_vol WHERE  id_tr_vol=".$id_tr_vol.";"), MYSQLI_NUM);
+			
+			
 			if (count($row)!=0)
 			{
 		 		$user=1;
@@ -346,7 +361,8 @@
 			$user = 0;
 		}
 		return $user;
-		
+		echo "Переменная !!!";
+		echo $user;
 
 	}
 

@@ -50,7 +50,12 @@ $id_obj = $_GET["id_obj"];
         switch ($result)
          {
             case "Add":
-             echo "Трансформатор напряжения успешно добавлен";
+            ?>
+              <script>
+                alert ('Трансформатор напряжения успешно добавлен');
+                window.location="consumer.php";
+              </script>
+            <?php  
               break;
             case "Err":
               echo "Трансформатор напряжения не добавлен";

@@ -312,25 +312,25 @@ function edit_cons($id_cons)
 
 		}
 
-		function edit_transfor_vol($user_id,$id_obj)
+		function edit_transfor_vol($id_tr_vol)
 		{
 			include_once "..\Controller\connection.php";
 	  		$connect = get_connect();
 
-	  		if (!empty($user_id) AND !empty($id_obj))
+	  		if (!empty($id_tr_vol))
 	  		{
 	  			global $type_tr;
 	  			global $mark_tr;
 	  			global $denomin_tr;
 	  			global $plomb_tr;
 
-	  			$type_vol=mysqli_fetch_array(mysqli_query($connect,"select Type_tr_vol from Transfor_vol WHERE  Object_id_tr_vol ='".$id_obj."' AND Cons_id_obj_tr_vol='".$user_id."';"));
+	  			$type_vol=mysqli_fetch_array(mysqli_query($connect,"select Type_tr_vol from Transfor_vol WHERE  id_tr_vol ='".$id_tr_vol."' ;"));
 
-	  			$mark_vol=mysqli_fetch_array(mysqli_query($connect,"select Mark_tr_vol from Transfor_vol WHERE  Object_id_tr_vol ='".$id_obj."' AND Cons_id_obj_tr_vol='".$user_id."';"));
+	  			$mark_vol=mysqli_fetch_array(mysqli_query($connect,"select Mark_tr_vol from Transfor_vol WHERE  id_tr_vol ='".$id_tr_vol."' ;"));
 
-	  			$den_vol=mysqli_fetch_array(mysqli_query($connect,"select Denomin_tr_vol from Transfor_vol WHERE  Object_id_tr_vol ='".$id_obj."' AND Cons_id_obj_tr_vol='".$user_id."';"));
+	  			$den_vol=mysqli_fetch_array(mysqli_query($connect,"select Denomin_tr_vol from Transfor_vol WHERE  id_tr_vol ='".$id_tr_vol."';"));
 
-	  			$pl_vol=mysqli_fetch_array(mysqli_query($connect,"select Plomb_tr_vol from Transfor_vol WHERE  Object_id_tr_vol ='".$id_obj."' AND Cons_id_obj_tr_vol='".$user_id."';"));
+	  			$pl_vol=mysqli_fetch_array(mysqli_query($connect,"select Plomb_tr_vol from Transfor_vol WHERE  id_tr_vol ='".$id_tr_vol."';"));
 
 	  			$type_tr=$type_vol["Type_tr_vol"];
 	  			$mark_tr=$mark_vol["Mark_tr_vol"];

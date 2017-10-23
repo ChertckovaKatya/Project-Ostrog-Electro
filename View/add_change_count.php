@@ -47,7 +47,12 @@ $id_count = $_GET["id_count"];
 			switch ($result)
          	{
             	case "Add":
-             	echo "Информация о замене счетчика успешно добавлена";
+              ?>
+              <script>
+                alert ('Информация о замене счетчика успешно добавлена');
+                window.location="consumer.php";
+              </script>
+            <?php  
              	 break;
             	case "Err":
               	echo "Информация о замене счетчика не добавлена";

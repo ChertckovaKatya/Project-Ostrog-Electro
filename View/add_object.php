@@ -4,11 +4,8 @@ include '.\biblioticdib.php';
 include '..\Model\add.php';
 
 
-
-// echo var_dump($_GET);
-
 $user_id = $_GET["user_id"];
-
+echo $user_id;
 ?>
 <!DOCTYPE html>
 <div class="container">
@@ -55,7 +52,7 @@ $user_id = $_GET["user_id"];
 		<div class="button-container">
       		<input autofocus class="btn btn-success" type="submit" value="Добавить">
       	</div>
-      	<input type="hidden" name="user_id" value = <?php echo $user_id;?> >
+      	<input type="hidden" name="user_id" value = "<?php echo $user_id;?>">
 	</form>
 </div>
 
@@ -67,11 +64,13 @@ $user_id = $_GET["user_id"];
         switch ($result)
          {
             case "Add_object":
-             //<script>
-             // alert ('Объект успешно добавлен');
-            //  window.location="consumer.php";
-            //</script>
-             echo "Объект успешно добавлен";
+            ?>
+             <script>
+             alert ('Объект успешно добавлен');
+             window.location="consumer.php";
+            </script>
+            <?php
+             // echo "Объект успешно добавлен";
             break;
             case "Err-object":
               echo "Объект не добавлен";

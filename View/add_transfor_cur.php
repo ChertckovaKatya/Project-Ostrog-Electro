@@ -63,8 +63,12 @@ $id_obj = $_GET["id_obj"];
 
 		 switch ($result)
          {
-            case "Add_tr_cur":
-             echo "Трансформатор тока успешно добавлен";
+            case "Add_tr_cur":?>
+               <script>
+             alert ('Трансформатор тока успешно добавлен');
+             window.location="consumer.php";
+            </script>
+            <?php  
               break;
             case "Err-tr_cur":
               echo "Трансформатор тока не добавлен";

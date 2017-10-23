@@ -3,12 +3,12 @@
 include '.\biblioticdib.php';
 include '..\Model\delete.php';
 
+$id_tr_vol=$_GET["id_tr_vol"];
 
 
-
-if(!empty($_GET["user_id"]) AND !empty($_GET["id_obj"]))
+if(!empty($id_tr_vol))
 {
-	$result=del_transfor_vol($_GET["user_id"],($_GET["id_obj"]));
+	$result=del_transfor_vol($id_tr_vol);
 
 	switch ($result)
          {

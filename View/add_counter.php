@@ -24,6 +24,11 @@ echo $user_id;
       		<input name="Mark_count" class="form-control">
     	</div>
 
+      <div class="form-group">
+          <label for="name">Номер счетчика</label>
+          <input type="text" name="Number_count" class="form-control">
+      </div>
+
     	<div class="form-group">
       		<label for="name">Год выпуска</label>
       		<input type="date" name="Year_release_count" class="form-control">
@@ -77,14 +82,19 @@ echo $user_id;
 
 <?php
     
-    if(!empty($_POST['Type_count']) AND !empty($_POST['Mark_count']) AND !empty($_POST['Year_release_count']) AND !empty($_POST['Class_accur_count'] ) AND !empty($_POST['Kol_plomb_gospr'])AND !empty($_POST['Kol_holog_stick'])AND !empty($_POST['Plomb_netw_org'])AND !empty($_POST['Antimag_plomb']) AND !empty($_POST['Plomb_shu']) AND !empty($_POST['Other_places_count']) AND !empty($_POST['id_obj']) AND !empty($_POST['user_id']))
+    if(!empty($_POST['Type_count']) AND !empty($_POST['Mark_count']) AND !empty($_POST['Number_count'])  AND !empty($_POST['Year_release_count']) AND !empty($_POST['Class_accur_count'] ) AND !empty($_POST['Kol_plomb_gospr'])AND !empty($_POST['Kol_holog_stick'])AND !empty($_POST['Plomb_netw_org'])AND !empty($_POST['Antimag_plomb']) AND !empty($_POST['Plomb_shu']) AND !empty($_POST['Other_places_count']) AND !empty($_POST['id_obj']) AND !empty($_POST['user_id']))
     {
-        $result =  add_counter(($_POST['Type_count']),($_POST['Mark_count']),($_POST['Year_release_count']),($_POST['Class_accur_count']),($_POST['Kol_plomb_gospr']),($_POST['Kol_holog_stick']),($_POST['Plomb_netw_org']),($_POST['Antimag_plomb']),($_POST['Plomb_shu']),($_POST['Other_places_count']),($_POST['id_obj']),($_POST['user_id']));
+        $result =  add_counter(($_POST['Type_count']),($_POST['Mark_count']),($_POST['Number_count']),($_POST['Year_release_count']),($_POST['Class_accur_count']),($_POST['Kol_plomb_gospr']),($_POST['Kol_holog_stick']),($_POST['Plomb_netw_org']),($_POST['Antimag_plomb']),($_POST['Plomb_shu']),($_POST['Other_places_count']),($_POST['id_obj']),($_POST['user_id']));
         
         switch ($result)
          {
             case "Add_counter":
-             echo "Счетчик успешно добавлен";
+            ?>
+               <script>
+             alert ('Счетчик успешно добавлен');
+             window.location="consumer.php";
+            </script>
+            <?php  
               break;
             case "Err-counter":
               echo "Счетчик не добавлен";

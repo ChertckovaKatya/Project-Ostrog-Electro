@@ -45,7 +45,12 @@ $id_tr_cur = $_GET["id_tr_cur"];
 		switch ($result)
          {
             case "Add":
-             echo "Пломбы успешно добавлены";
+            ?>
+               <script>
+             alert ('Пломбы успешно добавлены');
+             window.location="consumer.php";
+            </script>
+            <?php  
               break;
             case "Err":
               echo "Пломбы не добавлены";

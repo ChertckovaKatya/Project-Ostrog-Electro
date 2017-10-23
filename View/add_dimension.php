@@ -62,7 +62,12 @@ $id_obj = $_GET["id_obj"];
 		 switch ($result)
          {
             case "Add_dim":
-             echo "Данные об измерениях успешно добавлены";
+            ?>
+             <script>
+             alert ('Данные об измерениях успешно добавлен');
+             window.location="consumer.php";
+            </script>
+            <?php
               break;
             case "Err-dim":
               echo "Данные об измерениях не добавлены";
