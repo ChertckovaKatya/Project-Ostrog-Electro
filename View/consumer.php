@@ -4,24 +4,40 @@
 <?php
 include '.\biblioticdib.php';
 include '..\Model\cons.php';
- $row=cons_table(0,0,0);
+// include '.\search.php';
+$id=0;
+$id=$_GET['id'];
+$Text_search=$_GET['Text_search'];
+$Search=$_GET['Search'];
+$row=cons_table($id,$Text_search,$Search);
+echo $Text_search;
+echo $Search;
+// echo var_dump($row);
  
  
 ?>
-<!-- <div class="container" action="consumer_search.php" method="POST">
-	<div class="form-inline">
-		<input type="text" name="Text_search" class="form-control">
+<br></br>
+<br></br>
+<!DOCTYPE html>
+<head>
+</head>
+<body>
+<div class="container" >
+	<form class="well form-search">
+		<input type="text" name="Text_search" class="span3 search-query">
 			<select name="Search">
             	<option value="1">По названию</option>
             	<option value="2">По номеру счетчика</option>
         	</select>
+        	<input type="hidden" name="id" value ="1" >
     	<div class="button-container">
-     		<input autofocus class="btn btn-success" type="submit" value="Поиск">
+     		<input autofocus class="btn" type="submit" value="Поиск">
    		</div>
-    </div>
+    </form>
 </div>
+</body>
 <br></br>
-<br></br> -->
+<br></br>
 	<div class="container">
 		<table class="table table-striped">
 			<tr><td>Наименование потребителя</td><td>Телефон</td><td>Лицевой счет</td></tr>
@@ -37,9 +53,10 @@ include '..\Model\cons.php';
     		//echo var_dump($row[$tr]);
 		}
 
- 	echo '</table>';
-?>
+ 		echo '</table>';
+	?>
 </div>
+
 	
 
 

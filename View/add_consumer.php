@@ -10,7 +10,7 @@ include '..\Model\add.php';
       <form class="form-inline">
   
 
-        <div class="form-group">
+        <div class="custom-select">
           <select name="Face">
             <option value="1">Юридическое лицо</option>
             <option value="2">Физическое лицо</option>
@@ -28,7 +28,7 @@ include '..\Model\add.php';
 
         <div class="form-group">
           <label  for="Phone_consumer">Контактные телефоны</label>
-          <input type="text" name="Phone_consumer" class="form-control" >
+          <input type="tel" name="Phone_consumer" class="form-control" >
         </div>
 
         <div class="button-container">
