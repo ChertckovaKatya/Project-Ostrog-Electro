@@ -21,6 +21,11 @@ edit_counter($_GET["user_id"],$_GET["id_obj"]);
       </div>
 
       <div class="form-group">
+          <label for="name">Номер счетчика</label>
+          <input type="text" name="Number_count" class="form-control" value="<?php echo $number; ?>">
+      </div>
+
+      <div class="form-group">
           <label for="name">Год выпуска</label>
           <input type="date" name="Year_release_count" class="form-control" value="<?php echo $year; ?>">
       </div>
@@ -31,15 +36,9 @@ edit_counter($_GET["user_id"],$_GET["id_obj"]);
       </div>
 
       <div class="form-group">
-          <label for="name">Дата проверки</label>
+          <label for="name">Дата госпроверки</label>
           <input type="date" name="Date_gospr_count" class="form-control" value="<?php echo $date_gospr; ?>">
       </div>
-
-      <div class="form-group">
-          <label for="name">Дата следующей проверки</label>
-          <input type="date" name="Date_next_pr_count" class="form-control" value="<?php echo $date_next; ?>">
-      </div>
-
         <div class="form-group">
           <label for="name">Количество пломб госпроверки</label>
           <input name="Kol_plomb_gospr" class="form-control" value="<?php echo $kol_pl; ?>">

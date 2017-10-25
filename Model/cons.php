@@ -422,6 +422,14 @@
 
 	}
 
+	function sched_inspect ($date)
+	{
+		include_once "..\Controller\connection.php";
+		$connect = get_connect();
+		
+
+	}
+
 
 
 ?>

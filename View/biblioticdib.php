@@ -47,7 +47,7 @@
 										<ul class="nav navbar-nav">
 											<li><a href="consumer.php"> Перечень потребителей </a></li>
 											<li><a href="add_consumer.php"> Добавить потребителя </a></li>
-											<li><a href="#"> Пункт 3 </a></li>
+											<li><a href="sched_inspection.php"> График проверок</a></li>
                      					</ul>
                       					<ul class="nav navbar-nav navbar-right">
 											<li><a href="exit_user.php"> <span class="glyphicon glyphicon-remove-sign"> </span> Выйти </a></li>

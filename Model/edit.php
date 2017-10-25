@@ -118,6 +118,7 @@ function edit_cons($id_cons)
 	  		{
 	  			global $type;
 	  			global $mark;
+	  			global $number;
 	  			global $year;
 	  			global $class_acc;
 	  			global $date_gospr;
@@ -131,6 +132,9 @@ function edit_cons($id_cons)
 
 	  			$type_count=mysqli_fetch_array(mysqli_query($connect,"select Type_count from Counter WHERE  Obj_id_count ='".$id_obj."' AND Obj_Cons_id_count='".$user_id."';"));
 	  			$mark_count=mysqli_fetch_array(mysqli_query($connect,"select Mark_count from Counter WHERE  Obj_id_count ='".$id_obj."' AND Obj_Cons_id_count='".$user_id."';"));
+
+	  			$number_count=mysqli_fetch_array(mysqli_query($connect,"select Number_count from Counter WHERE  Obj_id_count ='".$id_obj."' AND Obj_Cons_id_count='".$user_id."';"));
+
 	  			$year_release_count=mysqli_fetch_array(mysqli_query($connect,"select Year_release_count from Counter WHERE  Obj_id_count ='".$id_obj."' AND Obj_Cons_id_count='".$user_id."';"));
 	  			$class_accur_count=mysqli_fetch_array(mysqli_query($connect,"select Class_accur_count from Counter WHERE  Obj_id_count ='".$id_obj."' AND Obj_Cons_id_count='".$user_id."';"));
 	  			$date_gospr_count=mysqli_fetch_array(mysqli_query($connect,"select Date_gospr_count from Counter WHERE  Obj_id_count ='".$id_obj."' AND Obj_Cons_id_count='".$user_id."';"));
@@ -144,6 +148,7 @@ function edit_cons($id_cons)
 
 	  			$type=$type_count["Type_count"];
 	  			$mark=$mark_count["Mark_count"];
+	  			$number=$number_count["Number_count"];
 	  			$year=$year_release_count["Year_release_count"];
 	  			$class_acc=$class_accur_count["Class_accur_count"];
 	  			$date_gospr=$date_gospr_count["Date_gospr_count"];

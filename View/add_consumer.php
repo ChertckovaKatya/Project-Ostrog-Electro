@@ -18,7 +18,7 @@ include '..\Model\add.php';
          </div>
 
         <div class="form-group">
-          <label  for="Phone_consumer">Лицевой счет</label>
+          <label  for="name">Лицевой счет</label>
          <input type="text" name="Personal_account" class="form-control" >
         </div>
         <div class="form-group">
@@ -27,7 +27,7 @@ include '..\Model\add.php';
         </div>
 
         <div class="form-group">
-          <label  for="Phone_consumer">Контактные телефоны</label>
+          <label  for="name">Контактные телефоны</label>
           <input type="tel" name="Phone_consumer" class="form-control" >
         </div>
 
