@@ -286,5 +286,27 @@ INSERT INTO Type_date (id_Type,Type)
 VALUES ('6','госпроверка трансформатора напряжения');
 
 
+Select * from Consumer where id_consumer IN
+(select Obj_Cons_id_tr_cur from  Transfor_cur where id_tr_cur IN
+(select t1.Transfor_cur_id
+from All_dates AS t1 join Date_list AS t2
+join Type_date AS t3 on  t1.Date_list_id=t2.id_Date AND t2.Type_date_id=t3.id_Type
+where t2.Date_l < '2017-10-25' AND t2.Type_date_id=5)) ;
 
+
+Select * from Consumer where id_consumer IN
+(Select Cons_id_obj_tr_vol from Transfor_vol Where id_tr_vol IN
+(select t1.Transfor_vol_id
+from All_dates AS t1 join Date_list AS t2
+join Type_date AS t3 on  t1.Date_list_id=t2.id_Date AND t2.Type_date_id=t3.id_Type
+where t2.Date_l < '2017-10-25' AND t2.Type_date_id=3));
+
+
+
+Select * from Consumer where id_consumer IN
+(Select Obj_Cons_id_count from Counter where id_count IN
+(select t1.Counter_id_count
+from All_dates AS t1 join Date_list AS t2
+join Type_date AS t3 on  t1.Date_list_id=t2.id_Date AND t2.Type_date_id=t3.id_Type
+where t2.Date_l < '2017-10-25'AND t2.Type_date_id=1 ));
 
