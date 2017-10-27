@@ -20,10 +20,10 @@ $tr_vol=transfor_vol_conclusion($id_obj,$user_id);
 $id_tr_vol=$tr_vol[0]['id_tr_vol'];
 $change_count=change_count_conclusion($id_count);
 $id_change=$change_count[0]["id_change"];
-// echo $id_plomb;
 $all_dat_count=all_dates_conclusion($id_count,1);
-$all_dat_tr_cur=all_dates_conclusion($id_count,2);
-$all_dat_tr_vol=all_dates_conclusion($id_count,3);
+$all_dat_tr_cur=all_dates_conclusion($id_tr_cur,2);
+$all_dat_tr_vol=all_dates_conclusion($id_tr_vol,3);
+
 
 ?>
 <!DOCTYPE html>
@@ -235,12 +235,13 @@ $all_dat_tr_vol=all_dates_conclusion($id_count,3);
 
     	 		if (prov_date($id_tr_cur,2)==1)
     			{
-    				for ($i = 0; $i<count($all_dat_count); $i++) 
+    				echo "раотает";
+    				for ($i = 0; $i<count($all_dat_tr_cur); $i++) 
     				{
     				echo '
-    				<br>Дата: '.$all_dat_count[$i]['Date_l'].' '.$all_dat_count[$i]['Type'].';</br>
-    				Заключение по учету: '.$all_dat_count[$i]['Conclusio'].';
-    				<br>Примечание: '.$all_dat_count[$i]['Notes'].';</br>
+    				<br>Дата: '.$all_dat_tr_cur[$i]['Date_l'].' '.$all_dat_tr_cur[$i]['Type'].';</br>
+    				Заключение по учету: '.$all_dat_tr_cur[$i]['Conclusio'].';
+    				<br>Примечание: '.$all_dat_tr_cur[$i]['Notes'].';</br>
     				';
     				}
     			}
@@ -287,12 +288,13 @@ $all_dat_tr_vol=all_dates_conclusion($id_count,3);
 
      			if (prov_date($id_tr_vol,3)==1)
     			{
-    				for ($i = 0; $i<count($all_dat_count); $i++) 
+    				echo "работает";
+    				for ($i = 0; $i<count($all_dat_tr_vol); $i++) 
     				{
     				echo '
-    				<br>Дата: '.$all_dat_count[$i]['Date_l'].' '.$all_dat_count[$i]['Type'].';</br>
-    				Заключение по учету: '.$all_dat_count[$i]['Conclusio'].';
-    				<br>Примечание: '.$all_dat_count[$i]['Notes'].';</br>
+    				<br>Дата: '.$all_dat_tr_vol[$i]['Date_l'].' '.$all_dat_tr_vol[$i]['Type'].';</br>
+    				Заключение по учету: '.$all_dat_tr_vol[$i]['Conclusio'].';
+    				<br>Примечание: '.$all_dat_tr_vol[$i]['Notes'].';</br>
     				';
     				}
     			}

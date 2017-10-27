@@ -229,15 +229,19 @@
 			{
 				$result=(mysqli_query($connect,"select t1.Conclusio,t1.Notes,t2.Date_l,t3.Type from All_dates AS t1 join Date_list AS t2 join Type_date AS t3 on  t1.Date_list_id=t2.id_Date AND t2.Type_date_id=t3.id_Type where Counter_id_count=".$id_reg.";"));
 
+		
+
 			}
 			if ($type==2)
 			{
 				$result=(mysqli_query($connect,"select t1.Conclusio,t1.Notes,t2.Date_l,t3.Type from All_dates AS t1 join Date_list AS t2 join Type_date AS t3 on  t1.Date_list_id=t2.id_Date AND t2.Type_date_id=t3.id_Type where Transfor_cur_id=".$id_reg.";"));
+				
 
 			}
 			if ($type==3)
 			{
 				$result=(mysqli_query($connect,"select t1.Conclusio,t1.Notes,t2.Date_l,t3.Type from All_dates AS t1 join Date_list AS t2 join Type_date AS t3 on  t1.Date_list_id=t2.id_Date AND t2.Type_date_id=t3.id_Type where Transfor_vol_id=".$id_reg.";"));
+				;
 
 			}
 			$array_reg= array();
@@ -400,14 +404,22 @@
 			if($type_pr==1)
 			{
 				$row = mysqli_fetch_array(mysqli_query($connect,"SELECT * FROM  All_dates WHERE  Counter_id_count=".$id_list.";"), MYSQLI_NUM);
+				// echo "SELECT * FROM  All_dates WHERE  Counter_id_count=".$id_list.";";
+				// var_dump($row);
 			}
 			if($type_pr==2)
 			{
 				$row = mysqli_fetch_array(mysqli_query($connect,"SELECT * FROM  All_dates WHERE  Transfor_cur_id=".$id_list.";"), MYSQLI_NUM);
+
+				// echo "SELECT * FROM  All_dates WHERE  Transfor_cur_id=".$id_list.";";
+
+				// var_dump($row);
 			}
 			if($type_pr==3)
 			{
 				$row = mysqli_fetch_array(mysqli_query($connect,"SELECT * FROM  All_dates WHERE  Transfor_vol_id=".$id_list.";"), MYSQLI_NUM);	
+				// echo "SELECT * FROM  All_dates WHERE  Transfor_vol_id=".$id_list.";";
+				// var_dump($row);
 			}
 			if (count($row)!=0)
 			{
