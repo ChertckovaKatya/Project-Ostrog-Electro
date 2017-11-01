@@ -10,9 +10,9 @@ $id=$_GET['id'];
 $Text_search=$_GET['Text_search'];
 $Search=$_GET['Search'];
 $row=cons_table($id,$Text_search,$Search);
-echo $Text_search;
-echo $Search;
-// echo var_dump($row);
+// echo $Text_search;
+// echo $Search;
+// echo 'Rsult:'.var_dump($row);
  
  
 ?>

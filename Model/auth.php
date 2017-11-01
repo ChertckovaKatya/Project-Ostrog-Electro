@@ -7,10 +7,13 @@ function auth_user($user_value,$password_value){
   {
   	$login = mysqli_real_escape_string($connect,htmlspecialchars($user_value));
   	$password = mysqli_real_escape_string($connect,htmlspecialchars($password_value));
-  	$pass=password_hash($password,PASSWORD_BCRYPT);
-  	$row= mysqli_fetch_array(mysqli_query($connect,"SELECT COUNT(Password) FROM User WHERE Name = '$login';"), MYSQLI_NUM);
-  	$row2=mysqli_fetch_array(mysqli_query($connect,"SELECT Password FROM User WHERE Name = '$login';"), MYSQLI_NUM);
-    //echo "SELECT Password FROM User WHERE Name = '$login';";
+		$pass=password_hash($password,PASSWORD_BCRYPT);
+		
+		$sql = "SELECT COUNT(Password) FROM User WHERE Name = '$login';";
+		$res = mysqli_query($connect,$sql) or trigger_error(mysqli_error($connect)." in ". $sql);
+  	$row= mysqli_fetch_array($res, MYSQLI_NUM);
+  	$row2 =mysqli_fetch_array(mysqli_query($connect,"SELECT Password FROM User WHERE Name = '$login';"), MYSQLI_NUM);
+    echo "SELECT Password FROM User WHERE Name = '$login';";
   	if (count($row)==0)
   	{
       return 'ERR_1'; //'Пользователь не найден.'

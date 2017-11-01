@@ -8,20 +8,34 @@
 		// $row = mysqli_fetch_row(mysqli_query($connect,"select * from consumer;"));
 		if($id==0)
 		{
-		$question=(mysqli_query($connect,"select * from consumer;"));
-		echo "select * from consumer;";
+			$question=(mysqli_query($connect,"select * from consumer;"));
+			// echo "Resulr search all:"."<br>";
+			// var_dump($question)."<br>";
+		// echo "select * from consumer;";
 		}
 		else 
 		{
 			if ($search==1)
 			{
-			$question=(mysqli_query($connect,"select * from consumer where Name_consumer like '%.$Text_search.%' ;"));
-			echo"select * from consumer where Name_consumer like '%$Text_search%' ;";
-			echo var_dump($question);
+				
+				mysqli_error($connect);
+				$question=(mysqli_query($connect,"select * from consumer where Name_consumer like '%$Text_search%';"));
+				// $array = array();
+				  
+				// $i = 0;
+				// while ($row = mysqli_fetch_assoc($question)) 
+				// {
+		
+				// 	$array[$i] = $row;
+				// 	$i++;
+				// }
+			
+				// echo "Resulr search:"."<br>";
+				// var_dump($array)."<br>";
 			}
 			if ($search==2)
 			{
-			$question=(mysqli_query($connect,"select * from Counter where Number_count like '%$Text_search%' ;"));
+				$question=(mysqli_query($connect,"select * from Counter where Number_count like '%$Text_search%' ;"));
 			}
 
 		}
