@@ -18,19 +18,19 @@ echo $type_pr;
        			{
        			echo'
           		<option value="1">Следующая проверка счетчика</option>
-          		<option value="2">Госпроверка счетчика</option>';
+          		<option value="2">Госповерка счетчика</option>';
           		}
           		if($type_pr==2)
        			{
        			echo'
           		<option value="3">Следующая проверка трансформатора тока</option>
-          		<option value="4">Госпроверка трансформаторая тока</option>';
+          		<option value="4">Госповерка трансформаторая тока</option>';
           		}
           		if($type_pr==3)
        			{
        			echo'
           		<option value="5">Следующая проверка трансформатора напряжения </option>
-          		<option value="6">Госпроверка трансформатора напряжения</option>';
+          		<option value="6">Госповерка трансформатора напряжения</option>';
           		}
           		?>
         	</select>

@@ -452,7 +452,54 @@
 	{
 		include_once "..\Controller\connection.php";
 		$connect = get_connect();
-		
+		$result= mysqli_query($connect," Select * from Consumer where id_consumer IN
+		(Select Obj_Cons_id_tr_cur from Transfor_cur where id_tr_cur IN
+		(select t1.Transfor_cur_id
+		from All_dates AS t1 join Date_list AS t2 join Type_date AS t3 on  t1.Date_list_id=t2.id_Date AND t2.Type_date_id=t3.id_Type
+			where t2.Date_l < '".$date."' AND t2.Type_date_id=3)
+			UNION
+			Select Cons_id_obj_tr_vol from Transfor_vol Where id_tr_vol IN
+			(select t1.Transfor_vol_id
+			from All_dates AS t1 join Date_list AS t2 join Type_date AS t3 on  t1.Date_list_id=t2.id_Date AND t2.Type_date_id=t3.id_Type
+			where t2.Date_l < '".$date."' AND t2.Type_date_id=5)
+			UNION
+			Select Obj_Cons_id_count from Counter where id_count IN
+			(select t1.Counter_id_count
+			from All_dates AS t1 join Date_list AS t2 join Type_date AS t3 on  t1.Date_list_id=t2.id_Date AND t2.Type_date_id=t3.id_Type
+			where t2.Date_l < '".$date."' AND t2.Type_date_id=1 ));");
+
+		echo 
+		"Select * from Consumer where id_consumer IN
+		(Select Obj_Cons_id_tr_cur from Transfor_cur where id_tr_cur IN
+		(select t1.Transfor_cur_id
+		from All_dates AS t1 join Date_list AS t2 join Type_date AS t3 on  t1.Date_list_id=t2.id_Date AND t2.Type_date_id=t3.id_Type
+			where t2.Date_l < '".$date."' AND t2.Type_date_id=3)
+			UNION
+			Select Cons_id_obj_tr_vol from Transfor_vol Where id_tr_vol IN
+			(select t1.Transfor_vol_id
+			from All_dates AS t1 join Date_list AS t2 join Type_date AS t3 on  t1.Date_list_id=t2.id_Date AND t2.Type_date_id=t3.id_Type
+			where t2.Date_l < '".$date."' AND t2.Type_date_id=5)
+			UNION
+			Select Obj_Cons_id_count from Counter where id_count IN
+			(select t1.Counter_id_count
+			from All_dates AS t1 join Date_list AS t2 join Type_date AS t3 on  t1.Date_list_id=t2.id_Date AND t2.Type_date_id=t3.id_Type
+			where t2.Date_l < '".$date."' AND t2.Type_date_id=1 ));
+		";
+		$array_reg= array();
+
+			$i = 0;
+			while ($row = mysqli_fetch_assoc($result)) 
+			{
+
+				$array_reg[$i] = $row;
+				$i++;
+			}
+
+			echo "Test query:";
+			var_dump($array_reg);
+			return $array_reg;
+
+			exit();
 
 	}
 
