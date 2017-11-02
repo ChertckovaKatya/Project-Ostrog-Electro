@@ -137,24 +137,63 @@
 
 
 	function del_change_count($id_change)
+	{
+		include_once "..\Controller\connection.php";
+		$connect = get_connect();
+		if(!empty($id_change))
 		{
-			include_once "..\Controller\connection.php";
-			$connect = get_connect();
-			if(!empty($id_change))
-			{
-				mysqli_query($connect,"delete from Change_count where id_change=".$id_change.";");
-				return 'Del';
+			mysqli_query($connect,"delete from Change_count where id_change=".$id_change.";");
+			return 'Del';
 
-				echo 'delete from Change_count where id_change=".$id_change.";';
+			echo 'delete from Change_count where id_change=".$id_change.";';
 	
+			exit();
+		}
+		else 
+			{
+				return 'Err';
 				exit();
 			}
+
+	}
+
+	function del_all_dates($id_all,$id_date_list,$type_pr)
+	{
+		include_once "..\Controller\connection.php";
+		$connect = get_connect();
+		if(!empty($id_all) AND !empty($id_date_list) AND !empty($type_pr))
+		{
+			if($type_pr==1)
+			{
+				mysqli_query($connect,"delete from All_dates where Date_list_id=".$id_date_list." AND Counter_id_count=".$id_all.";");
+				mysqli_query($connect,"delete from Date_list where id_Date=".$id_date_list.";");
+				// echo "delete from All_dates where Date_list_id=".$id_date_list." AND Counter_id_count=".$id_all.";";
+			return 'Del';
+
+			}
+			if($type_pr==2)
+			{
+				mysqli_query($connect,"delete from All_dates where Date_list_id=".$id_date_list." AND Transfor_cur_id=".$id_all.";");
+				mysqli_query($connect,"delete from Date_list where id_Date=".$id_date_list.";");
+				// echo "delete from All_dates where Date_list_id=".$id_date_list." AND Transfor_cur_id=".$id_all.";";
+			return 'Del';
+
+			}
+			if($type_pr==3)
+			{
+				mysqli_query($connect,"delete from All_dates where Date_list_id=".$id_date_list." AND Transfor_vol_id=".$id_all.";");
+				mysqli_query($connect,"delete from Date_list where id_Date=".$id_date_list.";");
+				// echo "delete from All_dates where Date_list_id=".$id_date_list." AND Transfor_vol_id=".$id_all.";";
+			return 'Del';
+
+			}
 			else 
-				{
-					return 'Err';
-					exit();
-				}
+			{
+				return 'Err';
+				exit();
+			}
 
 		}
+	}
 ?>
 

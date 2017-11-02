@@ -1,41 +1,54 @@
 
 <?php
 
-	function cons_table($id,$Text_search,$search)
+	function cons_table($id,$Text_search,$search,$id_face)
 	{
 		include_once "..\Controller\connection.php";
 		$connect = get_connect();
-		// $row = mysqli_fetch_row(mysqli_query($connect,"select * from consumer;"));
-		if($id==0)
+		if (!empty($id_face))
 		{
-			$question=(mysqli_query($connect,"select * from consumer;"));
-			// echo "Resulr search all:"."<br>";
-			// var_dump($question)."<br>";
-		// echo "select * from consumer;";
-		}
-		else 
-		{
-			if ($search==1)
+			if($id==0)
 			{
-				
-				mysqli_error($connect);
-				$question=(mysqli_query($connect,"select * from consumer where Name_consumer like '%$Text_search%';"));
-				// $array = array();
-				  
-				// $i = 0;
-				// while ($row = mysqli_fetch_assoc($question)) 
-				// {
-		
-				// 	$array[$i] = $row;
-				// 	$i++;
-				// }
+				$question=(mysqli_query($connect,"select * from consumer where Face='$id_face';"));
 			
-				// echo "Resulr search:"."<br>";
-				// var_dump($array)."<br>";
 			}
-			if ($search==2)
+			else 
 			{
-				$question=(mysqli_query($connect,"select * from Counter where Number_count like '%$Text_search%' ;"));
+				if ($search==1)
+				{
+				
+					mysqli_error($connect);
+					$question=(mysqli_query($connect,"select * from consumer where Name_consumer like '%$Text_search%'  AND Face='$id_face'; "));
+				
+				}
+				if ($search==2)
+				{
+					$question=(mysqli_query($connect,"select * from Counter where Number_count like '%$Text_search%' AND Face='$id_face';"));
+				}
+
+			}
+		}
+		else
+		{
+			if($id==0)
+			{
+				$question=(mysqli_query($connect,"select * from consumer;"));
+			
+			}
+			else 
+			{
+				if ($search==1)
+				{
+				
+					mysqli_error($connect);
+					$question=(mysqli_query($connect,"select * from consumer where Name_consumer like '%$Text_search%'; "));
+				
+				}
+				if ($search==2)
+				{
+					$question=(mysqli_query($connect,"select * from Counter where Number_count like '%$Text_search%';"));
+				}
+
 			}
 
 		}
@@ -47,7 +60,7 @@
 			$array[$i] = $row;
 			$i++;
 		}
-		//var_dump($array);
+		
 		return $array;
 		exit();
 	}
@@ -241,20 +254,20 @@
 		{
 			if ($type==1)
 			{
-				$result=(mysqli_query($connect,"select t1.Conclusio,t1.Notes,t2.Date_l,t3.Type from All_dates AS t1 join Date_list AS t2 join Type_date AS t3 on  t1.Date_list_id=t2.id_Date AND t2.Type_date_id=t3.id_Type where Counter_id_count=".$id_reg.";"));
+				$result=(mysqli_query($connect,"select t1.Date_list_id,t1.Conclusio,t1.Notes,t2.Date_l,t3.Type from All_dates AS t1 join Date_list AS t2 join Type_date AS t3 on  t1.Date_list_id=t2.id_Date AND t2.Type_date_id=t3.id_Type where Counter_id_count=".$id_reg.";"));
 
 		
 
 			}
 			if ($type==2)
 			{
-				$result=(mysqli_query($connect,"select t1.Conclusio,t1.Notes,t2.Date_l,t3.Type from All_dates AS t1 join Date_list AS t2 join Type_date AS t3 on  t1.Date_list_id=t2.id_Date AND t2.Type_date_id=t3.id_Type where Transfor_cur_id=".$id_reg.";"));
+				$result=(mysqli_query($connect,"select t1.Date_list_id,t1.Conclusio,t1.Notes,t2.Date_l,t3.Type from All_dates AS t1 join Date_list AS t2 join Type_date AS t3 on  t1.Date_list_id=t2.id_Date AND t2.Type_date_id=t3.id_Type where Transfor_cur_id=".$id_reg.";"));
 				
 
 			}
 			if ($type==3)
 			{
-				$result=(mysqli_query($connect,"select t1.Conclusio,t1.Notes,t2.Date_l,t3.Type from All_dates AS t1 join Date_list AS t2 join Type_date AS t3 on  t1.Date_list_id=t2.id_Date AND t2.Type_date_id=t3.id_Type where Transfor_vol_id=".$id_reg.";"));
+				$result=(mysqli_query($connect,"select t1.Date_list_id,t1.Conclusio,t1.Notes,t2.Date_l,t3.Type from All_dates AS t1 join Date_list AS t2 join Type_date AS t3 on  t1.Date_list_id=t2.id_Date AND t2.Type_date_id=t3.id_Type where Transfor_vol_id=".$id_reg.";"));
 				;
 
 			}

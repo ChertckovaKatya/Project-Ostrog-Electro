@@ -9,7 +9,7 @@ $id=0;
 $id=$_GET['id'];
 $Text_search=$_GET['Text_search'];
 $Search=$_GET['Search'];
-$row=cons_table($id,$Text_search,$Search);
+$row=cons_table($id,$Text_search,$Search,$_GET['id_face']);
 // echo $Text_search;
 // echo $Search;
 // echo 'Rsult:'.var_dump($row);
@@ -23,7 +23,8 @@ $row=cons_table($id,$Text_search,$Search);
 </head>
 <body>
 <div class="container" >
-	<form class="well form-search">
+	<!-- <form class="navbar-search pull-left""> -->
+		<form class="well form-search">
 		<input type="text" name="Text_search" class="span3 search-query">
 			<select name="Search">
             	<option value="1">По названию</option>
@@ -38,6 +39,15 @@ $row=cons_table($id,$Text_search,$Search);
 </body>
 <br></br>
 <br></br>
+<br></br>
+
+	<ul class="breadcrumb">
+  		<li><a href="?id_face=1">Юридические</a></li>
+  		<li><a href="?id_face=2">Физические лица</a></li>
+  	</ul>
+
+  	<!-- <br></br> -->
+  
 	<div class="container">
 		<table class="table table-striped">
 			<tr><td>Наименование потребителя</td><td>Телефон</td><td>Лицевой счет</td></tr>

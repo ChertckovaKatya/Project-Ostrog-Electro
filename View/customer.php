@@ -21,9 +21,16 @@ $id_tr_vol=$tr_vol[0]['id_tr_vol'];
 $change_count=change_count_conclusion($id_count);
 $id_change=$change_count[0]["id_change"];
 $all_dat_count=all_dates_conclusion($id_count,1);
+
+// $id_date_list_count=$all_dat_count[0]['Date_list_id'];
+
 $all_dat_tr_cur=all_dates_conclusion($id_tr_cur,2);
+
+// $id_date_list_tr_cur=$all_dat_tr_cur[0]['Date_list_id'];
+
 $all_dat_tr_vol=all_dates_conclusion($id_tr_vol,3);
 
+// $id_date_list_tr_vol=$all_dat_tr_vol[0]['Date_list_id'];
 
 ?>
 <!DOCTYPE html>
@@ -118,12 +125,16 @@ $all_dat_tr_vol=all_dates_conclusion($id_tr_vol,3);
     			{
     				for ($i = 0; $i<count($all_dat_count); $i++) 
     				{
+    					
     				echo '
     				<br>Дата: '.$all_dat_count[$i]['Date_l'].' '.$all_dat_count[$i]['Type'].';</br>
     				Заключение по учету: '.$all_dat_count[$i]['Conclusio'].';
     				<br>Примечание: '.$all_dat_count[$i]['Notes'].';</br>
-    				';
+    				<a href="..\View\del_all_dates.php?id_all='.$id_count.'&id_date_list='.$all_dat_count[$i]['Date_list_id'].'&type_pr=1;"> Удалить дату о проверке/поверке счетчика </a>';
+    				
     				}
+    			
+
     			}
     			if (prov_transfor_cur($id_obj,$user_id)!=1)
     			{ echo '
@@ -235,14 +246,14 @@ $all_dat_tr_vol=all_dates_conclusion($id_tr_vol,3);
 
     	 		if (prov_date($id_tr_cur,2)==1)
     			{
-    				echo "раотает";
     				for ($i = 0; $i<count($all_dat_tr_cur); $i++) 
     				{
     				echo '
     				<br>Дата: '.$all_dat_tr_cur[$i]['Date_l'].' '.$all_dat_tr_cur[$i]['Type'].';</br>
     				Заключение по учету: '.$all_dat_tr_cur[$i]['Conclusio'].';
     				<br>Примечание: '.$all_dat_tr_cur[$i]['Notes'].';</br>
-    				';
+    				
+    				<a href="..\View\del_all_dates.php?id_all='.$id_tr_cur.'&id_date_list='.$all_dat_tr_cur[$i]['Date_list_id'].'&type_pr=2;"> Удалить дату о проверке/поверке трансформатора тока </a>';
     				}
     			}
 				}
@@ -288,14 +299,15 @@ $all_dat_tr_vol=all_dates_conclusion($id_tr_vol,3);
 
      			if (prov_date($id_tr_vol,3)==1)
     			{
-    				echo "работает";
+    				
     				for ($i = 0; $i<count($all_dat_tr_vol); $i++) 
     				{
     				echo '
     				<br>Дата: '.$all_dat_tr_vol[$i]['Date_l'].' '.$all_dat_tr_vol[$i]['Type'].';</br>
     				Заключение по учету: '.$all_dat_tr_vol[$i]['Conclusio'].';
     				<br>Примечание: '.$all_dat_tr_vol[$i]['Notes'].';</br>
-    				';
+    				<a href="..\View\del_all_dates.php?id_all='.$id_tr_vol.'&id_date_list='.$all_dat_tr_vol[$i]['Date_list_id'].'&type_pr=3;"> Удалить дату о проверке/поверке трансформатора напряжения </a>';
+
     				}
     			}
 
