@@ -1,6 +1,6 @@
 <?php
-include '.\biblioticdib.php';
-include '..\Model\cons.php';
+include './biblioticdib.php';
+include '../Model/cons.php';
 
 ?> 
 <!DOCTYPE html>
@@ -40,7 +40,7 @@ include '..\Model\cons.php';
     for ($tr=0; $tr<=COUNT($row)-1; $tr++)
     {
         echo '<tr>';
-        echo '<td><a name=\'Потребитель '.$row[$tr]['Name_consumer']. ' \' href=\'customer.php?user_id='.$row[$tr]['id_consumer'].'\' >'.$row[$tr]['Name_consumer'].'</a>
+        echo '<td><a name=/'Потребитель '.$row[$tr]['Name_consumer']. ' /' href=/'customer.php?user_id='.$row[$tr]['id_consumer'].'/' >'.$row[$tr]['Name_consumer'].'</a>
           <td>'.$row[$tr]['Phone_consumer'].'</td><td>'.$row[$tr]['Personal_account'].'</td>';
 
       echo '</tr>';

@@ -2,14 +2,15 @@
 <link href="../css/consumer.css" rel="stylesheet">
 
 <?php
-include '.\biblioticdib.php';
-include '..\Model\cons.php';
-// include '.\search.php';
+include './biblioticdib.php';
+include '../Model/cons.php';
+// include './search.php';
 $id=0;
 $id=$_GET['id'];
 $Text_search=$_GET['Text_search'];
 $Search=$_GET['Search'];
 $row=cons_table($id,$Text_search,$Search,$_GET['id_face']);
+// phpinfo();
 // echo $Text_search;
 // echo $Search;
 // echo 'Rsult:'.var_dump($row);
@@ -56,7 +57,7 @@ $row=cons_table($id,$Text_search,$Search,$_GET['id_face']);
 		for ($tr=0; $tr<=COUNT($row)-1; $tr++)
 		{
    			echo '<tr>';
-     		echo '<td><a name=\'Потребитель '.$row[$tr]['Name_consumer']. ' \' href=\'customer.php?user_id='.$row[$tr]['id_consumer'].'\' >'.$row[$tr]['Name_consumer'].'</a>
+     		echo '<td><a name=/'Потребитель '.$row[$tr]['Name_consumer']. ' /' href=/'customer.php?user_id='.$row[$tr]['id_consumer'].'/' >'.$row[$tr]['Name_consumer'].'</a>
       		<td>'.$row[$tr]['Phone_consumer'].'</td><td>'.$row[$tr]['Personal_account'].'</td>';
 
 			echo '</tr>';

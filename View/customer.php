@@ -1,7 +1,7 @@
 <?php
 
-include '.\biblioticdib.php';
-include '..\Model\cons.php';
+include './biblioticdib.php';
+include '../Model/cons.php';
 
 
 
@@ -43,9 +43,9 @@ $all_dat_tr_vol=all_dates_conclusion($id_tr_vol,3);
 				Телефон:<?php echo $row[0]['Phone_consumer']; ?>
 			</div> 
 			<div class="col-sm-4">
-     			<a href="..\View\del_consumer.php?user_id=<?php echo (int)$user_id; ?>"> Удалить пользователя</a>
+     			<a href="../View/del_consumer.php?user_id=<?php echo (int)$user_id; ?>"> Удалить пользователя</a>
    				<br>
-     			<a href="..\View\edit.php?user_id=<?php echo (int)$user_id; ?>"> Редактировать</a>
+     			<a href="../View/edit.php?user_id=<?php echo (int)$user_id; ?>"> Редактировать</a>
     			<br>
     			<?php
     			if (prov_obj($user_id)!=1)
@@ -72,9 +72,9 @@ $all_dat_tr_vol=all_dates_conclusion($id_tr_vol,3);
 					<br>Дата инструментальной проверки: '.$row1[0]['Date_instrumental_check'].';  </br>
 					</div>
 
-					<a href="..\View\del_object.php?id_obj='.$id_obj.'; "> Удалить объект</a>
+					<a href="../View/del_object.php?id_obj='.$id_obj.'; "> Удалить объект</a>
      				<br>
-     				<a href="..\View\edit_object.php?id_obj='.$id_obj.';"> Редактировать</a>
+     				<a href="../View/edit_object.php?id_obj='.$id_obj.';"> Редактировать</a>
     				 <br>';
      				if(prov_counter($id_obj,$user_id)!=1)
      					echo'
@@ -102,24 +102,24 @@ $all_dat_tr_vol=all_dates_conclusion($id_tr_vol,3);
 						Другие места:'.$row3[0]['Other_places_count'].';
 					</div>
 
-				<a href="..\View\del_counter.php?user_id='.$user_id.'&id_obj='.$id_obj.'; "> Удалить счетчик</a>
+				<a href="../View/del_counter.php?user_id='.$user_id.'&id_obj='.$id_obj.'; "> Удалить счетчик</a>
      			<br>
-     			<a href="..\View\edit_counter.php?user_id='.$user_id.'&id_obj='.$id_obj.';"> Редактировать счетчик</a>
+     			<a href="../View/edit_counter.php?user_id='.$user_id.'&id_obj='.$id_obj.';"> Редактировать счетчик</a>
     			<br>';
 
     			if (prov_change_count($id_count)!=1)
     			{ echo'
-    				<a href="..\View\add_change_count.php?id_count='.$id_count.';"> Добавить данные о замене счетчика</a>
+    				<a href="../View/add_change_count.php?id_count='.$id_count.';"> Добавить данные о замене счетчика</a>
     				<br>';
     			}
     			
     			if (prov_dimension($id_obj,$user_id)!=1)
     			{ echo '
-    				<a href="..\View\add_dimension.php?user_id='.$user_id.'&id_obj='.$id_obj.';"> Добавить данные об измерениях</a>';
+    				<a href="../View/add_dimension.php?user_id='.$user_id.'&id_obj='.$id_obj.';"> Добавить данные об измерениях</a>';
     			}
 
     			echo'
-    			<h4><a href="..\View\add_all_dates.php?id_all='.$id_count.'&type_pr=1;"> Добавить дату о проверке счетчика</a></h4></br>';
+    			<h4><a href="../View/add_all_dates.php?id_all='.$id_count.'&type_pr=1;"> Добавить дату о проверке счетчика</a></h4></br>';
 
     			if (prov_date($id_count,1)==1)
     			{
@@ -130,7 +130,7 @@ $all_dat_tr_vol=all_dates_conclusion($id_tr_vol,3);
     				<br>Дата: '.$all_dat_count[$i]['Date_l'].' '.$all_dat_count[$i]['Type'].';</br>
     				Заключение по учету: '.$all_dat_count[$i]['Conclusio'].';
     				<br>Примечание: '.$all_dat_count[$i]['Notes'].';</br>
-    				<a href="..\View\del_all_dates.php?id_all='.$id_count.'&id_date_list='.$all_dat_count[$i]['Date_list_id'].'&type_pr=1;"> Удалить дату о проверке/поверке счетчика </a>';
+    				<a href="../View/del_all_dates.php?id_all='.$id_count.'&id_date_list='.$all_dat_count[$i]['Date_list_id'].'&type_pr=1;"> Удалить дату о проверке/поверке счетчика </a>';
     				
     				}
     			
@@ -138,13 +138,13 @@ $all_dat_tr_vol=all_dates_conclusion($id_tr_vol,3);
     			}
     			if (prov_transfor_cur($id_obj,$user_id)!=1)
     			{ echo '
-    			<a href="..\View\add_transfor_cur.php?user_id='.$user_id.'&id_obj='.$id_obj.';"> Добавить трансформатор тока</a>';
+    			<a href="../View/add_transfor_cur.php?user_id='.$user_id.'&id_obj='.$id_obj.';"> Добавить трансформатор тока</a>';
     			}
 
     			if (prov_tr_vol($id_tr_vol)!=1)
     			{echo'
     				<br>
-    				<a href="..\View\add_transfor_vol.php?user_id='.$user_id.'&id_obj='.$id_obj.';"> Добавить трансформатор напряжения</a></br>';
+    				<a href="../View/add_transfor_vol.php?user_id='.$user_id.'&id_obj='.$id_obj.';"> Добавить трансформатор напряжения</a></br>';
     			}
 
 				}
@@ -170,18 +170,18 @@ $all_dat_tr_vol=all_dates_conclusion($id_tr_vol,3);
 			Количество оборотов диска: '.$dimen[0]['Kol_turn_disk'].';
 			<br>Потребляемая мощность в КВт: '.$dimen[0]['Power_consum'].';  </br>
 			</div>
-			<a href="..\View\del_dimension.php?user_id='.$user_id.'&id_obj='.$id_obj.'; "> Удалить данные об измерениях</a>
+			<a href="../View/del_dimension.php?user_id='.$user_id.'&id_obj='.$id_obj.'; "> Удалить данные об измерениях</a>
      		<br>
-     		<a href="..\View\edit_dimension.php?user_id='.$user_id.'&id_obj='.$id_obj.';"> Редактировать данные об измерениях</a>
+     		<a href="../View/edit_dimension.php?user_id='.$user_id.'&id_obj='.$id_obj.';"> Редактировать данные об измерениях</a>
     		<br>';
     		// if (prov_transfor_cur($id_obj,$user_id)!=1)
     		// { echo '
-    		// <a href="..\View\add_transfor_cur.php?user_id='.$user_id.'&id_obj='.$id_obj.';"> Добавить трансформатор тока</a>';
+    		// <a href="../View/add_transfor_cur.php?user_id='.$user_id.'&id_obj='.$id_obj.';"> Добавить трансформатор тока</a>';
     		// }
     		// if (prov_tr_vol($id_obj,$user_id)!=1)
     		// {echo'
     		// 	<br>
-    		// 	<a href="..\View\add_transfor_vol.php?user_id='.$user_id.'&id_obj='.$id_obj.';"> Добавить трансформатор напряжения</a></br>';
+    		// 	<a href="../View/add_transfor_vol.php?user_id='.$user_id.'&id_obj='.$id_obj.';"> Добавить трансформатор напряжения</a></br>';
     		// }
 
 
@@ -203,9 +203,9 @@ $all_dat_tr_vol=all_dates_conclusion($id_tr_vol,3);
  					Номер нового счетчика:'.$change_count[0]['Nomber_new'].';
  					<br>
  					</div>
- 					<a href="..\View\del_change_count.php?id_change='.$id_change.'; "> Удалить данные о замене счетчика</a>
+ 					<a href="../View/del_change_count.php?id_change='.$id_change.'; "> Удалить данные о замене счетчика</a>
      				<br>
-     				<a href="..\View\edit_change_count.php?id_change='.$id_change.';"> Редактировать данные о замене счетчика</a>
+     				<a href="../View/edit_change_count.php?id_change='.$id_change.';"> Редактировать данные о замене счетчика</a>
 					';
 
 
@@ -232,17 +232,17 @@ $all_dat_tr_vol=all_dates_conclusion($id_tr_vol,3);
 				№ Трансформатора тока Фс: '.$tr_cur[0]['Num_tr_cur_fc'].';
 				<br>Фаза: '.$tr_cur[0]['Phase_tr_cur'].';  </br>
 				</div>
-				<a href="..\View\del_transfor_cur.php?user_id='.$user_id.'&id_obj='.$id_obj.'; "> Удалить трансформатор тока</a>
+				<a href="../View/del_transfor_cur.php?user_id='.$user_id.'&id_obj='.$id_obj.'; "> Удалить трансформатор тока</a>
      			<br>
-     			<a href="..\View\edit_transfor_cur.php?user_id='.$user_id.'&id_obj='.$id_obj.';"> Редактировать трансформатор тока</a>
+     			<a href="../View/edit_transfor_cur.php?user_id='.$user_id.'&id_obj='.$id_obj.';"> Редактировать трансформатор тока</a>
     	 		<br>';
     	 		if (prov_plombs($id_tr_cur)!=1)
     	 		{
     	 			echo'
-    	 		<a href="..\View\add_plombs.php?id_tr_cur='.$id_tr_cur.';"> Добавить пломбы</a>';
+    	 		<a href="../View/add_plombs.php?id_tr_cur='.$id_tr_cur.';"> Добавить пломбы</a>';
     	 		}
     	 		echo'
-    	 		<h4><a href="..\View\add_all_dates.php?id_all='.$id_tr_cur.'&type_pr=2;"> Добавить дату о проверке трансформатора тока</a></h4></br>';
+    	 		<h4><a href="../View/add_all_dates.php?id_all='.$id_tr_cur.'&type_pr=2;"> Добавить дату о проверке трансформатора тока</a></h4></br>';
 
     	 		if (prov_date($id_tr_cur,2)==1)
     			{
@@ -253,7 +253,7 @@ $all_dat_tr_vol=all_dates_conclusion($id_tr_vol,3);
     				Заключение по учету: '.$all_dat_tr_cur[$i]['Conclusio'].';
     				<br>Примечание: '.$all_dat_tr_cur[$i]['Notes'].';</br>
     				
-    				<a href="..\View\del_all_dates.php?id_all='.$id_tr_cur.'&id_date_list='.$all_dat_tr_cur[$i]['Date_list_id'].'&type_pr=2;"> Удалить дату о проверке/поверке трансформатора тока </a>';
+    				<a href="../View/del_all_dates.php?id_all='.$id_tr_cur.'&id_date_list='.$all_dat_tr_cur[$i]['Date_list_id'].'&type_pr=2;"> Удалить дату о проверке/поверке трансформатора тока </a>';
     				}
     			}
 				}
@@ -271,9 +271,9 @@ $all_dat_tr_vol=all_dates_conclusion($id_tr_vol,3);
 				<br>I2: '.$plombs[0]['I2'].';  </br>
 				Другие места: '.$plombs[0]['Other_places_plomb'].';	
 				</div>
-				<a href="..\View\del_plombs.php?id_tr_cur='.$id_tr_cur.'&id_plomb='.$id_plomb.' "> Удалить пломбы</a>
+				<a href="../View/del_plombs.php?id_tr_cur='.$id_tr_cur.'&id_plomb='.$id_plomb.' "> Удалить пломбы</a>
      			<br>
-     			<a href="..\View\edit_plombs.php?id_tr_cur='.$id_tr_cur.'&id_plomb='.$id_plomb.';"> Редактировать данные о пломбах </a>';
+     			<a href="../View/edit_plombs.php?id_tr_cur='.$id_tr_cur.'&id_plomb='.$id_plomb.';"> Редактировать данные о пломбах </a>';
 				}
 
 			?>
@@ -291,11 +291,11 @@ $all_dat_tr_vol=all_dates_conclusion($id_tr_vol,3);
 				Номинал: '.$tr_vol[0]['Denomin_tr_vol'].';
 				<br>Пломбы: '.$tr_vol[0]['Plomb_tr_vol'].';</br>
 			</div>
-			<a href="..\View\del_transfor_vol.php?id_tr_vol='.$id_tr_vol.'; "> Удалить трансформатор напряжения</a>
+			<a href="../View/del_transfor_vol.php?id_tr_vol='.$id_tr_vol.'; "> Удалить трансформатор напряжения</a>
      			<br>
-     			<a href="..\View\edit_transfor_vol.php?id_tr_vol='.$id_tr_vol.';"> Редактировать трансформатор напряжения</a>
+     			<a href="../View/edit_transfor_vol.php?id_tr_vol='.$id_tr_vol.';"> Редактировать трансформатор напряжения</a>
      			<br>
-     			<h4><a href="..\View\add_all_dates.php?id_all='.$id_tr_vol.'&type_pr=3;"> Добавить дату о проверке трансформатора напряжения</a></h4>';
+     			<h4><a href="../View/add_all_dates.php?id_all='.$id_tr_vol.'&type_pr=3;"> Добавить дату о проверке трансформатора напряжения</a></h4>';
 
      			if (prov_date($id_tr_vol,3)==1)
     			{
@@ -306,7 +306,7 @@ $all_dat_tr_vol=all_dates_conclusion($id_tr_vol,3);
     				<br>Дата: '.$all_dat_tr_vol[$i]['Date_l'].' '.$all_dat_tr_vol[$i]['Type'].';</br>
     				Заключение по учету: '.$all_dat_tr_vol[$i]['Conclusio'].';
     				<br>Примечание: '.$all_dat_tr_vol[$i]['Notes'].';</br>
-    				<a href="..\View\del_all_dates.php?id_all='.$id_tr_vol.'&id_date_list='.$all_dat_tr_vol[$i]['Date_list_id'].'&type_pr=3;"> Удалить дату о проверке/поверке трансформатора напряжения </a>';
+    				<a href="../View/del_all_dates.php?id_all='.$id_tr_vol.'&id_date_list='.$all_dat_tr_vol[$i]['Date_list_id'].'&type_pr=3;"> Удалить дату о проверке/поверке трансформатора напряжения </a>';
 
     				}
     			}

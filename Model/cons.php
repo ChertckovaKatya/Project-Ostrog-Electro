@@ -3,7 +3,7 @@
 
 	function cons_table($id,$Text_search,$search,$id_face)
 	{
-		include_once "..\Controller\connection.php";
+		include_once "../Controller/connection.php";
 		$connect = get_connect();
 		if (!empty($id_face))
 		{
@@ -66,7 +66,7 @@
 	}
 	function object_conclusion($user_id)
 	{
-		include_once "..\Controller\connection.php";
+		include_once "../Controller/connection.php";
 		$connect = get_connect();
 		$object=(mysqli_query($connect,"select id_object,Owner_FIO,Renter_FIO,Name_object,Mailing_address,Phone_object,Source_of_power,Voltage_class,Date_instrumental_check
 			FROM Object WHERE Obj_Cons_id=".$user_id.";"));
@@ -85,7 +85,7 @@
 
 	function prov_obj($user_id)
 	{
-		include_once "..\Controller\connection.php";
+		include_once "../Controller/connection.php";
 		$connect = get_connect();
 		$user=0;
 	if(!empty($user_id ))
@@ -107,7 +107,7 @@
 
 	function cust_conclusion($user_id)
 	{
-		include_once "..\Controller\connection.php";
+		include_once "../Controller/connection.php";
 		$connect = get_connect();
 		$customer=(mysqli_query($connect,"select Name_consumer,Phone_consumer from consumer WHERE id_consumer =".$user_id.";"));
 		$array_cust= array();
@@ -125,7 +125,7 @@
 
 	function counter_conclusion($id_obj,$user_id)
 	{
-		include_once "..\Controller\connection.php";
+		include_once "../Controller/connection.php";
 		$connect = get_connect();
 		$counter=(mysqli_query($connect,"Select id_count,Type_count, Mark_count,Year_release_count,Class_accur_count,Kol_plomb_gospr,Kol_holog_stick,Plomb_netw_org,Antimag_plomb,Plomb_shu,Other_places_count from home.Counter WHERE Obj_id_count=".$id_obj." AND Obj_Cons_id_count=".$user_id.";"));
 
@@ -148,7 +148,7 @@
 	function dimension_conclusion($id_obj,$user_id)
 	{
 
-		include_once "..\Controller\connection.php";
+		include_once "../Controller/connection.php";
 		$connect = get_connect();
 		$dim=(mysqli_query($connect,"Select Date_dimen, Alter_phase,Load_fa,Load_fb,Load_fc,Cos_fi,Kol_turn_disk,Power_consum from home.Dimension WHERE Obj_id_dimen=".$id_obj." AND Obj_Cons_id_dimen=".$user_id.";"));
 
@@ -168,7 +168,7 @@
 
 	function transfor_cur_conclusion($id_obj,$user_id)
 	{
-		include_once "..\Controller\connection.php";
+		include_once "../Controller/connection.php";
 		$connect = get_connect();
 		$tr_cur=(mysqli_query($connect,"Select id_tr_cur,Type_tr_cur,Mark_tr_cur,Denomin_tr_cur,Year_release_tr_cur,Num_tr_cur_fa,Num_tr_cur_fb,Num_tr_cur_fc,Phase_tr_cur from home.Transfor_cur WHERE Obj_id_tr_cur=".$id_obj." AND Obj_Cons_id_tr_cur=".$user_id.";"));
 
@@ -189,7 +189,7 @@
 
 	function transfor_vol_conclusion($id_obj,$user_id)
 	{
-		include_once "..\Controller\connection.php";
+		include_once "../Controller/connection.php";
 		$connect = get_connect();
 		$tr_vol=(mysqli_query($connect," Select id_tr_vol,Type_tr_vol,Mark_tr_vol,Denomin_tr_vol,Plomb_tr_vol from home.Transfor_vol WHERE Object_id_tr_vol=".$id_obj." AND Cons_id_obj_tr_vol=".$user_id.";"));
 		$array_tr_vol= array();
@@ -207,7 +207,7 @@
 
 	function plombs_conclusion($id_tr_cur)
 	{
-		include_once "..\Controller\connection.php";
+		include_once "../Controller/connection.php";
 		$connect = get_connect();
 
 		$plombs=(mysqli_query($connect,"Select id_plomb,L1,L2,I1,I2,Other_places_plomb from home.Plombs WHERE Tr_cur_id_plomb=".$id_tr_cur.";"));
@@ -229,7 +229,7 @@
 
 	function change_count_conclusion($id_count)
 	{
-		include_once "..\Controller\connection.php";
+		include_once "../Controller/connection.php";
 		$connect = get_connect();
 
 		$change=(mysqli_query($connect,"Select id_change,Date_change,Cause_change,FIO_change,Nomber_old,Nomber_new FROM home.Change_count WHERE Counter_id_count=".$id_count.";"));
@@ -248,7 +248,7 @@
 
 	function all_dates_conclusion ($id_reg,$type)
 	{
-		include_once "..\Controller\connection.php";
+		include_once "../Controller/connection.php";
 		$connect = get_connect();
 		if (!empty($id_reg) AND !empty($type))
 		{
@@ -287,7 +287,7 @@
 
 	function  prov_counter($id_obj,$user_id)
 	{
-		include_once "..\Controller\connection.php";
+		include_once "../Controller/connection.php";
 		$connect = get_connect();
 		$user=0;
 	if(!empty($id_obj) AND !empty($user_id))
@@ -308,7 +308,7 @@
 
 	function prov_dimension($id_obj,$user_id)
 	{
-		include_once "..\Controller\connection.php";
+		include_once "../Controller/connection.php";
 		$connect = get_connect();
 		$user=0;
 
@@ -330,7 +330,7 @@
 
 	function prov_transfor_cur($id_obj,$user_id)
 	{
-		include_once "..\Controller\connection.php";
+		include_once "../Controller/connection.php";
 		$connect = get_connect();
 		$user=0;
 
@@ -355,7 +355,7 @@
 
 	function prov_plombs($id_tr_cur)
 	{
-		include_once "..\Controller\connection.php";
+		include_once "../Controller/connection.php";
 		$connect = get_connect();
 		$user=0;
 		if(!empty($id_tr_cur))
@@ -377,7 +377,7 @@
 
 	function prov_tr_vol($id_tr_vol)
 	{
-		include_once "..\Controller\connection.php";
+		include_once "../Controller/connection.php";
 		$connect = get_connect();
 		$user=0;
 		if(!empty($id_tr_vol))
@@ -402,7 +402,7 @@
 
 	function prov_change_count($id_count)
 	{
-		include_once "..\Controller\connection.php";
+		include_once "../Controller/connection.php";
 		$connect = get_connect();
 		$user=0;
 
@@ -423,7 +423,7 @@
 	}
 	function prov_date($id_list,$type_pr)
 	{
-		include_once "..\Controller\connection.php";
+		include_once "../Controller/connection.php";
 		$connect = get_connect();
 		$user=0;
 		if(!empty($id_list) AND !empty($type_pr))
@@ -463,7 +463,7 @@
 
 	function sched_inspect ($date)
 	{
-		include_once "..\Controller\connection.php";
+		include_once "../Controller/connection.php";
 		$connect = get_connect();
 		$result= mysqli_query($connect," Select * from Consumer where id_consumer IN
 		(Select Obj_Cons_id_tr_cur from Transfor_cur where id_tr_cur IN

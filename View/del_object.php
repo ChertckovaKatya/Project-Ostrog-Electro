@@ -1,7 +1,7 @@
 <?php
 
-include '.\biblioticdib.php';
-include '..\Model\delete.php';
+include './biblioticdib.php';
+include '../Model/delete.php';
 
 
 

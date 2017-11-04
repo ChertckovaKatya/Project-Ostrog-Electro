@@ -1,7 +1,7 @@
 <?php
 // Подключаем библиотеку
 pear install <PHPExcel-1.8>.tgz;
-include_path="C:\xampp\apache\lib\PHPExcel-1.8";
+include_path="C:/xampp/apache/lib/PHPExcel-1.8";
 require_once "PHPExcel.php";
 
 // Функция преобразования листа Excel в таблицу MySQL, с учетом объединенных строк и столбцов.
@@ -90,11 +90,11 @@ $PHPExcel_file = PHPExcel_IOFactory::load("./file.xlsx");
 
 // Преобразуем первый лист Excel в таблицу MySQL
 $PHPExcel_file->setActiveSheetIndex(0);
-echo excel2mysql($PHPExcel_file->getActiveSheet(), $connection, "excel2mysql0", 1) ? "OK\n" : "FAIL\n";
+echo excel2mysql($PHPExcel_file->getActiveSheet(), $connection, "excel2mysql0", 1) ? "OK/n" : "FAIL/n";
 
 // Перебираем все листы Excel и преобразуем в таблицу MySQL
 foreach ($PHPExcel_file->getWorksheetIterator() as $index => $worksheet) {
-  echo excel2mysql($worksheet, $connection, "excel2mysql" . ($index != 0 ? $index : ""), 1) ? "OK\n" : "FAIL\n";
+  echo excel2mysql($worksheet, $connection, "excel2mysql" . ($index != 0 ? $index : ""), 1) ? "OK/n" : "FAIL/n";
 }
 
 ?>

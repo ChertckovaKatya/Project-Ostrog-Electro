@@ -7,9 +7,9 @@
 
 <?php
 
-include_once "..\Model\statususer.php";
-include_once "..\Model\auth.php";
-include_once "..\Model\identification.php";
+include_once "../Model/statususer.php";
+include_once "../Model/auth.php";
+include_once "../Model/identification.php";
 
 
 

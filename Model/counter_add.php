@@ -1,7 +1,7 @@
 <?php
 function add_counter1($Type_count,$Mark_count,$Year_release_count,$Class_accur_count,$Date_gospr_count,$Date_next_pr_count,$Kol_plomb_gospr,$Kol_holog_stick,$Plomb_netw_org,$Antimag_plomb,$Plomb_shu,$Other_places_count,$id_obj,$user_id)
 		{
-			include_once "..\Controller\connection.php";
+			include_once "../Controller/connection.php";
 			$connect = get_connect();
 			
 
