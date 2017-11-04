@@ -1,7 +1,7 @@
 <?php
 
-include '.\biblioticdib.php';
-include '..\Model\edit.php';
+include './biblioticdib.php';
+include '../Model/edit.php';
 
 
 edit_cons ($_GET["user_id"]);
@@ -16,16 +16,16 @@ $user_id = $_GET["user_id"];
   <?php 
   if ($face==1)
   {
-        echo "<select name=\"Face\">
-          <option selected value=\"1\">Юридическое лицо</option>
-          <option   value=\"2\">Физическое лицо</option>
+        echo "<select name=/"Face/">
+          <option selected value=/"1/">Юридическое лицо</option>
+          <option   value=/"2/">Физическое лицо</option>
         </select>";
       }
       else 
       { 
-        echo "<select name=\"Face\">
-          <option value=\"1\">Юридическое лицо</option>
-          <option  selected value=\"2\">Физическое лицо</option>
+        echo "<select name=/"Face/">
+          <option value=/"1/">Юридическое лицо</option>
+          <option  selected value=/"2/">Физическое лицо</option>
         </select>";
       }
         ?> 

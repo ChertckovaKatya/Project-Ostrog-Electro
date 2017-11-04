@@ -1,7 +1,7 @@
 <?php
 	function add_cons($cons_name,$phone_cons,$Personal_account,$Face)
 	{
-	  include_once "..\Controller\connection.php";
+	  include_once "../Controller/connection.php";
 	  $connect = get_connect();
 	  
 	  if (!empty($cons_name) AND !empty($phone_cons) AND !empty($Personal_account) AND !empty($Face))
@@ -27,7 +27,7 @@
 
 	function add_object($owner_fio,$renter_fio,$name_object,$mail_address,$phone_object,$sourse_of_power,$vol_class,$date_check,$user_id)
 		{
-			include_once "..\Controller\connection.php";
+			include_once "../Controller/connection.php";
 			$connect = get_connect();
 			if (!empty($owner_fio) AND !empty($renter_fio) AND !empty($name_object) AND !empty($mail_address) AND !empty($phone_object)  AND !empty($sourse_of_power) AND !empty($vol_class)  AND !empty($date_check)  AND !empty($user_id) )
 			{
@@ -52,7 +52,7 @@
 		function add_tr_vol ($Type_tr_vol,$Mark_tr_vol,$Denomin_tr_vol,$Plomb_tr_vol,$id_obj,$user_id)
 		{
 
-			include_once "..\Controller\connection.php";
+			include_once "../Controller/connection.php";
 			$connect = get_connect();
 			if (!empty($Type_tr_vol) AND !empty($Mark_tr_vol) AND !empty($Denomin_tr_vol) AND !empty($Plomb_tr_vol) AND !empty($user_id))
 			{
@@ -77,7 +77,7 @@
 
 		function add_counter($Type_count,$Mark_count,$Number_count,$Year_release_count,$Class_accur_count,$Kol_plomb_gospr,$Kol_holog_stick,$Plomb_netw_org,$Antimag_plomb,$Plomb_shu,$Other_places_count,$id_obj,$user_id)
 		{
-			include_once "..\Controller\connection.php";
+			include_once "../Controller/connection.php";
 			$connect = get_connect();
 			
 			if (!empty($Type_count) AND !empty($Mark_count)  AND !empty($Number_count)AND !empty($Year_release_count) AND !empty($Class_accur_count) AND !empty($Kol_plomb_gospr)  AND !empty($Kol_holog_stick)  AND !empty($Plomb_netw_org)  AND !empty($Antimag_plomb)  AND !empty($Plomb_shu)  AND !empty($Other_places_count)  AND !empty($id_obj) AND !empty($user_id))
@@ -102,7 +102,7 @@
         
 		function add_change_count($Date_change,$Cause_change,$FIO_change,$Nomber_old,$Nomber_new,$id_count)
 		{
-			include_once "..\Controller\connection.php";
+			include_once "../Controller/connection.php";
 			$connect = get_connect();
 
 			if (!empty($_POST['Date_change']) AND !empty($_POST['Cause_change']) AND !empty($_POST['FIO_change']) AND !empty($_POST['Nomber_old']) AND !empty($_POST['Nomber_new']) AND !empty($_POST['id_count']))
@@ -126,7 +126,7 @@
 
         function add_dimension ($Date_dimen,$Alter_phase,$Load_fa,$Load_fb,$Load_fc,$Cos_fi,$Kol_turn_disk,$Power_consum,$id_obj,$user_id)
         {
-        	include_once "..\Controller\connection.php";
+        	include_once "../Controller/connection.php";
 			$connect = get_connect();
 
 			if (!empty($Date_dimen) AND !empty($Alter_phase) AND !empty($Load_fa) AND !empty($Load_fb) AND !empty($Load_fc)  AND !empty($Cos_fi) AND !empty($Kol_turn_disk)  AND !empty($Power_consum)  AND !empty($id_obj)  AND !empty($user_id))
@@ -148,7 +148,7 @@
 
         function add_transfor_cur($Type_tr_cur,$Mark_tr_cur,$Denomin_tr_cur,$Year_release_tr_cur,$Num_tr_cur_fa,$Num_tr_cur_fb,$Num_tr_cur_fc,$Phase_tr_cur,$id_obj,$user_id)
         {
-        	include_once "..\Controller\connection.php";
+        	include_once "../Controller/connection.php";
 			$connect = get_connect();
 
 			if (!empty($Type_tr_cur) AND !empty($Mark_tr_cur) AND !empty($Denomin_tr_cur) AND !empty($Year_release_tr_cur) AND !empty($Denomin_tr_cur) AND !empty($Num_tr_cur_fa) AND !empty($Num_tr_cur_fb)  AND !empty($Num_tr_cur_fc) AND !empty($Phase_tr_cur)  AND !empty($id_obj)  AND !empty($user_id))
@@ -171,7 +171,7 @@
 
         function add_plombs($L1,$L2,$I1,$I2,$Other_places_plomb,$id_tr_cur)
         {
-        	include_once "..\Controller\connection.php";
+        	include_once "../Controller/connection.php";
 			$connect = get_connect();
 
 			if (!empty($L1) AND !empty($L2) AND !empty($I1) AND !empty($I2) AND !empty($Other_places_plomb) AND !empty($id_tr_cur))
@@ -192,7 +192,7 @@
 
         function add_all_dates($Type,$Date,$Conclusio,$Notes,$id_all,$type_pr)
         {
-        	include_once "..\Controller\connection.php";
+        	include_once "../Controller/connection.php";
 			$connect = get_connect();
 
 			if(!empty($Type) AND !empty($Date) AND !empty($Conclusio) AND !empty($Notes) AND !empty($id_all) AND !empty($type_pr))

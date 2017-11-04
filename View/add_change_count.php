@@ -1,6 +1,6 @@
 <?php
-include '.\biblioticdib.php';
-include '..\Model\add.php';
+include './biblioticdib.php';
+include '../Model/add.php';
 
 $id_count = $_GET["id_count"];
 

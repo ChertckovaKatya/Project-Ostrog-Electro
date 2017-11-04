@@ -1,7 +1,7 @@
 <?php
 function edit_cons($id_cons)
 		{
-			include_once "..\Controller\connection.php";
+			include_once "../Controller/connection.php";
 			$connect = get_connect();
 			if (!empty($id_cons))
 			{
@@ -23,7 +23,7 @@ function edit_cons($id_cons)
 		}
 		function edit_cons2 ($cons_name,$phone_cons,$id_cons)
 		{
-			include_once "..\Controller\connection.php";
+			include_once "../Controller/connection.php";
 	  		$connect = get_connect();
 	  
 	  		if (!empty($cons_name) AND !empty($phone_cons) AND !empty($id_cons))
@@ -46,7 +46,7 @@ function edit_cons($id_cons)
 
 		function edit_object ($id_obj)
 		{
-			include_once "..\Controller\connection.php";
+			include_once "../Controller/connection.php";
 	  		$connect = get_connect();
 	  		if (!empty($id_obj))
 			{
@@ -83,7 +83,7 @@ function edit_cons($id_cons)
 
 		function edit_object_update($owner_fio,$ren_fio,$name_object,$mail_addr,$phone_obj,$sour_of_pow,$vol_class,$date_instr_check,$id_obj)
 		{
-			include_once "..\Controller\connection.php";
+			include_once "../Controller/connection.php";
 	  		$connect = get_connect();
 	  
 	  		if (!empty($owner_fio) AND !empty($ren_fio) AND !empty($name_object) AND !empty($mail_addr) AND !empty($phone_obj) AND !empty($sour_of_pow) AND !empty($vol_class) AND !empty($date_instr_check) AND !empty($id_obj)) 
@@ -111,7 +111,7 @@ function edit_cons($id_cons)
 
 		function edit_counter($user_id,$id_obj)
 		{
-			include_once "..\Controller\connection.php";
+			include_once "../Controller/connection.php";
 	  		$connect = get_connect();
 
 	  		if (!empty($user_id) AND !empty($id_obj))
@@ -166,7 +166,7 @@ function edit_cons($id_cons)
 
 		function edit_counter_update($type_count,$mark_count,$year_release_count,$class_accur_count,$kol_plomb_gospr,$kol_holog_stick,$plomb_netw_org,$antimag_plomb,$plomb_shu,$other_places_count,$id_obj,$user_id)
 		{
-			include_once "..\Controller\connection.php";
+			include_once "../Controller/connection.php";
 	  		$connect = get_connect();
 	  		if (!empty($type_count) AND !empty($mark_count) AND !empty($year_release_count) AND !empty($class_accur_count)AND !empty($kol_plomb_gospr) AND !empty($kol_holog_stick)  AND !empty($plomb_netw_org)  AND !empty($antimag_plomb)  AND !empty($plomb_shu)  AND !empty($other_places_count)  AND !empty($id_obj)AND !empty($user_id)) 
 	  		{
@@ -195,7 +195,7 @@ function edit_cons($id_cons)
 
 		function edit_dimension($user_id,$id_obj)
 		{
-			include_once "..\Controller\connection.php";
+			include_once "../Controller/connection.php";
 	  		$connect = get_connect();
 
 	  		if (!empty($user_id) AND !empty($id_obj))
@@ -233,7 +233,7 @@ function edit_cons($id_cons)
 
 		function edit_dimension_update($date_dimen,$alter_phase,$load_fa,$load_fb,$load_fc,$cos_fi,$kol_turn_disk,$power_consum,$id_obj,$user_id)
 		{
-			include_once "..\Controller\connection.php";
+			include_once "../Controller/connection.php";
 	  		$connect = get_connect();
 	  		if (!empty($date_dimen) AND !empty($alter_phase) AND !empty($load_fa) AND !empty($load_fb) AND !empty($load_fc) AND !empty($cos_fi) AND !empty($kol_turn_disk) AND !empty($power_consum) AND !empty($id_obj) AND !empty($user_id))
 	  		{
@@ -261,7 +261,7 @@ function edit_cons($id_cons)
 
 		function edit_transfor_cur($user_id,$id_obj)
 		{
-			include_once "..\Controller\connection.php";
+			include_once "../Controller/connection.php";
 	  		$connect = get_connect();
 
 	  		if (!empty($user_id) AND !empty($id_obj))
@@ -319,7 +319,7 @@ function edit_cons($id_cons)
 
 		function edit_transfor_vol($id_tr_vol)
 		{
-			include_once "..\Controller\connection.php";
+			include_once "../Controller/connection.php";
 	  		$connect = get_connect();
 
 	  		if (!empty($id_tr_vol))
@@ -347,7 +347,7 @@ function edit_cons($id_cons)
 
 		function edit_transfor_cur_update ($Type_tr_cur,$Mark_tr_cur,$Denomin_tr_cur,$Year_release_tr_cur,$Date_gospr_tr_cur,$Date_next_tr_cur,$Num_tr_cur_fa,$Num_tr_cur_fb,$Num_tr_cur_fc,$Phase_tr_cur,$id_obj,$user_id)
 		{
-			include_once "..\Controller\connection.php";
+			include_once "../Controller/connection.php";
 	  		$connect = get_connect();
 	  		if (!empty($Type_tr_cur) AND !empty($Mark_tr_cur) AND !empty($Denomin_tr_cur) AND !empty($Year_release_tr_cur) AND !empty($Date_gospr_tr_cur) AND !empty($Date_next_tr_cur) AND !empty($Num_tr_cur_fa) AND !empty($Num_tr_cur_fb) AND !empty($Num_tr_cur_fc)  AND !empty($Phase_tr_cur)  AND !empty($id_obj) AND !empty($user_id))
 	  		{
@@ -377,7 +377,7 @@ function edit_cons($id_cons)
 
 		function edit_transfor_vol_update($Type_tr_vol,$Mark_tr_vol,$Denomin_tr_vol,$Plomb_tr_vol,$id_obj,$user_id)
 		{
-			include_once "..\Controller\connection.php";
+			include_once "../Controller/connection.php";
 	  		$connect = get_connect();
 
 	  		if (!empty($Type_tr_vol) AND !empty($Mark_tr_vol) AND !empty($Denomin_tr_vol) AND !empty($Plomb_tr_vol) AND !empty($id_obj) AND !empty($user_id))
@@ -404,7 +404,7 @@ function edit_cons($id_cons)
 
 		function edit_plombs($id_tr_cur,$id_plomb)
 		{
-			include_once "..\Controller\connection.php";
+			include_once "../Controller/connection.php";
 	  		$connect = get_connect();
 
 	  		if (!empty($id_tr_cur) AND !empty($id_plomb))
@@ -433,7 +433,7 @@ function edit_cons($id_cons)
 
 		function edit_plombs_update($l1,$l2,$i1,$i2,$other,$id_tr_cur,$id_plomb) 
 		{
-			include_once "..\Controller\connection.php";
+			include_once "../Controller/connection.php";
 	  		$connect = get_connect();
 
 	  		if (!empty($l1) AND !empty($l2) AND !empty($i1) AND !empty($i2) AND !empty($other) AND !empty($id_tr_cur) AND !empty($id_plomb))
@@ -460,7 +460,7 @@ function edit_cons($id_cons)
 
 		function edit_change_cunter($id_change)
 		{
-			include_once "..\Controller\connection.php";
+			include_once "../Controller/connection.php";
 	  		$connect = get_connect();
 	  		if (!empty($id_change))
 	  		{
@@ -489,7 +489,7 @@ function edit_cons($id_cons)
 
 		function edit_change_count_update($Date_change,$Cause_change,$FIO_change,$Nomber_old,$Nomber_new,$id_change)
 		{
-			include_once "..\Controller\connection.php";
+			include_once "../Controller/connection.php";
 	  		$connect = get_connect();
 	  		if (!empty($Date_change) AND !empty($Cause_change) AND !empty($FIO_change) AND !empty($Nomber_old) AND !empty($Nomber_new) AND !empty($id_change))
 	  		{

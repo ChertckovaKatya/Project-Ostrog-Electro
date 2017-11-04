@@ -1,6 +1,6 @@
 <?php
-include '.\biblioticdib.php';
-include '..\Model\edit.php';
+include './biblioticdib.php';
+include '../Model/edit.php';
 
 $id_tr_cur = $_GET["id_tr_cur"];
 $id_plomb = $_GET["id_plomb"];

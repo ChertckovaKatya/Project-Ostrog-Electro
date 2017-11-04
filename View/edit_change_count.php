@@ -1,6 +1,6 @@
 <?php
-include '.\biblioticdib.php';
-include '..\Model\edit.php';
+include './biblioticdib.php';
+include '../Model/edit.php';
 
 $id_change=$_GET["id_change"];
 edit_change_cunter($_GET["id_change"]);

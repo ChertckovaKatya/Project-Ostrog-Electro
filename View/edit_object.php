@@ -1,6 +1,6 @@
 <?php
-include '.\biblioticdib.php';
-include '..\Model\edit.php';
+include './biblioticdib.php';
+include '../Model/edit.php';
 
 $id_obj = $_GET["id_obj"];
 edit_object($_GET["id_obj"]);

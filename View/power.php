@@ -1,5 +1,5 @@
 <?php
-include '.\biblioticdib.php';
+include './biblioticdib.php';
 
 
 ?>

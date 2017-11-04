@@ -1,7 +1,7 @@
 <?php
-include '.\biblioticdib.php';
-include '..\Model\add.php';
-// include '..\Model\counter_add.php';
+include './biblioticdib.php';
+include '../Model/add.php';
+// include '../Model/counter_add.php';
 
 
 // echo var_dump($_GET);

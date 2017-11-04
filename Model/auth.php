@@ -1,7 +1,7 @@
 <?php
 
 function auth_user($user_value,$password_value){
-  include_once "..\Controller\connection.php";
+  include_once "../Controller/connection.php";
 	$connect = get_connect();
   if(!empty($user_value) AND !empty($password_value))
   {
@@ -31,7 +31,7 @@ function auth_user($user_value,$password_value){
 
         return 'Ok';
   			// echo 'Вы успешно авторизировались на сайте!';
-  			// echo "<a href=\"./power.php\">На главную</a><br>";
+  			// echo "<a href=/"./power.php/">На главную</a><br>";
   			exit();
   		}
   	else

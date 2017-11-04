@@ -6,7 +6,7 @@
 	<link href="bootstrap.css" rel="stylesheet" type="text/css">
 </head>
 <?php
-include_once "..\Model\identification.php";
+include_once "../Model/identification.php";
 
 if (!empty($_POST['login']) AND !empty($_POST['password']))
 {
