@@ -90,11 +90,11 @@ $PHPExcel_file = PHPExcel_IOFactory::load("./file.xlsx");
 
 // ѕреобразуем первый лист Excel в таблицу MySQL
 $PHPExcel_file->setActiveSheetIndex(0);
-echo excel2mysql($PHPExcel_file->getActiveSheet(), $connection, "excel2mysql0", 1) ? "OK/n" : "FAIL/n";
+echo excel2mysql($PHPExcel_file->getActiveSheet(), $connection, "excel2mysql0", 1) ? "OK\n" : "FAIL\n";
 
 // ѕеребираем все листы Excel и преобразуем в таблицу MySQL
 foreach ($PHPExcel_file->getWorksheetIterator() as $index => $worksheet) {
-  echo excel2mysql($worksheet, $connection, "excel2mysql" . ($index != 0 ? $index : ""), 1) ? "OK/n" : "FAIL/n";
+  echo excel2mysql($worksheet, $connection, "excel2mysql" . ($index != 0 ? $index : ""), 1) ? "OK\n" : "FAIL\n";
 }
 
 ?>

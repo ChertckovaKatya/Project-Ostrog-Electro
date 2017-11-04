@@ -31,7 +31,7 @@ function auth_user($user_value,$password_value){
 
         return 'Ok';
   			// echo 'Вы успешно авторизировались на сайте!';
-  			// echo "<a href=/"./power.php/">На главную</a><br>";
+  			// echo "<a href=\"./power.php\">На главную</a><br>";
   			exit();
   		}
   	else
