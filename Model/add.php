@@ -180,7 +180,10 @@
 				$id_p=mysqli_fetch_array(mysqli_query($connect,"select id_plomb from Plombs WHERE L1 ='".$L1."' AND L2 ='".$L2."' AND I1 ='".$I1."'  AND I1 ='".$I2."' AND Other_places_plomb='".$Other_places_plomb."';"));
 				$id_plomb=$id_p['id_plomb'];
 				mysqli_query($connect,"INSERT INTO Phase_tr_cur (Phase,Transfor_cur_id_phase,Phase_id_plomb) VALUES ('$Phase','$id_tr_cur','$id_plomb');");
+				//echo "INSERT INTO Plombs (L1,L2,I1,I2,Other_places_plomb) VALUES ('$L1','$L2','$I1','$I2','$Other_places_plomb');";
+				//echo "INSERT INTO Phase_tr_cur (Phase,Transfor_cur_id_phase,Phase_id_plomb) VALUES ('$Phase','$id_tr_cur','$id_plomb');";
 
+	
 				return 'Add';
 	
 				exit();
