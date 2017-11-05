@@ -1,7 +1,7 @@
 <?php
  	function del_cons($id_cons)
 	{
-		include_once "..\Controller\connection.php";
+		include_once "../Controller/connection.php";
 		$connect = get_connect();
 		if (!empty($id_cons))
 		{
@@ -20,7 +20,7 @@
 
 	function del_object ($id_cons)
 	{
-		include_once "..\Controller\connection.php";
+		include_once "../Controller/connection.php";
 		$connect = get_connect();
 		if (!empty($id_cons))
 		{
@@ -39,7 +39,7 @@
 
 		function del_counter ($id_count,$id_obj)
 	{
-		include_once "..\Controller\connection.php";
+		include_once "../Controller/connection.php";
 		$connect = get_connect();
 		if (!empty($id_count) AND !empty($id_obj))
 		{
@@ -58,7 +58,7 @@
 
 	function del_dimension ($id_dim,$id_obj)
 	{
-		include_once "..\Controller\connection.php";
+		include_once "../Controller/connection.php";
 		$connect = get_connect();
 		if (!empty($id_dim) AND !empty($id_obj))
 		{
@@ -77,7 +77,7 @@
 
 	function del_transfor_cur($id_tr_cur,$id_obj)
 	{
-		include_once "..\Controller\connection.php";
+		include_once "../Controller/connection.php";
 		$connect = get_connect();
 		if (!empty($id_tr_cur) AND !empty($id_obj))
 		{
@@ -97,7 +97,7 @@
 
 	function del_transfor_vol($id_tr_vol)
 	{
-		include_once "..\Controller\connection.php";
+		include_once "../Controller/connection.php";
 		$connect = get_connect();
 		if (!empty($id_tr_vol))
 		{
@@ -117,7 +117,7 @@
 
 	function del_plombs($id_tr_cur,$id_plomb,$phase)
 	{
-		include_once "..\Controller\connection.php";
+		include_once "../Controller/connection.php";
 		$connect = get_connect();
 		if (!empty($id_tr_cur) AND !empty($id_plomb) AND !empty($phase))
 		{	
@@ -145,7 +145,7 @@
 
 	function del_change_count($id_change)
 	{
-		include_once "..\Controller\connection.php";
+		include_once "../Controller/connection.php";
 		$connect = get_connect();
 		if(!empty($id_change))
 		{
@@ -166,7 +166,7 @@
 
 	function del_all_dates($id_all,$id_date_list,$type_pr)
 	{
-		include_once "..\Controller\connection.php";
+		include_once "../Controller/connection.php";
 		$connect = get_connect();
 		if(!empty($id_all) AND !empty($id_date_list) AND !empty($type_pr))
 		{

@@ -1,7 +1,7 @@
 <?php
 // Подключаем библиотеку
 pear install <PHPExcel-1.8>.tgz;
-include_path="C:\xampp\apache\lib\PHPExcel-1.8";
+include_path="C:/xampp/apache/lib/PHPExcel-1.8";
 require_once "PHPExcel.php";
 
 // Функция преобразования листа Excel в таблицу MySQL, с учетом объединенных строк и столбцов.

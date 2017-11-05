@@ -2,9 +2,9 @@
 <link href="../css/consumer.css" rel="stylesheet">
 
 <?php
-include '.\biblioticdib.php';
-include '..\Model\cons.php';
-// include '.\search.php';
+include './biblioticdib.php';
+include '../Model/cons.php';
+// include './search.php';
 $id=0;
 $id=$_GET['id'];
 $Text_search=$_GET['Text_search'];

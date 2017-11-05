@@ -1,7 +1,7 @@
 <?php
 
-include '.\biblioticdib.php';
-include '..\Model\edit.php';
+include './biblioticdib.php';
+include '../Model/edit.php';
 
 
 edit_cons ($_GET["user_id"]);

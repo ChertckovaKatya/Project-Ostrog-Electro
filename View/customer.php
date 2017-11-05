@@ -1,7 +1,7 @@
 <?php
 
-include '.\biblioticdib.php';
-include '..\Model\cons.php';
+include './biblioticdib.php';
+include '../Model/cons.php';
 
 
 

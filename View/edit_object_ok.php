@@ -1,7 +1,7 @@
 <?php 
 
-include '.\biblioticdib.php';
-include '..\Model\edit.php';
+include './biblioticdib.php';
+include '../Model/edit.php';
 
 
 global $o;

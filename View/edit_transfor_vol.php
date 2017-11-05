@@ -1,6 +1,6 @@
 <?php
-include '.\biblioticdib.php';
-include '..\Model\edit.php';
+include './biblioticdib.php';
+include '../Model/edit.php';
 
 $id_tr_vol = $_GET["id_tr_vol"];
 edit_transfor_vol($_GET["id_tr_vol"]);

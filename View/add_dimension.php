@@ -1,6 +1,6 @@
 <?php
-include '.\biblioticdib.php';
-include '..\Model\add.php';
+include './biblioticdib.php';
+include '../Model/add.php';
 
 
 $user_id = $_GET["user_id"];

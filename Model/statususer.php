@@ -1,7 +1,7 @@
 <?php
 
 function status_user(){
-	include_once "..\Controller\connection.php";
+	include_once "../Controller/connection.php";
 	$connect = get_connect();
 	if(!empty($_COOKIE['username'] ))
 	{

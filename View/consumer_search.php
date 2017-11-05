@@ -1,8 +1,8 @@
 <link href="../css/consumer.css" rel="stylesheet">
 
 <?php
-include '.\biblioticdib.php';
-include '..\Model\cons.php';
+include './biblioticdib.php';
+include '../Model/cons.php';
  
 if (!empty($_POST["Text_search"]) AND !empty($_POST["search"]))
 {

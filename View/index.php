@@ -7,9 +7,9 @@
 
 <?php
 
-include_once "..\Model\statususer.php";
-include_once "..\Model\auth.php";
-include_once "..\Model\identification.php";
+include_once "../Model/statususer.php";
+include_once "../Model/auth.php";
+include_once "../Model/identification.php";
 
 
 
@@ -35,7 +35,7 @@ if(!empty($_POST['login']) AND !empty($_POST['password']))
         break;
         case "Ok":
             // echo "Вы успешно авторизировались на сайте!";
-			header ('Location:../view/power.php');
+			header ('Location:../View/power.php');
         break;
     }
 }
