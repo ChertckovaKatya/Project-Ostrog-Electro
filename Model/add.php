@@ -25,17 +25,17 @@
 	  
 	}
 
-	function add_object($owner_fio,$renter_fio,$name_object,$mail_address,$phone_object,$sourse_of_power,$vol_class,$date_check,$user_id)
+	function add_object($owner_fio,$renter_fio,$name_object,$mail_address,$phone_object,$sourse_of_power,$vol_class,$user_id)
 		{
 			include_once "..\Controller\connection.php";
 			$connect = get_connect();
-			if (!empty($owner_fio) AND !empty($renter_fio) AND !empty($name_object) AND !empty($mail_address) AND !empty($phone_object)  AND !empty($sourse_of_power) AND !empty($vol_class)  AND !empty($date_check)  AND !empty($user_id) )
+			if (!empty($owner_fio) AND !empty($renter_fio) AND !empty($name_object) AND !empty($mail_address) AND !empty($phone_object)  AND !empty($sourse_of_power) AND !empty($vol_class) AND !empty($user_id) )
 			{
-					mysqli_query($connect,"INSERT INTO Object (Owner_FIO, Renter_FIO,Name_object,Mailing_address,Phone_object,Source_of_power,Voltage_class,Date_instrumental_check,Obj_Cons_id)
-  				VALUES ('$owner_fio','$renter_fio','$name_object','$mail_address','$phone_object','$sourse_of_power','$vol_class','$date_check','$user_id');");
+					mysqli_query($connect,"INSERT INTO Object (Owner_FIO, Renter_FIO,Name_object,Mailing_address,Phone_object,Source_of_power,Voltage_class,Obj_Cons_id)
+  				VALUES ('$owner_fio','$renter_fio','$name_object','$mail_address','$phone_object','$sourse_of_power','$vol_class','$user_id');");
 
-				echo "INSERT INTO Object (Owner_FIO,Renter_FIO,Name_object,Mailing_address,Phone_object,Source_of_power,Voltage_class,Date_instrumental_check,Obj_Cons_id)
-  				VALUES ('$owner_fio','$renter_fio','$name_object','$mail_address','$phone_object','$sourse_of_power','$vol_class','$date_check','$user_id');)";
+				// echo "INSERT INTO Object (Owner_FIO,Renter_FIO,Name_object,Mailing_address,Phone_object,Source_of_power,Voltage_class,Date_instrumental_check,Obj_Cons_id)
+  		// 		VALUES ('$owner_fio','$renter_fio','$name_object','$mail_address','$phone_object','$sourse_of_power','$vol_class','$date_check','$user_id');)";
 
 				return 'Add_object';
 	
@@ -59,8 +59,8 @@
 					mysqli_query($connect,"INSERT INTO Transfor_vol(Type_tr_vol,Mark_tr_vol,Denomin_tr_vol,Plomb_tr_vol,Object_id_tr_vol,Cons_id_obj_tr_vol)
   				VALUES ('$Type_tr_vol','$Mark_tr_vol','$Denomin_tr_vol','$Plomb_tr_vol','$id_obj','$user_id');");
 
-					echo "INSERT INTO Transfor_vol(Type_tr_vol,Mark_tr_vol,Denomin_tr_vol,Plomb_tr_vol,Object_id_tr_vol,Cons_id_obj_tr_vol)
-  				VALUES ('$Type_tr_vol','$Mark_tr_vol','$Denomin_tr_vol','$Plomb_tr_vol','$id_obj','$user_id');";
+					// echo "INSERT INTO Transfor_vol(Type_tr_vol,Mark_tr_vol,Denomin_tr_vol,Plomb_tr_vol,Object_id_tr_vol,Cons_id_obj_tr_vol)
+  			// 	VALUES ('$Type_tr_vol','$Mark_tr_vol','$Denomin_tr_vol','$Plomb_tr_vol','$id_obj','$user_id');";
 				
 
 				return 'Add';
@@ -108,7 +108,7 @@
 			if (!empty($_POST['Date_change']) AND !empty($_POST['Cause_change']) AND !empty($_POST['FIO_change']) AND !empty($_POST['Nomber_old']) AND !empty($_POST['Nomber_new']) AND !empty($_POST['id_count']))
 			{
 				mysqli_query($connect,"INSERT INTO Change_count (Date_change,Cause_change,FIO_change,Nomber_old,Nomber_new,Counter_id_count) VALUES ('$Date_change','$Cause_change','$FIO_change','$Nomber_old','$Nomber_new','$id_count');");
-				echo "INSERT INTO Change_count (Date_change,Cause_change,FIO_change,Nomber_old,Nomber_new,Counter_id_count) VALUES ('$Date_change','$Cause_change','$FIO_change','$Nomber_old','$Nomber_new','$id_count');";
+				// echo "INSERT INTO Change_count (Date_change,Cause_change,FIO_change,Nomber_old,Nomber_new,Counter_id_count) VALUES ('$Date_change','$Cause_change','$FIO_change','$Nomber_old','$Nomber_new','$id_count');";
 
 				return 'Add';
 	
@@ -146,16 +146,16 @@
 			} 
         }
 
-        function add_transfor_cur($Type_tr_cur,$Mark_tr_cur,$Denomin_tr_cur,$Year_release_tr_cur,$Num_tr_cur_fa,$Num_tr_cur_fb,$Num_tr_cur_fc,$Phase_tr_cur,$id_obj,$user_id)
+        function add_transfor_cur($Type_tr_cur,$Mark_tr_cur,$Denomin_tr_cur,$Year_release_tr_cur,$Num_tr_cur_fa,$Num_tr_cur_fb,$Num_tr_cur_fc,$id_obj,$user_id)
         {
         	include_once "..\Controller\connection.php";
 			$connect = get_connect();
 
-			if (!empty($Type_tr_cur) AND !empty($Mark_tr_cur) AND !empty($Denomin_tr_cur) AND !empty($Year_release_tr_cur) AND !empty($Denomin_tr_cur) AND !empty($Num_tr_cur_fa) AND !empty($Num_tr_cur_fb)  AND !empty($Num_tr_cur_fc) AND !empty($Phase_tr_cur)  AND !empty($id_obj)  AND !empty($user_id))
+			if (!empty($Type_tr_cur) AND !empty($Mark_tr_cur) AND !empty($Denomin_tr_cur) AND !empty($Year_release_tr_cur) AND !empty($Denomin_tr_cur) AND !empty($Num_tr_cur_fa) AND !empty($Num_tr_cur_fb)  AND !empty($Num_tr_cur_fc) AND !empty($id_obj)  AND !empty($user_id))
 			{
-				mysqli_query($connect,"INSERT INTO Transfor_cur (Type_tr_cur,Mark_tr_cur,Denomin_tr_cur,Year_release_tr_cur,Num_tr_cur_fa,Num_tr_cur_fb,Num_tr_cur_fc,Phase_tr_cur,Obj_id_tr_cur,Obj_Cons_id_tr_cur) VALUES ('$Type_tr_cur','$Mark_tr_cur','$Denomin_tr_cur','$Year_release_tr_cur','$Num_tr_cur_fa','$Num_tr_cur_fb','$Num_tr_cur_fc','$Phase_tr_cur','$id_obj','$user_id');");
+				mysqli_query($connect,"INSERT INTO Transfor_cur (Type_tr_cur,Mark_tr_cur,Denomin_tr_cur,Year_release_tr_cur,Num_tr_cur_fa,Num_tr_cur_fb,Num_tr_cur_fc,Obj_id_tr_cur,Obj_Cons_id_tr_cur) VALUES ('$Type_tr_cur','$Mark_tr_cur','$Denomin_tr_cur','$Year_release_tr_cur','$Num_tr_cur_fa','$Num_tr_cur_fb','$Num_tr_cur_fc','$id_obj','$user_id');");
 
-				echo "INSERT INTO Transfor_cur (Type_tr_cur,Mark_tr_cur,Denomin_tr_cur,Year_release_tr_cur,Num_tr_cur_fa,Num_tr_cur_fb,Num_tr_cur_fc,Phase_tr_cur,Obj_id_tr_cur,Obj_Cons_id_tr_cur) VALUES ('$Type_tr_cur','$Mark_tr_cur','$Denomin_tr_cur','$Year_release_tr_cur','$Num_tr_cur_fa','$Num_tr_cur_fb','$Num_tr_cur_fc','$Phase_tr_cur','$id_obj','$user_id')";
+				// echo "INSERT INTO Transfor_cur (Type_tr_cur,Mark_tr_cur,Denomin_tr_cur,Year_release_tr_cur,Num_tr_cur_fa,Num_tr_cur_fb,Num_tr_cur_fc,Obj_id_tr_cur,Obj_Cons_id_tr_cur) VALUES ('$Type_tr_cur','$Mark_tr_cur','$Denomin_tr_cur','$Year_release_tr_cur','$Num_tr_cur_fa','$Num_tr_cur_fb','$Num_tr_cur_fc','$id_obj','$user_id')";
 
 					return 'Add_tr_cur';
 	
@@ -169,14 +169,17 @@
 			} 
         }
 
-        function add_plombs($L1,$L2,$I1,$I2,$Other_places_plomb,$id_tr_cur)
+        function add_plombs($Phase,$L1,$L2,$I1,$I2,$Other_places_plomb,$id_tr_cur)
         {
         	include_once "..\Controller\connection.php";
 			$connect = get_connect();
 
-			if (!empty($L1) AND !empty($L2) AND !empty($I1) AND !empty($I2) AND !empty($Other_places_plomb) AND !empty($id_tr_cur))
+			if (!empty($Phase) AND !empty($L1) AND !empty($L2) AND !empty($I1) AND !empty($I2) AND !empty($Other_places_plomb) AND !empty($id_tr_cur))
 			{
-				mysqli_query($connect,"INSERT INTO Plombs (L1,L2,I1,I2,Other_places_plomb,Tr_cur_id_plomb) VALUES ('$L1','$L2','$I1','$I2','$Other_places_plomb','$id_tr_cur');");
+				mysqli_query($connect,"INSERT INTO Plombs (L1,L2,I1,I2,Other_places_plomb) VALUES ('$L1','$L2','$I1','$I2','$Other_places_plomb');");
+				$id_p=mysqli_fetch_array(mysqli_query($connect,"select id_plomb from Plombs WHERE L1 ='".$L1."' AND L2 ='".$L2."' AND I1 ='".$I1."'  AND I1 ='".$I2."' AND Other_places_plomb='".$Other_places_plomb."';"));
+				$id_plomb=$id_p['id_plomb'];
+				mysqli_query($connect,"INSERT INTO Phase_tr_cur (Phase,Transfor_cur_id_phase,Phase_id_plomb) VALUES ('$Phase','$id_tr_cur','$id_plomb');");
 
 				return 'Add';
 	
@@ -200,7 +203,7 @@
 
 				mysqli_query($connect,"INSERT INTO Date_list (Date_l,Type_date_id) VALUES ('$Date','$Type');");
 
-				echo "INSERT INTO Date_list (Date_l,Type_date_id) VALUES ('$Date','$Type');";
+				// echo "INSERT INTO Date_list (Date_l,Type_date_id) VALUES ('$Date','$Type');";
 
 				$id=mysqli_fetch_array(mysqli_query($connect,"select id_Date from Date_list  WHERE Date_l ='".$Date."' AND Type_date_id ='".$Type."';"));
 
@@ -214,7 +217,7 @@
 				{
 					mysqli_query($connect,"INSERT INTO All_dates (Date_list_id,Counter_id_count,Conclusio,Notes) VALUES ('$id_D','$id_all','$Conclusio','$Notes');");
 
-					echo "INSERT INTO All_dates (Date_list_id,Counter_id_count,Conclusio,Notes) VALUES ('$id_D','$id_all','$Conclusio','$Notes');";
+					// echo "INSERT INTO All_dates (Date_list_id,Counter_id_count,Conclusio,Notes) VALUES ('$id_D','$id_all','$Conclusio','$Notes');";
 
 				}
 				if ($type_pr==2)

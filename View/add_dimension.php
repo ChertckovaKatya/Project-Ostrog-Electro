@@ -19,15 +19,15 @@ $id_obj = $_GET["id_obj"];
       		<input name="Alter_phase" class="form-control">
     	</div>
     	<div class="form-group">
-     	 	<label for="name">Нагрузка в амперах Фа:</label>
+     	 	<label for="name">Нагрузка в амперах фА:</label>
       		<input name="Load_fa" class="form-control">
     	</div>
     	<div class="form-group">
-     	 	<label for="name">Нагрузка в амперах Фб:</label>
+     	 	<label for="name">Нагрузка в амперах фБ:</label>
       		<input name="Load_fb" class="form-control">
     	</div>
     	<div class="form-group">
-     	 	<label for="name">Нагрузка в амперах Фс:</label>
+     	 	<label for="name">Нагрузка в амперах фС:</label>
       		<input name="Load_fc" class="form-control">
     	</div>
     	<div class="form-group">

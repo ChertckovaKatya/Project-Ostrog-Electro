@@ -109,7 +109,7 @@
 	{
 		include_once "..\Controller\connection.php";
 		$connect = get_connect();
-		$customer=(mysqli_query($connect,"select Name_consumer,Phone_consumer from consumer WHERE id_consumer =".$user_id.";"));
+		$customer=(mysqli_query($connect,"select Name_consumer,Phone_consumer,Face from consumer WHERE id_consumer =".$user_id.";"));
 		$array_cust= array();
 		$i = 0;
 		while ($row = mysqli_fetch_assoc($customer)) 
@@ -210,7 +210,7 @@
 		include_once "..\Controller\connection.php";
 		$connect = get_connect();
 
-		$plombs=(mysqli_query($connect,"Select id_plomb,L1,L2,I1,I2,Other_places_plomb from home.Plombs WHERE Tr_cur_id_plomb=".$id_tr_cur.";"));
+		$plombs=(mysqli_query($connect,"Select t1.Phase,t2.id_plomb,t2.L1,t2.L2,t2.I1,t2.I2,t2.Other_places_plomb from Phase_tr_cur AS t1 join Plombs AS t2 on t1.Phase_id_plomb=t2.id_plomb where Transfor_cur_id_phase=".$id_tr_cur.";"));
 
 		$array_pl= array();
 		$i = 0;
@@ -254,20 +254,20 @@
 		{
 			if ($type==1)
 			{
-				$result=(mysqli_query($connect,"select t1.Date_list_id,t1.Conclusio,t1.Notes,t2.Date_l,t3.Type from All_dates AS t1 join Date_list AS t2 join Type_date AS t3 on  t1.Date_list_id=t2.id_Date AND t2.Type_date_id=t3.id_Type where Counter_id_count=".$id_reg.";"));
+				$result=(mysqli_query($connect,"select t3.id_Type,t1.Date_list_id,t1.Conclusio,t1.Notes,t2.Date_l,t3.Type from All_dates AS t1 join Date_list AS t2 join Type_date AS t3 on  t1.Date_list_id=t2.id_Date AND t2.Type_date_id=t3.id_Type where Counter_id_count=".$id_reg.";"));
 
 		
 
 			}
 			if ($type==2)
 			{
-				$result=(mysqli_query($connect,"select t1.Date_list_id,t1.Conclusio,t1.Notes,t2.Date_l,t3.Type from All_dates AS t1 join Date_list AS t2 join Type_date AS t3 on  t1.Date_list_id=t2.id_Date AND t2.Type_date_id=t3.id_Type where Transfor_cur_id=".$id_reg.";"));
+				$result=(mysqli_query($connect,"select t3.id_Type, t1.Date_list_id,t1.Conclusio,t1.Notes,t2.Date_l,t3.Type from All_dates AS t1 join Date_list AS t2 join Type_date AS t3 on  t1.Date_list_id=t2.id_Date AND t2.Type_date_id=t3.id_Type where Transfor_cur_id=".$id_reg.";"));
 				
 
 			}
 			if ($type==3)
 			{
-				$result=(mysqli_query($connect,"select t1.Date_list_id,t1.Conclusio,t1.Notes,t2.Date_l,t3.Type from All_dates AS t1 join Date_list AS t2 join Type_date AS t3 on  t1.Date_list_id=t2.id_Date AND t2.Type_date_id=t3.id_Type where Transfor_vol_id=".$id_reg.";"));
+				$result=(mysqli_query($connect,"select t3.id_Type,t1.Date_list_id,t1.Conclusio,t1.Notes,t2.Date_l,t3.Type from All_dates AS t1 join Date_list AS t2 join Type_date AS t3 on  t1.Date_list_id=t2.id_Date AND t2.Type_date_id=t3.id_Type where Transfor_vol_id=".$id_reg.";"));
 				;
 
 			}
@@ -360,10 +360,13 @@
 		$user=0;
 		if(!empty($id_tr_cur))
 		{
-			$row = mysqli_fetch_array(mysqli_query($connect,"SELECT * FROM  Plombs WHERE  Tr_cur_id_plomb=".$id_tr_cur.";"), MYSQLI_NUM);
-			if (count($row)!=0)
+			$row = mysqli_fetch_array(mysqli_query($connect,"SELECT COUNT(Phase_id_plomb) FROM  Phase_tr_cur WHERE  Transfor_cur_id_phase=".$id_tr_cur.";"), MYSQLI_NUM);
+		
+			if ($row[0]!=0)
 			{
-				 $user=1;
+
+				 $user=$row[0];
+				 
 			}
 		}
 
@@ -371,6 +374,7 @@
 		{
 		$user = 0;
 		}
+		// var_dump ($user);
 		return $user;
 
 	}

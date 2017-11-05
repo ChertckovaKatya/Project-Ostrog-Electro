@@ -8,11 +8,16 @@ $id_tr_cur = $_GET["id_tr_cur"];
 <!DOCTYPE html>
 <div class="container">
 	<form class="form-container" action="add_plombs.php" method="POST">
+    <select name="Phase">
+      <option value="1">Фаза А</option>
+      <option value="2">Фаза Б</option>
+      <option value="3">Фаза С</option>
+    </select>
 		<div class="form-group">
      	 	<label for="name">L1:</label>
       		<input name="L1" class="form-control">
-    	</div>
-    	<div class="form-group">
+    </div>
+    <div class="form-group">
      	 	<label for="name">L2:</label>
       		<input name="L2" class="form-control">
     	</div>
@@ -38,9 +43,9 @@ $id_tr_cur = $_GET["id_tr_cur"];
 </div>
 
 <?php
-	if (!empty($_POST['L1']) AND !empty($_POST['L2']) AND !empty($_POST['I1']) AND !empty($_POST['I2']) AND !empty($_POST['Other_places_plomb']) AND !empty($_POST['id_tr_cur']))
+	if (!empty($_POST["Phase"]) AND !empty($_POST['L1']) AND !empty($_POST['L2']) AND !empty($_POST['I1']) AND !empty($_POST['I2']) AND !empty($_POST['Other_places_plomb']) AND !empty($_POST['id_tr_cur']))
 	{
-		$result=add_plombs(($_POST['L1']),($_POST['L2']),($_POST['I1']),($_POST['I2']),($_POST['Other_places_plomb']),($_POST['id_tr_cur']));
+		$result=add_plombs(($_POST["Phase"]),($_POST['L1']),($_POST['L2']),($_POST['I1']),($_POST['I2']),($_POST['Other_places_plomb']),($_POST['id_tr_cur']));
 
 		switch ($result)
          {

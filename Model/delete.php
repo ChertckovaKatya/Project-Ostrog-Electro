@@ -115,14 +115,21 @@
 
 	}
 
-	function del_plombs($id_tr_cur,$id_plomb)
+	function del_plombs($id_tr_cur,$id_plomb,$phase)
 	{
 		include_once "..\Controller\connection.php";
 		$connect = get_connect();
-		if (!empty($id_tr_cur) AND !empty($id_plomb))
-		{
-			mysqli_query($connect,"delete from Plombs where id_plomb=".$id_plomb." AND Tr_cur_id_plomb=".$id_tr_cur.";");
-			echo "delete from Plombs where id_plomb=".$id_plomb." AND Tr_cur_id_plomb=".$id_tr_cur.";";
+		if (!empty($id_tr_cur) AND !empty($id_plomb) AND !empty($phase))
+		{	
+			mysqli_query($connect,"delete from phase_tr_cur where Phase_id_plomb=".$id_plomb." AND Phase=".$phase." AND Transfor_cur_id_phase=".$id_tr_cur.";");
+			
+			// echo "delete from phase_tr_cur where Phase_id_plomb=".$id_plomb." AND Phase=".$phase." AND Transfor_cur_id_phase=".$id_tr_cur.";";
+
+			mysqli_query($connect,"delete from plombs where id_plomb=".$id_plomb.";");
+			// echo "delete from plombs where id_plomb=".$id_plomb.";";
+
+			
+			// echo "delete from Plombs where id_plomb=".$id_plomb." AND Tr_cur_id_plomb=".$id_tr_cur.";";
 
 			return 'Del';
 	

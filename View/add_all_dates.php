@@ -4,8 +4,8 @@ include '..\Model\add.php';
 
 $id_all = $_GET["id_all"];
 $type_pr= $_GET["type_pr"];
-echo $id_all;
-echo $type_pr;
+// echo $id_all;
+// echo $type_pr;
 ?>
 
 <!DOCTYPE html>
@@ -67,7 +67,7 @@ echo $type_pr;
 <?php
 if(!empty($_POST['Type']) AND !empty($_POST['Date']) AND !empty($_POST['Conclusio']) AND !empty($_POST['Notes']) AND !empty($_POST['id_all']) AND !empty($_POST['type_pr']))
     {
-      echo "работает";
+      
         $result =  add_all_dates(($_POST['Type']), ($_POST['Date']),($_POST['Conclusio']),($_POST['Notes']),($_POST['id_all']),($_POST['type_pr']));
 
         switch ($result)

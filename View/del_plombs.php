@@ -6,9 +6,9 @@ include '..\Model\delete.php';
 
 
 
-if(!empty($_GET["id_tr_cur"]) AND !empty($_GET["id_plomb"]))
+if(!empty($_GET["id_tr_cur"]) AND !empty($_GET["id_plomb"]) AND !empty($_GET["phase"]))
 {
-	$result=del_plombs($_GET["id_tr_cur"],$_GET["id_plomb"]);
+	$result=del_plombs($_GET["id_tr_cur"],$_GET["id_plomb"],$_GET["phase"]);
 
 	switch ($result)
          {

@@ -44,11 +44,6 @@ echo $user_id;
     		<label for="name">Класс напряжения</label>
     		<input type="text" name="Voltage_class" class="form-control">
   		</div>
-
- 		<div class="form-group">
- 			<label for="name">Дата инструментальной проверки</label>
-			<input type="date" name="Date_instrumental_check" class="form-control">
-  		</div>
 		<div class="button-container">
       		<input autofocus class="btn btn-success" type="submit" value="Добавить">
       	</div>
@@ -57,9 +52,9 @@ echo $user_id;
 </div>
 
 <?php
-    if(!empty($_POST['Owner_FIO']) AND !empty($_POST['Renter_FIO']) AND !empty($_POST['Name_object']) AND !empty($_POST['Mailing_address'] ) AND !empty($_POST['Phone_object']) AND !empty($_POST['Source_of_power']) AND !empty($_POST['Voltage_class']) AND !empty($_POST["Date_instrumental_check"]) AND !empty($_POST["user_id"]))
+    if(!empty($_POST['Owner_FIO']) AND !empty($_POST['Renter_FIO']) AND !empty($_POST['Name_object']) AND !empty($_POST['Mailing_address'] ) AND !empty($_POST['Phone_object']) AND !empty($_POST['Source_of_power']) AND !empty($_POST['Voltage_class']) AND !empty($_POST["user_id"]))
     {
-        $result =  add_object(($_POST['Owner_FIO']),($_POST['Renter_FIO']),($_POST['Name_object']),($_POST['Mailing_address']),($_POST['Phone_object']),($_POST['Source_of_power']),($_POST['Voltage_class']),($_POST["Date_instrumental_check"]),($_POST['user_id']));
+        $result =  add_object(($_POST['Owner_FIO']),($_POST['Renter_FIO']),($_POST['Name_object']),($_POST['Mailing_address']),($_POST['Phone_object']),($_POST['Source_of_power']),($_POST['Voltage_class']),($_POST['user_id']));
         // echo result;
         switch ($result)
          {

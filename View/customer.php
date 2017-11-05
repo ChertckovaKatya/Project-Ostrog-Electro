@@ -7,6 +7,7 @@ include '..\Model\cons.php';
 
 $user_id = $_GET["user_id"];
 $row=cust_conclusion($_GET["user_id"]);
+$id_face=$row[0]['Face'];
 $row1=object_conclusion($_GET["user_id"]);
 $id_obj=$row1[0]['id_object'];
 $row3=counter_conclusion($id_obj,$user_id);
@@ -22,15 +23,11 @@ $change_count=change_count_conclusion($id_count);
 $id_change=$change_count[0]["id_change"];
 $all_dat_count=all_dates_conclusion($id_count,1);
 
-// $id_date_list_count=$all_dat_count[0]['Date_list_id'];
-
 $all_dat_tr_cur=all_dates_conclusion($id_tr_cur,2);
 
-// $id_date_list_tr_cur=$all_dat_tr_cur[0]['Date_list_id'];
 
 $all_dat_tr_vol=all_dates_conclusion($id_tr_vol,3);
 
-// $id_date_list_tr_vol=$all_dat_tr_vol[0]['Date_list_id'];
 
 ?>
 <!DOCTYPE html>
@@ -43,10 +40,18 @@ $all_dat_tr_vol=all_dates_conclusion($id_tr_vol,3);
 				Телефон:<?php echo $row[0]['Phone_consumer']; ?>
 			</div> 
 			<div class="col-sm-4">
-     			<a href="..\View\del_consumer.php?user_id=<?php echo (int)$user_id; ?>"> Удалить пользователя</a>
-   				<br>
-     			<a href="..\View\edit.php?user_id=<?php echo (int)$user_id; ?>"> Редактировать</a>
-    			<br>
+				<?php
+					if ($id_face==1)
+					{
+						echo 'Юридическое лицо';
+					}
+					if ($id_face==2)
+					{
+						echo 'Физическое лицо';
+					}
+				?>
+				<br><a href="..\View\del_consumer.php?user_id=<?php echo (int)$user_id; ?>"> Удалить пользователя</a></br>
+   				<a href="..\View\edit.php?user_id=<?php echo (int)$user_id; ?>"> Редактировать</a>
     			<?php
     			if (prov_obj($user_id)!=1)
     			{	echo '
@@ -61,7 +66,7 @@ $all_dat_tr_vol=all_dates_conclusion($id_tr_vol,3);
 					if (prov_obj($user_id)==1)
 					{	echo
  					'<div class="container">
- 					<h4>Информация о объекте</h4>
+ 					<h4>Информация об объекте</h4>
 					Собственник: '.$row1[0]['Owner_FIO'].';
 					<br>Арендатор: '.$row1[0]['Renter_FIO'].';  </br>
 					Название объекта: '.$row1[0]['Name_object'].';
@@ -109,17 +114,16 @@ $all_dat_tr_vol=all_dates_conclusion($id_tr_vol,3);
 
     			if (prov_change_count($id_count)!=1)
     			{ echo'
-    				<a href="..\View\add_change_count.php?id_count='.$id_count.';"> Добавить данные о замене счетчика</a>
-    				<br>';
+    				<a href="..\View\add_change_count.php?id_count='.$id_count.';"> Добавить данные о замене счетчика</a>';
     			}
     			
     			if (prov_dimension($id_obj,$user_id)!=1)
     			{ echo '
-    				<a href="..\View\add_dimension.php?user_id='.$user_id.'&id_obj='.$id_obj.';"> Добавить данные об измерениях</a>';
+    				<br><a href="..\View\add_dimension.php?user_id='.$user_id.'&id_obj='.$id_obj.';"> Добавить данные об измерениях</a></br>';
     			}
 
     			echo'
-    			<h4><a href="..\View\add_all_dates.php?id_all='.$id_count.'&type_pr=1;"> Добавить дату о проверке счетчика</a></h4></br>';
+    			<h4><a href="..\View\add_all_dates.php?id_all='.$id_count.'&type_pr=1;"> Добавить дату о проверке счетчика</a></h4>';
 
     			if (prov_date($id_count,1)==1)
     			{
@@ -130,8 +134,11 @@ $all_dat_tr_vol=all_dates_conclusion($id_tr_vol,3);
     				<br>Дата: '.$all_dat_count[$i]['Date_l'].' '.$all_dat_count[$i]['Type'].';</br>
     				Заключение по учету: '.$all_dat_count[$i]['Conclusio'].';
     				<br>Примечание: '.$all_dat_count[$i]['Notes'].';</br>
-    				<a href="..\View\del_all_dates.php?id_all='.$id_count.'&id_date_list='.$all_dat_count[$i]['Date_list_id'].'&type_pr=1;"> Удалить дату о проверке/поверке счетчика </a>';
-    				
+    				<a href="..\View\del_all_dates.php?id_all='.$id_count.'&id_date_list='.$all_dat_count[$i]['Date_list_id'].'&type_pr=1;"> Удалить дату о проверке/поверке счетчика </a>
+    				<br>
+    				<a href="..\View\edit_all_dates.php?id_all='.$id_count.'&type_all='.$all_dat_count[$i]['id_Type'].'&id_date_list='.$all_dat_count[$i]['Date_list_id'].'&type_pr=1;"> Редактировать дату </a>
+    				</br>
+    				';
     				}
     			
 
@@ -160,12 +167,12 @@ $all_dat_tr_vol=all_dates_conclusion($id_tr_vol,3);
 			{
 			echo
  			'<div class="container">
- 			<h4>Данные о измерениях</h4>
+ 			<h4>Данные об измерениях</h4>
 			Дата: '.$dimen[0]['Date_dimen'].';
 			<br>Чередование фаз: '.$dimen[0]['Alter_phase'].';  </br>
-			Нагрузка в амперах Фа: '.$dimen[0]['Load_fa'].';
-			<br>Нагрузка в амперах Фб: '.$dimen[0]['Load_fb'].';  </br>
-			Нагрузка в амперах Фс: '.$dimen[0]['Load_fc'].';
+			Нагрузка в амперах фА: '.$dimen[0]['Load_fa'].';
+			<br>Нагрузка в амперах фБ: '.$dimen[0]['Load_fb'].';  </br>
+			Нагрузка в амперах фС: '.$dimen[0]['Load_fc'].';
 			<br>Cos фи: '.$dimen[0]['Cos_fi'].';  </br>
 			Количество оборотов диска: '.$dimen[0]['Kol_turn_disk'].';
 			<br>Потребляемая мощность в КВт: '.$dimen[0]['Power_consum'].';  </br>
@@ -174,16 +181,7 @@ $all_dat_tr_vol=all_dates_conclusion($id_tr_vol,3);
      		<br>
      		<a href="..\View\edit_dimension.php?user_id='.$user_id.'&id_obj='.$id_obj.';"> Редактировать данные об измерениях</a>
     		<br>';
-    		// if (prov_transfor_cur($id_obj,$user_id)!=1)
-    		// { echo '
-    		// <a href="..\View\add_transfor_cur.php?user_id='.$user_id.'&id_obj='.$id_obj.';"> Добавить трансформатор тока</a>';
-    		// }
-    		// if (prov_tr_vol($id_obj,$user_id)!=1)
-    		// {echo'
-    		// 	<br>
-    		// 	<a href="..\View\add_transfor_vol.php?user_id='.$user_id.'&id_obj='.$id_obj.';"> Добавить трансформатор напряжения</a></br>';
-    		// }
-
+    		
 
 			}
 		?>
@@ -227,16 +225,15 @@ $all_dat_tr_vol=all_dates_conclusion($id_tr_vol,3);
 				<br>Марка: '.$tr_cur[0]['Mark_tr_cur'].';  </br>
 				Номинал: '.$tr_cur[0]['Denomin_tr_cur'].';
 				<br>Год выпуска: '.$tr_cur[0]['Year_release_tr_cur'].';  </br>
-				№ Трансформатора тока Фа: '.$tr_cur[0]['Num_tr_cur_fa'].';
-				<br>№ Трансформатора тока Фб: '.$tr_cur[0]['Num_tr_cur_fb'].';  </br>
-				№ Трансформатора тока Фс: '.$tr_cur[0]['Num_tr_cur_fc'].';
-				<br>Фаза: '.$tr_cur[0]['Phase_tr_cur'].';  </br>
+				№ Трансформатора тока фА: '.$tr_cur[0]['Num_tr_cur_fa'].';
+				<br>№ Трансформатора тока фБ: '.$tr_cur[0]['Num_tr_cur_fb'].';  </br>
+				№ Трансформатора тока фС: '.$tr_cur[0]['Num_tr_cur_fc'].';
 				</div>
 				<a href="..\View\del_transfor_cur.php?user_id='.$user_id.'&id_obj='.$id_obj.'; "> Удалить трансформатор тока</a>
      			<br>
      			<a href="..\View\edit_transfor_cur.php?user_id='.$user_id.'&id_obj='.$id_obj.';"> Редактировать трансформатор тока</a>
     	 		<br>';
-    	 		if (prov_plombs($id_tr_cur)!=1)
+    	 		if ((prov_plombs($id_tr_cur)==0) || (prov_plombs($id_tr_cur)<3))
     	 		{
     	 			echo'
     	 		<a href="..\View\add_plombs.php?id_tr_cur='.$id_tr_cur.';"> Добавить пломбы</a>';
@@ -253,7 +250,10 @@ $all_dat_tr_vol=all_dates_conclusion($id_tr_vol,3);
     				Заключение по учету: '.$all_dat_tr_cur[$i]['Conclusio'].';
     				<br>Примечание: '.$all_dat_tr_cur[$i]['Notes'].';</br>
     				
-    				<a href="..\View\del_all_dates.php?id_all='.$id_tr_cur.'&id_date_list='.$all_dat_tr_cur[$i]['Date_list_id'].'&type_pr=2;"> Удалить дату о проверке/поверке трансформатора тока </a>';
+    				<a href="..\View\del_all_dates.php?id_all='.$id_tr_cur.'&id_date_list='.$all_dat_tr_cur[$i]['Date_list_id'].'&type_pr=2;"> Удалить дату о проверке/поверке трансформатора тока </a>
+    				<br>
+    				<a href="..\View\edit_all_dates.php?id_all='.$id_tr_cur.'&type_all='.$all_dat_tr_cur[$i]['id_Type'].'&id_date_list='.$all_dat_tr_cur[$i]['Date_list_id'].'&type_pr=2;"> Редактировать дату </a>
+    				</br>';
     				}
     			}
 				}
@@ -261,21 +261,37 @@ $all_dat_tr_vol=all_dates_conclusion($id_tr_vol,3);
 		</div>
 		<div class="col-sm-6">
 			<?php
-			if (prov_plombs($id_tr_cur)==1)
-				{ echo
-				'<div class="container">
-				<h4>Информация о пломбах</h4>
-				l1: '.$plombs[0]['L1'].';
-				<br>l2: '.$plombs[0]['L2'].';  </br>
-				I1: '.$plombs[0]['I1'].';
-				<br>I2: '.$plombs[0]['I2'].';  </br>
-				Другие места: '.$plombs[0]['Other_places_plomb'].';	
-				</div>
-				<a href="..\View\del_plombs.php?id_tr_cur='.$id_tr_cur.'&id_plomb='.$id_plomb.' "> Удалить пломбы</a>
-     			<br>
-     			<a href="..\View\edit_plombs.php?id_tr_cur='.$id_tr_cur.'&id_plomb='.$id_plomb.';"> Редактировать данные о пломбах </a>';
+			if (prov_plombs($id_tr_cur)!=0)
+				{ 
+					for ($i = 0; $i<count($plombs); $i++) 
+    				{
+    					echo
+						'<div class="container">
+						<h4>Информация о пломбах</h4>';
+						if ($plombs[$i]['Phase']==1)
+						{
+						echo " Фаза А";
+						}
+						if ($plombs[$i]['Phase']==2)
+						{
+						echo " Фаза Б";
+						}
+						if ($plombs[$i]['Phase']==3)
+						{
+						echo " Фаза С";
+						}						
+						echo '
+						<br>l1: '.$plombs[$i]['L1'].';</br>
+						l2: '.$plombs[$i]['L2'].';
+						<br>I1: '.$plombs[$i]['I1'].';</br>
+						I2: '.$plombs[$i]['I2'].';  
+						<br>Другие места: '.$plombs[$i]['Other_places_plomb'].';</br>	
+						</div>
+						<a href="..\View\del_plombs.php?id_tr_cur='.$id_tr_cur.'&id_plomb='.$plombs[$i]['id_plomb'].' &phase='.$plombs[$i]['Phase'].'"> Удалить пломбы</a>
+     					<br>
+     					<a href="..\View\edit_plombs.php?id_tr_cur='.$id_tr_cur.'&id_plomb='.$plombs[$i]['id_plomb'].'&phase='.$plombs[$i]['Phase'].';"> Редактировать данные о пломбах </a>';
+					}
 				}
-
 			?>
 		</div>
 	</div>
@@ -306,7 +322,11 @@ $all_dat_tr_vol=all_dates_conclusion($id_tr_vol,3);
     				<br>Дата: '.$all_dat_tr_vol[$i]['Date_l'].' '.$all_dat_tr_vol[$i]['Type'].';</br>
     				Заключение по учету: '.$all_dat_tr_vol[$i]['Conclusio'].';
     				<br>Примечание: '.$all_dat_tr_vol[$i]['Notes'].';</br>
-    				<a href="..\View\del_all_dates.php?id_all='.$id_tr_vol.'&id_date_list='.$all_dat_tr_vol[$i]['Date_list_id'].'&type_pr=3;"> Удалить дату о проверке/поверке трансформатора напряжения </a>';
+    				<a href="..\View\del_all_dates.php?id_all='.$id_tr_vol.'&id_date_list='.$all_dat_tr_vol[$i]['Date_list_id'].'&type_pr=3;"> Удалить дату о проверке/поверке трансформатора напряжения </a>
+    				<br>
+    				<a href="..\View\edit_all_dates.php?id_all='.$id_tr_vol.'&type_all='.$all_dat_tr_vol[$i]['id_Type'].'&id_date_list='.$all_dat_tr_vol[$i]['Date_list_id'].'&type_pr=3;"> Редактировать дату </a>
+    				</br>';
+    				
 
     				}
     			}

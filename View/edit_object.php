@@ -43,11 +43,6 @@ edit_object($_GET["id_obj"]);
     		<label for="name">Класс напряжения</label>
     		<input type="text" name="Voltage_class" class="form-control" value="<?php echo $vol_cl; ?>">
   		</div>
-
- 		<div class="form-group">
- 			<label for="name">Дата инструментальной проверки</label>
-			<input type="date" name="Date_instrumental_check" class="form-control" value="<?php echo $date_instr_check; ?>">
-  		</div>
   		<div class="button-container">
       		<input autofocus class="btn btn-success" type="submit" value="Готово">
     	</div>

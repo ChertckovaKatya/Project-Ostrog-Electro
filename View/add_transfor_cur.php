@@ -27,20 +27,16 @@ $id_obj = $_GET["id_obj"];
       		<input type="date" name="Year_release_tr_cur" class="form-control">
     	</div>
     	<div class="form-group">
-     	 	<label for="name">№ Трансформатора тока Фа:</label>
+     	 	<label for="name">№ Трансформатора тока фА:</label>
       		<input name="Num_tr_cur_fa" class="form-control">
     	</div>
     	<div class="form-group">
-     	 	<label for="name">№ Трансформатора тока Фб:</label>
+     	 	<label for="name">№ Трансформатора тока фБ:</label>
       		<input name="Num_tr_cur_fb" class="form-control">
     	</div>
     	<div class="form-group">
-     	 	<label for="name">№ Трансформатора тока Фс:</label>
+     	 	<label for="name">№ Трансформатора тока фС:</label>
       		<input name="Num_tr_cur_fc" class="form-control">
-    	</div>
-    	<div class="form-group">
-     	 	<label for="name">Фаза:</label>
-      		<input name="Phase_tr_cur" class="form-control">
     	</div>
     	<div class="button-container">
       		<input autofocus class="btn btn-success" type="submit" value="Добавить">
@@ -56,19 +52,22 @@ $id_obj = $_GET["id_obj"];
 </div>
 
 <?php
-	if(!empty($_POST['Type_tr_cur']) AND !empty($_POST['Mark_tr_cur']) AND !empty($_POST['Denomin_tr_cur']) AND !empty($_POST['Year_release_tr_cur']) AND !empty($_POST['Num_tr_cur_fa']) AND !empty($_POST['Num_tr_cur_fb']) AND !empty($_POST['Num_tr_cur_fc']) AND !empty($_POST['Phase_tr_cur']) AND !empty($_POST['id_obj']) AND !empty($_POST['user_id']))
+	if(!empty($_POST['Type_tr_cur']) AND !empty($_POST['Mark_tr_cur']) AND !empty($_POST['Denomin_tr_cur']) AND !empty($_POST['Year_release_tr_cur']) AND !empty($_POST['Num_tr_cur_fa']) AND !empty($_POST['Num_tr_cur_fb']) AND !empty($_POST['Num_tr_cur_fc']) AND !empty($_POST['id_obj']) AND !empty($_POST['user_id']))
 	{
+    echo "работает";
 
-		 $result =  add_transfor_cur(($_POST['Type_tr_cur']),($_POST['Mark_tr_cur']),($_POST['Denomin_tr_cur']),($_POST['Year_release_tr_cur']),($_POST['Num_tr_cur_fa']),($_POST['Num_tr_cur_fb']),($_POST['Num_tr_cur_fc']), ($_POST['Phase_tr_cur']),($_POST['id_obj']),($_POST['user_id']));
+		 $result =  add_transfor_cur(($_POST['Type_tr_cur']),($_POST['Mark_tr_cur']),($_POST['Denomin_tr_cur']),($_POST['Year_release_tr_cur']),($_POST['Num_tr_cur_fa']),($_POST['Num_tr_cur_fb']),($_POST['Num_tr_cur_fc']),($_POST['id_obj']),($_POST['user_id']));
 
 		 switch ($result)
          {
-            case "Add_tr_cur":?>
-               <script>
-             alert ('Трансформатор тока успешно добавлен');
-             window.location="consumer.php";
-            </script>
+            case "Add_tr_cur":
+            ?>
+             <script>
+              alert ('Трансформатор тока успешно добавлен');
+              window.location="consumer.php";
+             </script>
             <?php  
+
               break;
             case "Err-tr_cur":
               echo "Трансформатор тока не добавлен";
