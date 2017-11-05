@@ -526,18 +526,18 @@ function edit_cons($id_cons)
 	  			{
 	  				$Date_all=mysqli_fetch_array(mysqli_query($connect,"select t2.Date_l from All_dates as t1 join Date_list as t2 join Type_date as t3 on t1.Date_list_id=t2.id_Date AND t2.Type_date_id=t3.id_Type WHERE t1.Counter_id_count='".$id_all."' AND t1.Date_list_id='".$id_date_list."' AND id_Type='".$type_all."';"));
 
-	  				var_dump($Date_all);
+	  				//var_dump($Date_all);
 	  				$Conclusio_all=mysqli_fetch_array(mysqli_query($connect,"Select Conclusio from All_dates where Date_list_id='".$id_date_list."' AND Counter_id_count='".$id_all."';"));
-	  				var_dump($Conclusio_all);
+	  				//var_dump($Conclusio_all);
 	  				$Notes_all=mysqli_fetch_array(mysqli_query($connect,"Select Notes from All_dates where Date_list_id='".$id_date_list."' AND Counter_id_count='".$id_all."';"));
-	  				var_dump($Notes_all);
+	  				//var_dump($Notes_all);
 
 	  				$date_all=$Date_all["Date_l"];
-	  				var_dump($date_all);
+	  				//var_dump($date_all);
 	  				$conclusio_all=$Conclusio_all["Conclusio"];
-	  				var_dump($conclusio_all);
+	  				//var_dump($conclusio_all);
 	  				$notes_all=$Notes_all["Notes"];
-	  				var_dump($notes_all);
+	  				//var_dump($notes_all);
 	  			}
 	  			if($type_pr==2)
 	  			{
