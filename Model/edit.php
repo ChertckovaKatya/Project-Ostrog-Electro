@@ -290,15 +290,15 @@ function edit_cons($id_cons)
 
 	  			$num_tr_cur_fa=mysqli_fetch_array(mysqli_query($connect,"select Num_tr_cur_fa from Transfor_cur WHERE  Obj_id_tr_cur ='".$id_obj."' AND Obj_Cons_id_tr_cur='".$user_id."';"));
 
-	  			echo "select Num_tr_cur_fa from Transfor_cur WHERE  Obj_id_tr_cur ='".$id_obj."' AND Obj_Cons_id_tr_cur='".$user_id."';";
+	  			// echo "select Num_tr_cur_fa from Transfor_cur WHERE  Obj_id_tr_cur ='".$id_obj."' AND Obj_Cons_id_tr_cur='".$user_id."';";
 
 	  			$num_tr_cur_fb=mysqli_fetch_array(mysqli_query($connect,"select Num_tr_cur_fb from Transfor_cur WHERE  Obj_id_tr_cur ='".$id_obj."' AND Obj_Cons_id_tr_cur='".$user_id."';"));
 
-	  			echo "select Num_tr_cur_fb from Transfor_cur WHERE  Obj_id_tr_cur ='".$id_obj."' AND Obj_Cons_id_tr_cur='".$user_id."';";
+	  			// echo "select Num_tr_cur_fb from Transfor_cur WHERE  Obj_id_tr_cur ='".$id_obj."' AND Obj_Cons_id_tr_cur='".$user_id."';";
 
 	  			$num_tr_cur_fc=mysqli_fetch_array(mysqli_query($connect,"select Num_tr_cur_fc from Transfor_cur WHERE  Obj_id_tr_cur ='".$id_obj."' AND Obj_Cons_id_tr_cur='".$user_id."';"));
 	  			
-	  			echo "select Num_tr_cur_fc from Transfor_cur WHERE  Obj_id_tr_cur ='".$id_obj."' AND Obj_Cons_id_tr_cur='".$user_id."';";
+	  			// echo "select Num_tr_cur_fc from Transfor_cur WHERE  Obj_id_tr_cur ='".$id_obj."' AND Obj_Cons_id_tr_cur='".$user_id."';";
 
 	  			$phase_tr_cur=mysqli_fetch_array(mysqli_query($connect,"select Phase_tr_cur from Transfor_cur WHERE  Obj_id_tr_cur ='".$id_obj."' AND Obj_Cons_id_tr_cur='".$user_id."';"));
 

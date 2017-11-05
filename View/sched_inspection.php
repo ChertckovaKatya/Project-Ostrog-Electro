@@ -28,7 +28,7 @@ include '../Model/cons.php';
 		$row=sched_inspect($_POST['Date_inspect']);
 
 	}
-  var_dump($row);
+  //var_dump($row);
 
 ?>
 

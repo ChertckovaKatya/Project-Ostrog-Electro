@@ -46,10 +46,6 @@ edit_transfor_cur($_GET["user_id"],$_GET["id_obj"]);
      	 	<label for="name">№ Трансформатора тока Фс:</label >
       		<input name="Num_tr_cur_fc" class="form-control" value="<?php echo $fc_cur; ?>">
     	</div>
-    	<div class="form-group">
-     	 	<label for="name">Фаза:</label>
-      		<input name="Phase_tr_cur" class="form-control" value="<?php echo $phase; ?>">
-    	</div>
     	<div class="button-container">
       		<input autofocus class="btn btn-success" type="submit" value="Готово">
     	</div>

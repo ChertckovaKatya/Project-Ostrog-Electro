@@ -59,9 +59,6 @@ include '../Model/add.php';
             case "Err-cons":
               echo "Пользователь не добавлен";
               break;
-            // case "Ok":
-            //   echo "Вы успешно авторизировались на сайте!";
-            //    break;
           }
     }
 ?>
