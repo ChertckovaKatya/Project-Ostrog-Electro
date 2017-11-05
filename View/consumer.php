@@ -10,10 +10,7 @@ $id=$_GET['id'];
 $Text_search=$_GET['Text_search'];
 $Search=$_GET['Search'];
 $row=cons_table($id,$Text_search,$Search,$_GET['id_face']);
-// phpinfo();
-// echo $Text_search;
-// echo $Search;
-// echo 'Rsult:'.var_dump($row);
+// var_dump($row);
  
  
 ?>
@@ -26,12 +23,12 @@ $row=cons_table($id,$Text_search,$Search,$_GET['id_face']);
 <div class="container" >
 	<!-- <form class="navbar-search pull-left""> -->
 		<form class="well form-search">
-		<input type="text" name="Text_search" class="span3 search-query">
+		  <input type="text" name="Text_search" class="span3 search-query">
 			<select name="Search">
-            	<option value="1">По названию</option>
-            	<option value="2">По номеру счетчика</option>
-        	</select>
-        	<input type="hidden" name="id" value ="1" >
+        <option value="1">По названию</option>
+        <option value="2">По номеру счетчика</option>
+      </select>
+      <input type="hidden" name="id" value ="1" >
     	<div class="button-container">
      		<input autofocus class="btn" type="submit" value="Поиск">
    		</div>

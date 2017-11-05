@@ -27,23 +27,15 @@ edit_transfor_cur($_GET["user_id"],$_GET["id_obj"]);
       		<input type="date" name="Year_release_tr_cur" class="form-control" value="<?php echo $year_rel; ?>">
     	</div>
     	<div class="form-group">
-     	 	<label for="name">Дата госпроверки:</label>
-      		<input type="date" name="Date_gospr_tr_cur" class="form-control" value="<?php echo $date_gospr; ?>">
-    	</div>
-    	<div class="form-group">
-     	 	<label for="name">Дата следующей проверки:</label>
-      		<input type="date" name="Date_next_tr_cur" class="form-control" value="<?php echo $date_next; ?>">
-    	</div>
-    	<div class="form-group">
-     	 	<label for="name">№ Трансформатора тока Фа:</label >
+     	 	<label for="name">№ Трансформатора тока фА:</label >
       		<input name="Num_tr_cur_fa" class="form-control" value="<?php echo $fa_cur; ?>">
     	</div>
     	<div class="form-group">
-     	 	<label for="name">№ Трансформатора тока Фб:</label >
+     	 	<label for="name">№ Трансформатора тока фБ:</label >
       		<input name="Num_tr_cur_fb" class="form-control" value="<?php echo $fb_cur; ?>">
     	</div>
     	<div class="form-group">
-     	 	<label for="name">№ Трансформатора тока Фс:</label >
+     	 	<label for="name">№ Трансформатора тока фС:</label >
       		<input name="Num_tr_cur_fc" class="form-control" value="<?php echo $fc_cur; ?>">
     	</div>
     	<div class="button-container">

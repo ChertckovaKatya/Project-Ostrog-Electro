@@ -96,7 +96,7 @@ $all_dat_tr_vol=all_dates_conclusion($id_tr_vol,3);
  						<h4>Информация о счетчике</h4>
 						Тип: '.$row3[0]['Type_count'].';
 						<br>Марка: '.$row3[0]['Mark_count'].';</br>
-						Номер: '.$row3[0]['Mark_count'].';
+						Номер: '.$row3[0]['Number_count'].';
 						<br>Год выпуска: '.$row3[0]['Year_release_count'].';</br>
 						Класс точности: '.$row3[0]['Class_accur_count'].';
 						<br>Количество пломб госпроверки: '.$row3[0]['Kol_plomb_gospr'].';</br>

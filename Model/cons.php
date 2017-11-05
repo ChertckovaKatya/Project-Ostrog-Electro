@@ -12,18 +12,21 @@
 				$question=(mysqli_query($connect,"select * from consumer where Face='$id_face';"));
 			
 			}
-			else 
+			if ($id==1) 
 			{
+				
 				if ($search==1)
 				{
 				
 					mysqli_error($connect);
 					$question=(mysqli_query($connect,"select * from consumer where Name_consumer like '%$Text_search%'  AND Face='$id_face'; "));
+					
 				
 				}
 				if ($search==2)
 				{
-					$question=(mysqli_query($connect,"select * from Counter where Number_count like '%$Text_search%' AND Face='$id_face';"));
+					$question=(mysqli_query($connect,"select t1.id_consumer,t1.Name_consumer, t1.Phone_consumer, t1.Personal_account, t1.Face from Consumer AS t1 join Counter AS t2 ON t1.id_consumer=t2.Obj_Cons_id_count where t2.Number_count like '%$Text_search%'  AND t1.Face='$id_face';"));
+					
 				}
 
 			}
@@ -46,7 +49,7 @@
 				}
 				if ($search==2)
 				{
-					$question=(mysqli_query($connect,"select * from Counter where Number_count like '%$Text_search%';"));
+					$question=(mysqli_query($connect,"select t1.id_consumer,t1.Name_consumer, t1.Phone_consumer, t1.Personal_account, t1.Face from Consumer AS t1 join Counter AS t2 ON t1.id_consumer=t2.Obj_Cons_id_count where t2.Number_count like '%$Text_search%';"));
 				}
 
 			}
@@ -127,7 +130,7 @@
 	{
 		include_once "../Controller/connection.php";
 		$connect = get_connect();
-		$counter=(mysqli_query($connect,"Select id_count,Type_count, Mark_count,Year_release_count,Class_accur_count,Kol_plomb_gospr,Kol_holog_stick,Plomb_netw_org,Antimag_plomb,Plomb_shu,Other_places_count from home.Counter WHERE Obj_id_count=".$id_obj." AND Obj_Cons_id_count=".$user_id.";"));
+		$counter=(mysqli_query($connect,"Select id_count,Type_count, Mark_count,Number_count,Year_release_count,Class_accur_count,Kol_plomb_gospr,Kol_holog_stick,Plomb_netw_org,Antimag_plomb,Plomb_shu,Other_places_count from home.Counter WHERE Obj_id_count=".$id_obj." AND Obj_Cons_id_count=".$user_id.";"));
 
 		// echo "Select Type_count, Mark_count,Year_release_count,Class_accur_count,Date_gospr_count,Date_next_pr_count,Kol_plomb_gospr,Kol_holog_stick,Plomb_netw_org,Antimag_plomb,Plomb_shu,Other_places_count from home.Counter WHERE Obj_id_count=".$id_obj." AND Obj_Cons_id_count=".$user_id.";";
 
@@ -170,7 +173,7 @@
 	{
 		include_once "../Controller/connection.php";
 		$connect = get_connect();
-		$tr_cur=(mysqli_query($connect,"Select id_tr_cur,Type_tr_cur,Mark_tr_cur,Denomin_tr_cur,Year_release_tr_cur,Num_tr_cur_fa,Num_tr_cur_fb,Num_tr_cur_fc,Phase_tr_cur from home.Transfor_cur WHERE Obj_id_tr_cur=".$id_obj." AND Obj_Cons_id_tr_cur=".$user_id.";"));
+		$tr_cur=(mysqli_query($connect,"Select id_tr_cur,Type_tr_cur,Mark_tr_cur,Denomin_tr_cur,Year_release_tr_cur,Num_tr_cur_fa,Num_tr_cur_fb,Num_tr_cur_fc from home.Transfor_cur WHERE Obj_id_tr_cur=".$id_obj." AND Obj_Cons_id_tr_cur=".$user_id.";"));
 
 		$array_tr_cur= array();
 		$i = 0;

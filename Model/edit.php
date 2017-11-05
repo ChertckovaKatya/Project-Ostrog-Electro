@@ -163,14 +163,15 @@ function edit_cons($id_cons)
 	  		}
 		}
 
-		function edit_counter_update($type_count,$mark_count,$year_release_count,$class_accur_count,$kol_plomb_gospr,$kol_holog_stick,$plomb_netw_org,$antimag_plomb,$plomb_shu,$other_places_count,$id_obj,$user_id)
+		function edit_counter_update($type_count,$mark_count,$number_count,$year_release_count,$class_accur_count,$kol_plomb_gospr,$kol_holog_stick,$plomb_netw_org,$antimag_plomb,$plomb_shu,$other_places_count,$id_obj,$user_id)
 		{
 			include_once "../Controller/connection.php";
 	  		$connect = get_connect();
-	  		if (!empty($type_count) AND !empty($mark_count) AND !empty($year_release_count) AND !empty($class_accur_count)AND !empty($kol_plomb_gospr) AND !empty($kol_holog_stick)  AND !empty($plomb_netw_org)  AND !empty($antimag_plomb)  AND !empty($plomb_shu)  AND !empty($other_places_count)  AND !empty($id_obj)AND !empty($user_id)) 
+	  		if (!empty($type_count) AND !empty($mark_count) AND !empty($number_count) AND !empty($year_release_count) AND !empty($class_accur_count)AND !empty($kol_plomb_gospr) AND !empty($kol_holog_stick)  AND !empty($plomb_netw_org)  AND !empty($antimag_plomb)  AND !empty($plomb_shu)  AND !empty($other_places_count)  AND !empty($id_obj)AND !empty($user_id)) 
 	  		{
 	  			mysqli_query($connect,"UPDATE Counter SET Type_count='".$type_count."' WHERE Obj_id_count ='".$id_obj."' AND Obj_Cons_id_count='".$user_id."';");
-	  			mysqli_query($connect,"UPDATE Counter SET Mark_count='".$mark_count."' WHERE Obj_id_count ='".$id_obj."' AND Obj_Cons_id_count='".$user_id."';");
+	  			mysqli_query($connect,"UPDATE Counter SET Mark_count='".$mark_count."' WHERE Obj_id_count ='".$id_obj."' AND Obj_Cons_id_count='".$user_id."';");	  	
+	  			mysqli_query($connect,"UPDATE Counter SET Number_count='".$number_count."' WHERE Obj_id_count ='".$id_obj."' AND Obj_Cons_id_count='".$user_id."';");			;
 	  			mysqli_query($connect,"UPDATE Counter SET Year_release_count='".$year_release_count."' WHERE Obj_id_count ='".$id_obj."' AND Obj_Cons_id_count='".$user_id."';");
 	  			mysqli_query($connect,"UPDATE Counter SET Class_accur_count='".$class_accur_count."' WHERE Obj_id_count ='".$id_obj."' AND Obj_Cons_id_count='".$user_id."';");
 	  			mysqli_query($connect,"UPDATE Counter SET Kol_plomb_gospr='".$kol_plomb_gospr."' WHERE Obj_id_count ='".$id_obj."' AND Obj_Cons_id_count='".$user_id."';");
