@@ -1,8 +1,8 @@
 <?php 
 
 
-include '.\biblioticdib.php';
-include '..\Model\edit.php';
+include './biblioticdib.php';
+include '../Model/edit.php';
 
 if(!empty($_POST['Type']) AND !empty($_POST['Date']) AND !empty($_POST["Conclusio"]) AND !empty($_POST['Notes']) AND !empty($_POST['id_date_list']) )
     {

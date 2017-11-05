@@ -513,7 +513,7 @@ function edit_cons($id_cons)
 		function edit_all_date($id_all,$id_date_list,$type_all,$type_pr)
 		{
 
-			include_once "..\Controller\connection.php";
+			include_once "../Controller/connection.php";
 	  		$connect = get_connect();
 	  		if(!empty($id_all) AND !empty($id_date_list) AND !empty($type_all) AND !empty($type_pr))
 	  		{
@@ -567,7 +567,7 @@ function edit_cons($id_cons)
 
 		function edit_all_dates_ok($Type,$Date,$Conclusio,$Notes,$id_date_list)
 		{
-			include_once "..\Controller\connection.php";
+			include_once "../Controller/connection.php";
 	  		$connect = get_connect();
 	  		if (!empty($Type) AND !empty($Date) AND !empty($Conclusio) AND !empty($Notes) AND !empty($id_date_list))
 	  		{
