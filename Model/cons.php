@@ -19,7 +19,7 @@
 				{
 				
 					mysqli_error($connect);
-					$question=(mysqli_query($connect,"select * from consumer where Name_consumer like '%$Text_search%'  AND Face='$id_face'; "));
+					$question=(mysqli_query($connect,"select * from consumer where Name_consumer like '%$Text_search%'  AND Face='$id_face' ; "));
 					
 				
 				}
@@ -35,7 +35,7 @@
 		{
 			if($id==0)
 			{
-				$question=(mysqli_query($connect,"select * from consumer;"));
+				$question=(mysqli_query($connect,"select * from consumer order by Personal_account;"));
 			
 			}
 			else 
@@ -44,7 +44,7 @@
 				{
 				
 					mysqli_error($connect);
-					$question=(mysqli_query($connect,"select * from consumer where Name_consumer like '%$Text_search%'; "));
+					$question=(mysqli_query($connect,"select * from consumer where Name_consumer like '%$Text_search%' ; "));
 				
 				}
 				if ($search==2)
