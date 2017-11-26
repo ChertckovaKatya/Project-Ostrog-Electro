@@ -438,7 +438,7 @@
 			if($type_pr==1)
 			{
 				$row = mysqli_fetch_array(mysqli_query($connect,"SELECT * FROM  All_dates WHERE  Counter_id_count=".$id_list.";"), MYSQLI_NUM);
-				// echo "SELECT * FROM  All_dates WHERE  Counter_id_count=".$id_list.";";
+				//echo "SELECT * FROM  All_dates WHERE  Counter_id_count=".$id_list.";";
 				// var_dump($row);
 			}
 			if($type_pr==2)

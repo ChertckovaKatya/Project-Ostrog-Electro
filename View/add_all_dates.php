@@ -73,12 +73,12 @@ if(!empty($_POST['Type']) AND !empty($_POST['Date']) AND !empty($_POST['Conclusi
         switch ($result)
          {
             case "Add":
-            ?>
-               <script>
-             alert ('Дата успешно добавлена');
-             window.location="consumer.php";
-            </script>
-            <?php             
+            echo "Дата добавлена";
+            //    <script>
+            //  alert ('Дата успешно добавлена');
+            //  window.location="consumer.php";
+            // </script> 
+                        
               break;
             case "Err":
               echo "Дата не добавлена";

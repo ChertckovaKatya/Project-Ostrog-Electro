@@ -5,7 +5,7 @@ include '../Model/add.php';
 
 
 $user_id = $_GET["user_id"];
-echo $user_id;
+// echo $user_id;
 ?>
 <!DOCTYPE html>
 <div class="container">
