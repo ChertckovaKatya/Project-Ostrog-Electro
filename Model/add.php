@@ -206,11 +206,11 @@
 
 				mysqli_query($connect,"INSERT INTO Date_list (Date_l,Type_date_id) VALUES ('$Date','$Type');");
 
-				echo "INSERT INTO Date_list (Date_l,Type_date_id) VALUES ('$Date','$Type');";
+				// echo "INSERT INTO Date_list (Date_l,Type_date_id) VALUES ('$Date','$Type');";
 
 				$id=mysqli_fetch_array(mysqli_query($connect,"select MAX(id_Date) as id from Date_list  WHERE Date_l ='".$Date."' AND Type_date_id ='".$Type."';"));
 
-					echo "select id_Date from Date_list  WHERE Date_l ='".$Date."' AND Type_date_id ='".$Type."';";
+					// echo "select id_Date from Date_list  WHERE Date_l ='".$Date."' AND Type_date_id ='".$Type."';";
 
 				$id_D= $id['id'];
 				
