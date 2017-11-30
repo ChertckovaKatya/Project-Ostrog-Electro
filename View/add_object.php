@@ -55,14 +55,16 @@ $user_id = $_GET["user_id"];
     if(!empty($_POST['Owner_FIO']) AND !empty($_POST['Renter_FIO']) AND !empty($_POST['Name_object']) AND !empty($_POST['Mailing_address'] ) AND !empty($_POST['Phone_object']) AND !empty($_POST['Source_of_power']) AND !empty($_POST['Voltage_class']) AND !empty($_POST["user_id"]))
     {
         $result =  add_object(($_POST['Owner_FIO']),($_POST['Renter_FIO']),($_POST['Name_object']),($_POST['Mailing_address']),($_POST['Phone_object']),($_POST['Source_of_power']),($_POST['Voltage_class']),($_POST['user_id']));
-        // echo result;
+		// echo result;
+		$user_id = ($_POST['user_id']);
         switch ($result)
          {
             case "Add_object":
             ?>
-             <script>
+			 <script>
+			 var a = "<?php echo $user_id ?>";			 
              alert ('Объект успешно добавлен');
-             window.location="consumer.php";
+             window.location="customer.php?user_id="+a;
             </script>
             <?php
              // echo "Объект успешно добавлен";
