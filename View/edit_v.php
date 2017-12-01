@@ -19,14 +19,27 @@ $user_id = $_GET["user_id"];
           echo '<select name="Face">
           <option selected value="1">Юридическое лицо</option>
           <option   value="2">Физическое лицо</option>
+          <option value="3">Многоквартирный дом</option>
           </select>';
         }
         else 
         { 
-          echo '<select name="Face">
-         <option value="1">Юридическое лицо</option>
-          <option  selected value="2">Физическое лицо</option>
-          </select>';
+          if ($face==2)
+          {
+            echo '<select name="Face">
+            <option value="1">Юридическое лицо</option>
+            <option  selected value="2">Физическое лицо</option>
+            <option value="3">Многоквартирный дом</option>
+            </select>';
+          }
+          else 
+          {
+            echo '<select name="Face">
+            <option value="1">Юридическое лицо</option>
+            <option value="2">Физическое лицо</option>
+            <option selected value="3">Многоквартирный дом</option>
+            </select>';
+          }
         }
       ?> 
     </div>

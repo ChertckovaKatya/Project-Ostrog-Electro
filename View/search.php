@@ -8,6 +8,7 @@
 			<select name="Search">
             	<option value="1">По названию</option>
             	<option value="2">По номеру счетчика</option>
+                <option value="3">По лицевому счету</option>
         	</select>
     	<div class="button-container">
      		<input autofocus class="btn" type="submit" value="Поиск">

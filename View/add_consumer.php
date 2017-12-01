@@ -14,6 +14,7 @@ include '../Model/add.php';
           <select name="Face">
             <option value="1">Юридическое лицо</option>
             <option value="2">Физическое лицо</option>
+            <option value="3">Многоквартирный дом</option>
           </select>
          </div>
 
