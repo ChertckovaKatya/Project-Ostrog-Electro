@@ -3,11 +3,13 @@ include './biblioticdib.php';
 include '../Model/edit.php';
 
 $id_tr_vol = $_GET["id_tr_vol"];
+$user_id = $_GET["user_id"];
+$id_obj=$_GET["id_obj"];
 edit_transfor_vol($_GET["id_tr_vol"]);
 ?>
 <!DOCTYPE html>
 <div class="container">
-	<form class="form-container" action="edit_transfor_vol_ok.php?user_id=<?php echo (int)$id_tr_vol; ?>" method="POST">
+	<form class="form-container" action="edit_transfor_vol_ok.php?user_id=<?php echo (int)$user_id; ?>&id_obj=<?php echo (int)$id_obj; ?>" method="POST">
     	<div class="form-group">
     		<label for="name">Тип:</label>
       		<input name="Type_tr_vol" class="form-control" value="<?php echo $type_tr; ?>">

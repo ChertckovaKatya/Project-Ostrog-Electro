@@ -5,11 +5,12 @@ include '../Model/edit.php';
 $id_tr_cur = $_GET["id_tr_cur"];
 $id_plomb = $_GET["id_plomb"];
 $Phase=$_GET["phase"];
+$user_id = $_GET["user_id"];
 edit_plombs($_GET["id_tr_cur"],$_GET["id_plomb"],$_GET["phase"]);
 ?>
 <!DOCTYPE html>
 <div class="container">
-	<form class="form-container" action="edit_plombs_ok.php?id_tr_cur=<?php echo (int)$id_tr_cur; ?>&id_plomb=<?php echo (int)$id_plomb; ?>" method="POST">
+	<form class="form-container" action="edit_plombs_ok.php?id_tr_cur=<?php echo (int)$id_tr_cur; ?>&id_plomb=<?php echo (int)$id_plomb; ?>&user_id=<?php echo (int)$user_id; ?>" method="POST">
         <?php
           if($Phase==1)
           {echo'

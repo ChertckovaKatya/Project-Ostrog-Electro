@@ -48,13 +48,13 @@ $row=cons_table($id,$Text_search,$Search,$_GET['id_face']);
   
 	<div class="container">
 		<table class="table table-striped">
-			<tr><td>Наименование потребителя</td><td>Телефон</td><td>Лицевой счет</td></tr>
+			<tr><td>Номер</td><td>Наименование потребителя</td><td>Телефон</td><td>Лицевой счет</td></tr>
 
 	<?php
 		for ($tr=0; $tr<=COUNT($row)-1; $tr++)
 		{
    			echo '<tr>';
-     		echo '<td><a name=\'Потребитель '.$row[$tr]['Name_consumer']. ' \' href=\'customer.php?user_id='.$row[$tr]['id_consumer'].'\' >'.$row[$tr]['Name_consumer'].'</a>
+     		echo '<td>'.$tr.'</td><td><a name=\'Потребитель '.$row[$tr]['Name_consumer']. ' \' href=\'customer.php?user_id='.$row[$tr]['id_consumer'].'\' >'.$row[$tr]['Name_consumer'].'</a>
       		<td>'.$row[$tr]['Phone_consumer'].'</td><td>'.$row[$tr]['Personal_account'].'</td>';
 
 			echo '</tr>';

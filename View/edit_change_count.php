@@ -3,12 +3,13 @@ include './biblioticdib.php';
 include '../Model/edit.php';
 
 $id_change=$_GET["id_change"];
+$user_id = $_GET["user_id"];
 edit_change_cunter($_GET["id_change"]);
 ?>
 
 <!DOCTYPE html>
 <div class="container">
-	<form class="form-container" action="edit_change_count_ok.php?id_change=<?php echo (int)$id_change; ?>" method="POST">
+	<form class="form-container" action="edit_change_count_ok.php?id_change=<?php echo (int)$id_change; ?>&user_id=<?php echo (int)$user_id; ?>" method="POST">
  		<div class="form-group">
      	 	<label for="name">Дата замены</label>
       		<input  type="date" name="Date_change" class="form-control" value="<?php echo $date_change; ?>">

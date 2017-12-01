@@ -46,14 +46,15 @@ $id_obj = $_GET["id_obj"];
     if(!empty($_POST['Type_tr_vol']) AND !empty($_POST['Mark_tr_vol']) AND !empty($_POST['Denomin_tr_vol']) AND !empty($_POST['Plomb_tr_vol'] ) AND !empty($_POST['id_obj']) AND !empty($_POST['user_id']))
     {
         $result =  add_tr_vol(($_POST['Type_tr_vol']),($_POST['Mark_tr_vol']),($_POST['Denomin_tr_vol']),($_POST['Plomb_tr_vol']),($_POST['id_obj']),($_POST['user_id']));
-        
+        $user_id = ($_POST['user_id']);
         switch ($result)
          {
             case "Add":
             ?>
               <script>
+                var a = "<?php echo $user_id ?>";
                 alert ('Трансформатор напряжения успешно добавлен');
-                window.location="consumer.php";
+                 window.location="customer.php?user_id="+a;
               </script>
             <?php  
               break;

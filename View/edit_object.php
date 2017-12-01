@@ -3,12 +3,15 @@ include './biblioticdib.php';
 include '../Model/edit.php';
 
 $id_obj = $_GET["id_obj"];
+// echo $id_obj;
+$user_id = $_GET["user_id"];
+// echo $user_id;
 edit_object($_GET["id_obj"]);
 ?>
 
 <!DOCTYPE html>
 <div class="container">
-	<form class="form-container" action="edit_object_ok.php?id_obj=<?php echo (int)$id_obj; ?>" method="POST">
+	<form class="form-container" action="edit_object_ok.php?id_obj=<?php echo (int)$id_obj; ?>&user_id=<?php echo (int)$user_id; ?>" method="POST">
  		<div class="form-group">
     		<label  for="name">Собственник</label>
     		<input type="text" name="Owner_FIO" class="form-control" value="<?php echo $ow_fio; ?>">

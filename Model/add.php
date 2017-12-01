@@ -108,7 +108,7 @@
 			if (!empty($_POST['Date_change']) AND !empty($_POST['Cause_change']) AND !empty($_POST['FIO_change']) AND !empty($_POST['Nomber_old']) AND !empty($_POST['Nomber_new']) AND !empty($_POST['id_count']))
 			{
 				mysqli_query($connect,"INSERT INTO Change_count (Date_change,Cause_change,FIO_change,Nomber_old,Nomber_new,Counter_id_count) VALUES ('$Date_change','$Cause_change','$FIO_change','$Nomber_old','$Nomber_new','$id_count');");
-				// echo "INSERT INTO Change_count (Date_change,Cause_change,FIO_change,Nomber_old,Nomber_new,Counter_id_count) VALUES ('$Date_change','$Cause_change','$FIO_change','$Nomber_old','$Nomber_new','$id_count');";
+				 // echo "INSERT INTO Change_count (Date_change,Cause_change,FIO_change,Nomber_old,Nomber_new,Counter_id_count) VALUES ('$Date_change','$Cause_change','$FIO_change','$Nomber_old','$Nomber_new','$id_count');";
 
 				return 'Add';
 	
@@ -215,7 +215,7 @@
 				$id_D= $id['id'];
 				
 				// echo "";
-				 echo $id_D;
+				 // echo $id_D;
 				// echo "";
 				// echo $type_pr;
 				if ($type_pr==1)

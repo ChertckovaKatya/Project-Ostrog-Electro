@@ -3,7 +3,7 @@ include './biblioticdib.php';
 include '../Model/add.php';
 
 $id_count = $_GET["id_count"];
-
+$user_id = $_GET["user_id"];
 
 ?>
 <!DOCTYPE html>
@@ -38,27 +38,34 @@ $id_count = $_GET["id_count"];
     	<div>
           <input type="hidden" name="id_count" value = <?php echo (int) $id_count;?> >
     	</div>
+        <div>
+          <input type="hidden" name="user_id" value = <?php echo (int) $user_id;?> >
+      </div>
 	</form>
 </div>
 <?php
-	if (!empty($_POST['Date_change']) AND !empty($_POST['Cause_change']) AND !empty($_POST['FIO_change']) AND !empty($_POST['Nomber_old']) AND !empty($_POST['Nomber_new']) AND !empty($_POST['id_count']))
+	if (!empty($_POST['Date_change']) AND !empty($_POST['Cause_change']) AND !empty($_POST['FIO_change']) AND !empty($_POST['Nomber_old']) AND !empty($_POST['Nomber_new']) AND !empty($_POST['id_count']) AND !empty($_POST['user_id']))
 	{
 		$result=add_change_count($_POST['Date_change'],$_POST['Cause_change'],$_POST['FIO_change'],$_POST['Nomber_old'],$_POST['Nomber_new'],$_POST['id_count']);
+
+       $user_id = $_POST['user_id'];
 			switch ($result)
          	{
             	case "Add":
+              // echo "Информация о замене счетчика успешно добавлена";
               ?>
-              <script>
-                alert ('Информация о замене счетчика успешно добавлена');
-                window.location="consumer.php";
-              </script>
-            <?php  
+                <script>
+                 var a = "<?php echo $user_id ?>";
+                  alert ('Информация о замене счетчика успешно добавлена');
+                  window.location="customer.php?user_id="+a;
+                </script>
+              <?php  
              	 break;
             	case "Err":
               	echo "Информация о замене счетчика не добавлена";
               	break;
 
-         	}
+         	  }
 
 	}
 

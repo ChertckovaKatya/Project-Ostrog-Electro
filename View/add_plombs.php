@@ -2,7 +2,7 @@
 include './biblioticdib.php';
 include '../Model/add.php';
 
-
+$user_id = $_GET["user_id"];
 $id_tr_cur = $_GET["id_tr_cur"];
 ?>
 <!DOCTYPE html>
@@ -39,21 +39,25 @@ $id_tr_cur = $_GET["id_tr_cur"];
     	<div>
           <input type="hidden" name="id_tr_cur" value = <?php echo (int) $id_tr_cur;?> >
     	</div>
+      <div>
+          <input type="hidden" name="user_id" value = <?php echo (int) $user_id;?> >
+      </div>
     </form>
 </div>
 
 <?php
-	if (!empty($_POST["Phase"]) AND !empty($_POST['L1']) AND !empty($_POST['L2']) AND !empty($_POST['I1']) AND !empty($_POST['I2']) AND !empty($_POST['Other_places_plomb']) AND !empty($_POST['id_tr_cur']))
+	if (!empty($_POST["Phase"]) AND !empty($_POST['L1']) AND !empty($_POST['L2']) AND !empty($_POST['I1']) AND !empty($_POST['I2']) AND !empty($_POST['Other_places_plomb']) AND !empty($_POST['id_tr_cur']) AND !empty($_POST['user_id']))
 	{
 		$result=add_plombs(($_POST["Phase"]),($_POST['L1']),($_POST['L2']),($_POST['I1']),($_POST['I2']),($_POST['Other_places_plomb']),($_POST['id_tr_cur']));
-
+    $user_id = $_POST['user_id'];
 		switch ($result)
          {
             case "Add":
             ?>
                <script>
+              var a = "<?php echo $user_id ?>";
              alert ('Пломбы успешно добавлены');
-             window.location="consumer.php";
+             window.location="customer.php?user_id="+a;
             </script>
             <?php  
               break;

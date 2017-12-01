@@ -6,6 +6,7 @@ $type_all=$_GET['type_all'];
 $id_all=$_GET['id_all'];
 $type_pr=$_GET['type_pr'];
 $id_date_list=$_GET['id_date_list'];
+$user_id = $_GET["user_id"];
 edit_all_date(($_GET['id_all']),($_GET['id_date_list']),($_GET['type_all']),($_GET['type_pr']));
 ?>
 <!DOCTYPE html>
@@ -99,6 +100,9 @@ edit_all_date(($_GET['id_all']),($_GET['id_date_list']),($_GET['type_all']),($_G
     	<div>
           <input type="hidden" name="id_date_list" value = <?php echo (int) $id_date_list;?> >
     	</div>
+      <div>
+          <input type="hidden" name="user_id" value = <?php echo (int) $user_id;?> >
+      </div>
 
     	<div class="button-container">
     		<input autofocus class="btn btn-success" type="submit" value="Готово">

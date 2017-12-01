@@ -54,17 +54,18 @@ $id_obj = $_GET["id_obj"];
 <?php
 	if(!empty($_POST['Type_tr_cur']) AND !empty($_POST['Mark_tr_cur']) AND !empty($_POST['Denomin_tr_cur']) AND !empty($_POST['Year_release_tr_cur']) AND !empty($_POST['Num_tr_cur_fa']) AND !empty($_POST['Num_tr_cur_fb']) AND !empty($_POST['Num_tr_cur_fc']) AND !empty($_POST['id_obj']) AND !empty($_POST['user_id']))
 	{
-    echo "работает";
+    // echo "работает";
 
 		 $result =  add_transfor_cur(($_POST['Type_tr_cur']),($_POST['Mark_tr_cur']),($_POST['Denomin_tr_cur']),($_POST['Year_release_tr_cur']),($_POST['Num_tr_cur_fa']),($_POST['Num_tr_cur_fb']),($_POST['Num_tr_cur_fc']),($_POST['id_obj']),($_POST['user_id']));
-
+     $user_id = ($_POST['user_id']);
 		 switch ($result)
          {
             case "Add_tr_cur":
             ?>
              <script>
+              var a = "<?php echo $user_id ?>";
               alert ('Трансформатор тока успешно добавлен');
-              window.location="consumer.php";
+             window.location="customer.php?user_id="+a;
              </script>
             <?php  
 

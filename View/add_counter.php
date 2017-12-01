@@ -85,15 +85,17 @@ $id_obj = $_GET["id_obj"];
     if(!empty($_POST['Type_count']) AND !empty($_POST['Mark_count']) AND !empty($_POST['Number_count'])  AND !empty($_POST['Year_release_count']) AND !empty($_POST['Class_accur_count'] ) AND !empty($_POST['Kol_plomb_gospr'])AND !empty($_POST['Kol_holog_stick'])AND !empty($_POST['Plomb_netw_org'])AND !empty($_POST['Antimag_plomb']) AND !empty($_POST['Plomb_shu']) AND !empty($_POST['Other_places_count']) AND !empty($_POST['id_obj']) AND !empty($_POST['user_id']))
     {
         $result =  add_counter(($_POST['Type_count']),($_POST['Mark_count']),($_POST['Number_count']),($_POST['Year_release_count']),($_POST['Class_accur_count']),($_POST['Kol_plomb_gospr']),($_POST['Kol_holog_stick']),($_POST['Plomb_netw_org']),($_POST['Antimag_plomb']),($_POST['Plomb_shu']),($_POST['Other_places_count']),($_POST['id_obj']),($_POST['user_id']));
-        
+
+        $user_id = $_POST['user_id'];
         switch ($result)
          {
             case "Add_counter":
             ?>
-               <script>
-             alert ('Счетчик успешно добавлен');
-             window.location="consumer.php";
-            </script>
+              <script>
+                var a = "<?php echo $user_id ?>";
+                alert ('Счетчик успешно добавлен');
+                window.location="customer.php?user_id="+a;
+                </script>
             <?php  
               break;
             case "Err-counter":

@@ -21,16 +21,26 @@ function edit_cons($id_cons)
 			}
 
 		}
-		function edit_cons2 ($cons_name,$phone_cons,$id_cons,$face)
+		function edit_cons2 ($cons_name,$phone_cons,$id_cons,$face,$per_ac)
 		{
 			include_once "../Controller/connection.php";
 	  		$connect = get_connect();
 	  
-	  		if (!empty($cons_name) AND !empty($phone_cons) AND !empty($id_cons) AND !empty($face))
+	  		if (!empty($cons_name) AND !empty($phone_cons) AND !empty($id_cons) AND !empty($face) AND !empty($per_ac))
 	  		{
 	  			mysqli_query($connect,"UPDATE Consumer SET Name_consumer='".$cons_name."' WHERE id_consumer='".$id_cons."';");
+	  			 // echo "UPDATE Consumer SET Name_consumer='".$cons_name."' WHERE id_consumer='".$id_cons."';";
+
 	  			mysqli_query($connect,"UPDATE Consumer SET Phone_consumer='".$phone_cons."' WHERE id_consumer='".$id_cons."';");
+
+	  			 // echo "UPDATE Consumer SET Phone_consumer='".$phone_cons."' WHERE id_consumer='".$id_cons."';";
+
 	  			mysqli_query($connect,"UPDATE Consumer SET Face='".$face."' WHERE id_consumer='".$id_cons."';");
+
+	  			 // echo "UPDATE Consumer SET Face='".$face."' WHERE id_consumer='".$id_cons."';";
+
+				mysqli_query($connect,"UPDATE Consumer SET Personal_account='".$per_ac."' WHERE id_consumer='".$id_cons."';");
+				// echo "UPDATE Consumer SET Personal_account='".$per_ac."' WHERE id_consumer='".$id_cons."';";
 
 	  			return 'Edit_cons';
 	

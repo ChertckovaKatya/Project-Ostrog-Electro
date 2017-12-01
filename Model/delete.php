@@ -18,7 +18,7 @@
 			}
 	}
 
-	function del_object ($id_cons)
+	function del_object($id_cons)
 	{
 		include_once "../Controller/connection.php";
 		$connect = get_connect();
@@ -37,7 +37,7 @@
 			}
 	}
 
-		function del_counter ($id_count,$id_obj)
+		function del_counter($id_count,$id_obj)
 	{
 		include_once "../Controller/connection.php";
 		$connect = get_connect();

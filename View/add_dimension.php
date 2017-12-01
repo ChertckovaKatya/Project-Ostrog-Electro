@@ -59,13 +59,15 @@ $id_obj = $_GET["id_obj"];
 	{
 		 $result =  add_dimension(($_POST['Date_dimen']),($_POST['Alter_phase']),($_POST['Load_fa']),($_POST['Load_fb']),($_POST['Load_fc']),($_POST['Cos_fi']),($_POST['Kol_turn_disk']),($_POST['Power_consum']),($_POST['id_obj']),($_POST['user_id']));
 
+      $user_id = ($_POST['user_id']);
 		 switch ($result)
          {
             case "Add_dim":
             ?>
              <script>
+              var a = "<?php echo $user_id ?>";
              alert ('Данные об измерениях успешно добавлен');
-             window.location="consumer.php";
+             window.location="customer.php?user_id="+a;
             </script>
             <?php
               break;

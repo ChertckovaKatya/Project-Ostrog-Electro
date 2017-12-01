@@ -4,6 +4,7 @@ include '../Model/add.php';
 
 $id_all = $_GET["id_all"];
 $type_pr= $_GET["type_pr"];
+$user_id = $_GET["user_id"];
 // echo $id_all;
 // echo $type_pr;
 ?>
@@ -57,6 +58,9 @@ $type_pr= $_GET["type_pr"];
         <div>
           <input type="hidden" name="type_pr" value = <?php echo (int) $type_pr;?> >
       </div>
+      <div>
+          <input type="hidden" name="user_id" value = <?php echo (int) $user_id;?> >
+      </div>
 
     	<div class="button-container">
     		<input autofocus class="btn btn-success" type="submit" value="Добавить">
@@ -65,20 +69,23 @@ $type_pr= $_GET["type_pr"];
 </div>
 
 <?php
-if(!empty($_POST['Type']) AND !empty($_POST['Date']) AND !empty($_POST['Conclusio']) AND !empty($_POST['Notes']) AND !empty($_POST['id_all']) AND !empty($_POST['type_pr']))
+if(!empty($_POST['Type']) AND !empty($_POST['Date']) AND !empty($_POST['Conclusio']) AND !empty($_POST['Notes']) AND !empty($_POST['id_all']) AND !empty($_POST['type_pr']) AND !empty($_POST['user_id']))
     {
       
         $result =  add_all_dates(($_POST['Type']), ($_POST['Date']),($_POST['Conclusio']),($_POST['Notes']),($_POST['id_all']),($_POST['type_pr']));
+
+        $user_id = ($_POST['user_id']);
 
         switch ($result)
          {
             case "Add":
             ?>
                <script>
-             alert ('Дата успешно добавлена');
-             window.location="consumer.php";
-            </script> 
-             <?php          
+                var a = "<?php echo $user_id ?>";
+                alert ('Дата успешно добавлена');
+                window.location="customer.php?user_id="+a;
+              </script> 
+            <?php          
               break;
             case "Err":
               echo "Дата не добавлена";
