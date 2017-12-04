@@ -27,6 +27,7 @@ $row=cons_table($id,$Text_search,$Search,$_GET['id_face']);
 			<select name="Search">
         <option value="1">По названию</option>
         <option value="2">По номеру счетчика</option>
+        <option value="3">По лицевому счету</option>
       </select>
       <input type="hidden" name="id" value ="1" >
     	<div class="button-container">

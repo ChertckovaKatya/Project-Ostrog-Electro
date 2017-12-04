@@ -28,6 +28,11 @@
 					$question=(mysqli_query($connect,"select t1.id_consumer,t1.Name_consumer, t1.Phone_consumer, t1.Personal_account, t1.Face from Consumer AS t1 join Counter AS t2 ON t1.id_consumer=t2.Obj_Cons_id_count where t2.Number_count like '%$Text_search%'  AND t1.Face='$id_face' order by (Personal_account+0);"));
 					
 				}
+				if ($search==3)
+				{
+					$question=(mysqli_query($connect," select * from consumer where Personal_account like '%$Text_search%' AND Face='$id_face' order by (Personal_account+0); "));
+					
+				}
 
 			}
 		}
@@ -51,6 +56,12 @@
 				{
 					$question=(mysqli_query($connect,"select t1.id_consumer,t1.Name_consumer, t1.Phone_consumer, t1.Personal_account, t1.Face from Consumer AS t1 join Counter AS t2 ON t1.id_consumer=t2.Obj_Cons_id_count where t2.Number_count like '%$Text_search%' order by (Personal_account+0);"));
 				}
+				if ($search==3)
+				{
+					$question=(mysqli_query($connect," select * from consumer where Personal_account like '%$Text_search%' order by (Personal_account+0); "));
+					
+				}
+
 
 			}
 
