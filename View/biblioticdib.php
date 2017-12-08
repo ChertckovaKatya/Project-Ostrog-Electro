@@ -38,10 +38,10 @@
 											<span class="icon-bar"></span>
 											<span class="icon-bar"></span>
 										</button>
-							<!-- 			<div class="navbar-brand logo ">
-							<h3 class="animated wow pulse" data-wow-delay=".4s">
-							<a href="power.php"><span><b>Электро</b></span></a></h3>
-						</div> -->
+											<!-- 			<div class="navbar-brand logo ">
+											<h3 class="animated wow pulse" data-wow-delay=".4s">
+											<a href="power.php"><span><b>Электро</b></span></a></h3>
+											</div> -->
 									</div>
 									<div class="collapse navbar-collapse" id="responsive-menu">
 										<ul class="nav navbar-nav">
@@ -52,10 +52,10 @@
                       					<ul class="nav navbar-nav navbar-right">
 											<li><a href="exit_user.php"> <span class="glyphicon glyphicon-remove-sign"> </span> Выйти </a></li>
 										</ul>
+									</div>
 								</div>
 							</div>
 					</div>
-				</div>
 		
 				<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
             	<script src="../js/bootstrap.js"></script>
