@@ -66,7 +66,7 @@ $user_id = $_GET["user_id"];
              alert ('Объект успешно добавлен');
              window.location="customer.php?user_id="+a;
             </script>
-            <?php
+            <?php 
              // echo "Объект успешно добавлен";
             break;
             case "Err-object":

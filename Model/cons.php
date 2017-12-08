@@ -11,6 +11,7 @@
 			if($id==0)
 			{
 				$question=(mysqli_query($connect,"select * from consumer where Face='$id_face' order by (Personal_account+0);"));
+				echo "select * from consumer where Face='$id_face' order by (Personal_account+0);";
 			
 			}
 			if ($id==1) 
@@ -21,6 +22,7 @@
 				
 					mysqli_error($connect);
 					$question=(mysqli_query($connect,"select * from consumer where Name_consumer like '%$Text_search%'  AND Face='$id_face' order by (Personal_account+0); "));
+					echo "select * from consumer where Name_consumer like '%$Text_search%'  AND Face='$id_face' order by (Personal_account+0);";
 					
 				
 				}
@@ -31,10 +33,11 @@
 				}
 				if ($search==3)
 				{
-					$question=(mysqli_query($connect, " select * from Consumer where Personal_account like '%Text_search%' AND Face='$id_face' order by (Personal_account+0); "));
-					echo "select * from Consumer where Personal_account like '%$Text_search%' AND Face='$id_face' order by (Personal_account+0);";
 
+					$question=(mysqli_query($connect, " select * from Consumer where Personal_account like '%Text_search%' AND Face='$id_face' order by (Personal_account+0); "));
+					
 				}
+
 
 
 			}
@@ -61,13 +64,12 @@
 				}
 				if ($search==3)
 				{
+
 					$question=(mysqli_query($connect, "select * from Consumer where Personal_account like '%$Text_search%' order by (Personal_account+0); "));
 					// echo "select * from Consumer where Personal_account like '%$Text_search%' order by (Personal_account+0);";
-
 				}
 
 			}
-
 		}
 		$array = array();
 		$i = 0;
@@ -79,7 +81,9 @@
 		}
 		
 		return $array;
+		var_dump($array);
 		exit();
+		
 	}
 	function object_conclusion($user_id)
 	{

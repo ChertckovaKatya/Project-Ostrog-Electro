@@ -14,8 +14,7 @@ $row=cons_table($id,$Text_search,$Search,$_GET['id_face']);
  
  
 ?>
-<!-- <br></br> -->
-<!-- <br></br> -->
+
 <!DOCTYPE html>
   <head>
   </head>
@@ -35,7 +34,6 @@ $row=cons_table($id,$Text_search,$Search,$_GET['id_face']);
      	    <input autofocus class="btn" type="submit" value="Поиск">
    	    </form>
       </div>
-
       <div class="col-sm-12">
         <ul class="breadcrumb">
   		    <li><a href="?id_face=1">Юридические</a></li>
