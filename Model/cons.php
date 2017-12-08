@@ -11,7 +11,7 @@
 			if($id==0)
 			{
 				$question=(mysqli_query($connect,"select * from consumer where Face='$id_face' order by (Personal_account+0);"));
-				echo "select * from consumer where Face='$id_face' order by (Personal_account+0);";
+				// echo "select * from consumer where Face='$id_face' order by (Personal_account+0);";
 			
 			}
 			if ($id==1) 
