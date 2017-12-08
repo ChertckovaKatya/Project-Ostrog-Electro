@@ -3,17 +3,23 @@
 	{
 	  include_once "../Controller/connection.php";
 	  $connect = get_connect();
-	  
+	  global $user_id;
 	  if (!empty($cons_name) AND !empty($phone_cons) AND !empty($Personal_account) AND !empty($Face))
 	  	{
 	  		
 	  		mysqli_query($connect,"INSERT INTO Consumer (Name_consumer, Phone_consumer,Personal_account,Face)
   			VALUES ('$cons_name','$phone_cons','$Personal_account','$Face');");
-  			// echo "INSERT INTO Consumer (Name_consumer, Phone_consumer,Personal_account,Face)
+  			//  echo "INSERT INTO Consumer (Name_consumer, Phone_consumer,Personal_account,Face)
   			// VALUES ('$cons_name','$phone_cons','$Personal_account','$Face');";
 
-	  		return 'Add_cons';//'Вы успешно добавили пользователи!';
-	
+	  	
+
+			$id_cons=mysqli_fetch_array(mysqli_query($connect,"select id_consumer from consumer where Name_consumer='".$cons_name."' AND Phone_consumer='".$phone_cons."' AND Personal_account='".$Personal_account."' AND Face='".$Face."'; "));
+			$user_id=$id_cons["id_consumer"];
+			
+			
+			return 'Add_cons';
+			
 			exit();
 		}
 
@@ -177,11 +183,13 @@
 			if (!empty($Phase) AND !empty($L1) AND !empty($L2) AND !empty($I1) AND !empty($I2) AND !empty($Other_places_plomb) AND !empty($id_tr_cur))
 			{
 				mysqli_query($connect,"INSERT INTO Plombs (L1,L2,I1,I2,Other_places_plomb) VALUES ('$L1','$L2','$I1','$I2','$Other_places_plomb');");
-				$id_p=mysqli_fetch_array(mysqli_query($connect,"select id_plomb from Plombs WHERE L1 ='".$L1."' AND L2 ='".$L2."' AND I1 ='".$I1."'  AND I1 ='".$I2."' AND Other_places_plomb='".$Other_places_plomb."';"));
+				$id_p=mysqli_fetch_array(mysqli_query($connect,"select id_plomb from Plombs WHERE L1 ='".$L1."' AND L2 ='".$L2."' AND I1 ='".$I1."'  AND I2 ='".$I2."' AND Other_places_plomb='".$Other_places_plomb."';"));
+				// echo "select id_plomb from Plombs WHERE L1 ='".$L1."' AND L2 ='".$L2."' AND I1 ='".$I1."'  AND I1 ='".$I2."' AND Other_places_plomb='".$Other_places_plomb."';";
 				$id_plomb=$id_p['id_plomb'];
+				// var_dump($id_plomb);
 				mysqli_query($connect,"INSERT INTO Phase_tr_cur (Phase,Transfor_cur_id_phase,Phase_id_plomb) VALUES ('$Phase','$id_tr_cur','$id_plomb');");
-				//echo "INSERT INTO Plombs (L1,L2,I1,I2,Other_places_plomb) VALUES ('$L1','$L2','$I1','$I2','$Other_places_plomb');";
-				//echo "INSERT INTO Phase_tr_cur (Phase,Transfor_cur_id_phase,Phase_id_plomb) VALUES ('$Phase','$id_tr_cur','$id_plomb');";
+				// echo "INSERT INTO Plombs (L1,L2,I1,I2,Other_places_plomb) VALUES ('$L1','$L2','$I1','$I2','$Other_places_plomb');";
+				// echo "INSERT INTO Phase_tr_cur (Phase,Transfor_cur_id_phase,Phase_id_plomb) VALUES ('$Phase','$id_tr_cur','$id_plomb');";
 
 	
 				return 'Add';

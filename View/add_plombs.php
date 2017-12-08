@@ -55,11 +55,12 @@ $id_tr_cur = $_GET["id_tr_cur"];
             case "Add":
             ?>
                <script>
-              var a = "<?php echo $user_id ?>";
-             alert ('Пломбы успешно добавлены');
-             window.location="customer.php?user_id="+a;
+             //  var a = "<?php echo $user_id ?>";
+             // alert ('Пломбы успешно добавлены');
+             // window.location="customer.php?user_id="+a;
             </script>
             <?php  
+            echo "работает";
               break;
             case "Err":
               echo "Пломбы не добавлены";

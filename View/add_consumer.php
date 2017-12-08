@@ -47,15 +47,21 @@ include '../Model/add.php';
     {
         $result =  add_cons(($_POST['name']), ($_POST['Phone_consumer']),($_POST['Personal_account']),($_POST['Face']));
 
+        // $user_id = ($_GET['user_id']);
+       // var_dump($user_id);
         switch ($result)
          {
             case "Add_cons":
             ?>
              <script>
-             alert ('Пользователь успешно добавлен');
-             window.location="consumer.php";
+              alert ('Пользователь успешно добавлен');
+              window.location="consumer.php";
+             //   var a = "<?php echo $user_id ?>";      
+             // alert ('Пользователь успешно добавлен');
+             // window.location="customer.php?user_id="+a;
             </script>
             <?php
+            // echo "работает";
               break;
             case "Err-cons":
               echo "Пользователь не добавлен";
