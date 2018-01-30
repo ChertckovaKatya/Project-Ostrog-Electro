@@ -1,100 +1,102 @@
 <?php
-// Подключаем библиотеку
+// РџРѕРґРєР»СЋС‡Р°РµРј Р±РёР±Р»РёРѕС‚РµРєСѓ
 pear install <PHPExcel-1.8>.tgz;
-include_path="C:/xampp/apache/lib/PHPExcel-1.8";
+include_path = "C:/xampp/apache/lib/PHPExcel-1.8";
 require_once "PHPExcel.php";
+include_once "../Controller/connection.php";
+$connect = get_connect();
 
-// Функция преобразования листа Excel в таблицу MySQL, с учетом объединенных строк и столбцов.
-// Значения берутся уже вычисленными. Параметры:
-//     $worksheet - лист Excel
-//     $connection - соединение с MySQL (mysqli)
-//     $table_name - имя таблицы MySQL
-//     $columns_name_line - строка с именами столбцов таблицы MySQL (0 - имена типа column + n)
-		function excel2mysql($worksheet, $connection, $table_name, $columns_name_line = 0) {
-           // Проверяем соединение с MySQL
-  if (!$connection->connect_error) {
-    // Строка для названий столбцов таблицы MySQL
+// Р¤СѓРЅРєС†РёСЏ РїСЂРµРѕР±СЂР°Р·РѕРІР°РЅРёСЏ Р»РёСЃС‚Р° Excel РІ С‚Р°Р±Р»РёС†Сѓ MySQL, СЃ СѓС‡РµС‚РѕРј РѕР±СЉРµРґРёРЅРµРЅРЅС‹С… СЃС‚СЂРѕРє Рё СЃС‚РѕР»Р±С†РѕРІ.
+// Р—РЅР°С‡РµРЅРёСЏ Р±РµСЂСѓС‚СЃСЏ СѓР¶Рµ РІС‹С‡РёСЃР»РµРЅРЅС‹РјРё. РџР°СЂР°РјРµС‚СЂС‹:
+//     $worksheet - Р»РёСЃС‚ Excel
+//     $connection - СЃРѕРµРґРёРЅРµРЅРёРµ СЃ MySQL (mysqli)
+//     $table_name - РёРјСЏ С‚Р°Р±Р»РёС†С‹ MySQL
+//     $columns_name_line - СЃС‚СЂРѕРєР° СЃ РёРјРµРЅР°РјРё СЃС‚РѕР»Р±С†РѕРІ С‚Р°Р±Р»РёС†С‹ MySQL (0 - РёРјРµРЅР° С‚РёРїР° column + n)
+    function excel2mysql($worksheet, $connect, $table_name, $columns_name_line = 0) {
+           // РџСЂРѕРІРµСЂСЏРµРј СЃРѕРµРґРёРЅРµРЅРёРµ СЃ MySQL
+  if (!$connect->connect_error) {
+    // РЎС‚СЂРѕРєР° РґР»СЏ РЅР°Р·РІР°РЅРёР№ СЃС‚РѕР»Р±С†РѕРІ С‚Р°Р±Р»РёС†С‹ MySQL
     $columns_str = "";
-    // Количество столбцов на листе Excel
+    // РљРѕР»РёС‡РµСЃС‚РІРѕ СЃС‚РѕР»Р±С†РѕРІ РЅР° Р»РёСЃС‚Рµ Excel
     $columns_count = PHPExcel_Cell::columnIndexFromString($worksheet->getHighestColumn());
 
-    // Перебираем столбцы листа Excel и генерируем строку с именами через запятую
+    // РџРµСЂРµР±РёСЂР°РµРј СЃС‚РѕР»Р±С†С‹ Р»РёСЃС‚Р° Excel Рё РіРµРЅРµСЂРёСЂСѓРµРј СЃС‚СЂРѕРєСѓ СЃ РёРјРµРЅР°РјРё С‡РµСЂРµР· Р·Р°РїСЏС‚СѓСЋ
     for ($column = 0; $column < $columns_count; $column++) {
       $columns_str .= ($columns_name_line == 0 ? "column" . $column : $worksheet->getCellByColumnAndRow($column, $columns_name_line)->getCalculatedValue()) . ",";
     }
 
-    // Обрезаем строку, убирая запятую в конце
+    // РћР±СЂРµР·Р°РµРј СЃС‚СЂРѕРєСѓ, СѓР±РёСЂР°СЏ Р·Р°РїСЏС‚СѓСЋ РІ РєРѕРЅС†Рµ
     $columns_str = substr($columns_str, 0, -1);
 
-    // Удаляем таблицу MySQL, если она существовала
-    if ($connection->query("DROP TABLE IF EXISTS " . $table_name)) {
-      // Создаем таблицу MySQL
-      if ($connection->query("CREATE TABLE " . $table_name . " (" . str_replace(",", " TEXT NOT NULL,", $columns_str) . " TEXT NOT NULL)")) {
-        // Количество строк на листе Excel
+    // РЈРґР°Р»СЏРµРј С‚Р°Р±Р»РёС†Сѓ MySQL, РµСЃР»Рё РѕРЅР° СЃСѓС‰РµСЃС‚РІРѕРІР°Р»Р°
+    if ($connect->query("DROP TABLE IF EXISTS " . $table_name)) {
+      // РЎРѕР·РґР°РµРј С‚Р°Р±Р»РёС†Сѓ MySQL
+      if ($connect->query("CREATE TABLE " . $table_name . " (" . str_replace(",", " TEXT NOT NULL,", $columns_str) . " TEXT NOT NULL)")) {
+        // РљРѕР»РёС‡РµСЃС‚РІРѕ СЃС‚СЂРѕРє РЅР° Р»РёСЃС‚Рµ Excel
         $rows_count = $worksheet->getHighestRow();
 
-        // Перебираем строки листа Excel
+        // РџРµСЂРµР±РёСЂР°РµРј СЃС‚СЂРѕРєРё Р»РёСЃС‚Р° Excel
         for ($row = $columns_name_line + 1; $row <= $rows_count; $row++) {
-          // Строка со значениями всех столбцов в строке листа Excel
+          // РЎС‚СЂРѕРєР° СЃРѕ Р·РЅР°С‡РµРЅРёСЏРјРё РІСЃРµС… СЃС‚РѕР»Р±С†РѕРІ РІ СЃС‚СЂРѕРєРµ Р»РёСЃС‚Р° Excel
           $value_str = "";
 
-          // Перебираем столбцы листа Excel
+          // РџРµСЂРµР±РёСЂР°РµРј СЃС‚РѕР»Р±С†С‹ Р»РёСЃС‚Р° Excel
           for ($column = 0; $column < $columns_count; $column++) {
-            // Строка со значением объединенных ячеек листа Excel
+            // РЎС‚СЂРѕРєР° СЃРѕ Р·РЅР°С‡РµРЅРёРµРј РѕР±СЉРµРґРёРЅРµРЅРЅС‹С… СЏС‡РµРµРє Р»РёСЃС‚Р° Excel
             $merged_value = "";
-            // Ячейка листа Excel
+            // РЇС‡РµР№РєР° Р»РёСЃС‚Р° Excel
             $cell = $worksheet->getCellByColumnAndRow($column, $row);
 
-            // Перебираем массив объединенных ячеек листа Excel
+            // РџРµСЂРµР±РёСЂР°РµРј РјР°СЃСЃРёРІ РѕР±СЉРµРґРёРЅРµРЅРЅС‹С… СЏС‡РµРµРє Р»РёСЃС‚Р° Excel
             foreach ($worksheet->getMergeCells() as $mergedCells) {
-              // Если текущая ячейка - объединенная,
+              // Р•СЃР»Рё С‚РµРєСѓС‰Р°СЏ СЏС‡РµР№РєР° - РѕР±СЉРµРґРёРЅРµРЅРЅР°СЏ,
               if ($cell->isInRange($mergedCells)) {
-                // то вычисляем значение первой объединенной ячейки, и используем её в качестве значения
-                // текущей ячейки
+                // С‚Рѕ РІС‹С‡РёСЃР»СЏРµРј Р·РЅР°С‡РµРЅРёРµ РїРµСЂРІРѕР№ РѕР±СЉРµРґРёРЅРµРЅРЅРѕР№ СЏС‡РµР№РєРё, Рё РёСЃРїРѕР»СЊР·СѓРµРј РµС‘ РІ РєР°С‡РµСЃС‚РІРµ Р·РЅР°С‡РµРЅРёСЏ
+                // С‚РµРєСѓС‰РµР№ СЏС‡РµР№РєРё
                 $merged_value = $worksheet->getCell(explode(":", $mergedCells)[0])->getCalculatedValue();
                 break;
               }
             }
 
-            // Проверяем, что ячейка не объединенная: если нет, то берем ее значение, иначе значение первой
-            // объединенной ячейки
+            // РџСЂРѕРІРµСЂСЏРµРј, С‡С‚Рѕ СЏС‡РµР№РєР° РЅРµ РѕР±СЉРµРґРёРЅРµРЅРЅР°СЏ: РµСЃР»Рё РЅРµС‚, С‚Рѕ Р±РµСЂРµРј РµРµ Р·РЅР°С‡РµРЅРёРµ, РёРЅР°С‡Рµ Р·РЅР°С‡РµРЅРёРµ РїРµСЂРІРѕР№
+            // РѕР±СЉРµРґРёРЅРµРЅРЅРѕР№ СЏС‡РµР№РєРё
             $value_str .= "'" . (strlen($merged_value) == 0 ? $cell->getCalculatedValue() : $merged_value) . "',";
           }
 
-          // Обрезаем строку, убирая запятую в конце
+          // РћР±СЂРµР·Р°РµРј СЃС‚СЂРѕРєСѓ, СѓР±РёСЂР°СЏ Р·Р°РїСЏС‚СѓСЋ РІ РєРѕРЅС†Рµ
           $value_str = substr($value_str, 0, -1);
 
-          // Добавляем строку в таблицу MySQL
-          $connection->query("INSERT INTO " . $table_name . " (" . $columns_str . ") VALUES (" . $value_str . ")");
+          // Р”РѕР±Р°РІР»СЏРµРј СЃС‚СЂРѕРєСѓ РІ С‚Р°Р±Р»РёС†Сѓ MySQL
+          $connect->query("INSERT INTO " . $table_name . " (" . $columns_str . ") VALUES (" . $value_str . ")");
         }
-      } else	{
-					return false;
-				}
-    } else 		{
-					return false;
-				}
-  } else 		{
-					return false;
-				}
+      } else  {
+          return false;
+        }
+    } else    {
+          return false;
+        }
+  } else    {
+          return false;
+        }
 
  return true;
 }
 
-// Соединение с базой MySQL
-require 'connection.php';
-// Выбираем кодировку UTF-8
+// РЎРѕРµРґРёРЅРµРЅРёРµ СЃ Р±Р°Р·РѕР№ MySQL
+require '../Controller/connection.php';
+// Р’С‹Р±РёСЂР°РµРј РєРѕРґРёСЂРѕРІРєСѓ UTF-8
 
 
-// Загружаем файл Excel
+// Р—Р°РіСЂСѓР¶Р°РµРј С„Р°Р№Р» Excel
 $PHPExcel_file = PHPExcel_IOFactory::load("./file.xlsx");
 
-// Преобразуем первый лист Excel в таблицу MySQL
+// РџСЂРµРѕР±СЂР°Р·СѓРµРј РїРµСЂРІС‹Р№ Р»РёСЃС‚ Excel РІ С‚Р°Р±Р»РёС†Сѓ MySQL
 $PHPExcel_file->setActiveSheetIndex(0);
-echo excel2mysql($PHPExcel_file->getActiveSheet(), $connection, "excel2mysql0", 1) ? "OK\n" : "FAIL\n";
+echo excel2mysql($PHPExcel_file->getActiveSheet(), $connect, "excel2mysql0", 1) ? "OK\n" : "FAIL\n";
 
-// Перебираем все листы Excel и преобразуем в таблицу MySQL
+// РџРµСЂРµР±РёСЂР°РµРј РІСЃРµ Р»РёСЃС‚С‹ Excel Рё РїСЂРµРѕР±СЂР°Р·СѓРµРј РІ С‚Р°Р±Р»РёС†Сѓ MySQL
 foreach ($PHPExcel_file->getWorksheetIterator() as $index => $worksheet) {
-  echo excel2mysql($worksheet, $connection, "excel2mysql" . ($index != 0 ? $index : ""), 1) ? "OK\n" : "FAIL\n";
+  echo excel2mysql($worksheet, $connect, "excel2mysql" . ($index != 0 ? $index : ""), 1) ? "OK\n" : "FAIL\n";
 }
 
 ?>

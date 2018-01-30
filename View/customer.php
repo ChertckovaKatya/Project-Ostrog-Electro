@@ -22,10 +22,7 @@ $id_tr_vol=$tr_vol[0]['id_tr_vol'];
 $change_count=change_count_conclusion($id_count);
 $id_change=$change_count[0]["id_change"];
 $all_dat_count=all_dates_conclusion($id_count,1);
-
 $all_dat_tr_cur=all_dates_conclusion($id_tr_cur,2);
-
-
 $all_dat_tr_vol=all_dates_conclusion($id_tr_vol,3);
 
 
@@ -33,6 +30,7 @@ $all_dat_tr_vol=all_dates_conclusion($id_tr_vol,3);
 <!DOCTYPE html>
 	<div class="container">
 		<div class="row">
+			<li><a href="..\View\import_customer.php?user_id=<?php echo (int)$user_id; ?>&id_obj=<?php echo (int)$id_obj; ?>&id_count=<?php echo (int)$id_count; ?>&id_tr_cur=<?php echo (int)$id_tr_cur; ?>">Сохранение в Excel</a></li>
 			<div class="col-sm-4">	
 				ФИО: <?php echo $row[0]['Name_consumer']; ?>
 			</div>

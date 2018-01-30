@@ -1,9 +1,9 @@
-.container {
+. {
 	width: 90%;
 	height: 100px;
 	position: absolute;
 	left: 15px; 
     right: 15px;
-	 border-collapse: collapse;
-	 text-align: left;
+	border-collapse: collapse;
+	text-align: left;
 }

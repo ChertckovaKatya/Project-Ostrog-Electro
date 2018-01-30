@@ -81,9 +81,27 @@
 		}
 		
 		return $array;
-		var_dump($array);
+		//var_dump($array);
 		exit();
 		
+	}
+	function kol_face()
+	{
+		include_once "../Controller/connection.php";
+		$connect = get_connect();
+		$kol=(mysqli_query($connect,"SELECT Face, COUNT(*) FROM consumer GROUP BY Face"));
+		$array_kol= array();
+		$i = 0;
+		while ($quantity = mysqli_fetch_assoc($kol)) 
+		{
+
+			$array_kol[$i] = $quantity;
+			$i++;
+		}
+
+		return $array_kol;
+		exit();
+
 	}
 	function object_conclusion($user_id)
 	{

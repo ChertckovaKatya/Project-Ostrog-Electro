@@ -1,6 +1,3 @@
-<!DOCTYPE html>
-<link href="../css/consumer.css" rel="stylesheet">
-
 <?php
 include './biblioticdib.php';
 include '../Model/cons.php';
@@ -10,17 +7,19 @@ $id=$_GET['id'];
 $Text_search=$_GET['Text_search'];
 $Search=$_GET['Search'];
 $row=cons_table($id,$Text_search,$Search,$_GET['id_face']);
-// var_dump($row);
- 
- 
-?>
+$quantity=kol_face();
+//var_dump($quantity);
 
+?>
+ 
 <!DOCTYPE html>
   <head>
+    <!-- <link href="../css/consumer.css" rel="stylesheet"> -->
   </head>
   <body>
   <div class="container" >
     <div class="row">
+       <li><a href="..\View\export.php">Сохранение в Excel</a></li>
 	   <!-- <form class="navbar-search pull-left""> -->
       <div class="col-sm-12">
 		    <form class="well form-search">
@@ -36,9 +35,9 @@ $row=cons_table($id,$Text_search,$Search,$_GET['id_face']);
       </div>
       <div class="col-sm-12">
         <ul class="breadcrumb">
-  		    <li><a href="?id_face=1">Юридические</a></li>
-  		    <li><a href="?id_face=2">Физические лица</a></li>
-          <li><a href="?id_face=3">Многоквартирные дома</a></li>
+  		    <li><a href="?id_face=1">Юридические</a> <?php echo $quantity[0]['COUNT(*)'] ?></li>
+  		    <li><a href="?id_face=2">Физические лица</a> <?php  echo $quantity[1]['COUNT(*)'] ?></li>
+          <li><a href="?id_face=3">Многоквартирные дома</a> <?php echo $quantity[2]['COUNT(*)'] ?></li>
         </ul>
       </div>
 
@@ -56,8 +55,9 @@ $row=cons_table($id,$Text_search,$Search,$_GET['id_face']);
 
                 echo '</tr>'; 
 		          }
-        echo '</table>';
+
 	         ?>
+        </table>
       </div>
     </div>
   </div>
