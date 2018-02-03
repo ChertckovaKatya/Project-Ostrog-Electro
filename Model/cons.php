@@ -250,7 +250,7 @@
 		$connect = get_connect();
 
 		$plombs=(mysqli_query($connect,"Select t1.Phase,t2.id_plomb,t2.L1,t2.L2,t2.I1,t2.I2,t2.Other_places_plomb from Phase_tr_cur AS t1 join Plombs AS t2 on t1.Phase_id_plomb=t2.id_plomb where Transfor_cur_id_phase=".$id_tr_cur.";"));
-		// echo "Select t1.Phase,t2.id_plomb,t2.L1,t2.L2,t2.I1,t2.I2,t2.Other_places_plomb from Phase_tr_cur AS t1 join Plombs AS t2 on t1.Phase_id_plomb=t2.id_plomb where Transfor_cur_id_phase=".$id_tr_cur.";";
+		
 
 		$array_pl= array();
 		$i = 0;

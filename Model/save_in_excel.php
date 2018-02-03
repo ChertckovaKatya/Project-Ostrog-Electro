@@ -105,5 +105,15 @@
 		return $plombs;
 		exit();
 	}
+	function transfor_vol_concl($id_obj,$user_id)
+	{
+		include_once "../Controller/connection.php";
+		$connect = get_connect();
+		mysqli_query ($connect,"set names cp1251");
+		error_reporting(E_ALL);
+		$tr_vol=mysqli_fetch_assoc(mysqli_query($connect," Select id_tr_vol,Type_tr_vol,Mark_tr_vol,Denomin_tr_vol,Plomb_tr_vol from home.Transfor_vol WHERE Object_id_tr_vol=".$id_obj." AND Cons_id_obj_tr_vol=".$user_id.";"));
+		return $tr_vol;
+		exit();
+	}
 
 ?>
