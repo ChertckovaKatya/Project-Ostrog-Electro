@@ -21,24 +21,24 @@ if(status_user()==1)
 
 
 
-if(!empty($_POST['login']) AND !empty($_POST['password']))
-{
-	 $result = 	auth_user(($_POST['login']), ($_POST['password']));
+// if(!empty($_POST['login']) AND !empty($_POST['password']))
+// {
+// 	 $result = 	auth_user(($_POST['login']), ($_POST['password']));
 
-	 switch ($result)
-      {
-        case "ERR_1":
-            echo "Пользователь не найден";
-        break;
-        case "ERR_2":
-            echo "Неверный логин или пароль";
-        break;
-        case "Ok":
-            // echo "Вы успешно авторизировались на сайте!";
-			header ('Location:../View/power.php');
-        break;
-    }
-}
+// 	 switch ($result)
+//       {
+//         case "ERR_1":
+//             echo "Пользователь не найден";
+//         break;
+//         case "ERR_2":
+//             echo "Неверный логин или пароль";
+//         break;
+//         case "Ok":
+//             // echo "Вы успешно авторизировались на сайте!";
+// 			header ('Location:../View/power.php');
+//         break;
+//     }
+// }
 
 if (!empty($_POST['user']) AND !empty($_POST['pass']))
 {
@@ -91,6 +91,28 @@ if (!empty($_POST['user']) AND !empty($_POST['pass']))
     				                        <div class="group">
     					                       <input type="submit" class="button" value="Войти">
     				                        </div>
+                                            <?php
+                                            if(!empty($_POST['login']) AND !empty($_POST['password']))
+                                            {
+                                                 $result =  auth_user(($_POST['login']), ($_POST['password']));
+
+                                                 switch ($result)
+                                                 {
+                                                    case "ERR_1":
+                                                    echo "Пользователь не найден";
+                                                     break;
+                                                     case "ERR_2":
+                                                     echo "Неверный логин или пароль";
+                                                    break;
+                                                    case "Ok":
+                                                     // echo "Вы успешно авторизировались на сайте!";
+                                                     header ('Location:../View/power.php');
+                                                    break;
+                                                    }
+                                                }
+
+                                                ?>
+
                             </div>
                             <form  method="POST">
                             <div class="sign-up-htm">
@@ -105,6 +127,23 @@ if (!empty($_POST['user']) AND !empty($_POST['pass']))
     				                    <div class="group">
     					                   <input type="submit" class="button" value="Зарегистрироваться">
                                         </div>
+                                            <?php
+
+                                            if (!empty($_POST['user']) AND !empty($_POST['pass']))
+                                            {
+                                                   $result =    ident_user(($_POST['user']), ($_POST['pass']));
+                                                   switch ($result)
+                                                    {
+                                                            case "ERR_3":
+                                                             echo "'Выбранный логин уже зарегистрирован!";
+                                                            break;
+                                                            case "Zar":
+                                                             echo "Вы успешно зарегистрированы!'";
+                                                            break;
+
+                                                    }
+                                            }
+                                            ?>
                             </div>
                         </div>
                 </div>

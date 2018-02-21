@@ -9,16 +9,15 @@
 	  		
 	  		mysqli_query($connect,"INSERT INTO Consumer (Name_consumer, Phone_consumer,Personal_account,Face)
   			VALUES ('$cons_name','$phone_cons','$Personal_account','$Face');");
-  			//  echo "INSERT INTO Consumer (Name_consumer, Phone_consumer,Personal_account,Face)
-  			// VALUES ('$cons_name','$phone_cons','$Personal_account','$Face');";
-
-	  	
+ 	
 
 			$id_cons=mysqli_fetch_array(mysqli_query($connect,"select id_consumer from consumer where Name_consumer='".$cons_name."' AND Phone_consumer='".$phone_cons."' AND Personal_account='".$Personal_account."' AND Face='".$Face."'; "));
+
 			$user_id=$id_cons["id_consumer"];
 			
-			
-			return 'Add_cons';
+			$arr[1]="Add_cons";
+			$arr[2]=$user_id;
+			//return 'Add_cons';
 			
 			exit();
 		}
@@ -40,8 +39,7 @@
 					mysqli_query($connect,"INSERT INTO Object (Owner_FIO, Renter_FIO,Name_object,Mailing_address,Phone_object,Source_of_power,Voltage_class,Obj_Cons_id)
   				VALUES ('$owner_fio','$renter_fio','$name_object','$mail_address','$phone_object','$sourse_of_power','$vol_class','$user_id');");
 
-				// echo "INSERT INTO Object (Owner_FIO,Renter_FIO,Name_object,Mailing_address,Phone_object,Source_of_power,Voltage_class,Date_instrumental_check,Obj_Cons_id)
-  		// 		VALUES ('$owner_fio','$renter_fio','$name_object','$mail_address','$phone_object','$sourse_of_power','$vol_class','$date_check','$user_id');)";
+				
 
 				return 'Add_object';
 	

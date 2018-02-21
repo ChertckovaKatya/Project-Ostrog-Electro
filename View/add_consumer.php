@@ -46,9 +46,7 @@ include '../Model/add.php';
     if(!empty($_POST['name']) AND !empty($_POST['Phone_consumer']) AND !empty($_POST['Personal_account']) AND !empty($_POST['Face']))
     {
         $result =  add_cons(($_POST['name']), ($_POST['Phone_consumer']),($_POST['Personal_account']),($_POST['Face']));
-
-        // $user_id = ($_GET['user_id']);
-       // var_dump($user_id);
+        
         switch ($result)
          {
             case "Add_cons":
@@ -61,7 +59,6 @@ include '../Model/add.php';
              // window.location="customer.php?user_id="+a;
             </script>
             <?php
-            // echo "работает";
               break;
             case "Err-cons":
               echo "Пользователь не добавлен";

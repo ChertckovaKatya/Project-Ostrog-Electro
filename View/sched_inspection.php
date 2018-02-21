@@ -26,16 +26,24 @@ include '../Model/cons.php';
 	{
   
 		$row=sched_inspect($_POST['Date_inspect']);
-
 	}
   //var_dump($row);
 
 ?>
 
 <div class="container">
+     <?php
+      if (!empty($_POST['Date_inspect']))
+      {
+        $date=$_POST['Date_inspect'];
+        ?>
+        <li><a href="..\View\import_sched_inspection.php?date=<?php echo $date; ?>">Сохранение в Excel</a></li>
+      <?php
+      }
+      ?>
     <table class="table table-striped">
       <tr><td>Наименование потребителя</td><td>Телефон</td><td>Лицевой счет</td></tr>
-
+     
   <?php
     for ($tr=0; $tr<=COUNT($row)-1; $tr++)
     {
