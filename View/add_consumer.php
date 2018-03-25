@@ -45,19 +45,36 @@ include '../Model/add.php';
 
     if(!empty($_POST['name']) AND !empty($_POST['Phone_consumer']) AND !empty($_POST['Personal_account']) AND !empty($_POST['Face']))
     {
-        $result =  add_cons(($_POST['name']), ($_POST['Phone_consumer']),($_POST['Personal_account']),($_POST['Face']));
+        $result = add_cons(($_POST['name']), ($_POST['Phone_consumer']),($_POST['Personal_account']),($_POST['Face']));
+
+        var_dump($result);
         
-        switch ($result)
+        switch ($result[0])
          {
             case "Add_cons":
+            $id = $result[1];
             ?>
-             <script>
-              alert ('Пользователь успешно добавлен');
-              window.location="consumer.php";
-             //   var a = "<?php echo $user_id ?>";      
-             // alert ('Пользователь успешно добавлен');
-             // window.location="customer.php?user_id="+a;
-            </script>
+            <!-- <script> -->
+              <head>
+              <script type='text/javascript'>
+               var a = "<?php echo $id ?>";
+               function popBox() 
+               {
+                  x=confirm('Пользователь успешно добавлен. Хотите перейти на страницу абонента?');
+                    if (x==true) 
+                      {
+                        // alert ('Пользователь успешно добавлен');
+                        window.location="customer.php?user_id="+a;
+                      }
+                      else 
+                      {
+                        window.location="add_consumer.php";
+                      }
+                }
+              </script>
+            </head>
+              <body onload='popBox()'>
+            </body>
             <?php
               break;
             case "Err-cons":

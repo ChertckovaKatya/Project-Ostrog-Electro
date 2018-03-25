@@ -14,17 +14,20 @@
 			$id_cons=mysqli_fetch_array(mysqli_query($connect,"select id_consumer from consumer where Name_consumer='".$cons_name."' AND Phone_consumer='".$phone_cons."' AND Personal_account='".$Personal_account."' AND Face='".$Face."'; "));
 
 			$user_id=$id_cons["id_consumer"];
-			
-			$arr[1]="Add_cons";
-			$arr[2]=$user_id;
-			//return 'Add_cons';
-			
+			$array = array(
+    			0 =>"Add_cons",
+   				1  => $user_id,
+    			);
+			return($array);
 			exit();
 		}
 
 		else 
 			{
-				return 'Err-cons';
+				$array = array(
+    			0 => "Err-cons",
+    			);
+				return($array);
 				exit();
 			}
 	  
