@@ -1,16 +1,20 @@
 <?php
 include './biblioticdib.php';
 include '../Model/edit.php';
+include '../Model/cons.php';
+
 $type_pr=$_GET['type_pr'];
 $type_all=$_GET['type_all'];
 $id_all=$_GET['id_all'];
 $type_pr=$_GET['type_pr'];
 $id_date_list=$_GET['id_date_list'];
 $user_id = $_GET["user_id"];
+$row=cust_conclusion($_GET["user_id"]);
 edit_all_date(($_GET['id_all']),($_GET['id_date_list']),($_GET['type_all']),($_GET['type_pr']));
 ?>
 <!DOCTYPE html>
 <div class="container">
+  Наименование потребителя: <?php echo $row[0]['Name_consumer']; ?>
 	<form class="form-container" action="edit_all_dates_ok.php" method="POST">
 		<div class="form-group">
        			<?php

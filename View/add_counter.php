@@ -1,18 +1,16 @@
 <?php
 include './biblioticdib.php';
 include '../Model/add.php';
-// include '../Model/counter_add.php';
-
+include '../Model/cons.php';
 
 // echo var_dump($_GET);
 $user_id = $_GET["user_id"];
 $id_obj = $_GET["id_obj"];
-// echo $id_obj;
-// echo $user_id;
-
+$row=cust_conclusion($_GET["user_id"]);
 ?>
 <!DOCTYPE html>
 <div class="container">
+   Наименование потребителя: <?php echo $row[0]['Name_consumer']; ?>
 	<form class="form-container" action="add_counter.php" method="POST">
  		<div class="form-group">
      	 	<label for="name">Тип</label>

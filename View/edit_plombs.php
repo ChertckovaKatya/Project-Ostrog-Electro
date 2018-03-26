@@ -1,15 +1,18 @@
 <?php
 include './biblioticdib.php';
 include '../Model/edit.php';
+include '../Model/cons.php';
 
 $id_tr_cur = $_GET["id_tr_cur"];
 $id_plomb = $_GET["id_plomb"];
 $Phase=$_GET["phase"];
 $user_id = $_GET["user_id"];
 edit_plombs($_GET["id_tr_cur"],$_GET["id_plomb"],$_GET["phase"]);
+$row=cust_conclusion($_GET["user_id"]);
 ?>
 <!DOCTYPE html>
 <div class="container">
+   Наименование потребителя: <?php echo $row[0]['Name_consumer']; ?>
 	<form class="form-container" action="edit_plombs_ok.php?id_tr_cur=<?php echo (int)$id_tr_cur; ?>&id_plomb=<?php echo (int)$id_plomb; ?>&user_id=<?php echo (int)$user_id; ?>" method="POST">
         <?php
           if($Phase==1)

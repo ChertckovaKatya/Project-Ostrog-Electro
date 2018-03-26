@@ -1,12 +1,15 @@
 <?php
 include './biblioticdib.php';
 include '../Model/add.php';
+include '../Model/cons.php';
 
 $user_id = $_GET["user_id"];
 $id_tr_cur = $_GET["id_tr_cur"];
+$row=cust_conclusion($_GET["user_id"]);
 ?>
 <!DOCTYPE html>
 <div class="container">
+   Наименование потребителя: <?php echo $row[0]['Name_consumer']; ?>
 	<form class="form-container" action="add_plombs.php" method="POST">
     <select name="Phase">
       <option value="1">Фаза А</option>

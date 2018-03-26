@@ -1,16 +1,17 @@
 <?php
 include './biblioticdib.php';
 include '../Model/add.php';
+include '../Model/cons.php';
 
 $id_all = $_GET["id_all"];
 $type_pr= $_GET["type_pr"];
 $user_id = $_GET["user_id"];
-// echo $id_all;
-// echo $type_pr;
+$row=cust_conclusion($_GET["user_id"]);
 ?>
 
 <!DOCTYPE html>
 <div class="container">
+   Наименование потребителя: <?php echo $row[0]['Name_consumer']; ?>
 	<form class="form-container" action="add_all_dates.php" method="POST">
 		<div class="form-group">
        		<select name="Type">

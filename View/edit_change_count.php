@@ -1,14 +1,17 @@
 <?php
 include './biblioticdib.php';
 include '../Model/edit.php';
+include '../Model/cons.php';
 
 $id_change=$_GET["id_change"];
 $user_id = $_GET["user_id"];
+$row=cust_conclusion($_GET["user_id"]);
 edit_change_cunter($_GET["id_change"]);
 ?>
 
 <!DOCTYPE html>
 <div class="container">
+  Наименование потребителя: <?php echo $row[0]['Name_consumer']; ?>
 	<form class="form-container" action="edit_change_count_ok.php?id_change=<?php echo (int)$id_change; ?>&user_id=<?php echo (int)$user_id; ?>" method="POST">
  		<div class="form-group">
      	 	<label for="name">Дата замены</label>

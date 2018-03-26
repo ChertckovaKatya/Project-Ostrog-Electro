@@ -2,13 +2,15 @@
 
 include './biblioticdib.php';
 include '../Model/add.php';
-
+include '../Model/cons.php';
 
 $user_id = $_GET["user_id"];
-// echo $user_id;
+$row=cust_conclusion($_GET["user_id"]);
+
 ?>
 <!DOCTYPE html>
 <div class="container">
+ Наименование потребителя: <?php echo $row[0]['Name_consumer']; ?>
 	<form class="form-container" action="add_object.php" method="POST">
  		<div class="form-group">
     		<label  for="name">Собственник</label>

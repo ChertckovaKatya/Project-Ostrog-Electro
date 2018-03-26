@@ -1,16 +1,19 @@
 <?php
 include './biblioticdib.php';
 include '../Model/edit.php';
+include '../Model/cons.php';
 
 $id_obj = $_GET["id_obj"];
-// echo $id_obj;
+
 $user_id = $_GET["user_id"];
-// echo $user_id;
+$row=cust_conclusion($_GET["user_id"]);
 edit_object($_GET["id_obj"]);
+
 ?>
 
 <!DOCTYPE html>
 <div class="container">
+   Наименование потребителя: <?php echo $row[0]['Name_consumer']; ?>
 	<form class="form-container" action="edit_object_ok.php?id_obj=<?php echo (int)$id_obj; ?>&user_id=<?php echo (int)$user_id; ?>" method="POST">
  		<div class="form-group">
     		<label  for="name">Собственник</label>

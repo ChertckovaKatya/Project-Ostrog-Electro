@@ -1,14 +1,17 @@
 <?php
 include './biblioticdib.php';
 include '../Model/edit.php';
+include '../Model/cons.php';
 
 $id_tr_vol = $_GET["id_tr_vol"];
 $user_id = $_GET["user_id"];
 $id_obj=$_GET["id_obj"];
 edit_transfor_vol($_GET["id_tr_vol"]);
+$row=cust_conclusion($_GET["user_id"]);
 ?>
 <!DOCTYPE html>
 <div class="container">
+   Наименование потребителя: <?php echo $row[0]['Name_consumer']; ?>
 	<form class="form-container" action="edit_transfor_vol_ok.php?user_id=<?php echo (int)$user_id; ?>&id_obj=<?php echo (int)$id_obj; ?>" method="POST">
     	<div class="form-group">
     		<label for="name">Тип:</label>
