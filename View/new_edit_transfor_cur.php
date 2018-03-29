@@ -1,0 +1,100 @@
+<?php
+include './biblioticdib.php';
+include '../Model/add.php';
+include '../Model/cons.php';
+
+$user_id = $_GET["user_id"];
+$id_obj = $_GET["id_obj"];
+$row=cust_conclusion($_GET["user_id"]);
+
+?>
+<!DOCTYPE html>
+<div class="container">
+  Наименование потребителя: <?php echo $row[0]['Name_consumer']; ?>
+	<form class="form-container" action="add_transfor_cur.php" method="POST">
+		<div class="form-group">
+     	 	<label for="name">Тип:</label>
+      		<input name="Type_tr_cur" class="form-control">
+    	</div>
+    	<div class="form-group">
+     	 	<label for="name">Марка:</label>
+      		<input name="Mark_tr_cur" class="form-control">
+    	</div>
+    	<div class="form-group">
+     	 	<label for="name">Номинал:</label>
+      		<input name="Denomin_tr_cur" class="form-control">
+    	</div>
+    	<div class="form-group">
+     	 	<label for="name">Год выпуска:</label>
+      		<input type="date" name="Year_release_tr_cur" class="form-control">
+    	</div>
+    	
+<input type="radio" name="Type_fase" value="1" /> Однофазный <br>
+<input type="radio" name="Type_fase" value="2" /> Трехфазный <br>
+         <?php
+         var_dump($Type_fase);
+
+         if (isset($_POST['Type_fase'])==1)
+         {
+         	echo '
+    	<div class="form-group">
+     	 	<label for="name">№ Трансформатора тока фА:</label>
+      		<input name="Num_tr_cur_fa" class="form-control">
+    	</div>';
+    	}
+    	if (isset($_POST['Type_fase'])==2)
+    	{ echo '
+    		<div class="form-group">
+     	 	<label for="name">№ Трансформатора тока фА:</label>
+      		<input name="Num_tr_cur_fa" class="form-control">
+    	</div>
+    	<div class="form-group">
+     	 	<label for="name">№ Трансформатора тока фБ:</label>
+      		<input name="Num_tr_cur_fb" class="form-control">
+    	</div>
+    	<div class="form-group">
+     	 	<label for="name">№ Трансформатора тока фС:</label>
+      		<input name="Num_tr_cur_fc" class="form-control">
+    	</div>';
+    	}
+    	?>
+    	<div class="button-container">
+      		<input autofocus class="btn btn-success" type="submit" value="Добавить">
+      	</div>
+      <div>
+    	<div>
+          <input type="hidden" name="user_id" value = <?php echo (int) $user_id;?> >
+    	</div>
+    	<div>
+          <input type="hidden" name="id_obj" value = <?php echo (int) $id_obj;?> >
+    	</div>
+	 </form>
+</div>
+
+<?php
+	if(!empty($_POST['Type_tr_cur']) AND !empty($_POST['Mark_tr_cur']) AND !empty($_POST['Denomin_tr_cur']) AND !empty($_POST['Year_release_tr_cur']) AND !empty($_POST['Num_tr_cur_fa']) AND !empty($_POST['Num_tr_cur_fb']) AND !empty($_POST['Num_tr_cur_fc']) AND !empty($_POST['id_obj']) AND !empty($_POST['user_id']))
+	{
+    
+
+		 $result =  add_transfor_cur(($_POST['Type_tr_cur']),($_POST['Mark_tr_cur']),($_POST['Denomin_tr_cur']),($_POST['Year_release_tr_cur']),($_POST['Num_tr_cur_fa']),($_POST['Num_tr_cur_fb']),($_POST['Num_tr_cur_fc']),($_POST['id_obj']),($_POST['user_id']));
+     $user_id = ($_POST['user_id']);
+		 switch ($result)
+         {
+            case "Add_tr_cur":
+            ?>
+             <script>
+              var a = "<?php echo $user_id ?>";
+              alert ('Трансформатор тока успешно добавлен');
+             window.location="customer.php?user_id="+a;
+             </script>
+            <?php  
+
+              break;
+            case "Err-tr_cur":
+              echo "Трансформатор тока не добавлен";
+              break;
+
+         }
+	}
+
+?>
