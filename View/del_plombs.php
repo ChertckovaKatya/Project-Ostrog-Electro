@@ -20,7 +20,7 @@ if(!empty($_GET["id_tr_cur"]) AND !empty($_GET["id_plomb"]) AND !empty($_GET["ph
                 window.location="customer.php?user_id="+a;
                 </script>
             <?php  
-             // echo "Данные о пломбах успешно удалены";
+              // echo "Данные о пломбах успешно удалены";
               break;
             case "Err":
               echo "Данные о пломбах не удалены";

@@ -176,6 +176,56 @@
 			} 
         }
 
+
+	function add_transfor_cur2($Type_tr_cur,$Mark_tr_cur,$Denomin_tr_cur,$Year_release_tr_cur,$Num_tr_cur_fa,$Num_tr_cur_fb,$Num_tr_cur_fc,$id_obj,$user_id,$Type_fase)
+        {
+        	include_once "../Controller/connection.php";
+			$connect = get_connect();
+
+			if (!empty($Type_tr_cur) AND !empty($Mark_tr_cur) AND !empty($Denomin_tr_cur) AND !empty($Year_release_tr_cur) AND !empty($Denomin_tr_cur) AND !empty($Num_tr_cur_fa) AND !empty($id_obj)  AND !empty($user_id))
+			{
+				if ($Type_fase=='1')
+				{
+					mysqli_query($connect,"INSERT INTO Transfor_cur (Type_tr_cur,Mark_tr_cur,Denomin_tr_cur,Year_release_tr_cur,Num_tr_cur_fa,Num_tr_cur_fb,Num_tr_cur_fc,Obj_id_tr_cur,Obj_Cons_id_tr_cur) VALUES ('$Type_tr_cur','$Mark_tr_cur','$Denomin_tr_cur','$Year_release_tr_cur','$Num_tr_cur_fa','-','-','$id_obj','$user_id');");
+				}
+				if ($Type_fase=='2')
+				{
+					mysqli_query($connect,"INSERT INTO Transfor_cur (Type_tr_cur,Mark_tr_cur,Denomin_tr_cur,Year_release_tr_cur,Num_tr_cur_fa,Num_tr_cur_fb,Num_tr_cur_fc,Obj_id_tr_cur,Obj_Cons_id_tr_cur) VALUES ('$Type_tr_cur','$Mark_tr_cur','$Denomin_tr_cur','$Year_release_tr_cur','$Num_tr_cur_fa','$Num_tr_cur_fb','$Num_tr_cur_fc','$id_obj','$user_id');");
+				}
+				$id_tr_cur = mysqli_fetch_array(mysqli_query($connect,"select id_tr_cur from transfor_cur WHERE Type_tr_cur='".$Type_tr_cur."'AND Mark_tr_cur='".$Mark_tr_cur."' AND Denomin_tr_cur='".$Denomin_tr_cur."' AND Year_release_tr_cur='".$Year_release_tr_cur."' AND Num_tr_cur_fa='".$Num_tr_cur_fa."' AND Num_tr_cur_fb='".$Num_tr_cur_fb."' AND Num_tr_cur_fc='".$Num_tr_cur_fc."' AND Obj_id_tr_cur='".$id_obj."' AND Obj_Cons_id_tr_cur='".$user_id."'; "));
+
+				//echo var_dump($id_tr_cur);
+				// echo "select id_tr_cur from transfor_cur WHERE Type_tr_cur='".$Type_tr_cur."'AND Mark_tr_cur='".$Mark_tr_cur."' AND Denomin_tr_cur='".$Denomin_tr_cur."' AND Year_release_tr_cur='".$Year_release_tr_cur."' AND Num_tr_cur_fa='".$Num_tr_cur_fa."' AND Num_tr_cur_fb='".$Num_tr_cur_fb."' AND Num_tr_cur_fc='".$Num_tr_cur_fc."' AND Obj_id_tr_cur='".$id_obj."' AND Obj_Cons_id_tr_cur='".$user_id."';";
+
+				$id_tr_cur2=$id_tr_cur["id_tr_cur"];
+
+				//echo "id_tr_cur=====";
+				 //echo $id_tr_cur2;
+
+				$cur = array(
+    			0 =>"Add_tr_cur",
+   				1 => $id_tr_cur2,
+   				2 => $user_id,
+    			);
+
+					
+				return ($cur);
+	
+				exit();
+			}
+
+				else 
+			{
+				$cur = array(
+    			0 =>"Err-tr_cur",
+    			);
+				return ($cur);
+				exit();
+			} 
+        }
+
+        
+
         function add_plombs($Phase,$L1,$L2,$I1,$I2,$Other_places_plomb,$id_tr_cur)
         {
         	include_once "../Controller/connection.php";
@@ -185,13 +235,41 @@
 			{
 				mysqli_query($connect,"INSERT INTO Plombs (L1,L2,I1,I2,Other_places_plomb) VALUES ('$L1','$L2','$I1','$I2','$Other_places_plomb');");
 				$id_p=mysqli_fetch_array(mysqli_query($connect,"select id_plomb from Plombs WHERE L1 ='".$L1."' AND L2 ='".$L2."' AND I1 ='".$I1."'  AND I2 ='".$I2."' AND Other_places_plomb='".$Other_places_plomb."';"));
-				// echo "select id_plomb from Plombs WHERE L1 ='".$L1."' AND L2 ='".$L2."' AND I1 ='".$I1."'  AND I1 ='".$I2."' AND Other_places_plomb='".$Other_places_plomb."';";
+				
 				$id_plomb=$id_p['id_plomb'];
-				// var_dump($id_plomb);
+				
 				mysqli_query($connect,"INSERT INTO Phase_tr_cur (Phase,Transfor_cur_id_phase,Phase_id_plomb) VALUES ('$Phase','$id_tr_cur','$id_plomb');");
-				// echo "INSERT INTO Plombs (L1,L2,I1,I2,Other_places_plomb) VALUES ('$L1','$L2','$I1','$I2','$Other_places_plomb');";
-				// echo "INSERT INTO Phase_tr_cur (Phase,Transfor_cur_id_phase,Phase_id_plomb) VALUES ('$Phase','$id_tr_cur','$id_plomb');";
+				
+	
+				return 'Add';
+	
+				exit();
+			}
+				else 
+			{
+				return 'Err';
+				exit();
+			} 
 
+        }
+
+
+          function add_plombs2($Phase,$L1,$L2,$I1,$I2,$Other_places_plomb,$id_tr_cur)
+        {
+        	include_once "../Controller/connection.php";
+			$connect = get_connect();
+
+			if (!empty($Phase) AND !empty($L1) AND !empty($L2) AND !empty($I1) AND !empty($I2) AND !empty($Other_places_plomb) AND !empty($id_tr_cur))
+			{
+				mysqli_query($connect,"INSERT INTO Plombs (L1,L2,I1,I2,Other_places_plomb) VALUES ('$L1','$L2','$I1','$I2','$Other_places_plomb');");
+				// echo "INSERT INTO Plombs (L1,L2,I1,I2,Other_places_plomb) VALUES ('$L1','$L2','$I1','$I2','$Other_places_plomb');";
+				$id_p=mysqli_fetch_array(mysqli_query($connect,"select id_plomb from Plombs WHERE L1 ='".$L1."' AND L2 ='".$L2."' AND I1 ='".$I1."'  AND I2 ='".$I2."' AND Other_places_plomb='".$Other_places_plomb."';"));
+				
+				// echo "select id_plomb from Plombs WHERE L1 ='".$L1."' AND L2 ='".$L2."' AND I1 ='".$I1."'  AND I2 ='".$I2."' AND Other_places_plomb='".$Other_places_plomb."';";
+				$id_plomb=$id_p['id_plomb'];
+				
+				mysqli_query($connect,"INSERT INTO Phase_tr_cur (Phase,Transfor_cur_id_phase,Phase_id_plomb) VALUES ('$Phase','$id_tr_cur','$id_plomb');");
+				 // echo "INSERT INTO Phase_tr_cur (Phase,Transfor_cur_id_phase,Phase_id_plomb) VALUES ('$Phase','$id_tr_cur','$id_plomb');";
 	
 				return 'Add';
 	

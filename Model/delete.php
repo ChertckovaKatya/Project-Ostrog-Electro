@@ -126,7 +126,8 @@
 			// echo "delete from phase_tr_cur where Phase_id_plomb=".$id_plomb." AND Phase=".$phase." AND Transfor_cur_id_phase=".$id_tr_cur.";";
 
 			mysqli_query($connect,"delete from plombs where id_plomb=".$id_plomb.";");
-			// echo "delete from plombs where id_plomb=".$id_plomb.";";
+			
+			 // echo "delete from plombs where id_plomb=".$id_plomb.";";
 
 			
 			// echo "delete from Plombs where id_plomb=".$id_plomb." AND Tr_cur_id_plomb=".$id_tr_cur.";";

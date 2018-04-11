@@ -146,8 +146,11 @@ $all_dat_tr_vol=all_dates_conclusion($id_tr_vol,3);
 
     			}
     			if (prov_transfor_cur($id_obj,$user_id)!=1)
-    			{ echo '
-    			<a href="..\View\add_transfor_cur.php?user_id='.$user_id.'&id_obj='.$id_obj.';"> Добавить трансформатор тока</a>';
+    			{
+    			// { echo '
+    			// <a href="..\View\add_transfor_cur.php?user_id='.$user_id.'&id_obj='.$id_obj.';"> Добавить трансформатор тока</a>';
+    				echo '
+    			 <a href="..\View\new_add_transfor_cur.php?user_id='.$user_id.'&id_obj='.$id_obj.';"> Добавить трансформатор тока</a>';
     			}
 
     			if (prov_tr_vol($id_tr_vol)!=1)
