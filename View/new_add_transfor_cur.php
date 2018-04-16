@@ -154,7 +154,7 @@ $row=cust_conclusion($_GET["user_id"]);
   </script>
 
 <?php
-echo var_dump($_POST['Type_fase']);
+//echo var_dump($_POST['Type_fase']);
 if ($_POST['Type_fase']=="1")
 {
   
@@ -232,7 +232,11 @@ if ($_POST['Type_fase']=="2")
                   <?php  
                 break;
                 case "Err":
-                  echo "Пломбы Пломбы фазы А не добавлены";
+                ?>
+                <script>
+                      alert ('Пломбы Пломбы фазы А не добавлены');
+                    </script>
+                <?php
                 break;
               }
             }
@@ -260,7 +264,11 @@ if ($_POST['Type_fase']=="2")
                   <?php  
                 break;
                 case "Err":
-                  echo "Пломбы фазы Б не добавлены";
+                ?>
+                    <script>
+                      alert ('Пломбы фазы Б не добавлены');
+                    </script>
+                  <?php 
                 break;
               }
             }
@@ -289,7 +297,11 @@ if ($_POST['Type_fase']=="2")
                 break;
 
                 case "Err":
-                  echo "Пломбы фазы С не добавлены";
+                  ?>
+                  <script>
+                      alert ('Пломбы фазы С не добавлены');
+                  </script>
+                  <?php  
                 break;
               }
                 

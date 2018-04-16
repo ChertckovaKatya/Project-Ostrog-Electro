@@ -153,7 +153,7 @@
 			mysqli_query($connect,"delete from Change_count where id_change=".$id_change.";");
 			return 'Del';
 
-			echo 'delete from Change_count where id_change=".$id_change.";';
+			//echo 'delete from Change_count where id_change=".$id_change.";';
 	
 			exit();
 		}
