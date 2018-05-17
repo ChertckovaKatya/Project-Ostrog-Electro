@@ -1,8 +1,13 @@
 <?php
+
+include_once "../Model/statususer.php";
 include './biblioticdib.php';
 include '../Model/edit.php';
 include '../Model/cons.php';
-
+if(status_user()==0) { 
+header ('Location:../View/index.php'); 
+exit(); 
+}
 $id_change=$_GET["id_change"];
 $user_id = $_GET["user_id"];
 $row=cust_conclusion($_GET["user_id"]);

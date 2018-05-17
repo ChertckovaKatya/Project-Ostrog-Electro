@@ -12,13 +12,16 @@ include_once "../Model/auth.php";
 include_once "../Model/identification.php";
 
 
-
-if(status_user()==1)
-{
-    header ('Location:../view/power.php');
-    exit();
+if(status_user()==1) { 
+header ('Location:../View/consumer.php'); 
+exit(); 
 }
 
+// if(status_user()==1)
+// {
+//     header ('Location:../view/consumer.php');
+//     exit();
+// }
 
 
 // if(!empty($_POST['login']) AND !empty($_POST['password']))
@@ -40,20 +43,20 @@ if(status_user()==1)
 //     }
 // }
 
-if (!empty($_POST['user']) AND !empty($_POST['pass']))
-{
-	   $result = 	ident_user(($_POST['user']), ($_POST['pass']));
-	   switch ($result)
-        {
-                case "ERR_3":
-			     echo "'Выбранный логин уже зарегистрирован!";
-                break;
-                case "Zar":
-			     echo "Вы успешно зарегистрированы!'";
-                break;
+// if (!empty($_POST['user']) AND !empty($_POST['pass']))
+// {
+// 	   $result = ident_user(($_POST['user']), ($_POST['pass']));
+// 	   switch ($result)
+//         {
+//                 case "ERR_3":
+// 			     echo "'Выбранный логин уже зарегистрирован!";
+//                 break;
+//                 case "Zar":
+// 			     echo "Вы успешно зарегистрированы!'";
+//                 break;
 
-        }
-}
+//         }
+// }
 
 
 ?>
@@ -94,22 +97,22 @@ if (!empty($_POST['user']) AND !empty($_POST['pass']))
                                             <?php
                                             if(!empty($_POST['login']) AND !empty($_POST['password']))
                                             {
-                                                 $result =  auth_user(($_POST['login']), ($_POST['password']));
+                                                 $result = auth_user(($_POST['login']), ($_POST['password'])); 
 
                                                  switch ($result)
-                                                 {
+                                                {
                                                     case "ERR_1":
                                                     echo "Пользователь не найден";
                                                      break;
                                                      case "ERR_2":
                                                      echo "Неверный логин или пароль";
                                                     break;
-                                                    case "Ok":
+                                                    case "OK":
                                                      // echo "Вы успешно авторизировались на сайте!";
-                                                     header ('Location:../View/power.php');
+                                                     header ('Location:../View/consumer.php');
                                                     break;
-                                                    }
                                                 }
+                                            }
 
                                                 ?>
 
@@ -131,7 +134,7 @@ if (!empty($_POST['user']) AND !empty($_POST['pass']))
 
                                             if (!empty($_POST['user']) AND !empty($_POST['pass']))
                                             {
-                                                   $result =    ident_user(($_POST['user']), ($_POST['pass']));
+                                                   $result = ident_user(($_POST['user']), ($_POST['pass']));
                                                    switch ($result)
                                                     {
                                                             case "ERR_3":
@@ -149,9 +152,9 @@ if (!empty($_POST['user']) AND !empty($_POST['pass']))
                 </div>
             </div>
 
-        <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+      <!--   jQuery (necessary for Bootstrap's JavaScript plugins) -->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-        <!-- Include all compiled plugins (below), or include individual files as needed -->
+   <!--      Include all compiled plugins (below), or include individual files as needed -->
         <script src="../js/bootstrap.js"></script>
     </body>
 </html>

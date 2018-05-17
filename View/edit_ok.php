@@ -1,10 +1,13 @@
 <?php 
 
-
+include_once "../Model/statususer.php";
 include './biblioticdib.php';
 include '../Model/edit.php';
 $user_id = $_GET["user_id"];
-
+if(status_user()==0) { 
+header ('Location:../View/index.php'); 
+exit(); 
+}
 global $s;
 $s=0;
 if(!empty($_POST['Name']) AND !empty($_POST['Phone_consumer']) AND !empty($_GET["user_id"]) AND !empty($_POST["Face"]) AND !empty($_POST['Personal_account']))

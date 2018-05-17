@@ -13,7 +13,7 @@
 	}
 	function object_concl($user_id)
 	{
-		include_once "../Controller/connection.php";
+		 include_once "../Controller/connection.php";
 		$connect = get_connect();
 		mysqli_query ($connect,"set names cp1251");
 		error_reporting(E_ALL); 
@@ -34,7 +34,7 @@
 	}
 	function all_dates_concl($id_reg,$type)
 	{
-		include_once "../Controller/connection.php";
+		 include_once "../Controller/connection.php";
 		$connect = get_connect();
 		mysqli_query ($connect,"set names cp1251");
 		error_reporting(E_ALL); 
@@ -59,6 +59,8 @@
 				
 
 			}
+
+			
 		}
 		return $result;
 		exit();
@@ -87,7 +89,7 @@
 	}
 	function transfor_cur_concl($id_obj,$user_id)
 	{
-		include_once "../Controller/connection.php";
+		 include_once "../Controller/connection.php";
 		$connect = get_connect();
 		mysqli_query ($connect,"set names cp1251");
 		error_reporting(E_ALL); 
@@ -97,7 +99,7 @@
 	}
 	function plombs_concl($id_tr_cur)
 	{
-		include_once "../Controller/connection.php";
+		 include_once "../Controller/connection.php";
 		$connect = get_connect();
 		mysqli_query ($connect,"set names cp1251");
 		error_reporting(E_ALL); 
@@ -107,7 +109,7 @@
 	}
 	function transfor_vol_concl($id_obj,$user_id)
 	{
-		include_once "../Controller/connection.php";
+	 include_once "../Controller/connection.php";
 		$connect = get_connect();
 		mysqli_query ($connect,"set names cp1251");
 		error_reporting(E_ALL);

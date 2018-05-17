@@ -9,7 +9,8 @@
       	<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 
       	<link href="../css/bootstrap.css" rel="stylesheet">
-  
+  		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -45,9 +46,9 @@
 									</div>
 									<div class="collapse navbar-collapse" id="responsive-menu">
 										<ul class="nav navbar-nav">
-											<li><a href="consumer.php"> Перечень потребителей </a></li>
-											<li><a href="add_consumer.php"> Добавить потребителя </a></li>
-											<li><a href="sched_inspection.php"> График проверок</a></li>
+											<li><a href="consumer.php"><span class="glyphicon glyphicon-folder-open"></span> Перечень потребителей </a></li>
+											<li><a href="add_consumer.php"><span class="glyphicon glyphicon-plus"></span> Добавить потребителя </a></li>
+											<li><a href="sched_inspection.php"><span class="glyphicon glyphicon-stats"></span> График проверок </a></li>
                      					</ul>
                       					<ul class="nav navbar-nav navbar-right">
 											<li><a href="exit_user.php"> <span class="glyphicon glyphicon-remove-sign"> </span> Выйти </a></li>

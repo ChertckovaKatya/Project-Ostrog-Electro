@@ -6,6 +6,10 @@
 	<link href="bootstrap.css" rel="stylesheet" type="text/css">
 </head>
 <?php
+if(!$user) { 
+header ('Location:../View/index.php'); 
+exit(); 
+}
 include_once "../Model/identification.php";
 
 if (!empty($_POST['login']) AND !empty($_POST['password']))

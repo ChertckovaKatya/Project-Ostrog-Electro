@@ -1,7 +1,13 @@
 <?php
+include "../Model/statususer.php";
 include './biblioticdib.php';
 include '../Model/cons.php';
-// include './search.php';
+
+if(status_user()==0) { 
+header ('Location:../View/index.php'); 
+exit(); 
+}
+
 $id=0;
 $id=$_GET['id'];
 $Text_search=$_GET['Text_search'];
@@ -14,13 +20,11 @@ $quantity=kol_face();
  
 <!DOCTYPE html>
   <head>
-    <!-- <link href="../css/consumer.css" rel="stylesheet"> -->
   </head>
   <body>
   <div class="container" >
     <div class="row">
-       <li><a href="..\View\export.php">Сохранение в Excel</a></li>
-	   <!-- <form class="navbar-search pull-left""> -->
+       <a href="..\View\export.php"><span class="glyphicon glyphicon-floppy-disk"></span></a> 
       <div class="col-sm-12">
 		    <form class="well form-search">
 		      <input type="text" name="Text_search" class="span3 search-query">
@@ -30,14 +34,14 @@ $quantity=kol_face();
              <option value="3">По лицево счету</option>
           </select>
           <input type="hidden" name="id" value ="1" >
-     	    <input autofocus class="btn" type="submit" value="Поиск">
+     	    <input autofocus class="btn" type="submit" value="Поиск"> <span class="badge"></span> 
    	    </form>
       </div>
       <div class="col-sm-12">
         <ul class="breadcrumb">
-  		    <li><a href="?id_face=1">Юридические</a> <?php echo $quantity[0]['COUNT(*)'] ?></li>
-  		    <li><a href="?id_face=2">Физические лица</a> <?php  echo $quantity[1]['COUNT(*)'] ?></li>
-          <li><a href="?id_face=3">Многоквартирные дома</a> <?php echo $quantity[2]['COUNT(*)'] ?></li>
+  		    <li><a href="?id_face=1">Юридические  </a><span class="badge"><?php echo $quantity[0]['COUNT(*)'] ?></span></li>
+  		    <li><a href="?id_face=2">Физические лица</a> </a><span class="badge"> <?php  echo $quantity[1]['COUNT(*)'] ?></span></li>
+          <li><a href="?id_face=3">Многоквартирные дома</a>  </a><span class="badge"><?php echo $quantity[2]['COUNT(*)'] ?></span></li>
         </ul>
       </div>
 

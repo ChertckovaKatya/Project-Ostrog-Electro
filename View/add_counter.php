@@ -1,8 +1,13 @@
 <?php
+
+include "../Model/statususer.php";
 include './biblioticdib.php';
 include '../Model/add.php';
 include '../Model/cons.php';
-
+if(status_user()==0) { 
+header ('Location:../View/index.php'); 
+exit(); 
+}
 // echo var_dump($_GET);
 $user_id = $_GET["user_id"];
 $id_obj = $_GET["id_obj"];

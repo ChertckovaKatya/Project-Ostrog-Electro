@@ -1,6 +1,12 @@
 <?php
+include "../Model/statususer.php";
 include './biblioticdib.php';
 include '../Model/add.php';
+if(status_user()==0) { 
+header ('Location:../View/index.php'); 
+exit(); 
+}
+
 
 ?>
 <!DOCTYPE html>
@@ -47,7 +53,7 @@ include '../Model/add.php';
     {
         $result = add_cons(($_POST['name']), ($_POST['Phone_consumer']),($_POST['Personal_account']),($_POST['Face']));
 
-        var_dump($result);
+        // var_dump($result);
         
         switch ($result[0])
          {

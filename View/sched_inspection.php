@@ -1,7 +1,11 @@
 <?php
+include_once "../Model/statususer.php";
 include './biblioticdib.php';
 include '../Model/cons.php';
-
+if(status_user()==0) { 
+header ('Location:../View/index.php'); 
+exit(); 
+}
 ?> 
 <!DOCTYPE html>
 <body>
@@ -21,7 +25,6 @@ include '../Model/cons.php';
 
 
 <?php
-
 	if (!empty($_POST['Date_inspect']))
 	{
   
@@ -39,6 +42,7 @@ include '../Model/cons.php';
         ?>
         <li><a href="..\View\import_sched_inspection.php?date=<?php echo $date; ?>">Сохранение в Excel</a></li>
       <?php
+      echo '<h2>'. $date.'</h2>';
       }
       ?>
     <table class="table table-striped">

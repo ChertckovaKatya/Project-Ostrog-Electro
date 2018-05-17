@@ -1,8 +1,11 @@
 <?php
-
+include_once "../Model/statususer.php";
 include './biblioticdib.php';
 include '../Model/delete.php';
-
+if(status_user()==0) { 
+header ('Location:../View/index.php'); 
+exit(); 
+}
 
 
 

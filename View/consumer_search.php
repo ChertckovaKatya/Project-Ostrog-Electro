@@ -1,9 +1,11 @@
-<link href="../css/consumer.css" rel="stylesheet">
-
 <?php
+include "../Model/statususer.php";
 include './biblioticdib.php';
 include '../Model/cons.php';
- 
+ if(status_user()==0) { 
+header ('Location:../View/index.php'); 
+exit(); 
+}
 if (!empty($_POST["Text_search"]) AND !empty($_POST["search"]))
 {
 	$row=cons_table(1,($_POST["Text_search"]),($_POST["Search"]));

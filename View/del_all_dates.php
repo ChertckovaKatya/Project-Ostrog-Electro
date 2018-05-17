@@ -1,8 +1,11 @@
 <?php
-
+include "../Model/statususer.php";
 include './biblioticdib.php';
 include '../Model/delete.php';
-
+if(status_user()==0) { 
+header ('Location:../View/index.php'); 
+exit(); 
+}
 if(!empty($_GET["id_all"]) AND !empty($_GET["id_date_list"]) AND !empty($_GET["type_pr"]) AND !empty($_GET["user_id"]))
 {
 	$result=del_all_dates($_GET["id_all"],$_GET["id_date_list"],$_GET["type_pr"]);

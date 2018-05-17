@@ -1,3 +1,11 @@
+<?php
+include "../Model/statususer.php";
+include "../Model/auth.php";
+if(status_user()==0) { 
+header ('Location:../View/index.php'); 
+exit(); 
+}
+?>
 <!DOCTYPE html>
 <head>
 	<meta charset="utf-8">
@@ -8,14 +16,12 @@
 
 <?php
 
-include_once "../Model/statususer.php";
-include_once "../Model/auth.php";
 
 
-if(status_user()==1) {
- header ('Location: power.php');
-exit();
- }
+// if(status_user()==1) {
+//  header ('Location: consumer.php');
+// exit();
+//  }
 
 
 

@@ -1,5 +1,10 @@
 <?php
-	require '../Controller/connection.php';
+include_once "../Model/statususer.php";
+if(status_user()==0) { 
+header ('Location:../View/index.php'); 
+exit(); 
+}
+	//require '../Controller/connection.php';
 	$connect = get_connect();
 	mysqli_query ($connect,"set names cp1251");
 	error_reporting(E_ALL); 
