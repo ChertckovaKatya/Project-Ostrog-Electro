@@ -40,8 +40,8 @@ $quantity=kol_face();
       <div class="col-sm-12">
         <ul class="breadcrumb">
   		    <li><a href="?id_face=1">Юридические  </a><span class="badge"><?php echo $quantity[0]['COUNT(*)'] ?></span></li>
-  		    <li><a href="?id_face=2">Физические лица</a> </a><span class="badge"> <?php  echo $quantity[1]['COUNT(*)'] ?></span></li>
-          <li><a href="?id_face=3">Многоквартирные дома</a>  </a><span class="badge"><?php echo $quantity[2]['COUNT(*)'] ?></span></li>
+  		    <li><a href="?id_face=2">Физические лица </a><span class="badge"><?php echo $quantity[1]['COUNT(*)'] ?></span></li>
+          <li><a href="?id_face=3">Многоквартирные дома </a><span class="badge"><?php echo $quantity[2]['COUNT(*)'] ?></span></li>
         </ul>
       </div>
 

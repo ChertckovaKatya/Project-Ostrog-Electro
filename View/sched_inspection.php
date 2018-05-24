@@ -40,9 +40,11 @@ exit();
       {
         $date=$_POST['Date_inspect'];
         ?>
-        <li><a href="..\View\import_sched_inspection.php?date=<?php echo $date; ?>">Сохранение в Excel</a></li>
+        <br>
+       <a href="..\View\import_sched_inspection.php?date=<?php echo $date; ?>"><span class="glyphicon glyphicon-floppy-disk"></span></a>
+     </br>
       <?php
-      echo '<h2>'. $date.'</h2>';
+      echo '<h3>'. $date.'</h3>';
       }
       ?>
     <table class="table table-striped">

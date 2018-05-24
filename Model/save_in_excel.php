@@ -7,6 +7,7 @@
 		mysqli_query ($connect,"set names cp1251");
 		error_reporting(E_ALL); 
 		$customer=mysqli_fetch_assoc(mysqli_query($connect,"select Name_consumer,Phone_consumer,Face from consumer WHERE id_consumer =".$user_id.";"));
+		//var_dump($customer);
 		return $customer;
 		exit();
 
@@ -44,26 +45,27 @@
 			{
 				$result=(mysqli_query($connect,"select t3.id_Type,t1.Date_list_id,t1.Conclusio,t1.Notes,t2.Date_l,t3.Type from All_dates AS t1 join Date_list AS t2 join Type_date AS t3 on  t1.Date_list_id=t2.id_Date AND t2.Type_date_id=t3.id_Type where Counter_id_count=".$id_reg.";"));
 
-		
-
+			return $result;
+			exit();
 			}
 			if ($type==2)
 			{
 				$result=(mysqli_query($connect,"select t3.id_Type, t1.Date_list_id,t1.Conclusio,t1.Notes,t2.Date_l,t3.Type from All_dates AS t1 join Date_list AS t2 join Type_date AS t3 on  t1.Date_list_id=t2.id_Date AND t2.Type_date_id=t3.id_Type where Transfor_cur_id=".$id_reg.";"));
-				
+				return $result;
+				exit();
 
 			}
 			if ($type==3)
 			{
 				$result=(mysqli_query($connect,"select t3.id_Type,t1.Date_list_id,t1.Conclusio,t1.Notes,t2.Date_l,t3.Type from All_dates AS t1 join Date_list AS t2 join Type_date AS t3 on  t1.Date_list_id=t2.id_Date AND t2.Type_date_id=t3.id_Type where Transfor_vol_id=".$id_reg.";"));
-				
+				return $result;
+				exit();
 
 			}
 
-			
+
 		}
-		return $result;
-		exit();
+		
 	}
 
 	function dimension_concl($id_obj,$user_id)
