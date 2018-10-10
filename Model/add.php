@@ -66,8 +66,7 @@
 					mysqli_query($connect,"INSERT INTO Transfor_vol(Type_tr_vol,Mark_tr_vol,Denomin_tr_vol,Plomb_tr_vol,Object_id_tr_vol,Cons_id_obj_tr_vol)
   				VALUES ('$Type_tr_vol','$Mark_tr_vol','$Denomin_tr_vol','$Plomb_tr_vol','$id_obj','$user_id');");
 
-					// echo "INSERT INTO Transfor_vol(Type_tr_vol,Mark_tr_vol,Denomin_tr_vol,Plomb_tr_vol,Object_id_tr_vol,Cons_id_obj_tr_vol)
-  			// 	VALUES ('$Type_tr_vol','$Mark_tr_vol','$Denomin_tr_vol','$Plomb_tr_vol','$id_obj','$user_id');";
+					
 				
 
 				return 'Add';
@@ -92,8 +91,7 @@
 					mysqli_query($connect,"INSERT INTO Counter (Type_count, Mark_count,Number_count,Year_release_count,Class_accur_count,Kol_plomb_gospr,Kol_holog_stick,Plomb_netw_org,Antimag_plomb,Plomb_shu,Other_places_count,Obj_id_count,Obj_Cons_id_count)
   				VALUES ('$Type_count','$Mark_count','$Number_count','$Year_release_count','$Class_accur_count','$Kol_plomb_gospr','$Kol_holog_stick','$Plomb_netw_org','$Antimag_plomb','$Plomb_shu','$Other_places_count','$id_obj','$user_id');");
 
-					 // echo "INSERT INTO Counter (Type_count, Mark_count,Year_release_count,Class_accur_count,Date_gospr_count,Date_next_pr_count,Kol_plomb_gospr,Kol_holog_stick,Plomb_netw_org,Antimag_plomb,Plomb_shu,Other_places_count,Obj_id_count,Obj_Cons_id_count)
-  			 // 	VALUES ('$Type_count','$Mark_count','$Year_release_count','$Class_accur_count','$Date_gospr_count','$Date_next_pr_count','$Kol_plomb_gospr','$Kol_holog_stick','$Plomb_netw_org','$Antimag_plomb','$Plomb_shu','$Other_places_count','$id_obj','$user_id');";
+					
 
 					return 'Add_counter';
 	
@@ -115,7 +113,7 @@
 			if (!empty($_POST['Date_change']) AND !empty($_POST['Cause_change']) AND !empty($_POST['FIO_change']) AND !empty($_POST['Nomber_old']) AND !empty($_POST['Nomber_new']) AND !empty($_POST['id_count']))
 			{
 				mysqli_query($connect,"INSERT INTO Change_count (Date_change,Cause_change,FIO_change,Nomber_old,Nomber_new,Counter_id_count) VALUES ('$Date_change','$Cause_change','$FIO_change','$Nomber_old','$Nomber_new','$id_count');");
-				 // echo "INSERT INTO Change_count (Date_change,Cause_change,FIO_change,Nomber_old,Nomber_new,Counter_id_count) VALUES ('$Date_change','$Cause_change','$FIO_change','$Nomber_old','$Nomber_new','$id_count');";
+				 
 
 				return 'Add';
 	
@@ -162,8 +160,7 @@
 			{
 				mysqli_query($connect,"INSERT INTO Transfor_cur (Type_tr_cur,Mark_tr_cur,Denomin_tr_cur,Year_release_tr_cur,Num_tr_cur_fa,Num_tr_cur_fb,Num_tr_cur_fc,Obj_id_tr_cur,Obj_Cons_id_tr_cur) VALUES ('$Type_tr_cur','$Mark_tr_cur','$Denomin_tr_cur','$Year_release_tr_cur','$Num_tr_cur_fa','$Num_tr_cur_fb','$Num_tr_cur_fc','$id_obj','$user_id');");
 
-				// echo "INSERT INTO Transfor_cur (Type_tr_cur,Mark_tr_cur,Denomin_tr_cur,Year_release_tr_cur,Num_tr_cur_fa,Num_tr_cur_fb,Num_tr_cur_fc,Obj_id_tr_cur,Obj_Cons_id_tr_cur) VALUES ('$Type_tr_cur','$Mark_tr_cur','$Denomin_tr_cur','$Year_release_tr_cur','$Num_tr_cur_fa','$Num_tr_cur_fb','$Num_tr_cur_fc','$id_obj','$user_id')";
-
+				
 					return 'Add_tr_cur';
 	
 				exit();
@@ -194,13 +191,9 @@
 				}
 				$id_tr_cur = mysqli_fetch_array(mysqli_query($connect,"select id_tr_cur from transfor_cur WHERE Type_tr_cur='".$Type_tr_cur."'AND Mark_tr_cur='".$Mark_tr_cur."' AND Denomin_tr_cur='".$Denomin_tr_cur."' AND Year_release_tr_cur='".$Year_release_tr_cur."' AND Num_tr_cur_fa='".$Num_tr_cur_fa."' AND Num_tr_cur_fb='".$Num_tr_cur_fb."' AND Num_tr_cur_fc='".$Num_tr_cur_fc."' AND Obj_id_tr_cur='".$id_obj."' AND Obj_Cons_id_tr_cur='".$user_id."'; "));
 
-				//echo var_dump($id_tr_cur);
-				// echo "select id_tr_cur from transfor_cur WHERE Type_tr_cur='".$Type_tr_cur."'AND Mark_tr_cur='".$Mark_tr_cur."' AND Denomin_tr_cur='".$Denomin_tr_cur."' AND Year_release_tr_cur='".$Year_release_tr_cur."' AND Num_tr_cur_fa='".$Num_tr_cur_fa."' AND Num_tr_cur_fb='".$Num_tr_cur_fb."' AND Num_tr_cur_fc='".$Num_tr_cur_fc."' AND Obj_id_tr_cur='".$id_obj."' AND Obj_Cons_id_tr_cur='".$user_id."';";
 
 				$id_tr_cur2=$id_tr_cur["id_tr_cur"];
 
-				//echo "id_tr_cur=====";
-				 //echo $id_tr_cur2;
 
 				$cur = array(
     			0 =>"Add_tr_cur",
@@ -262,14 +255,14 @@
 			if (!empty($Phase) AND !empty($L1) AND !empty($L2) AND !empty($I1) AND !empty($I2) AND !empty($Other_places_plomb) AND !empty($id_tr_cur))
 			{
 				mysqli_query($connect,"INSERT INTO Plombs (L1,L2,I1,I2,Other_places_plomb) VALUES ('$L1','$L2','$I1','$I2','$Other_places_plomb');");
-				// echo "INSERT INTO Plombs (L1,L2,I1,I2,Other_places_plomb) VALUES ('$L1','$L2','$I1','$I2','$Other_places_plomb');";
+				;
 				$id_p=mysqli_fetch_array(mysqli_query($connect,"select id_plomb from Plombs WHERE L1 ='".$L1."' AND L2 ='".$L2."' AND I1 ='".$I1."'  AND I2 ='".$I2."' AND Other_places_plomb='".$Other_places_plomb."';"));
 				
-				// echo "select id_plomb from Plombs WHERE L1 ='".$L1."' AND L2 ='".$L2."' AND I1 ='".$I1."'  AND I2 ='".$I2."' AND Other_places_plomb='".$Other_places_plomb."';";
+				
 				$id_plomb=$id_p['id_plomb'];
 				
 				mysqli_query($connect,"INSERT INTO Phase_tr_cur (Phase,Transfor_cur_id_phase,Phase_id_plomb) VALUES ('$Phase','$id_tr_cur','$id_plomb');");
-				 // echo "INSERT INTO Phase_tr_cur (Phase,Transfor_cur_id_phase,Phase_id_plomb) VALUES ('$Phase','$id_tr_cur','$id_plomb');";
+				 
 	
 				return 'Add';
 	
@@ -293,23 +286,20 @@
 
 				mysqli_query($connect,"INSERT INTO Date_list (Date_l,Type_date_id) VALUES ('$Date','$Type');");
 
-				// echo "INSERT INTO Date_list (Date_l,Type_date_id) VALUES ('$Date','$Type');";
+				
 
 				$id=mysqli_fetch_array(mysqli_query($connect,"select MAX(id_Date) as id from Date_list  WHERE Date_l ='".$Date."' AND Type_date_id ='".$Type."';"));
 
-					// echo "select id_Date from Date_list  WHERE Date_l ='".$Date."' AND Type_date_id ='".$Type."';";
+					
 
 				$id_D= $id['id'];
 				
-				// echo "";
-				 // echo $id_D;
-				// echo "";
-				// echo $type_pr;
+				
 				if ($type_pr==1)
 				{
 					mysqli_query($connect,"INSERT INTO All_dates (Date_list_id,Counter_id_count,Conclusio,Notes) VALUES ('$id_D','$id_all','$Conclusio','$Notes');");
 
-					// echo "INSERT INTO All_dates (Date_list_id,Counter_id_count,Conclusio,Notes) VALUES ('$id_D','$id_all','$Conclusio','$Notes');";
+					
 
 				}
 				if ($type_pr==2)

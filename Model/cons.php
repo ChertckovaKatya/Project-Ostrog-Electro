@@ -22,7 +22,7 @@
 				
 					mysqli_error($connect);
 					$question=(mysqli_query($connect,"select * from consumer where Name_consumer like '%$Text_search%'  AND Face='$id_face' order by (Personal_account+0); "));
-					echo "select * from consumer where Name_consumer like '%$Text_search%'  AND Face='$id_face' order by (Personal_account+0);";
+					// echo "select * from consumer where Name_consumer like '%$Text_search%'  AND Face='$id_face' order by (Personal_account+0);";
 					
 				
 				}
@@ -168,8 +168,7 @@
 		$connect = get_connect();
 		$counter=(mysqli_query($connect,"Select id_count,Type_count, Mark_count,Number_count,Year_release_count,Class_accur_count,Kol_plomb_gospr,Kol_holog_stick,Plomb_netw_org,Antimag_plomb,Plomb_shu,Other_places_count from home.Counter WHERE Obj_id_count=".$id_obj." AND Obj_Cons_id_count=".$user_id.";"));
 
-		// echo "Select Type_count, Mark_count,Year_release_count,Class_accur_count,Date_gospr_count,Date_next_pr_count,Kol_plomb_gospr,Kol_holog_stick,Plomb_netw_org,Antimag_plomb,Plomb_shu,Other_places_count from home.Counter WHERE Obj_id_count=".$id_obj." AND Obj_Cons_id_count=".$user_id.";";
-
+		
 
 		$array_count= array();
 		$i = 0;

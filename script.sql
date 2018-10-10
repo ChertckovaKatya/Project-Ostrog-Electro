@@ -308,3 +308,9 @@ from All_dates AS t1 join Date_list AS t2
 join Type_date AS t3 on  t1.Date_list_id=t2.id_Date AND t2.Type_date_id=t3.id_Type
 where t2.Date_l < '2017-10-25'AND t2.Type_date_id=1 ));
 
+CREATE TABLE User (
+  id INT NOT NULL AUTO_INCREMENT,
+  Name  varchar(20),
+  Password TEXT,
+  PRIMARY KEY(id)
+);
